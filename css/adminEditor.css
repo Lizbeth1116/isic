@@ -1,0 +1,25 @@
+.admon{
+    background-color: #f1f1f1;
+    padding-bottom: 150px;
+}
+.admon h2{
+    padding-top: 100px;
+    padding-bottom: 20px;
+    font-size: 2.2em;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: #424242;
+}
+
+.admon .container #titulo{
+    background-color: #585858;
+    border-radius: 5px;
+}
+
+.admon .container #titulo h6{
+    padding-top: 1%;
+    padding-bottom: 1%;
+    padding-left: 5px;
+    padding-right: 5px;
+    color:#F2F2F2;
+}

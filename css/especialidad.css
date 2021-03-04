@@ -1,0 +1,205 @@
+.especialidad {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.especialidad #sec1 {
+    height: 700px;
+}
+
+.especialidad #sec1 .contenedor-texto {
+    font-size: 15px;
+}
+
+.especialidad #sec2 .contenedor-texto {
+    font-size: 15px;
+    padding-left: 8%;
+    padding-right: 8%;
+    color: #838383;
+}
+
+.especialidad #sec4 {
+    padding-top: 100px;
+    height: 100%;
+    background: #fff;
+}
+
+.especialidad #sec2 {
+    padding-top: 100px;
+    padding-right: 5%;
+    padding-left: 5%;
+    height: 100%;
+}
+
+.especialidad #sec2 .perfiles {
+    text-align: left;
+    padding: 0 15% 0 15%;
+    background: #fff;
+    border-radius: 8px;
+}
+
+.especialidad #sec2 .perfiles p {
+    color: #838383;
+}
+
+.especialidad #sec2 .perfiles h2 {
+    color: #838383 !important;
+    margin-top: 100px;
+    margin-bottom: 50px;
+}
+
+.especialidad #sec1 {
+    padding-right: 8%;
+    padding-left: 8%;
+}
+
+/*Fin Malla Curricular*/
+
+.especialidad section {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    color: whitesmoke !important;
+}
+
+.especialidad section h2 {
+    font-size: 2.5em;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+    color: #fff !important;
+}
+
+.especialidad section p {
+    font-weight: 300;
+    margin-bottom: 15px;
+}
+
+.especialidad section:nth-child(1) {
+    background-image: linear-gradient(to top, #38A5B4 0%, #235c9e 100%);
+}
+
+.especialidad section:nth-child(2) {
+    background-image: linear-gradient(to top, #fff 0%, #38A5B4 100%);
+}
+
+@media screen and (max-width: 1000px) {
+    .especialidad #sec2 .perfiles {
+        padding: 0 10% 0 10%;
+    }
+    .especialidad #sec2{
+        padding-top: 250px;
+    }
+    .especialidad section {
+        flex-direction: column-reverse;
+        height: 100%;
+    }
+    .especialidad #sec1, p {
+        text-align: justify;
+    }
+    .especialidad section h2 {
+        margin-top: 100px;
+        margin-bottom: 50px;
+        text-align: center;
+    }
+    .especialidad #sec1>img {
+        height: 40% !important;
+        margin-top: 420px !important;
+    }
+    .especialidad .contenedor-texto {
+        text-align: center;
+        margin-bottom: 150px;
+    }
+    .especialidad .descripcion .resume-item table {
+        text-align: left !important;
+        color: #f0f0f0;
+        font-size: 14px;
+    }
+    .especialidad .descripcion .resume-item h5 {
+        text-align: center;
+    }
+    .especialidad .descripcion .resume-item {
+        text-align: left !important;
+        color: #f0f0f0;
+        font-size: 14px;
+        margin: 15%;
+    }
+}
+
+@media screen and (max-width: 380px) {
+    .especialidad #sec1>img {
+        height: 150px !important;
+    }
+}
+
+.especialidad #sec1>img {
+    height: 300px;
+}
+
+.especialidad .t-malla {
+    color: #5f5f5f;
+}
+
+.especialidad .malla {
+    padding: 5%;
+}
+
+.especialidad .malla .partedos {
+    font-size: 11px;
+    color: #5f5f5f;
+}
+
+.especialidad .malla .Residencia {
+    background: #e9e9e9;
+}
+
+.especialidad .malla .resume-item {
+    text-align: center;
+    padding: 5px;
+    border: 1px solid #424242;
+    border-radius: 7px;
+}
+
+.especialidad .malla .resume-item *:last-child {
+    margin-bottom: 0;
+}
+
+.especialidad .descripcion {
+    background-color: #535353;
+    /*border: 1px solid #424242;*/
+    margin-left: 5%;
+    margin-right: 5%;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.especialidad .descripcion .resume-item h5 {
+    font-size: 1.5em;
+    color: #fff;
+}
+
+.especialidad .descripcion .resume-item {
+    padding: 0px;
+    border: 1px solid transparent;
+    border-radius: 7px;
+    text-align: left !important;
+    color: #ececec;
+    font-size: 14px;
+    margin: 15%;
+}
+
+.especialidad .perfiles .resume-item span, h4, p {
+    text-align: left;
+}
+
+/*
+#ffcbf8
+#cfffcb
+#fffbb5
+#ffdfb5
+#d1b5ff
+#5c87ff
+#b7ddb9
+#6dcc5a
+*/

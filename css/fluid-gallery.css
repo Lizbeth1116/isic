@@ -1,0 +1,84 @@
+
+.galeria img {
+    height: 230px;
+    -moz-transition: all 0.7s;
+    -webkit-transition: all 0.7s;
+    transition: all 0.7s;
+}
+
+.galeria .portfolio-container {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    align-items: center !important; margin: 0 auto;
+}
+
+.galeria .service-wrapper-inner {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    z-index: 1;
+    top: 180px;
+    padding: 15px 20px;
+    -moz-transition: all 0.7s;
+    -webkit-transition: all 0.7s;
+    transition: all 0.7s;
+    background: rgba(0, 0, 0, 0.6);
+}
+.galeria .service-wrapper-inner p{
+    text-align: left !important;
+    color: #cfcfcf !important;
+}
+.galeria .service-wrapper-inner p:hover{
+    color: #1cc6cc !important;
+}
+.galeria .service-wrapper-inner a{
+    text-decoration: none;
+}
+.galeria .service-wrapper-inner h5{
+    text-align: left !important;
+    font-weight: 300;
+    color: #fff;
+}
+.galeria .portfolio-container:hover .service-wrapper-inner{
+    top:0;
+}
+.galeria .portfolio-container:hover img{
+    -moz-transform: scale(1.2);
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
+}
+.galeria .resume-item {
+    border-radius: 8px;
+    border: 4px solid transparent; 
+    align-items: center;
+
+}
+
+.galeria .resume-item *:last-child {
+    margin-bottom: 0;
+}
+
+.content-carousel {
+    margin: 0 auto;
+    padding-top: 70px;
+}
+
+.content-carousel .carousel-inner img {
+    width: 100%;
+    height: 100%;
+}
+
+
+.content-carousel .carousel-caption h3, p {
+    text-align: center !important;
+    color: #fff !important;
+}
+
+@media screen and (max-width: 450px) {
+    .galeria {
+        padding-left: 50px !important;
+        padding-right: 50px !important;
+    }
+}
+
