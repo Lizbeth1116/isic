@@ -49,7 +49,7 @@
 </div>
 <div class="resumen">
     <section class="site-section " id="historial">
-        <div class="container topmargin-lg texto">
+        <div class="container topmargin-sm texto">
             <div class="row">
                 <div class="col-md-12 mb-5">
                     <div class="section-heading text-center">
