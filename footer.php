@@ -26,7 +26,7 @@
                     </div>
                     <!-- Modal body -->
                     <div class="modal-body">
-                        <form class="col-12" action="Administrador.php" method="POST" name="logi">
+                        <form class="col-12" action="AdminInicio.php" method="POST" name="logi">
                             <div class="p-3">
                                 <div class="form-group" id="user-group">
                                     <input class="form-control" id="admin" type="text" placeholder="Administador" name="admin" />

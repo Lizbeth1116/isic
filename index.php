@@ -1,4 +1,3 @@
-<?php include('home.php'); ?>
 <?php include('head.php'); ?>
 <!--Inicia pagina principal-->
 <div class="inicio">

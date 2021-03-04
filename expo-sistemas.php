@@ -1,5 +1,4 @@
 <?php
-include('home.php');
 include('head.php');
 ?>
 <link rel="stylesheet" href="css/fluid-gallery.css">

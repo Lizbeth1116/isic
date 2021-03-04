@@ -1,4 +1,3 @@
-<?php include('home.php'); ?>
 <?php include('head.php'); ?>
 <link rel="stylesheet" href="css/carousel.css">
 <div class="sec-carousel">

@@ -1,4 +1,3 @@
-<?php include('home.php'); ?>
 <?php include('head.php'); ?>
 <div class="resumen">
     <section class="site-section" id="historial">

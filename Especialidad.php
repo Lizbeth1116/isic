@@ -1,20 +1,13 @@
 <?php
-include("./Controlador/Controlador.php");
-$listEsp = getListEsp();
-$inv = getInv();
-$area = getArea();
+include('head.php');
 $sp = $_GET["sp"];
 $malla = getMalla($sp);
 $espInfo = getEspecialidadInfo($sp);
 $espAsig = getAsignaturasEsp($sp);
 $espEgr = getPerfilEgreso($sp);
-$listServ = getListaServicios();
 $max = getMaxMalla();
 
-session_start();
-$_SESSION['logueado'] = FALSE;
 ?>
-<?php include('head.php'); ?>
 <div class="especialidad">
     <section id="sec1">
 

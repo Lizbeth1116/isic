@@ -1,5 +1,4 @@
 <?php
-include('home.php');
 include('head.php');
 $servInfo = getServicio($_GET["idServ"]);
 ?>
