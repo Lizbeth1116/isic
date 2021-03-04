@@ -53,7 +53,8 @@ switch ($opGlobal):
                 $stmt->bind_param("iss", $idEspEsp, $claveEsp, $descripcionEsp);
                 break;
         endswitch;
-
+        $aux="Especialidad";;
+    break;
     case 2://Admin Investigacion
         switch ($opInv) :
             case 1:
@@ -67,15 +68,17 @@ switch ($opGlobal):
             default:
                 break;
         endswitch;
+        $aux="Investigacion";
         break;
     
     case 3://Admin Malla
         $stmt = $con->prepare("call isic.sp_editarAsig(?,?,?,?,?,?,?,?,?)");
         $stmt->bind_param("ssisssiii", $claveMC, $nombreMC, $semestreMC, $horasMC, $conocimientoMC, $claveOriMC, $idespecialidadOriMC, $especialidadMC, $opMC);
+        $aux="Malla";
         break;
 endswitch;
 $stmt->execute();
 $stmt->close();
-header("Location: ../Administrador.php");
+header("Location: ../Admin".$aux.".php");
 ?>
 
