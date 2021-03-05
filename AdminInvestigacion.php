@@ -1,5 +1,4 @@
 <?php
-
 include('./headAdmin.php');
 $tema = getTemaInv();
 $doce = getDocente();

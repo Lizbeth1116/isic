@@ -36,6 +36,12 @@ $nombreMC = $_POST['nombreMC'];
 $claveOriMC = $_POST['claveOriMC'];
 $idespecialidadOriMC = $_POST['idespecialidadOriMC'];
 
+$idImgEsp = $_POST['idImgExp'];
+$opExp = $_POST['opExp'];
+$descripcionExp = $_POST['descripcionExp'];
+$idPeriExp = $_POST['idPeriExp'];
+$AnioExp = $_POST['AnioExp'];
+$periodoExpo = $_POST['periodoExpo'];
 
 switch ($opGlobal):
     case 1://Admin Especialidad
@@ -53,8 +59,9 @@ switch ($opGlobal):
                 $stmt->bind_param("iss", $idEspEsp, $claveEsp, $descripcionEsp);
                 break;
         endswitch;
-        $aux="Especialidad";;
-    break;
+        $aux = "Especialidad";
+        ;
+        break;
     case 2://Admin Investigacion
         switch ($opInv) :
             case 1:
@@ -68,17 +75,30 @@ switch ($opGlobal):
             default:
                 break;
         endswitch;
-        $aux="Investigacion";
+        $aux = "Investigacion";
         break;
-    
     case 3://Admin Malla
         $stmt = $con->prepare("call isic.sp_editarAsig(?,?,?,?,?,?,?,?,?)");
         $stmt->bind_param("ssisssiii", $claveMC, $nombreMC, $semestreMC, $horasMC, $conocimientoMC, $claveOriMC, $idespecialidadOriMC, $especialidadMC, $opMC);
-        $aux="Malla";
+        $aux = "Malla";
+        break;
+    case 4://Admin Expo
+        switch ($opExp):
+            case 0:
+                $stmt = $con->prepare("call isic.sp_editPeriodoExpo(?,?,?)");
+                $stmt->bind_param("iii", $idPeriExp, $periodoExpo, $AnioExp);
+                $aux = "Expo";
+                break;
+            case 1:
+                $stmt = $con->prepare("call isic.sp_editImgExpo(?,?)");
+                $stmt->bind_param("is", $idImgEsp, $descripcionExp);
+                $aux = "Expo";
+                break;
+        endswitch;
         break;
 endswitch;
 $stmt->execute();
 $stmt->close();
-header("Location: ../Admin".$aux.".php");
+header("Location: ../Admin" . $aux . ".php");
 ?>
 

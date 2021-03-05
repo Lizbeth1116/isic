@@ -36,6 +36,16 @@ switch ($datos[0]):
         $stmt->bind_param("iiii", $datos[1], $datos[2], $datos[3], $datos[4]);
         $aux="Investigacion";
         break;
+    case 6: // Deshabilitar Imagen Expo
+        $stmt = $con->prepare("call isic.sp_DesHabImagExpo(?,?,?)");
+        $stmt->bind_param("iii", $datos[1], $datos[2], $datos[3]);
+        $aux="Expo";
+        break;
+    case 7: // Deshabilitar Periodo Expo
+        $stmt = $con->prepare("call isic.sp_DesHabExpo(?,?,?)");
+        $stmt->bind_param("iii", $datos[1], $datos[2], $datos[3]);
+        $aux="Expo";
+        break;
 endswitch;
 $stmt->execute();
 $stmt->close();

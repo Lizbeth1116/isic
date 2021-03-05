@@ -1,6 +1,6 @@
 <?php
 include('./headAdmin.php');
-
+$peri = getPeriodo();
 ?>
 <!DOCTYPE HTML>
 <html lang="en">
@@ -28,54 +28,174 @@ include('./headAdmin.php');
     <body>
         <div class="admon">
             <div class="container">
-                <h2>Especialidades</h2>
-                <!--Tabla de especialidad: Sección 1-->
-                <div id="titulo">
-                    <h6><b>Especilidades existentes en la malla curricular de la Ingeniería en Sistemas Computacionales</b></h6>
+                <h2>Expo Sistemas Proyectatec <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#myModalAddPeri"><i class="bi bi-calendar-plus"></i></button></h2>
+                <div class="modal topmargin-sm" id="myModalAddPeri">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <!-- Modal Header-->
+                            <div class="modal-header">
+                                <h5 class="modal-title" style="color:darkslategrey;">Agregar Periodo</h5>
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
+
+                            <!-- Modal body -->
+                            <div class="modal-body">
+                                <form class="needs-validation" novalidate action="Controlador/ControlAgregar.php" method="POST">
+
+                                    <div class="form-group" style="display:none">
+                                        <input type="text" class="form-control" id="opExp" name="opExp" value="0">
+                                    </div>
+                                    <div class="form-group" style="display:none">
+                                        <input type="text" class="form-control" id="opGlobal" name="opGlobal" value="4">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="desc" style="color:black;">Año:</label>
+                                        <input type="text" class="form-control" id="addAnioExp" placeholder="Ingrese el año" name="addAnioExp" required>
+                                        <div class="valid-feedback">Valido.</div>
+                                        <div class="invalid-feedback">Por favor verifique los campos.</div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="addperiodoExpo" style="color:black;">Periodo:</label>
+                                        <select id="addperiodoExpo" name="addperiodoExpo" class="custom-select mb-3 form-control" required>
+                                            <option selected>-Selecciona-</option>
+                                            <option value="1">Enero - Mayo</option>
+                                            <option value="2">Agosto - Diciembre</option>                                                     
+                                        </select>
+                                        <div class="valid-feedback">Valido.</div>
+                                        <div class="invalid-feedback">Por favor verifique los campos.</div>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Aceptar</button>
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <table class="table table-light table-hover">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Nombre</th>
-                            <th>Objetivo</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <?php
-                            for ($i = 0; $i < sizeof($especialidad); $i++) {
-                                echo '<tr>
-                                        <td>' . $especialidad[$i][0] . '</td>
-                                    <td>' . $especialidad[$i][1] . '</td>
-                                    <td> <a href=# data-toggle="modal" data-target="#myModaObjetivo" onclick="modVerMas(\'' . $especialidad[$i][1] . '\', \'' . $especialidad[$i][2] . '\');">Ver mas</a>
-                                        <div class="modal topmargin-sm" id="myModaObjetivo">
-                                                <div class="modal-dialog">
-                                                    <div class="modal-content">
+                <!--Tabla de especialidad: Sección 1-->
+                <?php
+                for ($i = 0; $i < sizeof($peri); $i++) {
+                    echo '<div id="titulo">';
+                    if ($peri[$i][1] === 1) {
+                        echo '<h6><b>Enero - Mayo ' . $peri[$i][2] . '</b>';
+                    } else if ($peri[$i][1] === 2) {
+                        echo '<h6><b>Agosto - Diciembre ' . $peri[$i][2] . '</b>';
+                    }
+                    echo '<div class="btn-group btn-group-sm">
+                            <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#myModalAddImg" onclick="datosModalExp2(\'' . $peri[$i][0] . '\');"><i class="bi bi-card-image"></i></button>
+                            <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#myModalEdExp" onclick="datosModalExp(\'' . $peri[$i][0] . '\', \'' . $peri[$i][1] . '\', \'' . $peri[$i][2] . '\');"><i class="bi bi-pencil-square"></i></button>
+                                        <div class="modal topmargin-sm" id="myModalEdExp">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <!-- Modal Header-->
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" style="color:darkslategrey;">Editar Periodo</h5>
+                                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                    </div>
 
-                                                        <!-- Modal Header-->
-                                                        <div class="modal-header">
-                                                            <h5 id="ModNom" class="modal-title" style="color:darkslategrey;"></h5>
-                                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                                        </div>
-
-                                                        <!-- Modal body -->
-                                                        <div class="modal-body">
-                                                            <p id="ModObj"></p>
-                                                        </div>
+                                                    <!-- Modal body -->
+                                                    <div class="modal-body">
+                                                        <form class="needs-validation" novalidate action="Controlador/ControlEditar.php" method="POST">
+                                                            <div class="form-group" style="display:none">
+                                                                <input type="text" class="form-control" id="idPeriExp" name="idPeriExp">
+                                                            </div>
+                                                            <div class="form-group" style="display:none">
+                                                                <input type="text" class="form-control" id="opExp" name="opExp" value="0">
+                                                            </div>
+                                                            <div class="form-group" style="display:none">
+                                                                <input type="text" class="form-control" id="opGlobal" name="opGlobal" value="4">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="desc" style="color:black;">Año:</label>
+                                                                <input type="text" class="form-control" id="AnioExp" placeholder="Ingrese el año" name="AnioExp" required>
+                                                                <div class="valid-feedback">Valido.</div>
+                                                                <div class="invalid-feedback">Por favor verifique los campos.</div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="perExpo" style="color:black;">Periodo:</label>
+                                                                <select id="periodoExpo" name="periodoExpo" class="custom-select mb-3 form-control" required>
+                                                                    <option selected>-Selecciona-</option>
+                                                                    <option value="1">Enero - Mayo</option>
+                                                                    <option value="2">Agosto - Diciembre</option>                                                     
+                                                                </select>
+                                                                <div class="valid-feedback">Valido.</div>
+                                                                <div class="invalid-feedback">Por favor verifique los campos.</div>
+                                                            </div>
+                                                            <button type="submit" class="btn btn-primary">Aceptar</button>
+                                                            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                                                        </form>
                                                     </div>
                                                 </div>
                                             </div>
-                                    </td>
-                                    <td> 
-                                        <div class="btn-group btn-group-sm">
-                                            <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#myModal" onclick="datosModalEsp1(\'' . $especialidad[$i][0] . '\', \'' . $especialidad[$i][1] . '\', \'' . $especialidad[$i][2] . '\');"><i class="bi bi-pencil-square"></i></button>';
-                                if ($especialidad[$i][3] === 1) {
-                                    echo '<a type="button" class="btn btn-secondary" href="Controlador/ControlBorrar.php?id=0_' . $especialidad[$i][0] . '_2_1"><i class = "bi bi-eye"></i></a>';
-                                } else {
-                                    echo '<a type="button" class="btn btn-secondary" href="Controlador/ControlBorrar.php?id=0_' . $especialidad[$i][0] . '_1_1"><i class = "bi bi-eye-slash"></i></a>';
-                                }
-                                echo '<a type = "button" class = "btn btn-secondary" href = "Controlador/ControlBorrar.php?id=0_' . $especialidad[$i][0] . '_0_2"><i class = "bi bi-trash-fill"></i></a>
+                                        </div>
+                                        <div class="modal topmargin-sm" id="myModalAddImg">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <!-- Modal Header-->
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" style="color:darkslategrey;">Editar Periodo</h5>
+                                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                    </div>
+
+                                                    <!-- Modal body -->
+                                                    <div class="modal-body">
+                                                        <form class="needs-validation" novalidate action="Controlador/ControlAgregar.php" method="POST" enctype="multipart/form-data">
+                                                            <div class="form-group" style="display:none">
+                                                                <input type="text" class="form-control" id="addIdPeriImag" name="addIdPeriImag" value="1">
+                                                            </div>
+                                                            <div class="form-group" style="display:none">
+                                                                <input type="text" class="form-control" id="opExp" name="opExp" value="1">
+                                                            </div>
+                                                            <div class="form-group" style="display:none">
+                                                                <input type="text" class="form-control" id="opGlobal" name="opGlobal" value="4">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="desc" style="color:black;">Descripcion:</label>
+                                                                <input type="text" class="form-control" id="addDescripcionExp" placeholder="Ingresa una descripcion a la imagen" name="addDescripcionExp" required>
+                                                                <div class="valid-feedback">Valido.</div>
+                                                                <div class="invalid-feedback">Por favor verifique los campos.</div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="imag" style="color:black;">Imagen:</label>
+                                                                <input type="file" class="form-control" id="addImgExp" placeholder="Seleccione una imagen" name="addImgExp" required>
+                                                                <div class="valid-feedback">Valido.</div>
+                                                                <div class="invalid-feedback">Por favor verifique los campos.</div>
+                                                            </div>
+                                                            <button type="submit" class="btn btn-primary">Aceptar</button>
+                                                            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>';
+                    if ($peri[$i][3] === 1) {
+                        echo '<a type="button" class="btn btn-secondary" href="Controlador/ControlBorrar.php?id=7_' . $peri[$i][0] . '_2_1"><i class = "bi bi-eye"></i></a>';
+                    } else {
+                        echo '<a type="button" class="btn btn-secondary" href="Controlador/ControlBorrar.php?id=7_' . $peri[$i][0] . '_1_1"><i class = "bi bi-eye-slash"></i></a>';
+                    }
+                    echo '<a type = "button" class = "btn btn-secondary" href = "Controlador/ControlBorrar.php?id=7_' . $peri[$i][0] . '_0_2"><i class = "bi bi-trash-fill"></i></a>
+                            </div></h6>
+                    </div>
+                    <table class="table table-light table-hover">
+                    <thead>
+                        <tr>
+                            <th>Imagen</th>
+                            <th>Descripcion</th>
+                        </tr>
+                    </thead>
+                    <tbody>';
+                    $imgExpo = getImagenesExpo($peri[$i][0]);
+                    for ($j = 0; $j < sizeof($imgExpo); $j++) {
+                        echo "<tr> <td><img src='data:" . $imgExpo[$j][4] . "; base64," . base64_encode($imgExpo[$j][1]) . "' width=120px></img></td>";
+                        echo '<td>' . $imgExpo[$j][2] . '</td><td>';
+                        if ($imgExpo[0][0] >= 0) {
+                            echo ' <div class="btn-group btn-group-sm">
+                                    <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#myModal" onclick="datosModalExp1(\'' . $imgExpo[$j][0] . '\', \'' . $imgExpo[$j][2] . '\');"><i class="bi bi-pencil-square"></i></button>';
+                            if ($imgExpo[$j][3] === 1) {
+                                echo '<a type="button" class="btn btn-secondary" href="Controlador/ControlBorrar.php?id=6_' . $imgExpo[$j][0] . '_2_1"><i class = "bi bi-eye"></i></a>';
+                            } else {
+                                echo '<a type="button" class="btn btn-secondary" href="Controlador/ControlBorrar.php?id=6_' . $imgExpo[$j][0] . '_1_1"><i class = "bi bi-eye-slash"></i></a>';
+                            }
+                            echo '<a type = "button" class = "btn btn-secondary" href = "Controlador/ControlBorrar.php?id=6_' . $imgExpo[$j][0] . '_0_2"><i class = "bi bi-trash-fill"></i></a>
                                             </div>
                                         <div class="modal topmargin-sm" id="myModal">
                                             <div class="modal-dialog">
@@ -90,23 +210,17 @@ include('./headAdmin.php');
                                                     <div class="modal-body">
                                                         <form class="needs-validation" novalidate action="Controlador/ControlEditar.php" method="POST">
                                                             <div class="form-group" style="display:none">
-                                                                <input type="text" class="form-control" id="idespecialidadEsp" name="idespecialidadEsp">
+                                                                <input type="text" class="form-control" id="idImgExp" name="idImgExp">
                                                             </div>
                                                             <div class="form-group" style="display:none">
-                                                                <input type="text" class="form-control" id="opEsp" name="opEsp" value="1">
+                                                                <input type="text" class="form-control" id="opExp" name="opExp" value="1">
                                                             </div>
                                                             <div class="form-group" style="display:none">
-                                                                <input type="text" class="form-control" id="opGlobal" name="opGlobal" value="1">
+                                                                <input type="text" class="form-control" id="opGlobal" name="opGlobal" value="4">
                                                             </div>
                                                             <div class="form-group">
-                                                                <label for="nombre" style="color:black;">Nombre:</label>
-                                                                <input type="text" class="form-control" id="nombreEsp" placeholder="Ingresa el nombre de la especialidad" name="nombreEsp" required>
-                                                                <div class="valid-feedback">Valido.</div>
-                                                                <div class="invalid-feedback">Por favor verifique los campos.</div>
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label for="objetivo" style="color:black;">Objetivo:</label>
-                                                                <textarea class="form-control" rows="5" id="objetivoEsp" placeholder="Ingresa el objetivo de la especialidad" name="objetivoEsp" required></textarea>
+                                                                <label for="desc" style="color:black;">Descripcion:</label>
+                                                                <input type="text" class="form-control" id="descripcionExp" placeholder="Ingresa una descripcion a la imagen" name="descripcionExp" required>
                                                                 <div class="valid-feedback">Valido.</div>
                                                                 <div class="invalid-feedback">Por favor verifique los campos.</div>
                                                             </div>
@@ -119,10 +233,12 @@ include('./headAdmin.php');
                                         </div>
                                     </td>
                                     </tr>';
-                            }
-                            ?>
-                    </tbody>
-                </table>
+                        }
+                    }
+                    echo '</tbody>
+                          </table>';
+                }
+                ?>
             </div>
         </div>
     </div>
@@ -150,10 +266,7 @@ include('./headAdmin.php');
 </section>
 <!--fin footer-->
 <!--JS Local-->
-<script type="text/javascript" src="js/editarEspecialidad.js?1.0.0"></script>
-<script type="text/javascript" src="js/editarMallaCurricular.js?1.0.0"></script>
-<script type="text/javascript" src="js/editarInvestigacion.js?1.0.0"></script>
-<script type="text/javascript" src="js/verMas.js?1.0.0"></script>
+<script type="text/javascript" src="js/editarExpo.js"></script>
 <!--Bootstrap JS-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

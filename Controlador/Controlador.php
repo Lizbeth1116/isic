@@ -283,3 +283,44 @@ function getServicio($serv) {
     $stmt->close();
     return $servInfo;
 }
+
+function getPeriodo() {
+    global $con;
+    $stmt = $con->prepare("call isic.sp_getPeriodo();");
+    $stmt->execute();
+    $stmt->bind_result($idperiodoExpo, $periodo, $año, $estado);
+    $i = 0;
+    while ($stmt->fetch()) {
+        $peri[$i][0] = $idperiodoExpo;
+        $peri[$i][1] = $periodo;
+        $peri[$i][2] = $año;
+        $peri[$i][3] = $estado;
+        $i++;
+    }
+    $stmt->close();
+    return $peri;
+}
+
+function getImagenesExpo($per) {
+    global $con;
+    $stmt = $con->prepare("call isic.sp_getImagenesExpo(?);");
+    $stmt->bind_param("i", $per);
+    $stmt->execute();
+    $stmt->bind_result($idimagenExpo, $imagen, $tipo, $descripcion, $estado);
+    $i = 0;
+    $imgExpo[0][0]=-1;
+    $imgExpo[0][1]="";
+    $imgExpo[0][2]="Sin contenido";
+    $imgExpo[0][3]="";
+    $imgExpo[0][4]="";
+    while ($stmt->fetch()) {
+        $imgExpo[$i][0] = $idimagenExpo;
+        $imgExpo[$i][1] = $imagen;
+        $imgExpo[$i][2] = $descripcion;
+        $imgExpo[$i][3] = $estado;
+        $imgExpo[$i][4] = $tipo;
+        $i++;
+    }
+    $stmt->close();
+    return $imgExpo;
+}
