@@ -1,5 +1,6 @@
 <?php
 include('head.php');
+$ImagenesExpo = getImagenesExpo(1);
 ?>
 <link rel="stylesheet" href="css/fluid-gallery.css">
 <div class="content-carousel">
@@ -53,72 +54,28 @@ include('head.php');
                     <h2>EXPO SISTEMAS <strong>AGOSTO - DICIEMBRE 2020</strong></h2>
                 </div>
             </div>
-            <div class="col-md-3">
-                <h2 class="mb-5"></h2>
-                <div class="resume-item mb-4">
-                    <div class="portfolio-container">
-                        <div class=""><img class="grid-item" src="img/imagenes-pruebas/traffic.jpg"></div>
-                        <div class="service-wrapper-inner">
-                            <h5>Prueba</h5>
-                            <div class="description">
-                                <a href="img/imagenes-pruebas/traffic.jpg">
-                                    <p>Overlay</p>
-                                </a>
+            <?php
+            for ($i = 0; $i < sizeof($ImagenesExpo); $i++) {
+                echo '
+                    <div class="col-md-3">
+                        <h2 class="mb-5"></h2>
+                        <div class="resume-item mb-4 partedos">
+                            <div class="portfolio-container">
+                                <img class="grid-item ' . $ImagenesExpo[$i][0] . '" src="data:' . $ImagenesExpo[$i][4] . '; base64,' . base64_encode($ImagenesExpo[$i][1]) . '">
+                                <div class="service-wrapper-inner">
+                                    <h5>Prueba</h5>
+                                    <div class="description">
+                                        <a class="lightbox" href="img/itsoeh.jpeg">
+                                        <p>' . $ImagenesExpo[$i][2] . '</p>
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-
-                </div>
-            </div>
-            <div class="col-md-3">
-                <h2 class="mb-5"></h2>
-                <div class="resume-item mb-4 partedos">
-                    <div class="portfolio-container">
-                        <div><img class="grid-item" src="img/imagenes-pruebas/park.jpg"></div>
-                        <div class="service-wrapper-inner">
-                            <h5>Prueba</h5>
-                            <div class="description">
-                                <a href="img/imagenes-pruebas/park.jpg">
-                                    <p>Overlay</p>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-3">
-                <h2 class="mb-5"></h2>
-                <div class="resume-item mb-4 partedos">
-                    <div class="portfolio-container">
-                        <img class="grid-item" src="img/imagenes-pruebas/tunnel.jpg">
-                        <div class="service-wrapper-inner">
-                            <h5>Prueba</h5>
-                            <div class="description">
-                                <a href="img/imagenes-pruebas/tunnel.jpg">
-                                    <p>Overlay</p>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <h2 class="mb-5"></h2>
-                <div class="resume-item mb-4 partedos">
-                    <div class="portfolio-container">
-                        <div class=""><img class="grid-item" src="img/itsoeh.jpeg"></div>
-                        <div class="service-wrapper-inner">
-                            <h5>Prueba</h5>
-                            <div class="description">
-                                <a class="lightbox" href="img/itsoeh.jpeg">
-                                    <p>Overlay</p>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                ';
+            }
+            ?>
         </div>
     </div>
 
@@ -127,9 +84,9 @@ include('head.php');
         baguetteBox.run('.tz-gallery');
     </script>
     <script>
-        $(document).ready(function()
+        $(document).ready(function ()
         {
-            $('#demo').carousel({interval:2000});
+            $('#demo').carousel({interval: 2000});
         });
     </script>
 </section>
