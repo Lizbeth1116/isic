@@ -49,6 +49,7 @@
 <script type="text/javascript" src="js/mallaCurricular.js?1.0.0"></script>
 <script type="text/javascript" src="js/index.js?1.0.0"></script>
 <script type="text/javascript" src="js/main.js?1.0.0"></script>
+<script type="text/javascript" src="js/typeit.js"></script>
 <!--Bootstrap JS-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
