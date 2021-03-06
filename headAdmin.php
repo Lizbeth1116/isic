@@ -67,6 +67,7 @@ if ($_SESSION['logueado'] == FALSE) {
                     <li><a href="AdminEspecialidad.php?1.0.0"><i class="bi bi-journal-text"></i>Especialidad</a></li>
                     <li><a href="AdminMalla.php?1.0.0"><i class="bi bi-receipt-cutoff"></i>Malla Curricular</a></li>
                     <li><a href="AdminInvestigacion.php?1.0.0"><i class="bi bi-people"></i>Investigacion</a></li>
+                    <li><a href="AdminExpo.php?1.0.0"><i class="bi bi-hdd-network"></i>Expo Sistemas</a></li>
                 </ul>
             </nav>
         </div>
