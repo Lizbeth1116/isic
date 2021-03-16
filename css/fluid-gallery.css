@@ -1,4 +1,3 @@
-
 .galeria img {
     height: 230px;
     -moz-transition: all 0.7s;
@@ -9,7 +8,7 @@
 .galeria .portfolio-container {
     position: relative;
     overflow: hidden;
-    border-radius: 8px;
+    border-radius: 5px;
     align-items: center !important; margin: 0 auto;
 }
 
@@ -30,7 +29,7 @@
     color: #cfcfcf !important;
 }
 .galeria .service-wrapper-inner p:hover{
-    color: #1cc6cc !important;
+    color: #cfcfcf  !important;
 }
 .galeria .service-wrapper-inner a{
     text-decoration: none;
@@ -49,7 +48,7 @@
     transform: scale(1.2);
 }
 .galeria .resume-item {
-    border-radius: 8px;
+    border-radius: 5px;
     border: 4px solid transparent; 
     align-items: center;
 
@@ -68,17 +67,16 @@
     width: 100%;
     height: 100%;
 }
-
-
 .content-carousel .carousel-caption h3, p {
     text-align: center !important;
     color: #fff !important;
 }
-
+.content-carousel .active{
+    display: none;
+}
 @media screen and (max-width: 450px) {
     .galeria {
         padding-left: 50px !important;
         padding-right: 50px !important;
     }
 }
-

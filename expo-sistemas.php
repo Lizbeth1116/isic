@@ -3,6 +3,7 @@ include('head.php');
 $ImagenesExpo = getImagenesExpo(1);
 ?>
 <link rel="stylesheet" href="css/fluid-gallery.css">
+
 <div class="content-carousel">
     <div id="demo" class="carousel slide" data-ride="carousel">
         <ul class="carousel-indicators">
@@ -58,16 +59,13 @@ $ImagenesExpo = getImagenesExpo(1);
             for ($i = 0; $i < sizeof($ImagenesExpo); $i++) {
                 echo '
                     <div class="col-md-3">
-                        <h2 class="mb-5"></h2>
-                        <div class="resume-item mb-4 partedos">
+                        <div class="resume-item mb-3 partedos">
                             <div class="portfolio-container">
                                 <img class="grid-item ' . $ImagenesExpo[$i][0] . '" src="data:' . $ImagenesExpo[$i][4] . '; base64,' . base64_encode($ImagenesExpo[$i][1]) . '">
                                 <div class="service-wrapper-inner">
                                     <h5>Prueba</h5>
                                     <div class="description">
-                                        <a class="lightbox" href="img/itsoeh.jpeg">
                                         <p>' . $ImagenesExpo[$i][2] . '</p>
-                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -78,17 +76,17 @@ $ImagenesExpo = getImagenesExpo(1);
             ?>
         </div>
     </div>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.js"></script>
-    <script>
-        baguetteBox.run('.tz-gallery');
-    </script>
-    <script>
-        $(document).ready(function ()
-        {
-            $('#demo').carousel({interval: 2000});
-        });
-    </script>
 </section>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.js"></script>
+<script>
+    baguetteBox.run('.tz-gallery');
+</script>
+<script>
+    $(document).ready(function() {
+        $('#demo').carousel({
+            interval: 2000
+        });
+    });
+</script>
 <div class="topmargin-lg"></div>
 <?php include('footer.php'); ?>

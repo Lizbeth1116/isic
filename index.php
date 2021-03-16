@@ -29,7 +29,7 @@
                 </div>
                 <div class="content-center">
                     <div class="info-carrera">
-                        <h4 class="heading" data-target-resolver></h4>
+                        <h4 class="heading text-center" data-target-resolver></h4>
                     </div>
                 </div>
             </div>

@@ -83,8 +83,7 @@ const resolver = {
    * Source: http://theportalwiki.com/wiki/GLaDOS_voice_lines#Chapter_9:_The_Part_Where_He_Kills_You
    */
   const strings = [
-    'Ingenieros altamente competitivos',
-    'quienes se estan formando para tener las competencias profesionales y poder así, implementar aplicaciones computaciones para solucionar problemas complejos de ingeniería en diversos contextos.',
+    'Ingenieros altamente competitivos quienes se estan formando para tener las competencias profesionales y poder así, implementar aplicaciones computaciones para solucionar problemas complejos de ingeniería en diversos contextos.',
     'Diseñar, implementar y administrar bases de datos, aplicaciones móviles, redes de computadoras, sistemas con inteligencia artificial o realidad aumentada. ',
     'La ingeniería en Sistemas Computaciones, cuenta con laboratorios de Programación y Base de Datos, Laboratorio de Redes de computadoras, Laboratorio de Multimedia, equipo de robótica, con una fábrica de software donde los estudiantes desarrollan Sistemas Computaciones con el apoyo de profesores altamente capacitados, así mismo se cuenta con una serie de dispositivos móviles como apoyo para la realización de las prácticas académicas.',
     'El 80% de su plantilla docente, cuenta estudios de posgrado, lo que habla de la calidad de quienes estudian esta ingeniería.',
