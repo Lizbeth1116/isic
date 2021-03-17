@@ -68,5 +68,5 @@ if (!$_COOKIE['logueado']) {
                 </ul>
             </nav>
         </div>
-    </body>
+
 
