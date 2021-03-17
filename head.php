@@ -4,6 +4,7 @@ $listEsp = getListEsp();
 $inv = getInv();
 $area = getArea();
 $listServ = getListaServicios();
+$peri = getPeriodo();
 session_start();
 $_SESSION['logueado'] = FALSE;
 ?>
@@ -88,7 +89,21 @@ $_SESSION['logueado'] = FALSE;
                     </li>
                     <li class="nav-item"><a class="nav-link" href="peisic.php?1.0.0"><span class="tab-text">PE ISC</span></a></li>
                     <li class="nav-item"><a class="nav-link" href="carousel.php?1.0.0"><span class="tab-text">Académia</span></a></li>
-                    <li class="nav-item"><a class="nav-link" href="expo-sistemas.php?1.0.0"><span class="tab-text">Eventos</span></a></li>
+                    <li class="nav-item">
+                        <div class="dropdown-local">
+                            <div class="nav-link"><span class="tab-text">Eventos</span></div>
+                            <div class="dropdown-content">
+                                <?php
+                                for ($x = 0; $x < sizeof($peri); $x++) {
+                                    if($peri[$x][3]===1){
+                                        $aux = $peri[$x][1] === 1?"ENE-MAY":"AGO-DIC";
+                                    }
+                                    echo '<a href="expo-sistemas.php?per=' . $peri[$x][0] . '_' . $peri[$x][1] . '_'.$peri[$x][2].'">' . $aux . ' '.$peri[$x][2].'</a>';
+                                }
+                                ?>
+                            </div>
+                        </div>
+                    </li>
                 </ul>
             </div>
         </div>
