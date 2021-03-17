@@ -1,5 +1,4 @@
 <?php
-
 include('./headAdmin.php');
 $listEsp = getListEsp();
 $asignatura = getMallaAdmin();

@@ -1,4 +1,7 @@
-<?php include('head.php'); ?>
+<?php 
+setcookie('logueado', FALSE, time() + 24 * 60 * 60); 
+include('head.php');
+?>
 <!--Inicia pagina principal-->
 <div class="inicio">
     <section id="home">

@@ -4,9 +4,9 @@ $listEsp = getListEsp();
 $inv = getInv();
 $area = getArea();
 $listServ = getListaServicios();
-$peri = getPeriodo();
+$peri = getPeriodo(); 
 session_start();
-$_SESSION['logueado'] = FALSE;
+
 ?>
 <!DOCTYPE html>
 <html lang="en">

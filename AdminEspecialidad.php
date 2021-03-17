@@ -3,7 +3,6 @@ include('./headAdmin.php');
 $especialidad = getEspecialidadAdmin();
 $egreso = getEgresoAdmin();
 $asiEsp = getAsignaturaEspAdmin();
-
 ?>
 <!DOCTYPE HTML>
 <html lang="en">
