@@ -4,8 +4,7 @@ session_start();
 if ($_SESSION['logueado'] == FALSE) {
     $admin = $_POST['admin'];
     $pass = $_POST['pass'];
-//Verifica si dentro del bucle se ha encontrado el usuario.
-    if (($admin === 'isic' && $pass === 'itsoeh.isic2021') || $_SESSION['logueado'] == true) {
+    if ($admin === 'isic' && $pass === 'itsoeh.isic2021') {
         $_SESSION['logueado'] = true;
     } else {
         session_destroy();
