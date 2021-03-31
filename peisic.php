@@ -1,12 +1,28 @@
-<?php include('head.php'); ?>
+<?php
+include('head.php');
+$getPEDescrip = getPEDescrip($_GET["pe"]);
+?>
 <div class="peisc">
     <section>
-        <img src="img/peisc/01_isomet.svg">
+        <?php
+            if ($_GET["pe"] != 6) {
+                echo'<img src="img/peisc/'.$getPEDescrip[0][1].'.svg">';
+            }
+        ?>
         <div class="contenedor-texto">
-            <h2>Misión institucional</h2>
-            <p>
-                Somos una institución de Educación Superior Tecnológico, con programas educativos acreditados que forma profesionistas creativos e innovadores, con sentido crítico, ético y participativo con competencias profesionales capaces de dar respuesta a las necesidades del entorno, que impulsa la investigación y la generación del desarrollo tecnológico com pleno respeto a la diversidad y con firme compromiso con la sociedad.
-            </p>
+            <?php
+            echo '<h2>' . $getPEDescrip[0][1] . '</h2>';
+            if ($_GET["pe"] >= 5) {
+                echo '<p>';
+                for ($i = 0; $i < sizeof($getPEDescrip); $i++) {
+                    echo '<small><i class="bi bi-check2"></i>' . $getPEDescrip[$i][2] . '</small><br>';
+                }
+                echo '</p>';
+            } else {
+                echo '<p>' . $getPEDescrip[0][2] . ' </p>';
+            }
+            ?>
+
         </div>
     </section>
 </div>
