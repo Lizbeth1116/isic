@@ -99,6 +99,7 @@ session_start();
                                     echo '<a href="peisic.php?pe=' . $listaPE[$i][0] . '">' . $listaPE[$i][1] . '</a>';
                                 }
                                 ?>
+                                <a href="asociaciones.php?1.0.0">Asociaciones</a>
                             </div>
                         </div>
                     </li>
