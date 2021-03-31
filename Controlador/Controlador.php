@@ -324,3 +324,35 @@ function getImagenesExpo($per) {
     $stmt->close();
     return $imgExpo;
 }
+
+function getListaPE() {
+    global $con;
+    $stmt = $con->prepare("call isic.sp_getListaPE();");
+    $stmt->execute();
+    $stmt->bind_result($idtipo_PE, $Nombre);
+    $i = 0;
+    while ($stmt->fetch()) {
+        $listaPE[$i][0] = $idtipo_PE;
+        $listaPE[$i][1] = $Nombre;
+        $i++;
+    }
+    $stmt->close();
+    return $listaPE;
+}
+
+function getPEDescrip($pe) {
+    global $con;
+    $stmt = $con->prepare("call isic.sp_getPEDescrip(?);");
+    $stmt->bind_param("i", $pe);
+    $stmt->execute();
+    $stmt->bind_result($idpe_isic, $Nombre, $DescripcionPE);
+    $i = 0;
+    while ($stmt->fetch()) {
+        $PEDescrip[$i][0] = $idpe_isic;
+        $PEDescrip[$i][1] = $Nombre;
+        $PEDescrip[$i][2] = $DescripcionPE;
+        $i++;
+    }
+    $stmt->close();
+    return $PEDescrip;
+}

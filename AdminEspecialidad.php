@@ -4,7 +4,6 @@ $especialidad = getEspecialidadAdmin();
 $egreso = getEgresoAdmin();
 $asiEsp = getAsignaturaEspAdmin();
 ?>
-<!DOCTYPE HTML>
         <div class="admon">
             <div class="container">
                 <h2>Especialidades</h2>

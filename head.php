@@ -5,6 +5,7 @@ $inv = getInv();
 $area = getArea();
 $listServ = getListaServicios();
 $peri = getPeriodo(); 
+$listaPE = getListaPE();
 session_start();
 
 ?>
@@ -88,7 +89,18 @@ session_start();
                             </div>
                         </div>
                     </li>
-                    <li class="nav-item"><a class="nav-link" href="peisic.php?1.0.0"><span class="tab-text">PE ISC</span></a></li>
+                    <li class="nav-item">
+                        <div class="dropdown-local">
+                            <div class="nav-link"><span class="tab-text">PE ISC</span></div>
+                            <div class="dropdown-content">
+                                <?php
+                                for ($i = 0; $i < sizeof($listaPE); $i++) {
+                                    echo '<a href="peisic.php?pe=' . $listaPE[$i][0] . '">' . $listaPE[$i][1] . '</a>';
+                                }
+                                ?>
+                            </div>
+                        </div>
+                    </li>
                     <li class="nav-item"><a class="nav-link" href="carousel.php?1.0.0"><span class="tab-text">Académia</span></a></li>
                     <li class="nav-item">
                         <div class="dropdown-local">
