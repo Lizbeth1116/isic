@@ -1,0 +1,110 @@
+.acreditacion {
+    background: linear-gradient(to top, #340c91 0%, #921392 100%);
+}
+@keyframes cambiar {
+    0% {
+        margin-top: 700px;
+    }
+    100% {
+        margin-top: 0;
+    }
+}
+.acreditacion .container-texto{
+    width: 100%;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    overflow: hidden;
+}
+.acreditacion .site-section {
+    padding-bottom: 5em;
+}
+
+.acreditacion .section-heading {
+    margin-bottom: 30px;
+    position: relative;
+    z-index: 10;
+}
+
+.acreditacion .texto .section-heading h2 {
+    padding-top: 100px;
+    position: relative;
+    font-weight: 200;
+    font-size: 30px;
+    color: #ececec;
+}
+
+.acreditacion .texto .section-heading h2 strong {
+    font-weight: 800;
+}
+
+.acreditacion .texto .section-heading.text-center h2:before {
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    transform: translateX(-50%);
+}
+
+.acreditacion .resume-item {
+    background-color: #ffffff;
+    text-align: center;
+    padding: 30px;
+    border: 4px solid transparent;
+    border-radius: 7px;
+    animation: cambiar 6s none;
+}
+
+.acreditacion .resume-item button {
+    border-radius: 50px !important;
+}
+
+.acreditacion .resume-item button:focus {
+    outline: none;
+}
+
+.acreditacion .resume-item .school {
+    display: block;
+    font-size: 16px;
+}
+
+.acreditacion .texto .resume-item h3 {
+    color: #5a5a5a;
+    font-size: 20px;
+}
+
+.acreditacion .resume-item *:last-child {
+    margin-bottom: 0;
+}
+
+.acreditacion .logo-c {
+    padding-top: 30px;
+    min-width: 300px;
+    max-width: 500px;
+    animation: cambiar 6s none;
+}
+
+.acreditacion .resume-item a {
+    color: #585858 !important;
+}
+
+.acreditacion .resume-item p {
+    font-size: 14px;
+    animation: cambiar 6s none;
+}
+.acreditacion table{
+    animation: cambiar 6s none;
+}
+.acreditacion table td {
+    text-align: left;
+    color: #5a5a5a;
+    font-size: 14px;
+}
+
+@media screen and (min-width: 320px) {
+    .acreditacion .logo-c {
+        min-width: 100px;
+        max-width: 280px;
+    }
+}
+

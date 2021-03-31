@@ -2,7 +2,7 @@
 <div class="asociaciones">
     <section class="site-section">
         <div class="container texto">
-            <div class="section-heading text-center topmargin-sm">
+            <div class="section-heading text-center topmargin-xs">
                 <h2><strong>ASOCIACIONES ESTRATEGICAS</strong></h2>
             </div>
             <div class="row topmargin-xs">

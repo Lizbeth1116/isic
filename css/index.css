@@ -338,6 +338,7 @@ body {
     text-decoration: none;
     display: block;
     text-align: left;
+    font-size: 12px !important;
 }
 
 .dropdown-content a:hover {

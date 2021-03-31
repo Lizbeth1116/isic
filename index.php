@@ -65,7 +65,7 @@ include('head.php');
                         <img src="img/iconos-conocenos/garrapata.svg?1.0.0" class="icono">
                         <h3><strong>Acreditación</strong></h3>
                         <p class="text-center">Actualemente la carrera de Ingeniería en Sistemas Computacionales se encuentra acreditado por el CACEI.</p>
-                        <button type="button" class="btn btn-outline-primary">Ver detalles</button>
+                        <button type="button" class="btn btn-outline-primary"><a href="acreditacion.php?1.0.0">Ver detalles</a></button>
                     </div>
                 </div>
 
