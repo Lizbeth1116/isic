@@ -86,6 +86,7 @@ $ImagenesExpo = getImagenesExpo(1);
         $('#demo').carousel({
             interval: 2000
         });
+        
     });
 </script>
 <div class="topmargin-lg"></div>

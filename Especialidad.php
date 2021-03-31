@@ -10,12 +10,13 @@ $max = getMaxMalla();
 ?>
 <div class="especialidad">
     <section id="sec1">
-
-        <div class="contenedor-texto">
-            <?php
-            echo '<h2>' . $espInfo[0][0] . '</h2>
+        <div class="contenedor">
+            <div class="contenedor-texto">
+                <?php
+                echo '<h2>' . $espInfo[0][0] . '</h2>
                                 <p>' . $espInfo[0][1] . '</p>';
-            ?>
+                ?>
+            </div>
         </div>
         <?php echo '<img src="img/especialidades/' . $espInfo[0][0] . '.svg?1.0.0">' ?>
 

@@ -3,7 +3,26 @@
     padding: 0;
     box-sizing: border-box;
 }
-.servicios section{
+
+.servicios section .contenedor-texto {
+    width: 100%;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    overflow: hidden;
+}
+
+@keyframes cambiar {
+    0% {
+        margin-top: 700px;
+    }
+    100% {
+        margin-top: 0;
+    }
+}
+
+.servicios section {
     padding: 0 120px;
     height: 700px;
     display: flex;
@@ -11,28 +30,17 @@
     align-items: center;
 }
 
-.servicios section h2 {
-    font-size: 2.5em;
-    font-weight: 700;
-    letter-spacing: 2px;
-    margin-bottom: 10px;
-    color: #ffffff !important;
-}
-
-.servicios section p {
-    font-weight: 300;
-    margin-bottom: 15px;
-    color: #cecece !important;
-}
+/*Fin animación imagen*/
 
 .servicios section:nth-child(1) {
-    background-image: linear-gradient(to top, #313131 0%, #646464 100%);
+    background-image: linear-gradient(to top, #b9b9b9 0%, #f3f3f3 100%);
 }
+
 @media screen and (max-width: 1000px) {
-    .servicios section{
+    .servicios section {
         padding: 0 20px !important;
-        flex-direction: column-reverse;
-        height: 1500px;
+        flex-direction: column;
+        height: 1000px;
     }
     .servicios section p {
         text-align: center;
@@ -41,21 +49,41 @@
         margin-bottom: 20px;
         text-align: center;
     }
-    .servicios section>img {
-        height: 30% !important;
+    .servicios section img {
+        height: 20% !important;
+        padding-right: 0px !important;
+        /*margin: 0 auto;*/
     }
     .servicios .contenedor-texto {
         text-align: center;
-        margin-bottom: 150px;
     }
 }
 
-@media screen and (max-width: 420px) {
-    .servicios section>img {
-        height: 30% !important;
+@media screen and (max-width: 360px) {
+    .servicios section img {
+        height: 15% !important;
+        padding-right: 0px !important;
     }
 }
 
-.servicios section>img{
+.servicios section img {
     height: 300px;
+    padding-right: 50px;
+    animation: cambiar 6s none;
 }
+
+.servicios section p {
+    font-weight: 300;
+    margin-bottom: 15px;
+    color: #8a8a8a !important;
+    animation: cambiar 6s none;
+}
+
+.servicios section h2 {
+    font-size: 2.5em;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+    color: #7a7a7a !important;
+}
+
