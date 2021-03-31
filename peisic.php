@@ -1,7 +1,7 @@
 <?php include('head.php'); ?>
 <div class="peisc">
     <section>
-        <img src="img/peisc/isom.svg">
+        <img src="img/peisc/01_isomet.svg">
         <div class="contenedor-texto">
             <h2>Misión institucional</h2>
             <p>
