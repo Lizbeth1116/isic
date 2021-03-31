@@ -28,6 +28,7 @@ session_start();
     <link rel="stylesheet" type="text/css" href="css/investigacion.css?1.0.0" />
     <link rel="stylesheet" type="text/css" href="css/login.css?1.0.0" />
     <link rel="stylesheet" href="css/index.css" />
+    <link rel="stylesheet" href="css/peisc.css" />
     <link rel="stylesheet" type="text/css" href="css/estilos.css" />
     <link rel="stylesheet" type="text/css" href="css/especialidad.css" />
     <link rel="stylesheet" type="text/css" href="css/normalize.css" />
