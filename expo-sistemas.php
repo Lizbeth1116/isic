@@ -1,6 +1,8 @@
 <?php
 include('head.php');
-$ImagenesExpo = getImagenesExpo(1);
+$per = $_GET["per"];
+$perio = explode('_', $per);
+$ImagenesExpo = getImagenesExpo($perio[0]);
 ?>
 <link rel="stylesheet" href="css/fluid-gallery.css">
 
@@ -52,7 +54,11 @@ $ImagenesExpo = getImagenesExpo(1);
         <div class="row">
             <div class="col-md-12 mb-5">
                 <div class="section-heading text-center">
-                    <h2>EXPO SISTEMAS <strong>AGOSTO - DICIEMBRE 2020</strong></h2>
+                    <?php
+                    $aux = $perio[1] === 1 ? "ENERO - MAYO" : "AGOSTO - DICIEMBRE";
+                    echo '
+                    <h2>EXPO SISTEMAS <strong>' . $aux . ' ' . $perio[2] . '</strong></h2>';
+                    ?>
                 </div>
             </div>
             <?php
@@ -82,7 +88,7 @@ $ImagenesExpo = getImagenesExpo(1);
     baguetteBox.run('.tz-gallery');
 </script>
 <script>
-    $(document).ready(function() {
+    $(document).ready(function () {
         $('#demo').carousel({
             interval: 2000
         });

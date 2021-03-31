@@ -1,18 +1,15 @@
 <?php
 include("./Controlador/Controlador.php");
-session_start();
-if ($_SESSION['logueado'] == FALSE) {
+if (!$_COOKIE['logueado']) {
     $admin = $_POST['admin'];
     $pass = $_POST['pass'];
-//Verifica si dentro del bucle se ha encontrado el usuario.
-    if (($admin === 'isic' && $pass === 'itsoeh.isic2021') || $_SESSION['logueado'] == true) {
-        $_SESSION['logueado'] = true;
+    if ($admin === 'isic' && $pass === 'itsoeh.isic2021') {
+        setcookie('logueado', TRUE, time() + 2 * 60 * 60); 
     } else {
         session_destroy();
         header("Location: index.php");
     }
 }
-
 ?>
 <!DOCTYPE HTML>
 <html lang="en">
@@ -71,5 +68,5 @@ if ($_SESSION['logueado'] == FALSE) {
                 </ul>
             </nav>
         </div>
-    </body>
+
 
