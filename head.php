@@ -32,6 +32,7 @@ session_start();
     <link rel="stylesheet" href="css/peisc.css" />
     <link rel="stylesheet" href="css/asociaciones.css"/>
     <link rel="stylesheet" href="css/acreditacion.css"/>
+    <link rel="stylesheet" href="css/organigrama.css">
     <link rel="stylesheet" type="text/css" href="css/estilos.css" />
     <link rel="stylesheet" type="text/css" href="css/especialidad.css" />
     <link rel="stylesheet" type="text/css" href="css/normalize.css" />
@@ -104,7 +105,7 @@ session_start();
                             </div>
                         </div>
                     </li>
-                    <li class="nav-item"><a class="nav-link" href="carousel.php?1.0.0"><span class="tab-text">Académia</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="organigrama.php?1.0.0"><span class="tab-text">Académia</span></a></li>
                     <li class="nav-item">
                         <div class="dropdown-local">
                             <div class="nav-link"><span class="tab-text">Eventos</span></div>
