@@ -74,4 +74,14 @@ showSelected = function ()
         document.getElementById('especialidadtxt').style.display = 'none';
         document.getElementById('especialidad').style.display = 'none';
     }
+    
+    var cod2 = document.getElementById("conocimientoMCAdd").value;
+    alert(cod2);
+    if (cod2 === "Especialidad") {
+        document.getElementById('conocimientoTxtMCAdd').style.display = 'block';
+        document.getElementById('especialidadMCAdd').style.display = 'block';
+    } else {
+        document.getElementById('conocimientoTxtMCAdd').style.display = 'none';
+        document.getElementById('especialidadMCAdd').style.display = 'none';
+    }
 };

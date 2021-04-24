@@ -4,26 +4,64 @@ $especialidad = getEspecialidadAdmin();
 $egreso = getEgresoAdmin();
 $asiEsp = getAsignaturaEspAdmin();
 ?>
-        <div class="admon">
-            <div class="container">
-                <h2>Especialidades</h2>
-                <!--Tabla de especialidad: Sección 1-->
-                <div id="titulo">
-                    <h6><b>Especilidades existentes en la malla curricular de la Ingeniería en Sistemas Computacionales</b></h6>
+<div class="admon">
+    <div class="container">
+        <h2>Especialidades</h2>
+        <!--Tabla de especialidad: Sección 1-->
+        <div id="titulo">
+            <h6><b>Especilidades existentes en la malla curricular de la Ingeniería en Sistemas Computacionales</b></h6>
+        </div>
+        <table class="table table-light table-hover">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Objetivo</th>
+                    <th><button type="button" class="btn btn-light" data-toggle="modal" data-target="#myModal1AddEsp"><i class="bi bi-plus-circle"></i></button></th>
+            <div class="modal topmargin-sm" id="myModal1AddEsp">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <!-- Modal Header-->
+                        <div class="modal-header">
+                            <h5 class="modal-title" style="color:darkslategrey;">Agregar</h5>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+
+                        <!-- Modal body -->
+                        <div class="modal-body">
+                            <form class="needs-validation" novalidate action="Controlador/ControlAgregar.php" method="POST">
+                                <div class="form-group" style="display:none">
+                                    <input type="text" class="form-control" id="opEsp" name="opEsp" value="1">
+                                </div>
+                                <div class="form-group" style="display:none">
+                                    <input type="text" class="form-control" id="opGlobal" name="opGlobal" value="1">
+                                </div>
+                                <div class="form-group">
+                                    <label for="nombre" style="color:black;">Nombre:</label>
+                                    <input type="text" class="form-control" id="nombreEspAdd" placeholder="Ingresa el nombre de la especialidad" name="nombreEspAdd" required>
+                                    <div class="valid-feedback">Valido.</div>
+                                    <div class="invalid-feedback">Por favor verifique los campos.</div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="objetivo" style="color:black;">Objetivo:</label>
+                                    <textarea class="form-control" rows="5" id="objetivoEspAdd" placeholder="Ingresa el objetivo de la especialidad" name="objetivoEspAdd" required></textarea>
+                                    <div class="valid-feedback">Valido.</div>
+                                    <div class="invalid-feedback">Por favor verifique los campos.</div>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Aceptar</button>
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                            </form>
+                        </div>
+                    </div>
                 </div>
-                <table class="table table-light table-hover">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Nombre</th>
-                            <th>Objetivo</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <?php
-                            for ($i = 0; $i < sizeof($especialidad); $i++) {
-                                echo '<tr>
+            </div>
+            </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <?php
+                    for ($i = 0; $i < sizeof($especialidad); $i++) {
+                        echo '<tr>
                                         <td>' . $especialidad[$i][0] . '</td>
                                     <td>' . $especialidad[$i][1] . '</td>
                                     <td> <a href=# data-toggle="modal" data-target="#myModaObjetivo" onclick="modVerMas(\'' . $especialidad[$i][1] . '\', \'' . $especialidad[$i][2] . '\');">Ver mas</a>
@@ -48,12 +86,12 @@ $asiEsp = getAsignaturaEspAdmin();
                                     <td> 
                                         <div class="btn-group btn-group-sm">
                                             <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#myModal" onclick="datosModalEsp1(\'' . $especialidad[$i][0] . '\', \'' . $especialidad[$i][1] . '\', \'' . $especialidad[$i][2] . '\');"><i class="bi bi-pencil-square"></i></button>';
-                                if ($especialidad[$i][3] === 1) {
-                                    echo '<a type="button" class="btn btn-secondary" href="Controlador/ControlBorrar.php?id=0_' . $especialidad[$i][0] . '_2_1"><i class = "bi bi-eye"></i></a>';
-                                } else {
-                                    echo '<a type="button" class="btn btn-secondary" href="Controlador/ControlBorrar.php?id=0_' . $especialidad[$i][0] . '_1_1"><i class = "bi bi-eye-slash"></i></a>';
-                                }
-                                echo '<a type = "button" class = "btn btn-secondary" href = "Controlador/ControlBorrar.php?id=0_' . $especialidad[$i][0] . '_0_2"><i class = "bi bi-trash-fill"></i></a>
+                        if ($especialidad[$i][3] === 1) {
+                            echo '<a type="button" class="btn btn-secondary" href="Controlador/ControlBorrar.php?id=0_' . $especialidad[$i][0] . '_2_1"><i class = "bi bi-eye"></i></a>';
+                        } else {
+                            echo '<a type="button" class="btn btn-secondary" href="Controlador/ControlBorrar.php?id=0_' . $especialidad[$i][0] . '_1_1"><i class = "bi bi-eye-slash"></i></a>';
+                        }
+                        echo '<a type = "button" class = "btn btn-secondary" href = "Controlador/ControlBorrar.php?id=0_' . $especialidad[$i][0] . '_0_2"><i class = "bi bi-trash-fill"></i></a>
                                             </div>
                                         <div class="modal topmargin-sm" id="myModal">
                                             <div class="modal-dialog">
@@ -97,25 +135,71 @@ $asiEsp = getAsignaturaEspAdmin();
                                         </div>
                                     </td>
                                     </tr>';
-                            }
-                            ?>
-                    </tbody>
-                </table>
-                <!--Tabla de especialidad: Sección 2-->
-                <div id="titulo">
-                    <h6><b>Perfil de egreso de las distintas especiliadades</b></h6>
+                    }
+                    ?>
+            </tbody>
+        </table>
+        <!--Tabla de especialidad: Sección 2-->
+        <div id="titulo">
+            <h6><b>Perfil de egreso de las distintas especiliadades</b></h6>
+        </div>
+        <table class="table table-light table-hover">
+            <thead>
+                <tr>
+                    <th>Especialidad</th>
+                    <th>Perfil de Egreso</th>
+                    <th><button type="button" class="btn btn-light" data-toggle="modal" data-target="#myModal1AddPerEsp"><i class="bi bi-plus-circle"></i></button></th>
+            <div class="modal topmargin-sm" id="myModal1AddPerEsp">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+
+                        <!-- Modal Header-->
+                        <div class="modal-header">
+                            <h5 class="modal-title" style="color:darkslategrey;">Agregar</h5>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+
+                        <!-- Modal body -->
+                        <div class="modal-body">
+                            <form class="needs-validation" novalidate action="Controlador/ControlAgregar.php" method="POST">
+                                <div class="form-group">
+                                    <label for="idegresoEspAdd" style="color:black;">Especialidad:</label>
+                                    <select id="idegresoEspAdd" name="idegresoEspAdd" class="custom-select mb-3 form-control" onchange="showSelected();" required>
+                                        <option selected>-Selecciona-</option>
+                                        <?php
+                                        for ($j = 0; $j < sizeof($especialidad); $j++) {
+                                            echo '<option value="' . $especialidad[$j][0] . '">' . $especialidad[$j][1] . '</option>';
+                                        }
+                                        ?>
+                                    </select>
+                                    <div class="valid-feedback">Valido.</div>
+                                    <div class="invalid-feedback">Por favor verifique los campos.</div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="perfil" style="color:black;">Perfil de Egreso:</label>
+                                    <textarea class="form-control" rows="5" id="perfilEspAdd" placeholder="Ingresa el perfil de egreso" name="perfilEspAdd" required></textarea>
+                                    <div class="valid-feedback">Valido.</div>
+                                    <div class="invalid-feedback">Por favor verifique los campos.</div>
+                                </div>
+                                <div class="form-group" style="display:none">
+                                    <input type="text" class="form-control" id="opEsp" name="opEsp" value="2">
+                                </div>
+                                <div class="form-group" style="display:none">
+                                    <input type="text" class="form-control" id="opGlobal" name="opGlobal" value="1">
+                                </div>
+                                <button type="submit" class="btn btn-primary">Aceptar</button>
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                            </form>
+                        </div>
+                    </div>
                 </div>
-                <table class="table table-light table-hover">
-                    <thead>
-                        <tr>
-                            <th>Especialidad</th>
-                            <th>Perfil de Egreso</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php
-                        for ($i = 0; $i < sizeof($egreso); $i++) {
-                            echo '<tr>
+            </div>
+            </tr>
+            </thead>
+            <tbody>
+                <?php
+                for ($i = 0; $i < sizeof($egreso); $i++) {
+                    echo '<tr>
                                         <td>' . $egreso[$i][1] . '</td>
                                         <td> <a href=# data-toggle="modal" data-target="#myModalEgr" onclick="modVerMasEgr(\'' . $egreso[$i][1] . '\', \'' . $egreso[$i][2] . '\');">Ver mas</a>
                                             <div class="modal topmargin-sm" id="myModalEgr">
@@ -139,12 +223,12 @@ $asiEsp = getAsignaturaEspAdmin();
                                         <td>
                                             <div class="btn-group btn-group-sm">
                                                 <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#myModal1" onclick="datosModalEsp2(\'' . $egreso[$i][0] . '\', \'' . $egreso[$i][2] . '\');"><i class="bi bi-pencil-square"></i></button>';
-                            if ($egreso[$i][3] === 1) {
-                                echo '<a type="button" class="btn btn-secondary" href="Controlador/ControlBorrar.php?id=1_' . $egreso[$i][0] . '_' . $egreso[$i][2] . '_2_1"><i class = "bi bi-eye"></i></a>';
-                            } else {
-                                echo '<a type="button" class="btn btn-secondary" href="Controlador/ControlBorrar.php?id=1_' . $egreso[$i][0] . '_' . $egreso[$i][2] . '_1_1"><i class = "bi bi-eye-slash"></i></a>';
-                            }
-                            echo '<a type="button" class="btn btn-secondary" href="Controlador/ControlBorrar.php?id=1_' . $egreso[$i][0] . '_' . $egreso[$i][2] . '_0_2"><i class="bi bi-trash-fill"></i></a>
+                    if ($egreso[$i][3] === 1) {
+                        echo '<a type="button" class="btn btn-secondary" href="Controlador/ControlBorrar.php?id=1_' . $egreso[$i][0] . '_' . $egreso[$i][2] . '_2_1"><i class = "bi bi-eye"></i></a>';
+                    } else {
+                        echo '<a type="button" class="btn btn-secondary" href="Controlador/ControlBorrar.php?id=1_' . $egreso[$i][0] . '_' . $egreso[$i][2] . '_1_1"><i class = "bi bi-eye-slash"></i></a>';
+                    }
+                    echo '<a type="button" class="btn btn-secondary" href="Controlador/ControlBorrar.php?id=1_' . $egreso[$i][0] . '_' . $egreso[$i][2] . '_0_2"><i class="bi bi-trash-fill"></i></a>
                                             </div>
                                             <div class="modal topmargin-sm" id="myModal1">
                                                 <div class="modal-dialog">
@@ -186,26 +270,26 @@ $asiEsp = getAsignaturaEspAdmin();
                                             </div>
                                         </td>
                                     </tr>';
-                        }
-                        ?>
-                    </tbody>
-                </table>
-                <!--Tabla de especialidad: Sección 3-->
-                <div id="titulo">
-                    <h6><b>Asignaturas existentes de las distintas especilidades de la Ingeniería en Sistemas Computacionales</b></h6>
-                </div>
-                <table class="table table-light table-hover">
-                    <thead>
-                        <tr>
-                            <th>Especialidad</th>
-                            <th>Clave Asignatura</th>
-                            <th>Descripción</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php
-                        for ($i = 0; $i < sizeof($asiEsp); $i++) {
-                            echo '<tr>
+                }
+                ?>
+            </tbody>
+        </table>
+        <!--Tabla de especialidad: Sección 3-->
+        <div id="titulo">
+            <h6><b>Asignaturas existentes de las distintas especilidades de la Ingeniería en Sistemas Computacionales</b></h6>
+        </div>
+        <table class="table table-light table-hover">
+            <thead>
+                <tr>
+                    <th>Especialidad</th>
+                    <th>Clave Asignatura</th>
+                    <th>Descripción</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                for ($i = 0; $i < sizeof($asiEsp); $i++) {
+                    echo '<tr>
                                         <td>' . $asiEsp[$i][1] . '</td>
                                         <td>' . $asiEsp[$i][2] . '</td>
                                         <td> <a href=# data-toggle="modal" data-target="#myModalDesc" onclick="modVerMasDesc(\'' . $asiEsp[$i][2] . '\', \'' . $asiEsp[$i][3] . '\');">Ver mas</a>
@@ -231,12 +315,12 @@ $asiEsp = getAsignaturaEspAdmin();
                                             <div class="btn-group btn-group-sm">
                                                 <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#myModal2" onclick="datosModalEsp3(\'' . $asiEsp[$i][0] . '\', \'' . $asiEsp[$i][2] . '\', \'' . $asiEsp[$i][3] . '\');"><i class="bi bi-pencil-square"></i></button>';
 
-                            if ($asiEsp[$i][4] === 1) {
-                                echo '<a type="button" class="btn btn-secondary" href="Controlador/ControlBorrar.php?id=2_' . $asiEsp[$i][0] . '_' . $asiEsp[$i][2] . '_2_1"><i class = "bi bi-eye"></i></a>';
-                            } else {
-                                echo '<a type="button" class="btn btn-secondary" href="Controlador/ControlBorrar.php?id=2_' . $asiEsp[$i][0] . '_' . $asiEsp[$i][2] . '_1_1"><i class = "bi bi-eye-slash"></i></a>';
-                            }
-                            echo '<a type="button" class="btn btn-secondary" href="Controlador/ControlBorrar.php?id=2_' . $asiEsp[$i][0] . '_' . $asiEsp[$i][2] . '_0_2"><i class="bi bi-trash-fill"></i></a>
+                    if ($asiEsp[$i][4] === 1) {
+                        echo '<a type="button" class="btn btn-secondary" href="Controlador/ControlBorrar.php?id=2_' . $asiEsp[$i][0] . '_' . $asiEsp[$i][2] . '_2_1"><i class = "bi bi-eye"></i></a>';
+                    } else {
+                        echo '<a type="button" class="btn btn-secondary" href="Controlador/ControlBorrar.php?id=2_' . $asiEsp[$i][0] . '_' . $asiEsp[$i][2] . '_1_1"><i class = "bi bi-eye-slash"></i></a>';
+                    }
+                    echo '<a type="button" class="btn btn-secondary" href="Controlador/ControlBorrar.php?id=2_' . $asiEsp[$i][0] . '_' . $asiEsp[$i][2] . '_0_2"><i class="bi bi-trash-fill"></i></a>
                                             </div>
                                             <div class="modal topmargin-sm" id="myModal2">
                                                 <div class="modal-dialog">
@@ -279,13 +363,13 @@ $asiEsp = getAsignaturaEspAdmin();
                                             </div>
                                         </td>
                                     </tr>';
-                        }
-                        ?>
-                    </tbody>
-                </table>
-            </div>
-        </div>
+                }
+                ?>
+            </tbody>
+        </table>
     </div>
+</div>
+</div>
 </div>
 <!--inicia footer-->
 <section id="footer" class="bg-dark">
