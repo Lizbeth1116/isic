@@ -22,6 +22,9 @@ if (!$_COOKIE['logueado']) {
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <!--Tipografia-->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;700&display=swap" rel="stylesheet">
         <!--ICONOS-->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
         <!--CSS local-->
@@ -29,6 +32,7 @@ if (!$_COOKIE['logueado']) {
         <link rel="stylesheet" type="text/css" href="css/adminEditor.css?1.0.0" />
         <link rel="stylesheet" type="text/css" href="css/normalize.css?1.0.0" />
         <link rel="stylesheet" type="text/css" href="css/estilos.css?1.0.0" />
+        <link rel="stylesheet" type="text/css" href="css/adminInicio.css?1.0.0" />
         <script type="text/javascript" src="js/main.js?1.0.0"></script>
         <link rel="icon" type="image/png" href="img/icono.png" />
         <title>Administrador</title>
@@ -45,7 +49,6 @@ if (!$_COOKIE['logueado']) {
                         <span class="bottom-line"></span>
                     </button>
                 </div>
-                <a class="navbar-brand text-light ml-auto"><img src="img/isic-itsoeh-logo-blanco.png" alt="itsoeh-logo" class="itsoeh-logo-white"></a>
                 <a href="index.php" class="salir">Log out</a>
                 <!--<a class="navbar-brand" >
                         
@@ -55,9 +58,6 @@ if (!$_COOKIE['logueado']) {
         <div class="wrapper fixed-left">
             <nav id="sidebar">
                 <div class="sidebar-header">
-                    <a class="navbar-brand" target="_blank" href="http://www.itsoeh.edu.mx/front/">
-                        <img src="img/logos/logo-isic-blanco.png" alt="logo-isic" class="isic-logo-white">
-                    </a>
                 </div>
                 <ul class="tabs list-unstyled components">
                     <li><a href="AdminInicio.php?1.0.0"><i class="bi bi-house"></i>Inicio</a></li>

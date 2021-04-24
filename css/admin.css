@@ -7,7 +7,7 @@
   }
 
   body {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Poppins', sans-serif;
     background: #f1f1f1;
   }
 
@@ -22,59 +22,6 @@
   .topmargin-lg {
     margin-top: 150px !important;
   }
-
-  /*seccion  de inicio*/
-
-  .inicio #home {
-    padding-top: 90px;
-    min-height: 700px;
-    background-image: url(../img/overlay-lg.png), url(../img/itsoeh.jpeg);
-    background-size: cover;
-    color: #fff !important;
-  }
-
-  .inicio .logo-isic {
-    min-width: 120px;
-    max-width: 170px;
-  }
-
-  .inicio h6 {
-    color: #fff;
-  }
-
-  .inicio h5 {
-    color: #fff;
-  }
-
-  .inicio .content-center {
-    margin-top: 15%;
-    text-align: center;
-  }
-
-  .inicio .content-center p {
-    font-size: 2em;
-    letter-spacing: 2px;
-  }
-
-  .inicio .content-center h1 {
-    font-size: 2.5em;
-    font-weight: 700;
-    color: #fff;
-    letter-spacing: 2px;
-  }
-
-  .inicio #home section {
-    padding: 50px 0;
-  }
-
-  .inicio #resumen .content-center h2 {
-    font-size: 2.2em;
-    font-weight: 700;
-    margin-bottom: 30px;
-    letter-spacing: 2px;
-  }
-
-  /*fin seccion 'inicio'*/
 
   .navbar {
     box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.05);
