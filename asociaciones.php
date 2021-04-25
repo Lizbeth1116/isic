@@ -1,6 +1,6 @@
 <?php include('head.php'); ?>
 <div class="asociaciones">
-    <section class="site-section">
+    <section class="site-section"> 
         <div class="container texto">
             <div class="section-heading text-center topmargin-xs">
                 <h2><strong>ASOCIACIONES ESTRATEGICAS</strong></h2>
