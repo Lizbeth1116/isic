@@ -356,3 +356,25 @@ function getPEDescrip($pe) {
     $stmt->close();
     return $PEDescrip;
 }
+
+function getAsesorias() {
+    global $con;
+    $stmt = $con->prepare("call isic.sp_getAsesorias();");
+    $stmt->execute();
+    $stmt->bind_result($idasesorias, $idAsesor, $asesor, $clavAsignatura, $asignatura, $horaInicio, $horaFin, $dia, $estado);
+    $i = 0;
+    while ($stmt->fetch()) {
+        $Asesoria[$i][0] = $idasesorias;
+        $Asesoria[$i][1] = $idAsesor;
+        $Asesoria[$i][2] = $asesor;
+        $Asesoria[$i][3] = $clavAsignatura;
+        $Asesoria[$i][4] = $asignatura;
+        $Asesoria[$i][5] = $horaInicio;
+        $Asesoria[$i][6] = $horaFin;
+        $Asesoria[$i][7] = $dia;
+        $Asesoria[$i][8] = $estado;
+        $i++;
+    }
+    $stmt->close();
+    return $Asesoria;
+}
