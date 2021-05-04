@@ -28,67 +28,67 @@ $servInfo = getServicio($_GET["idServ"]);
     </section>
     <?php
     if ($_GET["idServ"] == 2) {
+        $Asesoria = getAsesorias();
+        $asesor = getAsesor();
         echo '
         <div class="asesorias">
-    <section class="site-section">
+        <section class="site-section">
         <div class="container texto">
             <div class="section-heading text-center">
                 <h2><strong>Asesorías</strong></h2>
             </div>
-            <div class="row topmargin-xs">
+            <div class="row topmargin-xs">';
+        $asAux = 0;
+        for ($i = 0; $i < sizeof($asesor); $i++) {
+            echo ' 
                 <div class="col-md-6">
                     <div class="resume-item mb-4">
                         <p>
-                        <h3><strong>Elizabeth García Rios</strong></h3>
+                        <h3><strong>' . $asesor[$i][0] . '</strong></h3>
                         </p>
                         <table class="table table-light">
                             <tr>
                                 <th>Asesorías</th>
                                 <th>Día</th>
                                 <th>Hora</th>
-                            </tr>
-                            <tr>
-                                <td>Visión por computadora</td>
-                                <td>Lunes</td>
-                                <td>15-16</td>
-                            </tr>
-                            <tr>
-                                <td>Metodos Numericos</td>
-                                <td>Lunes</td>
-                                <td>16-17</td>
-                            </tr>
-                            <tr>
-                                <td>Taller de Investigación</td>
-                                <td>Viernes</td>
-                                <td>13-13</td>
-                            </tr>
+                            </tr>';
+                            for ($j = $asAux; $j < sizeof($Asesoria); $j++) {
+                                if ($asesor[$i][0] === $Asesoria[$j][2] ) {
+                                    echo ' 
+                                    <tr>
+                                        <td>' . $Asesoria[$j][4] . '</td>';
+                                        switch ($Asesoria[$j][7]) {
+                                            case 1:
+                                                echo '<td>Lunes</td>';
+                                                break;
+                                            case 2:
+                                                echo '<td>Martes</td>';
+                                                break;
+                                            case 3:
+                                                echo '<td>Miercoles</td>';
+                                                break;
+                                            case 4:
+                                                echo '<td>Jueves</td>';
+                                                break;
+                                            case 5:
+                                                echo '<td>Viernes</td>';
+                                                break;
+                                        }
+                                        echo '
+                                        <td>' . $Asesoria[$j][5] . '-' . $Asesoria[$j][6] . '</td>
+                                    </tr>';
+                                    $asAux++;
+                                }
+                                else if ($asesor[$i][0] != $Asesoria[$j][2] ){
+                                    $j = sizeof($Asesoria);
+                                }
+                            }
+                            echo '
                         </table>
                     </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="resume-item mb-4">
-                        <p>
-                        <h3><strong>Mario Perez Bautista</strong></h3>
-                        </p>
-                        <table class="table table-light">
-                            <tr>
-                                <th>Asesorías</th>
-                                <th>Día</th>
-                                <th>Hora</th>
-                            </tr>
-                            <tr>
-                                <td>Lenguajes y Automatas 1</td>
-                                <td>Lunes</td>
-                                <td>12-13<br>13-14</td>
-                            </tr>
-                            <tr>
-                                <td>Programación Orientada a Objetos</td>
-                                <td>Miercoles</td>
-                                <td>16-17<br>18-19</td>
-                            </tr>
-                        </table>
-                    </div>
-                </div>
+                </div>';
+        }
+        echo '
             </div>
         </div>
     </section>

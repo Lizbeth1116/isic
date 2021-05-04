@@ -378,3 +378,17 @@ function getAsesorias() {
     $stmt->close();
     return $Asesoria;
 }
+
+function getAsesor() {
+    global $con;
+    $stmt = $con->prepare("call isic.sp_getAsesor();");
+    $stmt->execute();
+    $stmt->bind_result($asesor);
+    $i = 0;
+    while ($stmt->fetch()) {
+        $asesorNam[$i][0] = $asesor;
+        $i++;
+    }
+    $stmt->close();
+    return $asesorNam;
+}
