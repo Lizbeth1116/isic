@@ -5,6 +5,7 @@ $con = conectar();
 
 $opGlobal = $_POST['opGlobal'];
 
+if ($opGlobal < 5) {
 $opEsp = $_POST['opEsp'];
 $idespecialidadEsp = $_POST['idespecialidadEsp'];
 $nombreEsp = $_POST['nombreEsp'];
@@ -42,6 +43,7 @@ $descripcionExp = $_POST['descripcionExp'];
 $idPeriExp = $_POST['idPeriExp'];
 $AnioExp = $_POST['AnioExp'];
 $periodoExpo = $_POST['periodoExpo'];
+} 
 
 switch ($opGlobal):
     case 1://Admin Especialidad
@@ -95,6 +97,11 @@ switch ($opGlobal):
                 $aux = "Expo";
                 break;
         endswitch;
+        break;
+    case 5://Admin Asesorias
+        $stmt = $con->prepare("call isic.sp_editAsesoria(?,?,?,?,?,?)");
+        $stmt->bind_param("iisiii", $_POST['idAsesoria'], $_POST['docenteAs'], $_POST['asignaturaAs'], $_POST['horaIniAs'], $_POST['horaFinAs'], $_POST['diaAs']);
+        $aux = "Asesorias";
         break;
 endswitch;
 $stmt->execute();

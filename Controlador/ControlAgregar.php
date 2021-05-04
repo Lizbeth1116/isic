@@ -28,6 +28,12 @@ if ($opGlobal != 4) {
     $idPeriExp = $_POST['idPeriExp'];
     $AnioExp = $_POST['AnioExp'];
     $periodoExpo = $_POST['periodoExpo'];
+    
+    $docenteAs = $_POST['docenteAsAdd'];
+    $asignaturaAs = $_POST['asignaturaAsAdd'];
+    $diaAs = $_POST['diaAsAdd'];
+    $horaIniAs = $_POST['horaIniAsAdd'];
+    $horaFinAs = $_POST['horaFinAsAdd'];
 } else {
     $opExp = $_POST['opExp'];
     $addIdPeriImag = $_POST['addIdPeriImag'];
@@ -89,6 +95,11 @@ switch ($opGlobal):
                 $aux = "Expo";
                 break;
         endswitch;
+        break;
+    case 5://Admin Asesorias
+        $stmt = $con->prepare("call isic.sp_AddAsesoria(?,?,?,?,?)");
+        $stmt->bind_param("isiii", $docenteAs, $asignaturaAs, $horaIniAs, $horaFinAs, $diaAs);
+        $aux = "Asesorias";
         break;
 endswitch;
 $stmt->execute();

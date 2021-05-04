@@ -46,6 +46,11 @@ switch ($datos[0]):
         $stmt->bind_param("iii", $datos[1], $datos[2], $datos[3]);
         $aux="Expo";
         break;
+    case 8: // Deshabilitar Asesorias
+        $stmt = $con->prepare("call isic.sp_DesHabAsesoria(?,?,?)");
+        $stmt->bind_param("iii", $datos[1], $datos[2], $datos[3]);
+        $aux="Asesorias";
+        break;
 endswitch;
 $stmt->execute();
 $stmt->close();
