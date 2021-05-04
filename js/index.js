@@ -87,7 +87,7 @@ const resolver = {
     'Diseñar, implementar y administrar bases de datos, aplicaciones móviles, redes de computadoras, sistemas con inteligencia artificial o realidad aumentada. ',
     'La ingeniería en Sistemas Computaciones, cuenta con laboratorios de Programación y Base de Datos, Laboratorio de Redes de computadoras, Laboratorio de Multimedia, equipo de robótica, con una fábrica de software donde los estudiantes desarrollan Sistemas Computaciones con el apoyo de profesores altamente capacitados, así mismo se cuenta con una serie de dispositivos móviles como apoyo para la realización de las prácticas académicas.',
     'El 80% de su plantilla docente, cuenta estudios de posgrado, lo que habla de la calidad de quienes estudian esta ingeniería.',
-    'Actualmente la ingeniería en Sistemas Computaciones está ofertando las especialidades de DESARROLLO DE APLICACIONES MÓVILES y la de TECNOLOGÍAS Y APLICACIONES CON SISTEMAS INTELIGENTES.',
+    'Actualmente la ingeniería en Sistemas Computaciones está ofertando las especialidades de DESARROLLO DE APLICACIONES MÓVILES cómo CIENCIA DE DATOS.',
     'Sus estudiantes han participado en eventos locales, regionales, estatales y nacionales, estando entre los mejores en la Competencia Internacional NetRiders 2017, Segundo lugar a nivel estatal en el 17° Concurso de Creatividad e Ingenio.',
     ' La Ingeniería en Sistemas Computaciones, pertenece a la Academia de CISCO y de ORACLE, lo que permite que sus estudiantes tengan acceso a certificaciones internacionales.',
     '#ORGULLOITSOEH',

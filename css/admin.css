@@ -10,7 +10,9 @@
     font-family: 'Poppins', sans-serif;
     background: #f1f1f1;
   }
-
+  button:focus{
+    outline: none !important;
+  }
   .topmargin-xs {
     margin-top: 50px !important;
   }

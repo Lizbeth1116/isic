@@ -296,6 +296,10 @@ body {
     outline: none;
 }
 
+.resumen .resume-item button:hover{
+    color: #fff !important;
+}
+
 .resumen .resume-item .school {
     display: block;
     font-size: 16px;

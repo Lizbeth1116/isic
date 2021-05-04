@@ -33,6 +33,7 @@ session_start();
     <link rel="stylesheet" href="css/asociaciones.css"/>
     <link rel="stylesheet" href="css/acreditacion.css"/>
     <link rel="stylesheet" href="css/organigrama.css">
+    <link rel="stylesheet" href="css/asesorias.css">
     <link rel="stylesheet" type="text/css" href="css/estilos.css" />
     <link rel="stylesheet" type="text/css" href="css/especialidad.css" />
     <link rel="stylesheet" type="text/css" href="css/normalize.css" />
