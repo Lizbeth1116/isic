@@ -50,10 +50,10 @@ switch ($opGlobal):
         $nomPdf = $_FILES['pdfReticula']['name'];
         $guardadoPdf = $_FILES['pdfReticula']['tmp_name'];
         if (strlen($nomPdf) > 0) {
-            move_uploaded_file($guardadoPdf, '../pdf/malla/' . $nomPdf);
             if (file_exists("../pdf/malla/" . $_POST['nomOriPdfEsp'])) {
                 unlink("../pdf/malla/" . $_POST['nomOriPdfEsp']);
             }
+            move_uploaded_file($guardadoPdf, '../pdf/malla/' . $nomPdf);
             $newNomPdf = $nomPdf;
         } else {
             $newNomPdf = $_POST['nomOriPdfEsp'];
@@ -94,10 +94,10 @@ switch ($opGlobal):
         $nomPdf = $_FILES['pdfAsignatura']['name'];
         $guardadoPdf = $_FILES['pdfAsignatura']['tmp_name'];
         if (strlen($nomPdf) > 0) {
-            move_uploaded_file($guardadoPdf, '../pdf/asignaturas/' . $nomPdf);
             if (file_exists("../pdf/asignaturas/" . $_POST['nomOriPdf'])) {
                 unlink("../pdf/asignaturas/" . $_POST['nomOriPdf']);
             }
+            move_uploaded_file($guardadoPdf, '../pdf/asignaturas/' . $nomPdf);
             $newNomPdf = $nomPdf;
         } else {
             $newNomPdf = $_POST['nomOriPdf'];
