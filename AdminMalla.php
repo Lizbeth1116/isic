@@ -7,6 +7,8 @@ $listAsigEsp = getListAsigEspAdmin();
 <div class="admon">
     <div class="container">
         <h2>Malla Curricular</h2>
+        <input class="form-control" id="myInput" type="text" placeholder="Buscar...">
+        <br>
         <table class="table table-light table-hover">
             <thead>
                 <tr>
@@ -113,7 +115,7 @@ $listAsigEsp = getListAsigEspAdmin();
             </div>
             </tr>
             </thead>
-            <tbody>
+            <tbody id="myTable">
                 <?php
                 for ($i = 0; $i < sizeof($asignatura); $i++) {
                     echo '
@@ -258,7 +260,6 @@ $listAsigEsp = getListAsigEspAdmin();
                                                 </div>
                                             </div>
                                         </td>
-                                        <td> 
                                     </tr>';
                 }
                 ?>
@@ -293,6 +294,8 @@ $listAsigEsp = getListAsigEspAdmin();
 <script type="text/javascript" src="js/editarMallaCurricular.js?1.0.0"></script>
 <script type="text/javascript" src="js/editarInvestigacion.js?1.0.0"></script>
 <script type="text/javascript" src="js/verMas.js?1.0.0"></script>
+<script type="text/javascript" src="js/buscadorTablas.js?1.0.0"></script>
+
 <!--Bootstrap JS-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

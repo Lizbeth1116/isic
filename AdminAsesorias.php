@@ -7,6 +7,7 @@ $doce = getDocente();
 <div class="admon">
     <div class="container">
         <h2>Asesorias</h2>
+        <br>
         <table class="table table-light table-hover">
             <thead>
                 <tr>
@@ -197,7 +198,7 @@ $doce = getDocente();
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            
                         </td>
                     </tr>';
                 }

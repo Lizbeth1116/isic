@@ -4,97 +4,6 @@ $especialidad = getEspecialidadAdmin();
 $egreso = getEgresoAdmin();
 $asiEsp = getAsignaturaEspAdmin();
 ?>
-<div class="wrap">
-    <ul class="tabs">
-        <li><a href="#tab1"><span class="fa fa-home"></span><span class="tab-text">Inicio</span></a></li>
-        <li><a href="#tab2"><span class="fa fa-money"></span><span class="tab-text">Pago de Servicio</span></a></li>
-        <li><a href="#tab3"><span class="fa fa-history"></span><span class="tab-text">Historial de Pagos</span></a>
-        </li>
-        <li><a href="#tab4"><span class="fa fa-user"></span><span class="tab-text">Información Personal</span></a>
-        </li>
-    </ul>
-    <div class="secciones">
-        <article id="tab1">
-            <h1>Inicio</h1>
-            <div id="section1" class="container-fluid bg-success" style="padding-top:70px;padding-bottom:70px">
-                <div class="content-carousel">
-                    <div id="demo" class="carousel slide" data-ride="carousel">
-                        <ul class="carousel-indicators">
-                            <li data-target="#demo" data-slide-to="0" class="active"></li>
-                            <li data-target="#demo" data-slide-to="1"></li>
-                            <li data-target="#demo" data-slide-to="2"></li>
-                        </ul>
-                        <div class="carousel-inner">
-                            <div class="carousel-item active">
-                                <img src="img/traffic.jpg" alt="Los Angeles" style="height: 600px;">
-                                <div class="carousel-caption">
-                                    <h3>Los Angeles</h3>
-                                    <p>We had such a great time in LA!</p>
-                                </div>
-                            </div>
-                            <div class="carousel-item">
-                                <img src="img/tunnel.jpg" alt="Chicago" style="height: 600px;">
-                                <div class="carousel-caption">
-                                    <h3>Chicago</h3>
-                                    <p>Thank you, Chicago!</p>
-                                </div>
-                            </div>
-                            <div class="carousel-item">
-                                <img src="img/park.jpg" alt="New York" style="height: 600px;">
-                                <div class="carousel-caption">
-                                    <h3>New York</h3>
-                                    <p>We love the Big Apple!</p>
-                                </div>
-                            </div>
-                        </div>
-                        <a class="carousel-control-prev" href="#demo" data-slide="prev">
-                            <span class="carousel-control-prev-icon"></span>
-                        </a>
-                        <a class="carousel-control-next" href="#demo" data-slide="next">
-                            <span class="carousel-control-next-icon"></span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </article>
-        <article id="tab2">
-            <h1>Pago de Servicio</h1>
-            <div id="section2" class="container-fluid bg-warning" style="padding-top:70px;padding-bottom:70px">
-                <h1>Section 2</h1>
-                <p>Try to scroll this section and look at the navigation bar while scrolling! Try to scroll this
-                    section and
-                    look at the navigation bar while scrolling!</p>
-                <p>Try to scroll this section and look at the navigation bar while scrolling! Try to scroll this
-                    section and
-                    look at the navigation bar while scrolling!</p>
-            </div>
-        </article>
-        <article id="tab3">
-            <h1>Historial de Pagos</h1>
-            <div id="section3" class="container-fluid bg-secondary" style="padding-top:70px;padding-bottom:70px">
-                <h1>Section 3</h1>
-                <p>Try to scroll this section and look at the navigation bar while scrolling! Try to scroll this
-                    section and
-                    look at the navigation bar while scrolling!</p>
-                <p>Try to scroll this section and look at the navigation bar while scrolling! Try to scroll this
-                    section and
-                    look at the navigation bar while scrolling!</p>
-            </div>
-        </article>
-        <article id="tab4">
-            <h1>Información Personal</h1>
-            <div id="section41" class="container-fluid bg-danger" style="padding-top:70px;padding-bottom:70px">
-                <h1>Section 4 Submenu 1</h1>
-                <p>Try to scroll this section and look at the navigation bar while scrolling! Try to scroll this
-                    section and
-                    look at the navigation bar while scrolling!</p>
-                <p>Try to scroll this section and look at the navigation bar while scrolling! Try to scroll this
-                    section and
-                    look at the navigation bar while scrolling!</p>
-            </div>
-        </article>
-    </div>
-</div>
 <div class="admon">
     <div class="container">
         <h2>Especialidades</h2>
@@ -110,7 +19,6 @@ $asiEsp = getAsignaturaEspAdmin();
                     <th>Objetivo</th>
                     <th>Reticula</th>
                     <th><button type="button" class="btn btn-light" data-toggle="modal" data-target="#myModal1AddEsp"><i class="bi bi-plus-circle"></i></button></th>
-<<<<<<< HEAD
                     <div class="modal topmargin-sm" id="myModal1AddEsp">
                         <div class="modal-dialog">
                             <div class="modal-content">
@@ -118,7 +26,6 @@ $asiEsp = getAsignaturaEspAdmin();
                                 <div class="modal-header">
                                     <h5 class="modal-title" style="color:darkslategrey;">Agregar</h5>
                                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-=======
             <div class="modal topmargin-sm" id="myModal1AddEsp">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -133,9 +40,7 @@ $asiEsp = getAsignaturaEspAdmin();
                             <form class="needs-validation" novalidate action="Controlador/ControlAgregar.php" enctype="multipart/form-data" method="POST">
                                 <div class="form-group" style="display:none">
                                     <input type="text" class="form-control" id="opEsp" name="opEsp" value="1">
->>>>>>> 3cb3a00bb5f2dee1fe0c34ee4a5215c5c9bb8bcc
                                 </div>
-
                                 <!-- Modal body -->
                                 <div class="modal-body">
                                     <form class="needs-validation" novalidate action="Controlador/ControlAgregar.php" method="POST">
@@ -161,9 +66,7 @@ $asiEsp = getAsignaturaEspAdmin();
                                         <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
                                     </form>
                                 </div>
-<<<<<<< HEAD
                             </div>
-=======
                                 <div class="form-group">
                                     <label for="pdfReticulaAdd" style="color:black;">PDF Reticula:</label>
                                     <input type="file" accept="application/pdf" class="form-control" id="pdfReticulaAdd" name="pdfReticulaAdd">
@@ -171,7 +74,6 @@ $asiEsp = getAsignaturaEspAdmin();
                                 <button type="submit" class="btn btn-primary">Aceptar</button>
                                 <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
                             </form>
->>>>>>> 3cb3a00bb5f2dee1fe0c34ee4a5215c5c9bb8bcc
                         </div>
                     </div>
                 </tr>
