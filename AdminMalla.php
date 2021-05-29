@@ -10,11 +10,12 @@ $listAsigEsp = getListAsigEspAdmin();
         <table class="table table-light table-hover">
             <thead>
                 <tr>
-                    <th>Semestre</th>
+                    <th>Sem</th>
                     <th>Área de conocimiento</th>
                     <th>Clave</th>
                     <th>Asignatura</th>
                     <th>Horas</th>
+                    <th>Temario</th>
                     <th><button type="button" class="btn btn-light" data-toggle="modal" data-target="#myModal1AddMalla"><i class="bi bi-plus-circle"></i></button></th>
             <div class="modal topmargin-sm" id="myModal1AddMalla">
                 <div class="modal-dialog">
@@ -27,7 +28,7 @@ $listAsigEsp = getListAsigEspAdmin();
                         </div>
                         <!-- Modal body -->
                         <div class="modal-body">
-                            <form class="needs-validation" novalidate action="Controlador/ControlAgregar.php" method="POST">
+                            <form class="needs-validation" novalidate action="Controlador/ControlAgregar.php" enctype="multipart/form-data" method="POST">
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text">Clave</span>
@@ -94,6 +95,12 @@ $listAsigEsp = getListAsigEspAdmin();
                                     <div class="valid-feedback">Valido.</div>
                                     <div class="invalid-feedback">Por favor verifique los campos.</div>
                                 </div>
+                                <div class="form-group">
+                                    <label for="pdfAsignaturaAdd" style="color:black;">PDF Datos Asignatura:</label>
+                                    <input type="file" accept="application/pdf" class="form-control" id="pdfAsignaturaAdd" name="pdfAsignaturaAdd" required>
+                                    <div class="valid-feedback">Valido.</div>
+                                    <div class="invalid-feedback">Por favor verifique los campos.</div>
+                                </div>
                                 <div class="form-group" style="display:none">
                                     <input type="text" class="form-control" id="opGlobal" name="opGlobal" value="3">
                                 </div>
@@ -115,8 +122,14 @@ $listAsigEsp = getListAsigEspAdmin();
                                         <td>' . $asignatura[$i][4] . '</td>
                                         <td>' . $asignatura[$i][1] . '</td>
                                         <td>' . $asignatura[$i][3] . '</td>
-                                        <td>' . $asignatura[$i][2] . '</td>
-                                        <td> 
+                                        <td>' . $asignatura[$i][2] . '</td>';
+                    if ($asignatura[$i][6] != 'Sin Archivo') {
+                        echo'<td class="text-center">
+                                            <a target="_black" href="https://' . $_SERVER['HTTP_HOST'] . '/isic/pdf/asignaturas/' . $asignatura[$i][6] . '">
+                                            <i class="bi bi-file-earmark-check"></i></a></td>';
+                    } else
+                        echo'<td class="text-center"><i class="bi bi-file-earmark-excel"></i></td>';
+                    echo'<td> 
                                             <div class="btn-group btn-group-sm">';
                     $tmp2 = "f";
                     for ($j = 0; $j < sizeof($listAsigEsp); $j++) {
@@ -137,7 +150,7 @@ $listAsigEsp = getListAsigEspAdmin();
                     } else {
                         echo '<a type="button" class="btn btn-secondary" href="Controlador/ControlBorrar.php?id=3_' . $asignatura[$i][1] . '_1_1"><i class = "bi bi-eye-slash"></i></a>';
                     }
-                    echo '<a type="button" class="btn btn-secondary" href="Controlador/ControlBorrar.php?id=3_' . $asignatura[$i][1] . '_0_2"><i class="bi bi-trash-fill"></i></a>
+                    echo '<a type="button" class="btn btn-secondary" href="Controlador/ControlBorrar.php?id=3_' . $asignatura[$i][1] . '_0_2_' . $asignatura[$i][6] . '"><i class="bi bi-trash-fill"></i></a>
                                                 <!-- The Modal -->
                                             </div>
                                             <div class="modal topmargin-sm" id="myModalMC">
@@ -151,7 +164,7 @@ $listAsigEsp = getListAsigEspAdmin();
                                                         </div>
                                                         <!-- Modal body -->
                                                         <div class="modal-body">
-                                                            <form class="needs-validation" novalidate action="Controlador/ControlEditar.php" method="POST">
+                                                            <form class="needs-validation" novalidate action="Controlador/ControlEditar.php" enctype="multipart/form-data" method="POST">
                                                                 <div class="input-group mb-3">
                                                                     <div class="input-group-prepend">
                                                                         <span class="input-group-text">Clave</span>
@@ -221,7 +234,13 @@ $listAsigEsp = getListAsigEspAdmin();
                                                                 <div class="form-group" style="display:none">
                                                                     <input type="text" class="form-control" id="claveOriMC"  name="claveOriMC" value="' . $asignatura[$i][1] . '">
                                                                 </div>
-
+                                                                <div class="form-group">
+                                                                    <label for="pdfAsignatura" style="color:black;">PDF Datos Asignatura:</label>
+                                                                    <input type="file" accept="application/pdf" class="form-control" id="pdfAsignatura" name="pdfAsignatura">
+                                                                </div> 
+                                                                <div class="form-group" style="display:none">
+                                                                    <input type="text" class="form-control" id="nomOriPdf"  name="nomOriPdf" value="' . $asignatura[$i][6] . '">
+                                                                </div>
                                                                 <div class="form-group" style="display:none">
                                                                     <input type="text" class="form-control" id="opMC"  name="opMC" value="-1">
                                                                 </div>
@@ -239,6 +258,7 @@ $listAsigEsp = getListAsigEspAdmin();
                                                 </div>
                                             </div>
                                         </td>
+                                        <td> 
                                     </tr>';
                 }
                 ?>

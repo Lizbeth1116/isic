@@ -65,7 +65,7 @@ function getMalla($esp) {
         $stmt = $con->prepare("call isic.sp_malla(?,?);");
         $stmt->bind_param("ii", $i, $esp);
         $stmt->execute();
-        $stmt->bind_result($MC_ClaveAsignatura, $MC_HorasTot, $MC_NombreAsignatura, $Nombre, $Horas);
+        $stmt->bind_result($MC_ClaveAsignatura, $MC_HorasTot, $MC_NombreAsignatura, $Nombre, $Horas, $MC_PdfNombre);
         $j = 0;
         while ($stmt->fetch()) {
             $malla[$i][$j][0] = $MC_ClaveAsignatura;
@@ -73,6 +73,7 @@ function getMalla($esp) {
             $malla[$i][$j][2] = $MC_NombreAsignatura;
             $malla[$i][$j][3] = $Nombre;
             $malla[$i][$j][4] = $Horas;
+            $malla[$i][$j][5] = $MC_PdfNombre;
             $j++;
         }
         $maxMalla = (sizeof($malla[$i]) > $maxMalla)?sizeof($malla[$i]):$maxMalla;
@@ -91,11 +92,12 @@ function getEspecialidadInfo($esp) {
     $stmt = $con->prepare("call isic.sp_especialidad(?);");
     $stmt->bind_param("i", $esp);
     $stmt->execute();
-    $stmt->bind_result($Nombre, $Objetivo);
+    $stmt->bind_result($Nombre, $Objetivo, $pdfReticula);
     $i = 0;
     while ($stmt->fetch()) {
         $espInfo[$i][0] = $Nombre;
         $espInfo[$i][1] = $Objetivo;
+        $espInfo[$i][2] = $pdfReticula;
         $i++;
     }
     $stmt->close();
@@ -139,7 +141,7 @@ function getMallaAdmin() {
     global $con;
     $stmt = $con->prepare("call isic.sp_getMalla_Admin();");
     $stmt->execute();
-    $stmt->bind_result($MC_SemestreAsignatura, $MC_ClaveAsignatura, $MC_HorasTot, $MC_NombreAsignatura, $Nombre, $MC_Estado);
+    $stmt->bind_result($MC_SemestreAsignatura, $MC_ClaveAsignatura, $MC_HorasTot, $MC_NombreAsignatura, $Nombre, $MC_Estado, $MC_PdfNombre);
     $i = 0;
     while ($stmt->fetch()) {
         $asignatura[$i][0] = $MC_SemestreAsignatura;
@@ -148,6 +150,7 @@ function getMallaAdmin() {
         $asignatura[$i][3] = $MC_NombreAsignatura;
         $asignatura[$i][4] = $Nombre;
         $asignatura[$i][5] = $MC_Estado;
+        $asignatura[$i][6] = $MC_PdfNombre;
         $i++;
     }
     $stmt->close();
@@ -205,13 +208,14 @@ function getEspecialidadAdmin() {
     global $con;
     $stmt = $con->prepare("call isic.sp_getEspecialidadAdmin();");
     $stmt->execute();
-    $stmt->bind_result($idespecialidad, $Nombre, $Objetivo, $Estado);
+    $stmt->bind_result($idespecialidad, $Nombre, $Objetivo, $Estado, $pdfReticula);
     $i = 0;
     while ($stmt->fetch()) {
         $especialidad[$i][0] = $idespecialidad;
         $especialidad[$i][1] = $Nombre;
         $especialidad[$i][2] = $Objetivo;
         $especialidad[$i][3] = $Estado;
+        $especialidad[$i][4] = $pdfReticula;
         $i++;
     }
     $stmt->close();

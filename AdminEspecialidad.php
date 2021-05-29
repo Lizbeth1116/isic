@@ -17,6 +17,7 @@ $asiEsp = getAsignaturaEspAdmin();
                     <th>ID</th>
                     <th>Nombre</th>
                     <th>Objetivo</th>
+                    <th>Reticula</th>
                     <th><button type="button" class="btn btn-light" data-toggle="modal" data-target="#myModal1AddEsp"><i class="bi bi-plus-circle"></i></button></th>
             <div class="modal topmargin-sm" id="myModal1AddEsp">
                 <div class="modal-dialog">
@@ -29,7 +30,7 @@ $asiEsp = getAsignaturaEspAdmin();
 
                         <!-- Modal body -->
                         <div class="modal-body">
-                            <form class="needs-validation" novalidate action="Controlador/ControlAgregar.php" method="POST">
+                            <form class="needs-validation" novalidate action="Controlador/ControlAgregar.php" enctype="multipart/form-data" method="POST">
                                 <div class="form-group" style="display:none">
                                     <input type="text" class="form-control" id="opEsp" name="opEsp" value="1">
                                 </div>
@@ -48,6 +49,10 @@ $asiEsp = getAsignaturaEspAdmin();
                                     <div class="valid-feedback">Valido.</div>
                                     <div class="invalid-feedback">Por favor verifique los campos.</div>
                                 </div>
+                                <div class="form-group">
+                                    <label for="pdfReticulaAdd" style="color:black;">PDF Reticula:</label>
+                                    <input type="file" accept="application/pdf" class="form-control" id="pdfReticulaAdd" name="pdfReticulaAdd">
+                                </div>
                                 <button type="submit" class="btn btn-primary">Aceptar</button>
                                 <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
                             </form>
@@ -62,7 +67,7 @@ $asiEsp = getAsignaturaEspAdmin();
                     <?php
                     for ($i = 0; $i < sizeof($especialidad); $i++) {
                         echo '<tr>
-                                        <td>' . $especialidad[$i][0] . '</td>
+                                    <td>' . $especialidad[$i][0] . '</td>
                                     <td>' . $especialidad[$i][1] . '</td>
                                     <td> <a href=# data-toggle="modal" data-target="#myModaObjetivo" onclick="modVerMas(\'' . $especialidad[$i][1] . '\', \'' . $especialidad[$i][2] . '\');">Ver mas</a>
                                         <div class="modal topmargin-sm" id="myModaObjetivo">
@@ -82,8 +87,15 @@ $asiEsp = getAsignaturaEspAdmin();
                                                     </div>
                                                 </div>
                                             </div>
-                                    </td>
-                                    <td> 
+                                    </td>';
+                                    if ($especialidad[$i][4] != 'Sin Archivo'){
+                                        echo'<td class="text-center">
+                                            <a target="_black" href="https://' . $_SERVER['HTTP_HOST'] . '/isic/pdf/malla/' . $especialidad[$i][4] . '">
+                                            <i class="bi bi-file-earmark-check"></i></a></td>';
+                                    }    
+                                    else
+                                        echo'<td class="text-center"><i class="bi bi-file-earmark-excel"></i></td>';
+                                    echo '<td> 
                                         <div class="btn-group btn-group-sm">
                                             <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#myModal" onclick="datosModalEsp1(\'' . $especialidad[$i][0] . '\', \'' . $especialidad[$i][1] . '\', \'' . $especialidad[$i][2] . '\');"><i class="bi bi-pencil-square"></i></button>';
                         if ($especialidad[$i][3] === 1) {
@@ -91,7 +103,7 @@ $asiEsp = getAsignaturaEspAdmin();
                         } else {
                             echo '<a type="button" class="btn btn-secondary" href="Controlador/ControlBorrar.php?id=0_' . $especialidad[$i][0] . '_1_1"><i class = "bi bi-eye-slash"></i></a>';
                         }
-                        echo '<a type = "button" class = "btn btn-secondary" href = "Controlador/ControlBorrar.php?id=0_' . $especialidad[$i][0] . '_0_2"><i class = "bi bi-trash-fill"></i></a>
+                        echo '<a type = "button" class = "btn btn-secondary" href = "Controlador/ControlBorrar.php?id=0_' . $especialidad[$i][0] . '_0_2_' . $especialidad[$i][4] . '"><i class = "bi bi-trash-fill"></i></a>
                                             </div>
                                         <div class="modal topmargin-sm" id="myModal">
                                             <div class="modal-dialog">
@@ -104,7 +116,7 @@ $asiEsp = getAsignaturaEspAdmin();
 
                                                     <!-- Modal body -->
                                                     <div class="modal-body">
-                                                        <form class="needs-validation" novalidate action="Controlador/ControlEditar.php" method="POST">
+                                                        <form class="needs-validation" novalidate action="Controlador/ControlEditar.php" enctype="multipart/form-data" method="POST">
                                                             <div class="form-group" style="display:none">
                                                                 <input type="text" class="form-control" id="idespecialidadEsp" name="idespecialidadEsp">
                                                             </div>
@@ -125,6 +137,13 @@ $asiEsp = getAsignaturaEspAdmin();
                                                                 <textarea class="form-control" rows="5" id="objetivoEsp" placeholder="Ingresa el objetivo de la especialidad" name="objetivoEsp" required></textarea>
                                                                 <div class="valid-feedback">Valido.</div>
                                                                 <div class="invalid-feedback">Por favor verifique los campos.</div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="pdfReticula" style="color:black;">PDF Reticula:</label>
+                                                                <input type="file" accept="application/pdf" class="form-control" id="pdfReticula" name="pdfReticula">
+                                                            </div>
+                                                            <div class="form-group" style="display:none">
+                                                                <input type="text" class="form-control" id="nomOriPdfEsp"  name="nomOriPdfEsp" value="' . $especialidad[$i][4] . '">
                                                             </div>
                                                             <button type="submit" class="btn btn-primary">Aceptar</button>
                                                             <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
