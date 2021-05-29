@@ -95,6 +95,18 @@ session_start();
                     </li>
                     <li class="nav-item">
                         <div class="dropdown-local">
+                            <div class="nav-link"><span class="tab-text">Reticula</span></div>
+                            <div class="dropdown-content">
+                                <?php
+                                for ($x = 0; $x < sizeof($listEsp); $x++) {
+                                    echo '<a href="mallaCurricular.php?sp=' . $listEsp[$x][0] . '">' . $listEsp[$x][1] . '</a>';
+                                }
+                                ?>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <div class="dropdown-local">
                             <div class="nav-link"><span class="tab-text">PE ISC</span></div>
                             <div class="dropdown-content">
                                 <?php
