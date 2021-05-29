@@ -71,9 +71,6 @@
     text-align: center !important;
     color: #fff !important;
 }
-.content-carousel .active{
-    display: none;
-}
 @media screen and (max-width: 450px) {
     .galeria {
         padding-left: 50px !important;

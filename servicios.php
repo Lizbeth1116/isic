@@ -3,7 +3,7 @@ include('head.php');
 $servInfo = getServicio($_GET["idServ"]);
 ?>
 <div class="servicios">
-    <section>
+    <section class="seccion-1">
 
         <?php
         echo '<img src="img/servicios/' . $servInfo[0][0] . '.svg?1.0.0">';
@@ -39,7 +39,7 @@ $servInfo = getServicio($_GET["idServ"]);
             </div>
             <div class="row topmargin-xs">';
         $asAux = 0;
-        for ($i = 0; $i < sizeof($asesor); $i++) {
+        for ($i = 0; $i < sizeof($asesor); $i++) { 
             echo ' 
                 <div class="col-md-6">
                     <div class="resume-item mb-4">

@@ -223,7 +223,7 @@ body {
     color: #38A5B4;
 }
 
-.texto a:hover, a:focus, a:active {
+.texto a:focus, a:active {
     color: #38A5B4;
     text-decoration: none;
 }
@@ -296,8 +296,8 @@ body {
     outline: none;
 }
 
-.resumen .resume-item button:hover{
-    color: #fff !important;
+.resumen .resume-item a:hover{
+    color: #ffffff !important;
 }
 
 .resumen .resume-item .school {

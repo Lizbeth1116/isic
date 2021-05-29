@@ -68,7 +68,6 @@
   #sidebar {
     min-width: 250px;
     max-width: 250px;
-    margin-top: 60px;
     /*background:#154360;*/
     background: #1C1C1C;
     color: #E6E6E6;
@@ -169,6 +168,9 @@
     }
     #logo {
       display: none;
+    }
+    table{
+        font-size: 10px !important;
     }
   }
 

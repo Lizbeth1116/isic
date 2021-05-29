@@ -3,10 +3,11 @@
     <div class="container">
         <div class="level-1 rectangle">
             <div class="row">
-                <div class="col-sm-3"><img src="img/organigrama/rolando.png" class="nivel-1"></div>
+                <!--<div class="col-sm-3"><img src="img/organigrama/rolando.png" class="nivel-1"></div>-->
                 <div class="col">
                     <h3><strong>Rolando Porras Muñoz</strong></h3>
                     <p>Jefe de carrera</p>
+                    <p><i class="bi bi-envelope"></i> rporras@itsoeh.edu.mx</p>
                 </div>
             </div>
         </div>
@@ -14,10 +15,11 @@
             <li>
                 <div class="level-2 rectangle">
                     <div class="row">
-                        <div class="col-sm-4"><img src="img/organigrama/mario.png" class="nivel-2"></div>
+                        <!--<div class="col-sm-4"><img src="img/organigrama/mario.png" class="nivel-2"></div>-->
                         <div class="col">
                             <h5><strong>Mario Pérez Bautista</strong></h5>
                             <p>Presidente de academia</p>
+                            <p><i class="bi bi-envelope"></i> mperez@itsoeh.edu.mx</p>
                         </div>
                     </div>
                 </div>
@@ -122,10 +124,11 @@
             <li>
                 <div class="level-2 rectangle">
                     <div class="row">
-                        <div class="col-sm-4"><img src="img/organigrama/xo.png" class="nivel-2"></div>
+                        <!--<div class="col-sm-4"><img src="img/organigrama/xo.png" class="nivel-2"></div>-->
                         <div class="col">
                             <h5><strong>Xochitl Torres Reyes</strong></h5>
                             <p>Asistente</p>
+                            <p><i class="bi bi-envelope"></i> torress@itsoeh.edu.mx</p>
                         </div>
                     </div>
 

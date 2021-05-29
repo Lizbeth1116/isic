@@ -4,6 +4,97 @@ $especialidad = getEspecialidadAdmin();
 $egreso = getEgresoAdmin();
 $asiEsp = getAsignaturaEspAdmin();
 ?>
+<div class="wrap">
+    <ul class="tabs">
+        <li><a href="#tab1"><span class="fa fa-home"></span><span class="tab-text">Inicio</span></a></li>
+        <li><a href="#tab2"><span class="fa fa-money"></span><span class="tab-text">Pago de Servicio</span></a></li>
+        <li><a href="#tab3"><span class="fa fa-history"></span><span class="tab-text">Historial de Pagos</span></a>
+        </li>
+        <li><a href="#tab4"><span class="fa fa-user"></span><span class="tab-text">Información Personal</span></a>
+        </li>
+    </ul>
+    <div class="secciones">
+        <article id="tab1">
+            <h1>Inicio</h1>
+            <div id="section1" class="container-fluid bg-success" style="padding-top:70px;padding-bottom:70px">
+                <div class="content-carousel">
+                    <div id="demo" class="carousel slide" data-ride="carousel">
+                        <ul class="carousel-indicators">
+                            <li data-target="#demo" data-slide-to="0" class="active"></li>
+                            <li data-target="#demo" data-slide-to="1"></li>
+                            <li data-target="#demo" data-slide-to="2"></li>
+                        </ul>
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img src="img/traffic.jpg" alt="Los Angeles" style="height: 600px;">
+                                <div class="carousel-caption">
+                                    <h3>Los Angeles</h3>
+                                    <p>We had such a great time in LA!</p>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <img src="img/tunnel.jpg" alt="Chicago" style="height: 600px;">
+                                <div class="carousel-caption">
+                                    <h3>Chicago</h3>
+                                    <p>Thank you, Chicago!</p>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <img src="img/park.jpg" alt="New York" style="height: 600px;">
+                                <div class="carousel-caption">
+                                    <h3>New York</h3>
+                                    <p>We love the Big Apple!</p>
+                                </div>
+                            </div>
+                        </div>
+                        <a class="carousel-control-prev" href="#demo" data-slide="prev">
+                            <span class="carousel-control-prev-icon"></span>
+                        </a>
+                        <a class="carousel-control-next" href="#demo" data-slide="next">
+                            <span class="carousel-control-next-icon"></span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </article>
+        <article id="tab2">
+            <h1>Pago de Servicio</h1>
+            <div id="section2" class="container-fluid bg-warning" style="padding-top:70px;padding-bottom:70px">
+                <h1>Section 2</h1>
+                <p>Try to scroll this section and look at the navigation bar while scrolling! Try to scroll this
+                    section and
+                    look at the navigation bar while scrolling!</p>
+                <p>Try to scroll this section and look at the navigation bar while scrolling! Try to scroll this
+                    section and
+                    look at the navigation bar while scrolling!</p>
+            </div>
+        </article>
+        <article id="tab3">
+            <h1>Historial de Pagos</h1>
+            <div id="section3" class="container-fluid bg-secondary" style="padding-top:70px;padding-bottom:70px">
+                <h1>Section 3</h1>
+                <p>Try to scroll this section and look at the navigation bar while scrolling! Try to scroll this
+                    section and
+                    look at the navigation bar while scrolling!</p>
+                <p>Try to scroll this section and look at the navigation bar while scrolling! Try to scroll this
+                    section and
+                    look at the navigation bar while scrolling!</p>
+            </div>
+        </article>
+        <article id="tab4">
+            <h1>Información Personal</h1>
+            <div id="section41" class="container-fluid bg-danger" style="padding-top:70px;padding-bottom:70px">
+                <h1>Section 4 Submenu 1</h1>
+                <p>Try to scroll this section and look at the navigation bar while scrolling! Try to scroll this
+                    section and
+                    look at the navigation bar while scrolling!</p>
+                <p>Try to scroll this section and look at the navigation bar while scrolling! Try to scroll this
+                    section and
+                    look at the navigation bar while scrolling!</p>
+            </div>
+        </article>
+    </div>
+</div>
 <div class="admon">
     <div class="container">
         <h2>Especialidades</h2>
@@ -18,44 +109,44 @@ $asiEsp = getAsignaturaEspAdmin();
                     <th>Nombre</th>
                     <th>Objetivo</th>
                     <th><button type="button" class="btn btn-light" data-toggle="modal" data-target="#myModal1AddEsp"><i class="bi bi-plus-circle"></i></button></th>
-            <div class="modal topmargin-sm" id="myModal1AddEsp">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <!-- Modal Header-->
-                        <div class="modal-header">
-                            <h5 class="modal-title" style="color:darkslategrey;">Agregar</h5>
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        </div>
+                    <div class="modal topmargin-sm" id="myModal1AddEsp">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <!-- Modal Header-->
+                                <div class="modal-header">
+                                    <h5 class="modal-title" style="color:darkslategrey;">Agregar</h5>
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                </div>
 
-                        <!-- Modal body -->
-                        <div class="modal-body">
-                            <form class="needs-validation" novalidate action="Controlador/ControlAgregar.php" method="POST">
-                                <div class="form-group" style="display:none">
-                                    <input type="text" class="form-control" id="opEsp" name="opEsp" value="1">
+                                <!-- Modal body -->
+                                <div class="modal-body">
+                                    <form class="needs-validation" novalidate action="Controlador/ControlAgregar.php" method="POST">
+                                        <div class="form-group" style="display:none">
+                                            <input type="text" class="form-control" id="opEsp" name="opEsp" value="1">
+                                        </div>
+                                        <div class="form-group" style="display:none">
+                                            <input type="text" class="form-control" id="opGlobal" name="opGlobal" value="1">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="nombre" style="color:black;">Nombre:</label>
+                                            <input type="text" class="form-control" id="nombreEspAdd" placeholder="Ingresa el nombre de la especialidad" name="nombreEspAdd" required>
+                                            <div class="valid-feedback">Valido.</div>
+                                            <div class="invalid-feedback">Por favor verifique los campos.</div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="objetivo" style="color:black;">Objetivo:</label>
+                                            <textarea class="form-control" rows="5" id="objetivoEspAdd" placeholder="Ingresa el objetivo de la especialidad" name="objetivoEspAdd" required></textarea>
+                                            <div class="valid-feedback">Valido.</div>
+                                            <div class="invalid-feedback">Por favor verifique los campos.</div>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary">Aceptar</button>
+                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                                    </form>
                                 </div>
-                                <div class="form-group" style="display:none">
-                                    <input type="text" class="form-control" id="opGlobal" name="opGlobal" value="1">
-                                </div>
-                                <div class="form-group">
-                                    <label for="nombre" style="color:black;">Nombre:</label>
-                                    <input type="text" class="form-control" id="nombreEspAdd" placeholder="Ingresa el nombre de la especialidad" name="nombreEspAdd" required>
-                                    <div class="valid-feedback">Valido.</div>
-                                    <div class="invalid-feedback">Por favor verifique los campos.</div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="objetivo" style="color:black;">Objetivo:</label>
-                                    <textarea class="form-control" rows="5" id="objetivoEspAdd" placeholder="Ingresa el objetivo de la especialidad" name="objetivoEspAdd" required></textarea>
-                                    <div class="valid-feedback">Valido.</div>
-                                    <div class="invalid-feedback">Por favor verifique los campos.</div>
-                                </div>
-                                <button type="submit" class="btn btn-primary">Aceptar</button>
-                                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-                            </form>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            </tr>
+                </tr>
             </thead>
             <tbody>
                 <tr>
@@ -149,52 +240,52 @@ $asiEsp = getAsignaturaEspAdmin();
                     <th>Especialidad</th>
                     <th>Perfil de Egreso</th>
                     <th><button type="button" class="btn btn-light" data-toggle="modal" data-target="#myModal1AddPerEsp"><i class="bi bi-plus-circle"></i></button></th>
-            <div class="modal topmargin-sm" id="myModal1AddPerEsp">
-                <div class="modal-dialog">
-                    <div class="modal-content">
+                    <div class="modal topmargin-sm" id="myModal1AddPerEsp">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
 
-                        <!-- Modal Header-->
-                        <div class="modal-header">
-                            <h5 class="modal-title" style="color:darkslategrey;">Agregar</h5>
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        </div>
+                                <!-- Modal Header-->
+                                <div class="modal-header">
+                                    <h5 class="modal-title" style="color:darkslategrey;">Agregar</h5>
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                </div>
 
-                        <!-- Modal body -->
-                        <div class="modal-body">
-                            <form class="needs-validation" novalidate action="Controlador/ControlAgregar.php" method="POST">
-                                <div class="form-group">
-                                    <label for="idegresoEspAdd" style="color:black;">Especialidad:</label>
-                                    <select id="idegresoEspAdd" name="idegresoEspAdd" class="custom-select mb-3 form-control" onchange="showSelected();" required>
-                                        <option selected>-Selecciona-</option>
-                                        <?php
-                                        for ($j = 0; $j < sizeof($especialidad); $j++) {
-                                            echo '<option value="' . $especialidad[$j][0] . '">' . $especialidad[$j][1] . '</option>';
-                                        }
-                                        ?>
-                                    </select>
-                                    <div class="valid-feedback">Valido.</div>
-                                    <div class="invalid-feedback">Por favor verifique los campos.</div>
+                                <!-- Modal body -->
+                                <div class="modal-body">
+                                    <form class="needs-validation" novalidate action="Controlador/ControlAgregar.php" method="POST">
+                                        <div class="form-group">
+                                            <label for="idegresoEspAdd" style="color:black;">Especialidad:</label>
+                                            <select id="idegresoEspAdd" name="idegresoEspAdd" class="custom-select mb-3 form-control" onchange="showSelected();" required>
+                                                <option selected>-Selecciona-</option>
+                                                <?php
+                                                for ($j = 0; $j < sizeof($especialidad); $j++) {
+                                                    echo '<option value="' . $especialidad[$j][0] . '">' . $especialidad[$j][1] . '</option>';
+                                                }
+                                                ?>
+                                            </select>
+                                            <div class="valid-feedback">Valido.</div>
+                                            <div class="invalid-feedback">Por favor verifique los campos.</div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="perfil" style="color:black;">Perfil de Egreso:</label>
+                                            <textarea class="form-control" rows="5" id="perfilEspAdd" placeholder="Ingresa el perfil de egreso" name="perfilEspAdd" required></textarea>
+                                            <div class="valid-feedback">Valido.</div>
+                                            <div class="invalid-feedback">Por favor verifique los campos.</div>
+                                        </div>
+                                        <div class="form-group" style="display:none">
+                                            <input type="text" class="form-control" id="opEsp" name="opEsp" value="2">
+                                        </div>
+                                        <div class="form-group" style="display:none">
+                                            <input type="text" class="form-control" id="opGlobal" name="opGlobal" value="1">
+                                        </div>
+                                        <button type="submit" class="btn btn-primary">Aceptar</button>
+                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                                    </form>
                                 </div>
-                                <div class="form-group">
-                                    <label for="perfil" style="color:black;">Perfil de Egreso:</label>
-                                    <textarea class="form-control" rows="5" id="perfilEspAdd" placeholder="Ingresa el perfil de egreso" name="perfilEspAdd" required></textarea>
-                                    <div class="valid-feedback">Valido.</div>
-                                    <div class="invalid-feedback">Por favor verifique los campos.</div>
-                                </div>
-                                <div class="form-group" style="display:none">
-                                    <input type="text" class="form-control" id="opEsp" name="opEsp" value="2">
-                                </div>
-                                <div class="form-group" style="display:none">
-                                    <input type="text" class="form-control" id="opGlobal" name="opGlobal" value="1">
-                                </div>
-                                <button type="submit" class="btn btn-primary">Aceptar</button>
-                                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-                            </form>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            </tr>
+                </tr>
             </thead>
             <tbody>
                 <?php

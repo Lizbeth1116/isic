@@ -21,13 +21,14 @@
         margin-top: 0;
     }
 }
-
-.servicios section {
-    padding: 0 120px;
+.servicios .seccion-1{
     height: 700px;
+}
+.servicios section {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
+    padding: 0 120px;
 }
 /*Fin animación imagen*/
 
@@ -42,7 +43,9 @@
     .servicios section {
         padding: 0 20px !important;
         flex-direction: column;
-        height: 1000px;
+    }
+    .servicios .seccion-1{
+        height: 700px;
     }
     .servicios section p {
         text-align: center;
@@ -52,7 +55,7 @@
         text-align: center;
     }
     .servicios section img {
-        height: 20% !important;
+        height: 40% !important;
         padding-right: 0px !important;
         /*margin: 0 auto;*/
     }
@@ -63,7 +66,7 @@
 
 @media screen and (max-width: 360px) {
     .servicios section img {
-        height: 15% !important;
+        height: 35% !important;
         padding-right: 0px !important;
     }
 }
