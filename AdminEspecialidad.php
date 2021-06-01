@@ -106,7 +106,7 @@ $asiEsp = getAsignaturaEspAdmin();
                                     </td>';
                                     if ($especialidad[$i][4] != 'Sin Archivo'){
                                         echo'<td class="text-center">
-                                            <a target="_black" href="https://' . $_SERVER['HTTP_HOST'] . '/isic/pdf/malla/' . $especialidad[$i][4] . '">
+                                            <a target="_black" href="http://' . $_SERVER['HTTP_HOST'] . '/isic/pdf/malla/' . $especialidad[$i][4] . '">
                                             <i class="bi bi-file-earmark-check"></i></a></td>';
                                     }    
                                     else

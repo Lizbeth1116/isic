@@ -13,7 +13,7 @@ $max = getMaxMalla();
         </div>
         <div class="text-center">
             <?php
-            echo '<a class="text-center btn btn-light" target="_black" href="https://' . $_SERVER['HTTP_HOST'] . '/isic/pdf/malla/' . $espInfo[0][2] . '">Descargar</a>';
+            echo '<a class="text-center btn btn-light" target="_black" href="http://' . $_SERVER['HTTP_HOST'] . '/isic/pdf/malla/' . $espInfo[0][2] . '">Descargar</a>';
             ?>
         </div>
         <div>
@@ -28,7 +28,7 @@ $max = getMaxMalla();
                                                     </div>';
                         for ($j = 0; $j < sizeof($malla[$i]); $j++) {
                             if ($malla[$i][$j][5] != "Sin Archivo") {
-                                echo '<a target="_black" href="https://' . $_SERVER['HTTP_HOST'] . '/isic/pdf/' . $malla[$i][$j][5] . '"><div id="etiqueta' . $aux2 . '" class="' . $malla[$i][$j][3] . ' resume-item mb-2 partedos">';
+                                echo '<a target="_black" href="http://' . $_SERVER['HTTP_HOST'] . '/isic/pdf/asignaturas/' . $malla[$i][$j][5] . '"><div id="etiqueta' . $aux2 . '" class="' . $malla[$i][$j][3] . ' resume-item mb-2 partedos">';
                             } else {
                                 echo '<div id="etiqueta' . $aux2 . '" class="' . $malla[$i][$j][3] . ' resume-item mb-2 partedos">';
                             }

@@ -127,7 +127,7 @@ $listAsigEsp = getListAsigEspAdmin();
                                         <td>' . $asignatura[$i][2] . '</td>';
                     if ($asignatura[$i][6] != 'Sin Archivo') {
                         echo'<td class="text-center">
-                                            <a target="_black" href="https://' . $_SERVER['HTTP_HOST'] . '/isic/pdf/asignaturas/' . $asignatura[$i][6] . '">
+                                            <a target="_black" href="http://' . $_SERVER['HTTP_HOST'] . '/isic/pdf/asignaturas/' . $asignatura[$i][6] . '">
                                             <i class="bi bi-file-earmark-check"></i></a></td>';
                     } else
                         echo'<td class="text-center"><i class="bi bi-file-earmark-excel"></i></td>';
