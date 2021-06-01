@@ -18,102 +18,103 @@ $listAsigEsp = getListAsigEspAdmin();
                     <th>Asignatura</th>
                     <th>Horas</th>
                     <th>Temario</th>
-                    <th><button type="button" class="btn btn-light" data-toggle="modal" data-target="#myModal1AddMalla"><i class="bi bi-plus-circle"></i></button></th>
-            <div class="modal topmargin-sm" id="myModal1AddMalla">
-                <div class="modal-dialog">
-                    <div class="modal-content">
+                    <th><button type="button" class="btn btn-light" data-toggle="modal" data-target="#myModal1AddMalla"><i class="bi bi-plus-circle"></i></button>
+                        <div class="modal topmargin-sm" id="myModal1AddMalla">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
 
-                        <!-- Modal Header-->
-                        <div class="modal-header">
-                            <h5 class="modal-title" style="color:darkslategrey;">Agregar</h5>
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        </div>
-                        <!-- Modal body -->
-                        <div class="modal-body">
-                            <form class="needs-validation" novalidate action="Controlador/ControlAgregar.php" enctype="multipart/form-data" method="POST">
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text">Clave</span>
+                                    <!-- Modal Header-->
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" style="color:darkslategrey;">Agregar</h5>
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
                                     </div>
-                                    <input type="text" class="form-control" id="claveMCAdd" placeholder="Ingresa la clave de asignatura" name="claveMCAdd" required>
-                                    <!--<label for="horas" style="color:black;">Horas:</label>-->
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text">Horas</span>
+                                    <!-- Modal body -->
+                                    <div class="modal-body">
+                                        <form class="needs-validation" novalidate action="Controlador/ControlAgregar.php" enctype="multipart/form-data" method="POST">
+                                            <div class="input-group mb-3">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">Clave</span>
+                                                </div>
+                                                <input type="text" class="form-control" id="claveMCAdd" placeholder="Ingresa la clave de asignatura" name="claveMCAdd" required>
+                                                <!--<label for="horas" style="color:black;">Horas:</label>-->
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">Horas</span>
+                                                </div>
+                                                <input type="text" class="form-control" id="horasMCAdd" placeholder="Ingresa las horas de la asignatura" name="horasMCAdd" required>
+                                                <div class="valid-feedback">Valido.</div>
+                                                <div class="invalid-feedback">Por favor verifique los campos.</div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="semestreMCAdd" style="color:black;">Semestre:</label>
+                                                <select id="semestreMCAdd" name="semestreMCAdd" class="custom-select mb-3 form-control" required>
+                                                    <option selected>-Selecciona-</option>
+                                                    <option value="1">1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                    <option value="4">4</option>
+                                                    <option value="5">5</option>
+                                                    <option value="6">6</option>
+                                                    <option value="7">7</option>
+                                                    <option value="8">8</option>
+                                                    <option value="9">9</option>
+                                                </select>
+                                                <div class="valid-feedback">Valido.</div>
+                                                <div class="invalid-feedback">Por favor verifique los campos.</div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="conocimientoMCAdd" style="color:black;">Área de conocimiento:</label>
+                                                <select id="conocimientoMCAdd" name="conocimientoMCAdd" class="custom-select mb-3 form-control" onchange="showSelected();" required>
+                                                    <option selected>-Selecciona-</option>
+                                                    <option value="Ciencias de la Ingenieria">Ciencias de la Ingenieria</option>
+                                                    <option value="Ciencias Sociales y Humanidades">Ciencias Sociales y Humanidades</option>
+                                                    <option value="Ciencias economico administrativa">Ciencias economico administrativa</option>
+                                                    <option value="Ciencias Basicas">Ciencias Básicas</option>
+                                                    <option value="Cursos complementarios">Cursos complementarios</option>
+                                                    <option value="Ingenieria Aplicada">Ingenieria Aplicada</option>
+                                                    <option value="Diseño en Ingenieria">Diseño en Ingenieria</option>
+                                                    <option value="Especialidad">Especialidad</option>
+                                                </select>
+                                                <div class="valid-feedback">Valido.</div>
+                                                <div class="invalid-feedback">Por favor verifique los campos.</div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label id="especialidadtxtMCAdd" for="conocimiento" style="color:black;display:none">Especialidad:</label>
+                                                <select id="especialidadMCAdd" name="especialidadMCAdd" class="custom-select mb-3 form-control" style="display:none" required>
+                                                    <option selected>-Selecciona-</option>
+                                                    <option value="-1" style="display:none"></option>';
+                                                    <?php
+                                                    for ($j = 0; $j < sizeof($listEsp); $j++) {
+                                                        echo '<option value="' . $listEsp[$j][0] . '">' . $listEsp[$j][1] . '</option>';
+                                                    }
+                                                    ?>
+                                                </select>
+                                                <div class="valid-feedback">Valido.</div>
+                                                <div class="invalid-feedback">Por favor verifique los campos.</div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="nombreMCAdd" style="color:black;">Nombre de la asignatura:</label>
+                                                <input type="text" class="form-control" id="nombreMCAdd" placeholder="Ingresa el nombre de asignatura" name="nombreMCAdd" required>
+                                                <div class="valid-feedback">Valido.</div>
+                                                <div class="invalid-feedback">Por favor verifique los campos.</div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="pdfAsignaturaAdd" style="color:black;">PDF Datos Asignatura:</label>
+                                                <input type="file" accept="application/pdf" class="form-control" id="pdfAsignaturaAdd" name="pdfAsignaturaAdd" required>
+                                                <div class="valid-feedback">Valido.</div>
+                                                <div class="invalid-feedback">Por favor verifique los campos.</div>
+                                            </div>
+                                            <div class="form-group" style="display:none">
+                                                <input type="text" class="form-control" id="opGlobal" name="opGlobal" value="3">
+                                            </div>
+                                            <button type="submit" class="btn btn-primary">Aceptar</button>
+                                            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                                        </form>
                                     </div>
-                                    <input type="text" class="form-control" id="horasMCAdd" placeholder="Ingresa las horas de la asignatura" name="horasMCAdd" required>
-                                    <div class="valid-feedback">Valido.</div>
-                                    <div class="invalid-feedback">Por favor verifique los campos.</div>
                                 </div>
-                                <div class="form-group">
-                                    <label for="semestreMCAdd" style="color:black;">Semestre:</label>
-                                    <select id="semestreMCAdd" name="semestreMCAdd" class="custom-select mb-3 form-control" required>
-                                        <option selected>-Selecciona-</option>
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
-                                        <option value="5">5</option>
-                                        <option value="6">6</option>
-                                        <option value="7">7</option>
-                                        <option value="8">8</option>
-                                        <option value="9">9</option>
-                                    </select>
-                                    <div class="valid-feedback">Valido.</div>
-                                    <div class="invalid-feedback">Por favor verifique los campos.</div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="conocimientoMCAdd" style="color:black;">Área de conocimiento:</label>
-                                    <select id="conocimientoMCAdd" name="conocimientoMCAdd" class="custom-select mb-3 form-control" onchange="showSelected();" required>
-                                        <option selected>-Selecciona-</option>
-                                        <option value="Ciencias de la Ingenieria">Ciencias de la Ingenieria</option>
-                                        <option value="Ciencias Sociales y Humanidades">Ciencias Sociales y Humanidades</option>
-                                        <option value="Ciencias economico administrativa">Ciencias economico administrativa</option>
-                                        <option value="Ciencias Basicas">Ciencias Básicas</option>
-                                        <option value="Cursos complementarios">Cursos complementarios</option>
-                                        <option value="Ingenieria Aplicada">Ingenieria Aplicada</option>
-                                        <option value="Diseño en Ingenieria">Diseño en Ingenieria</option>
-                                        <option value="Especialidad">Especialidad</option>
-                                    </select>
-                                    <div class="valid-feedback">Valido.</div>
-                                    <div class="invalid-feedback">Por favor verifique los campos.</div>
-                                </div>
-                                <div class="form-group">
-                                    <label id="especialidadtxtMCAdd" for="conocimiento" style="color:black;display:none">Especialidad:</label>
-                                    <select id="especialidadMCAdd" name="especialidadMCAdd" class="custom-select mb-3 form-control" style="display:none" required>
-                                        <option selected>-Selecciona-</option>
-                                        <option value="-1" style="display:none"></option>';
-                                        <?php
-                                        for ($j = 0; $j < sizeof($listEsp); $j++) {
-                                            echo '<option value="' . $listEsp[$j][0] . '">' . $listEsp[$j][1] . '</option>';
-                                        }
-                                        ?>
-                                    </select>
-                                    <div class="valid-feedback">Valido.</div>
-                                    <div class="invalid-feedback">Por favor verifique los campos.</div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="nombreMCAdd" style="color:black;">Nombre de la asignatura:</label>
-                                    <input type="text" class="form-control" id="nombreMCAdd" placeholder="Ingresa el nombre de asignatura" name="nombreMCAdd" required>
-                                    <div class="valid-feedback">Valido.</div>
-                                    <div class="invalid-feedback">Por favor verifique los campos.</div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="pdfAsignaturaAdd" style="color:black;">PDF Datos Asignatura:</label>
-                                    <input type="file" accept="application/pdf" class="form-control" id="pdfAsignaturaAdd" name="pdfAsignaturaAdd" required>
-                                    <div class="valid-feedback">Valido.</div>
-                                    <div class="invalid-feedback">Por favor verifique los campos.</div>
-                                </div>
-                                <div class="form-group" style="display:none">
-                                    <input type="text" class="form-control" id="opGlobal" name="opGlobal" value="3">
-                                </div>
-                                <button type="submit" class="btn btn-primary">Aceptar</button>
-                                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-                            </form>
+                            </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-            </tr>
+                    </th>
+                </tr>
             </thead>
             <tbody id="myTable">
                 <?php
@@ -125,7 +126,7 @@ $listAsigEsp = getListAsigEspAdmin();
                                         <td>' . $asignatura[$i][1] . '</td>
                                         <td>' . $asignatura[$i][3] . '</td>
                                         <td>' . $asignatura[$i][2] . '</td>';
-                    if ($asignatura[$i][6] != 'Sin Archivo') {
+                    if ($asignatura[$i][6] != 'Sin Archivo' && strlen($asignatura[$i][6]) > 0) {
                         echo'<td class="text-center">
                                             <a target="_black" href="http://' . $_SERVER['HTTP_HOST'] . '/isic/pdf/asignaturas/' . $asignatura[$i][6] . '">
                                             <i class="bi bi-file-earmark-check"></i></a></td>';

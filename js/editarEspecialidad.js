@@ -16,21 +16,22 @@
     }, false);
 })();
 
-datosModalEsp1 = function (id, nombre, objetivo){
+datosModalEsp1 = function (id, nombre, objetivo, pdf) {
     $('#idespecialidadEsp').val(id);
     $('#nombreEsp').val(nombre);
     $('#objetivoEsp').val(objetivo);
     $('#opEsp').val(1);
+    $('#pdfReticula').val(pdf);
 };
 
-datosModalEsp2 = function (id, perfil){
+datosModalEsp2 = function (id, perfil) {
     $('#idegresoEsp').val(id);
     $('#perfilEsp').val(perfil);
     $('#perfilOriEsp').val(perfil);
     $('#opEsp').val(2);
 };
 
-datosModalEsp3 = function (idEsp, idAsi, descripcion){
+datosModalEsp3 = function (idEsp, idAsi, descripcion) {
     $('#idEspEsp').val(idEsp);
     $('#labclaveEsp').text(idAsi);
     $('#claveEsp').val(idAsi);
