@@ -18,7 +18,7 @@ aux = 0;
     }, false);
 })();
 
-datosModalMC1 = function (Semestre, areaConocimiento, clave, asignatura, horas) {
+datosModalMC1 = function (Semestre, areaConocimiento, clave, asignatura, horas, pdfOri) {
     $('#semestre').val(Semestre);
     $('#conocimiento').val(areaConocimiento);
     $('#clave').val(clave);
@@ -27,6 +27,7 @@ datosModalMC1 = function (Semestre, areaConocimiento, clave, asignatura, horas) 
     $('#horas').val(horas);
     $('#especialidad').val(1);
     $('#opGlobal').val(3);
+    $('#nomOriPdf').val(pdfOri);
     if (areaConocimiento === "Especialidad") {
         document.getElementById('especialidadtxt').style.display = 'block';
         document.getElementById('especialidad').style.display = 'block';
@@ -37,7 +38,7 @@ datosModalMC1 = function (Semestre, areaConocimiento, clave, asignatura, horas) 
     }
 };
 
-datosModalMC2 = function (Semestre, areaConocimiento, clave, asignatura, horas, Especialidad) {
+datosModalMC2 = function (Semestre, areaConocimiento, clave, asignatura, horas, Especialidad, pdfOri) {
     $('#semestre').val(Semestre);
     $('#conocimiento').val(areaConocimiento);
     $('#clave').val(clave);
@@ -47,6 +48,7 @@ datosModalMC2 = function (Semestre, areaConocimiento, clave, asignatura, horas, 
     $('#especialidad').val(Especialidad);
     $('#idespecialidadOri').val(Especialidad);
     $('#opGlobal').val(3);
+    $('#nomOriPdf').val(pdfOri);
     if (areaConocimiento === "Especialidad") {
         $('#op').val(1);
         aux = 1;

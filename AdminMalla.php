@@ -139,12 +139,12 @@ $listAsigEsp = getListAsigEspAdmin();
                             $tmp2 = "f";
                         }
                         if ($listAsigEsp[$j][2] === $asignatura[$i][1]) {
-                            echo '<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#myModalMC" onclick="datosModalMC2(\'' . $asignatura[$i][0] . '\', \'' . $asignatura[$i][4] . '\', \'' . $asignatura[$i][1] . '\', \'' . $asignatura[$i][3] . '\', \'' . $asignatura[$i][2] . '\', \'' . $listAsigEsp[$j][0] . '\');"><i class="bi bi-pencil-square"></i></button>';
+                            echo '<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#myModalMC" onclick="datosModalMC2(\'' . $asignatura[$i][0] . '\', \'' . $asignatura[$i][4] . '\', \'' . $asignatura[$i][1] . '\', \'' . $asignatura[$i][3] . '\', \'' . $asignatura[$i][2] . '\', \'' . $listAsigEsp[$j][0] . '\', \'' . $asignatura[$i][6] . '\');"><i class="bi bi-pencil-square"></i></button>';
                             $tmp2 = "t";
                         }
                     }
                     if ($tmp2 == "f") {
-                        echo '<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#myModalMC" onclick="datosModalMC1(\'' . $asignatura[$i][0] . '\', \'' . $asignatura[$i][4] . '\', \'' . $asignatura[$i][1] . '\', \'' . $asignatura[$i][3] . '\', \'' . $asignatura[$i][2] . '\');"><i class="bi bi-pencil-square"></i></button>';
+                        echo '<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#myModalMC" onclick="datosModalMC1(\'' . $asignatura[$i][0] . '\', \'' . $asignatura[$i][4] . '\', \'' . $asignatura[$i][1] . '\', \'' . $asignatura[$i][3] . '\', \'' . $asignatura[$i][2] . '\', \'' . $asignatura[$i][6] . '\');"><i class="bi bi-pencil-square"></i></button>';
                     }
 
                     if ($asignatura[$i][5] === 1) {
@@ -241,7 +241,7 @@ $listAsigEsp = getListAsigEspAdmin();
                                                                     <input type="file" accept="application/pdf" class="form-control" id="pdfAsignatura" name="pdfAsignatura">
                                                                 </div> 
                                                                 <div class="form-group" style="display:none">
-                                                                    <input type="text" class="form-control" id="nomOriPdf"  name="nomOriPdf" value="' . $asignatura[$i][6] . '">
+                                                                    <input type="text" class="form-control" id="nomOriPdf"  name="nomOriPdf" >
                                                                 </div>
                                                                 <div class="form-group" style="display:none">
                                                                     <input type="text" class="form-control" id="opMC"  name="opMC" value="-1">

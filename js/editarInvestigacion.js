@@ -32,7 +32,7 @@ datosModalInv2 = function (tema, docente, cargo){
 };
 
 aux = 0;
-datosModalMC1 = function (Semestre, areaConocimiento, clave, asignatura, horas) {
+datosModalMC1 = function (Semestre, areaConocimiento, clave, asignatura, horas, pdfOri) {
     $('#semestreMC').val(Semestre);
     $('#conocimientoMC').val(areaConocimiento);
     $('#claveMC').val(clave);
@@ -40,6 +40,7 @@ datosModalMC1 = function (Semestre, areaConocimiento, clave, asignatura, horas) 
     $('#nombreMC').val(asignatura);
     $('#horasMC').val(horas);
     $('#especialidadMC').val(1);
+    $('#nomOriPdf').val(pdfOri);
     if (areaConocimiento === "Especialidad") {
         document.getElementById('especialidadtxtMC').style.display = 'block';
         document.getElementById('especialidadMC').style.display = 'block';
@@ -50,7 +51,7 @@ datosModalMC1 = function (Semestre, areaConocimiento, clave, asignatura, horas) 
     }
 };
 
-datosModalMC2 = function (Semestre, areaConocimiento, clave, asignatura, horas, Especialidad) {
+datosModalMC2 = function (Semestre, areaConocimiento, clave, asignatura, horas, Especialidad, pdfOri) {
     $('#semestreMC').val(Semestre);
     $('#conocimientoMC').val(areaConocimiento);
     $('#claveMC').val(clave);
@@ -59,6 +60,7 @@ datosModalMC2 = function (Semestre, areaConocimiento, clave, asignatura, horas, 
     $('#horasMC').val(horas);
     $('#especialidadMC').val(Especialidad);
     $('#idespecialidadOriMC').val(Especialidad);
+    $('#nomOriPdf').val(pdfOri);
     if (areaConocimiento === "Especialidad") {
         $('#opMC').val(1);
         aux = 1;
