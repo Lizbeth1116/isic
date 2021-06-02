@@ -67,11 +67,11 @@ $ImagenesExpo = getImagenesExpo($perio[0]);
                     <div class="col-md-3">
                         <div class="resume-item mb-3 partedos">
                             <div class="portfolio-container">
-                                <img class="grid-item ' . $ImagenesExpo[$i][0] . '" src="data:' . $ImagenesExpo[$i][4] . '; base64,' . base64_encode($ImagenesExpo[$i][1]) . '">
+                                <img class="grid-item ' . $ImagenesExpo[$i][0] . '" src="img/expoISC/'.$ImagenesExpo[$i][4].'/'.$ImagenesExpo[$i][3].'">
                                 <div class="service-wrapper-inner">
                                     <h5>Prueba</h5>
                                     <div class="description">
-                                        <p>' . $ImagenesExpo[$i][2] . '</p>
+                                        <p>' . $ImagenesExpo[$i][1] . '</p>
                                     </div>
                                 </div>
                             </div>

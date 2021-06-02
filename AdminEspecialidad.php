@@ -89,7 +89,7 @@ $asiEsp = getAsignaturaEspAdmin();
                                     </td>';
                         if ($especialidad[$i][4] != 'Sin Archivo' && strlen($especialidad[$i][4]) > 0) {
                             echo'<td class="text-center">
-                                            <a target="_black" href="http://' . $_SERVER['HTTP_HOST'] . '/team/isic/pdf/malla/' . $especialidad[$i][4] . '">
+                                            <a target="_black" href="http://' . $_SERVER['HTTP_HOST'] . '/isic/pdf/malla/' . $especialidad[$i][4] . '">
                                             <i class="bi bi-file-earmark-check"></i></a></td>';
                         } else
                             echo'<td class="text-center"><i class="bi bi-file-earmark-excel"></i></td>';
