@@ -81,7 +81,7 @@
 }
 
 .especialidad section:nth-child(2) {
-    background-image: linear-gradient(to top, #fff 0%, #38A5B4 100%);
+    background-image: linear-gradient(to top, #2d67e6 0%, #38A5B4 100%);
 }
 
 @media screen and (max-width: 1000px) {

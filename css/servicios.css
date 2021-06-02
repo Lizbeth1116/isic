@@ -21,6 +21,7 @@
         margin-top: 0;
     }
 }
+
 .servicios .seccion-1{
     height: 700px;
 }
@@ -55,7 +56,7 @@
         text-align: center;
     }
     .servicios section img {
-        height: 40% !important;
+        height: 20% !important;
         padding-right: 0px !important;
         /*margin: 0 auto;*/
     }
@@ -66,7 +67,7 @@
 
 @media screen and (max-width: 360px) {
     .servicios section img {
-        height: 35% !important;
+        height: 25% !important;
         padding-right: 0px !important;
     }
 }
@@ -74,14 +75,14 @@
 .servicios section img {
     height: 300px;
     padding-right: 50px;
-    animation: cambiar 6s none;
+    animation: cambiar 3s none;
 }
 
 .servicios section p {
     font-weight: 300;
     margin-bottom: 15px;
     color: #8a8a8a !important;
-    animation: cambiar 6s none;
+    animation: cambiar 3s none;
 }
 
 .servicios section h2 {

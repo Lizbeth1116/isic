@@ -41,7 +41,7 @@ session_start();
     <!--iconos de la plataforma fontawesome-->
     <link rel="icon" type="image/png" href="img/icono.png" />
     <title>Isic</title>
-</head>
+</head> 
 
 <body>
     <div id="contenedor-carga">

@@ -1,5 +1,5 @@
-<?php 
-setcookie('logueado', FALSE, time() + 24 * 60 * 60); 
+<?php
+setcookie('logueado', FALSE, time() + 24 * 60 * 60);
 include('head.php');
 ?>
 <!--Inicia pagina principal-->
@@ -9,9 +9,16 @@ include('head.php');
             <div class="content-center topmargin-sm">
                 <div class="contenedor">
                     <ul>
-                        <li><h1>TECNOLÓGICO NACIONAL DE MÉXICO</h1></li>
-                        <li><h5>INSTITUTO TECNOLÓGICO SUPERIOR DEL OCCIDENTE DEL ESTADO DE HIDALGO</h5></li>
-                        <li><h6>INGENIERÍA EN SISTEMAS COMPUTACIONALES</h6></li>
+                        <li>
+                            <h1>INGENIERÍA EN SISTEMAS COMPUTACIONALES</h1>
+                        </li>
+                        <li>
+                            <h5>INSTITUTO TECNOLÓGICO SUPERIOR DEL OCCIDENTE DEL ESTADO DE HIDALGO</h5>
+                        </li>
+                        <li>
+                            <h6>TECNOLÓGICO NACIONAL DE MÉXICO</h6>
+                        </li>
+
                     </ul>
                 </div>
             </div>

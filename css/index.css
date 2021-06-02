@@ -58,13 +58,13 @@ body {
 }
 
 .logo-itsoeh {
-    min-width: 160px;
-    max-width: 180px;
+    min-width: 180px;
+    max-width: 200px;
 }
 
 .logo-itsoeh-sup {
-    min-width: 160px;
-    max-width: 180px;
+    min-width: 180px;
+    max-width: 200px;
 }
 
 .navbar-toggler {
@@ -100,12 +100,15 @@ body {
     height: 100px;
 }
 
-.inicio h6 {
+.inicio .content-center h6 {
     color: #fff;
+    padding-top: 10px;
+    letter-spacing: 2px;
 }
 
-.inicio h5 {
+.inicio .content-center h5 {
     color: #fff;
+    letter-spacing: 2px;
 }
 
 .inicio #home .btn-inicio {
@@ -133,7 +136,7 @@ body {
 }
 
 .inicio .content-center h1 {
-    font-size: 2.5em;
+    font-size: 2.0em;
     font-weight: 700;
     color: #fff;
     letter-spacing: 2px;
@@ -163,22 +166,15 @@ body {
 .inicio #home .contenedor ul{
     list-style: none;
     padding-left: 0px;
-    animation: cambiar 6s none;
+    animation: cambiar 3s none;
     
 }
 .inicio #home .contenedor ul, p{
     margin: 0;
 }
 @keyframes cambiar {
-    0%{margin-top: 200px;}
+    0%{margin-top: 300px;}
     100%{margin-top: 0;}
-}
-
-.inicio #resumen .content-center h2 {
-    font-size: 2.2em;
-    font-weight: 700;
-    margin-bottom: 30px;
-    letter-spacing: 2px;
 }
 
 /*Inicio animcación*/
@@ -190,6 +186,7 @@ body {
 
 .conocenos h2 {
     color: #555555 !important;
+    letter-spacing: 2px;
 }
 
 .conocenos .info-carrera {
@@ -214,6 +211,7 @@ body {
 
 .texto h2 {
     font-size: 25px;
+    letter-spacing: 2px;
 }
 
 .texto a {
