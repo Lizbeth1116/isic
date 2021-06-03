@@ -76,7 +76,7 @@ function getMalla($esp) {
             $malla[$i][$j][5] = $MC_PdfNombre;
             $j++;
         }
-        $maxMalla = (sizeof($malla[$i]) > $maxMalla)?sizeof($malla[$i]):$maxMalla;
+        $maxMalla = (sizeof($malla[$i]) > $maxMalla) ? sizeof($malla[$i]) : $maxMalla;
         $stmt->close();
     }
     return $malla;
@@ -257,7 +257,7 @@ function getAsignaturaEspAdmin() {
     return $asiEsp;
 }
 
-function getListaServicios(){
+function getListaServicios() {
     global $con;
     $stmt = $con->prepare("call isic.sp_getListaServicios();");
     $stmt->execute();
@@ -292,13 +292,14 @@ function getPeriodo() {
     global $con;
     $stmt = $con->prepare("call isic.sp_getPeriodo();");
     $stmt->execute();
-    $stmt->bind_result($idperiodoExpo, $periodo, $año, $estado);
+    $stmt->bind_result($idperiodoExpo, $periodo, $año, $estado, $carpetaImg);
     $i = 0;
     while ($stmt->fetch()) {
         $peri[$i][0] = $idperiodoExpo;
         $peri[$i][1] = $periodo;
         $peri[$i][2] = $año;
         $peri[$i][3] = $estado;
+        $peri[$i][4] = $carpetaImg;
         $i++;
     }
     $stmt->close();
@@ -310,19 +311,19 @@ function getImagenesExpo($per) {
     $stmt = $con->prepare("call isic.sp_getImagenesExpo(?);");
     $stmt->bind_param("i", $per);
     $stmt->execute();
-    $stmt->bind_result($idimagenExpo, $imagen, $tipo, $descripcion, $estado);
+    $stmt->bind_result($idimagenExpo, $descripcion, $estado, $imagenNom, $carpetaImg);
     $i = 0;
-    $imgExpo[0][0]=-1;
-    $imgExpo[0][1]="";
-    $imgExpo[0][2]="Sin contenido";
-    $imgExpo[0][3]="";
-    $imgExpo[0][4]="";
+    $imgExpo[$i][0] = "";
+    $imgExpo[$i][1] = "";
+    $imgExpo[$i][2] = "";
+    $imgExpo[$i][3] = "";
+    $imgExpo[$i][4] = "";
     while ($stmt->fetch()) {
         $imgExpo[$i][0] = $idimagenExpo;
-        $imgExpo[$i][1] = $imagen;
-        $imgExpo[$i][2] = $descripcion;
-        $imgExpo[$i][3] = $estado;
-        $imgExpo[$i][4] = $tipo;
+        $imgExpo[$i][1] = $descripcion; //2
+        $imgExpo[$i][2] = $estado; //3
+        $imgExpo[$i][3] = $imagenNom; //5
+        $imgExpo[$i][4] = $carpetaImg; //5
         $i++;
     }
     $stmt->close();

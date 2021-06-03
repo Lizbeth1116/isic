@@ -59,7 +59,7 @@ $peri = getPeriodo();
                         echo '<h6><b>Agosto - Diciembre ' . $peri[$i][2] . '</b>';
                     }
                     echo '<div class="btn-group btn-group-sm">
-                            <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#myModalAddImg" onclick="datosModalExp2(\'' . $peri[$i][0] . '\');"><i class="bi bi-card-image"></i></button>
+                            <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#myModalAddImg" onclick="datosModalExp2(\'' . $peri[$i][0] . '\', \'' . $peri[$i][4] . '\');"><i class="bi bi-card-image"></i></button>
                             <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#myModalEdExp" onclick="datosModalExp(\'' . $peri[$i][0] . '\', \'' . $peri[$i][1] . '\', \'' . $peri[$i][2] . '\');"><i class="bi bi-pencil-square"></i></button>
                                         <div class="modal topmargin-sm" id="myModalEdExp">
                                             <div class="modal-dialog">
@@ -81,6 +81,12 @@ $peri = getPeriodo();
                                                             </div>
                                                             <div class="form-group" style="display:none">
                                                                 <input type="text" class="form-control" id="opGlobal" name="opGlobal" value="4">
+                                                            </div>
+                                                            <div class="form-group" style="display:none">
+                                                                <input type="text" class="form-control" id="AnioExpOri" name="AnioExpOri">
+                                                            </div>
+                                                            <div class="form-group" style="display:none">
+                                                                <input type="text" class="form-control" id="periodoExpoOri" name="periodoExpoOri">
                                                             </div>
                                                             <div class="form-group">
                                                                 <label for="desc" style="color:black;">Año:</label>
@@ -121,6 +127,9 @@ $peri = getPeriodo();
                                                                 <input type="text" class="form-control" id="addIdPeriImag" name="addIdPeriImag" value="1">
                                                             </div>
                                                             <div class="form-group" style="display:none">
+                                                                <input type="text" class="form-control" id="addCarpetaImag" name="addCarpetaImag">
+                                                            </div>
+                                                            <div class="form-group" style="display:none">
                                                                 <input type="text" class="form-control" id="opExp" name="opExp" value="1">
                                                             </div>
                                                             <div class="form-group" style="display:none">
@@ -134,7 +143,7 @@ $peri = getPeriodo();
                                                             </div>
                                                             <div class="form-group">
                                                                 <label for="imag" style="color:black;">Imagen:</label>
-                                                                <input type="file" class="form-control" id="addImgExp" placeholder="Seleccione una imagen" name="addImgExp" required>
+                                                                <input type="file" class="form-control" id="addImgExp" name="addImgExp" required>
                                                                 <div class="valid-feedback">Valido.</div>
                                                                 <div class="invalid-feedback">Por favor verifique los campos.</div>
                                                             </div>
@@ -150,7 +159,7 @@ $peri = getPeriodo();
                     } else {
                         echo '<a type="button" class="btn btn-secondary" href="Controlador/ControlBorrar.php?id=7_' . $peri[$i][0] . '_1_1"><i class = "bi bi-eye-slash"></i></a>';
                     }
-                    echo '<a type = "button" class = "btn btn-secondary" href = "Controlador/ControlBorrar.php?id=7_' . $peri[$i][0] . '_0_2"><i class = "bi bi-trash-fill"></i></a>
+                    echo '<a type = "button" class = "btn btn-secondary" href = "Controlador/ControlBorrar.php?id=7_' . $peri[$i][0] . '_0_2_' . $peri[$i][4] . '"><i class = "bi bi-trash-fill"></i></a>
                             </div></h6>
                     </div>
                     <table class="table table-light table-hover">
@@ -163,17 +172,17 @@ $peri = getPeriodo();
                     <tbody>';
                     $imgExpo = getImagenesExpo($peri[$i][0]);
                     for ($j = 0; $j < sizeof($imgExpo); $j++) {
-                        echo "<tr> <td><img src='data:" . $imgExpo[$j][4] . "; base64," . base64_encode($imgExpo[$j][1]) . "' width=120px></img></td>";
-                        echo '<td>' . $imgExpo[$j][2] . '</td><td>';
-                        if ($imgExpo[0][0] >= 0) {
+                        echo '<tr> <td><img src="img/expoISC/'.$peri[$i][4].'/'.$imgExpo[$j][3].'" width=120px></img></td>';
+                        echo '<td>' . $imgExpo[$j][1] . '</td><td>';
+                        if ($imgExpo[0][0] > 0) {
                             echo ' <div class="btn-group btn-group-sm">
-                                    <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#myModal" onclick="datosModalExp1(\'' . $imgExpo[$j][0] . '\', \'' . $imgExpo[$j][2] . '\');"><i class="bi bi-pencil-square"></i></button>';
-                            if ($imgExpo[$j][3] === 1) {
+                                    <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#myModal" onclick="datosModalExp1(\'' . $imgExpo[$j][0] . '\', \'' . $imgExpo[$j][1] . '\', \'' . $imgExpo[$j][3] . '\', \'' . $peri[$i][4] . '\');"><i class="bi bi-pencil-square"></i></button>';
+                            if ($imgExpo[$j][2] === 1) {
                                 echo '<a type="button" class="btn btn-secondary" href="Controlador/ControlBorrar.php?id=6_' . $imgExpo[$j][0] . '_2_1"><i class = "bi bi-eye"></i></a>';
                             } else {
                                 echo '<a type="button" class="btn btn-secondary" href="Controlador/ControlBorrar.php?id=6_' . $imgExpo[$j][0] . '_1_1"><i class = "bi bi-eye-slash"></i></a>';
                             }
-                            echo '<a type = "button" class = "btn btn-secondary" href = "Controlador/ControlBorrar.php?id=6_' . $imgExpo[$j][0] . '_0_2"><i class = "bi bi-trash-fill"></i></a>
+                            echo '<a type = "button" class = "btn btn-secondary" href = "Controlador/ControlBorrar.php?id=6_' . $imgExpo[$j][0] . '_0_2_'. $imgExpo[$j][3] .'_'. $peri[$i][4] .'"><i class = "bi bi-trash-fill"></i></a>
                                             </div>
                                         <div class="modal topmargin-sm" id="myModal">
                                             <div class="modal-dialog">
@@ -186,7 +195,7 @@ $peri = getPeriodo();
 
                                                     <!-- Modal body -->
                                                     <div class="modal-body">
-                                                        <form class="needs-validation" novalidate action="Controlador/ControlEditar.php" method="POST">
+                                                        <form class="needs-validation" novalidate action="Controlador/ControlEditar.php" enctype="multipart/form-data" method="POST">
                                                             <div class="form-group" style="display:none">
                                                                 <input type="text" class="form-control" id="idImgExp" name="idImgExp">
                                                             </div>
@@ -196,11 +205,21 @@ $peri = getPeriodo();
                                                             <div class="form-group" style="display:none">
                                                                 <input type="text" class="form-control" id="opGlobal" name="opGlobal" value="4">
                                                             </div>
+                                                            <div class="form-group" style="display:none">
+                                                                <input type="text" class="form-control" id="CarpetaImag" name="CarpetaImag">
+                                                            </div>
+                                                            <div class="form-group" style="display:none">
+                                                                <input type="text" class="form-control" id="nomImagOri" name="nomImagOri">
+                                                            </div>
                                                             <div class="form-group">
                                                                 <label for="desc" style="color:black;">Descripcion:</label>
                                                                 <input type="text" class="form-control" id="descripcionExp" placeholder="Ingresa una descripcion a la imagen" name="descripcionExp" required>
                                                                 <div class="valid-feedback">Valido.</div>
                                                                 <div class="invalid-feedback">Por favor verifique los campos.</div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="imag" style="color:black;">Imagen:</label>
+                                                                <input type="file" class="form-control" id="ImgExp" name="ImgExp">
                                                             </div>
                                                             <button type="submit" class="btn btn-primary">Aceptar</button>
                                                             <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
@@ -244,7 +263,7 @@ $peri = getPeriodo();
 </section>
 <!--fin footer-->
 <!--JS Local-->
-<script type="text/javascript" src="js/editarExpo.js"></script>
+<script type="text/javascript" src="js/editarExpo.js?1.0.0"></script>
 <!--Bootstrap JS-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

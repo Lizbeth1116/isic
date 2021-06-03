@@ -38,6 +38,7 @@ if ($opGlobal < 5) {
     $idespecialidadOriMC = $_POST['idespecialidadOriMC'];
 
     $idImgEsp = $_POST['idImgExp'];
+    $CarpetaImag = $_POST['CarpetaImag'];
     $opExp = $_POST['opExp'];
     $descripcionExp = $_POST['descripcionExp'];
     $idPeriExp = $_POST['idPeriExp'];
@@ -109,13 +110,37 @@ switch ($opGlobal):
     case 4://Admin Expo
         switch ($opExp):
             case 0:
-                $stmt = $con->prepare("call isic.sp_editPeriodoExpo(?,?,?)");
-                $stmt->bind_param("iii", $idPeriExp, $periodoExpo, $AnioExp);
+                $periodoExpoOri = $_POST['periodoExpoOri'];
+                $AnioExpOri = $_POST['AnioExpOri'];
+                $AnioExp = $_POST['AnioExp'];
+                $periodoExpo = $_POST['periodoExpo'];
+                $nomCarpeta = ($AnioExp . "_" . (($periodoExpo == 1) ? "Enero-Mayo" : "Agosto-Diciembre"));
+                $nomCarpetaOri = ($AnioExpOri . "_" . (($periodoExpoOri == 1) ? "Enero-Mayo" : "Agosto-Diciembre"));
+                if ($nomCarpetaOri != $nomCarpeta) {
+                    if (file_exists('../img/expoISC/' . $nomCarpetaOri)) {
+                        rename(('../img/expoISC/' . $nomCarpetaOri), ('../img/expoISC/' . $nomCarpeta));
+                    } else {
+                        mkdir(('../img/expoISC/' . $nomCarpeta), 0755, TRUE);
+                    }
+                }
+                $stmt = $con->prepare("call isic.sp_editPeriodoExpo(?,?,?,?)");
+                $stmt->bind_param("iiis", $idPeriExp, $periodoExpo, $AnioExp, $nomCarpeta);
                 $aux = "Expo";
                 break;
             case 1:
-                $stmt = $con->prepare("call isic.sp_editImgExpo(?,?)");
-                $stmt->bind_param("is", $idImgEsp, $descripcionExp);
+                $nomImg = $_FILES['ImgExp']['name'];
+                $guardadoImg = $_FILES['ImgExp']['tmp_name'];
+                if (strlen($nomImg) > 0) {
+                    if (file_exists('../img/expoISC/'.$CarpetaImag.'/' . $_POST['nomImagOri'])) {
+                        unlink('../img/expoISC/'.$CarpetaImag.'/' . $_POST['nomImagOri']);
+                    }
+                    move_uploaded_file($guardadoImg, '../img/expoISC/'.$CarpetaImag.'/' . $nomImg);
+                    $newNomIng = $nomImg;
+                } else {
+                    $newNomIng = $_POST['nomImagOri'];
+                }
+                $stmt = $con->prepare("call isic.sp_editImgExpo(?,?,?)");
+                $stmt->bind_param("iss", $idImgEsp, $descripcionExp, $newNomIng);
                 $aux = "Expo";
                 break;
         endswitch;

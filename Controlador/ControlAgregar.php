@@ -38,8 +38,7 @@ if ($opGlobal != 4) {
     $opExp = $_POST['opExp'];
     $addIdPeriImag = $_POST['addIdPeriImag'];
     $addDescripcionExp = $_POST['addDescripcionExp'];
-    $Imag = file_get_contents($_FILES['addImgExp']['tmp_name']);
-    $tipoImg = $_FILES['addImgExp']['type'];
+    $addCarpetaImag = $_POST['addCarpetaImag'];
 }
 
 switch ($opGlobal):
@@ -101,16 +100,27 @@ switch ($opGlobal):
             case 0:
                 $addAnioExp = $_POST['addAnioExp'];
                 $addperiodoExpo = $_POST['addperiodoExpo'];
-                $stmt = $con->prepare("call isic.sp_AddPeroExpo(?,?)");
-                $stmt->bind_param("ii", $addperiodoExpo, $addAnioExp);
-                echo "call isic.sp_AddPeroExpo(" . $addperiodoExpo . "," . $addAnioExp . ")";
-                ;
+                $nomCarpeta = ($addAnioExp . "_" . (($addperiodoExpo == 1) ? "Enero-Mayo" : "Agosto-Diciembre"));
+                if (!file_exists('../img/expoISC/' . $nomCarpeta)) {
+                    mkdir(('../img/expoISC/' . $nomCarpeta), 0755, TRUE);
+                }
+                $stmt = $con->prepare("call isic.sp_AddPeroExpo(?,?,?)");
+                $stmt->bind_param("iis", $addperiodoExpo, $addAnioExp, $nomCarpeta);
                 $aux = "Expo";
                 break;
             case 1:
-                $stmt = $con->prepare("call isic.sp_AddImgExpo(?,?,?,?)");
-                $stmt->bind_param("ibss", $addIdPeriImag, $Imag, $tipoImg, $addDescripcionExp);
-                $stmt->send_long_data(1, $Imag);
+                $nomImg = $_FILES['addImgExp']['name'];
+                $guardadoImg = $_FILES['addImgExp']['tmp_name'];
+                if (!file_exists('../img/expoISC/'.$addCarpetaImag)) {
+                    mkdir(('../img/expoISC/'.$addCarpetaImag), 0755, TRUE);
+                    if (file_exists('../img/expoISC/'.$addCarpetaImag)) {
+                        move_uploaded_file($guardadoImg, ('../img/expoISC/'.$addCarpetaImag.'/') . $nomImg);
+                    }
+                } else {
+                    move_uploaded_file($guardadoImg, ('../img/expoISC/'.$addCarpetaImag.'/') . $nomImg);
+                }
+                $stmt = $con->prepare("call isic.sp_AddImgExpo(?,?,?)");
+                $stmt->bind_param("iss", $addIdPeriImag, $addDescripcionExp, $nomImg);
                 $aux = "Expo";
                 break;
         endswitch;
