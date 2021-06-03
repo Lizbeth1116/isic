@@ -2,7 +2,7 @@
 include('head.php');
 $getPEDescrip = getPEDescrip($_GET["pe"]);
 ?>
-<div class="peisc">
+<div class="peisc"> 
     <section>
         <?php
             if ($_GET["pe"] != 6) {

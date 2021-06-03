@@ -44,9 +44,55 @@ body {
     min-width: 100px;
 }
 
+a {
+    color: inherit;
+    text-decoration: none;
+    -webkit-transition: .3s all;
+    -o-transition: .3s all;
+    transition: .3s all;
+}
+
+.nav-item {
+    display: flex;
+    justify-content: center;
+}
+
+.nav-item li {
+    margin-right: 70px;
+}
+
+.nav-item a {
+    position: relative;
+    display: block;
+}
+
+.nav-item a::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(to right, #7dbdcd, #43aada, #85ebd5);
+    z-index: 1;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.5s ease-in-out;
+    
+}
+
+.nav-item a:hover::before {
+    transform-origin: left;
+    transform: scaleX(1);
+    transition-timing-function: cubic-bezier(0.2, 1, 0.82, 0.94);
+}
+
 .nav-link {
     color: #ABB2B9;
     font-size: 1.0em;
+    -webkit-transition: .3s all;
+    -o-transition: .3s all;
+    transition: .3s all;
 }
 
 .nav-link:hover {
@@ -214,17 +260,6 @@ body {
     letter-spacing: 2px;
 }
 
-.texto a {
-    -webkit-transition: .3s all;
-    -o-transition: .3s all;
-    transition: .3s all;
-    color: #38A5B4;
-}
-
-.texto a:focus, a:active {
-    color: #38A5B4;
-    text-decoration: none;
-}
 
 .resumen {
     background: linear-gradient(to top, #106ce4 0%, #00ddd2 100%);
@@ -287,7 +322,14 @@ body {
 } 
 
 .resumen .resume-item button {
+    margin-top: 10px;
     border-radius: 50px !important;
+    -webkit-transition: .3s all;
+    -o-transition: .3s all;
+    transition: .3s all;
+}
+.resumen .resume-item button:hover {
+    color: #ffffff !important;
 }
 
 .resumen .resume-item button:focus {
@@ -295,6 +337,7 @@ body {
 }
 
 .resumen .resume-item a:hover{
+    text-decoration: none;
     color: #ffffff !important;
 }
 
@@ -512,3 +555,10 @@ html {
 }
 
 /*Fin boton hamburguesa*/
+
+[class^="bi"], [class*=" bi"] {
+    display: inline-block;
+    vertical-align: 0.15em;
+    background-repeat: no-repeat;
+    background-size: 1rem 1rem;
+}

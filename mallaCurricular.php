@@ -7,7 +7,7 @@ $max = getMaxMalla();
 ?>
 <div class="especialidad">
     <div class="contenedor-texto topmargin-xs">
-        <div class="t-malla">
+        <div class="t-malla container">
             <h2 class="text-center" style="color:#5f5f5f !important;">Malla Curricular</h2>
             <p class="text-center">RETICULA DE INGENIERÍA EN SISTEMAS COMPUTACIONALES CLAVE ISIC-2010-224, Especilidad: <?php echo '' . $espInfo[0][0] . '' ?></p>
         </div>
@@ -51,8 +51,8 @@ $max = getMaxMalla();
                 <div class="row">
                     <div class="col-md-3">
                         <!--estas son columnas-->
-                        <h2 class="mb-5"></h2>
-                        <div class="resume-item mb-2 partedos">
+                        
+                        <div class="resume-item mb-2">
                             <!--estas son filas-->
                             <h5>Área de conocimiento</h5>
                             <p class="text-center">
@@ -95,7 +95,6 @@ $max = getMaxMalla();
                     </div>
                     <div class="col-md-3">
                         <!--estas son columnas-->
-                        <h2 class="mb-5"></h2>
                         <div class="resume-item mb-2 partedos">
                             <h5>Nomenclatura</h5>
                             <p>
@@ -105,7 +104,6 @@ $max = getMaxMalla();
                     </div>
                     <div class="col-md-3">
                         <!--estas son columnas-->
-                        <h2 class="mb-5"></h2>
                         <div class="resume-item mb-2 partedos">
                             <h5>Créditos</h5>
                             <p class="text-center">
@@ -140,7 +138,6 @@ $max = getMaxMalla();
                     </div>
                     <div class="col-md-3">
                         <!--estas son columnas-->
-                        <h2 class="mb-5"></h2>
                         <div class="resume-item mb-2 partedos">
                             <h5>Requisitos de titulación</h5>
                             <p class="text-center">

@@ -13,7 +13,7 @@
                         <h3><strong>Networking Academy</strong></h3>
                         <button type="button" class="btn btn-outline"><a href="https://www.netacad.com/es" target="_blank">Ver detalles</a></button>
                     </div>
-                </div>
+                </div> 
                 <div class="col-md-4">
                     <div class="resume-item mb-4 nokia">
                         <img src="img/asociaciones/here-w.png" class="logo-w">

@@ -6,13 +6,7 @@
     --black: black;
 }
 
-* {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-}
-
-.organigrama ol {
+.organigrama ol { 
     list-style: none;
 }
 
@@ -260,9 +254,20 @@
 .organigrama .modal-content{
     background-color: #ffffff;
 }
-
+.organigrama .modal-content table{
+    text-align: left;
+    font-size: 14px;
+    color:#555555;
+}
+.organigrama h6 a{
+    color: #c2c2c2;
+}
+.organigrama h6 a:hover{
+    color: #ffffff;
+    cursor: pointer;
+}
 @media (max-width: 360px) {
-    .organigrama .rectangle{
+    .organigrama .rectangle, p{
         text-align: center !important;
     }
 }

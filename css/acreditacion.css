@@ -1,6 +1,10 @@
 .acreditacion {
     background: linear-gradient(to top, #340c91 0%, #921392 100%);
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
+
 @keyframes cambiar {
     0% {
         margin-top: 700px;
@@ -9,14 +13,7 @@
         margin-top: 0;
     }
 }
-.acreditacion .row{
-    width: 100%;
-    top: 0;
-    right: 0;
-    left: 0;
-    bottom: 0;
-    overflow: hidden;
-}
+
 .acreditacion .site-section {
     padding-bottom: 5em;
 }
@@ -27,34 +24,50 @@
     z-index: 10;
 }
 
-.acreditacion .texto .section-heading h2 {
+.texto .section-heading h2 {
     padding-top: 100px;
     position: relative;
     font-weight: 200;
     font-size: 30px;
-    color: #ececec;
+    color: #f3f3f3;
 }
 
-.acreditacion .texto .section-heading h2 strong {
+.texto .section-heading h2 strong {
     font-weight: 800;
 }
 
-.acreditacion .texto .section-heading.text-center h2:before {
+.texto .section-heading.text-center h2:before {
     left: 50%;
     -webkit-transform: translateX(-50%);
     -ms-transform: translateX(-50%);
     transform: translateX(-50%);
 }
 
-.acreditacion .resume-item {
-    background-color: #ffffff;
-    text-align: center;
-    padding: 30px;
-    border: 4px solid transparent;
-    border-radius: 7px;
-    animation: cambiar 6s none;
+.acreditacion .wave {
+    width: 100%;
+    height: 100px;
 }
 
+.acreditacion .resume-item {
+    text-align: center;
+    padding: 30px;
+    background-color: #ffffff;
+    border: 4px solid transparent;
+    border-radius: 7px;
+    -moz-transition: 0.2s;
+    -webkit-transition: 0.2s;
+    transition: 0.2s;
+}
+
+.acreditacion .icono {
+    height: 100px;
+    padding-bottom: 20px;
+}
+.acreditacion .resume-item li{
+    text-align: left;
+    color: #555555;
+    font-size: 14px;
+}
 .acreditacion .resume-item button {
     border-radius: 50px !important;
 }
@@ -63,48 +76,59 @@
     outline: none;
 }
 
+.acreditacion .resume-item a:hover {
+    color: #ffffff !important;
+}
+
 .acreditacion .resume-item .school {
     display: block;
     font-size: 16px;
 }
 
-.acreditacion .texto .resume-item h3 {
-    color: #5a5a5a;
+.texto .resume-item h3 {
+    color: #555555;
     font-size: 20px;
+}
+
+.acreditacion .resume-item p {
+    text-align: justify;
+    font-size: 14px;
+    color: #555555;
+}
+
+.acreditacion .resume-item .school {
+    /*color: rgba(255, 255, 255, 0.3);*/
+    color: #212F3C;
 }
 
 .acreditacion .resume-item *:last-child {
     margin-bottom: 0;
 }
 
-.acreditacion .logo-c {
-    padding-top: 30px;
-    min-width: 300px;
-    max-width: 500px;
-    animation: cambiar 6s none;
+.acreditacion table {
+    animation: cambiar 3s none;
 }
 
-.acreditacion .resume-item a {
-    color: #585858 !important;
-}
-
-.acreditacion .resume-item p {
-    font-size: 14px;
-    animation: cambiar 6s none;
-}
-.acreditacion table{
-    animation: cambiar 6s none;
-}
 .acreditacion table td {
     text-align: left;
     color: #5a5a5a;
     font-size: 14px;
 }
 
-@media screen and (min-width: 320px) {
-    .acreditacion .logo-c {
-        min-width: 100px;
-        max-width: 280px;
-    }
+.acreditacion .logo-cacei>img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
+.acreditacion .img-certificado>img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media screen and (min-width: 360px) {}

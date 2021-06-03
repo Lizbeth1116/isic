@@ -9,37 +9,71 @@
                 <div class="col-md-12">
                     <div class="resume-item mb-4">
                         <div class="row">
-                            <div class="col-md-6">
-                                <img src="img/cacei-sf.png" class="logo-c">
+                            <div class="col-md-6 logo-cacei">
+                                <img src="img/logos/cacei-sf.png?1.0.0">
+                                <h3><strong>Programa acreditado por CACEI</strong></h3>
+                                <p>
+                                    El Programa Educativo de Ingeniería en Sistemas Computacionales está acreditado por el Consejo de Acreditación de la Enseñanza de la Ingeniería A.C. (CACE').
+                                </p>
                             </div>
-                            <div class="col-md-6">
-                                <h3><strong>Información Relevante</strong></h3>
-                                <table>
-                                    <tr>
-                                        <td><strong>Ingeniería en Sistemas Computacionales: </strong></td>
-                                        <td>Acreditado en 2019 por 5 años</td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>Matricula registrada 2019: </strong></td>
-                                        <td>256 Estudiantes</td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>Especialidades: </strong></td>
-                                        <td>2 registradas</td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>Laboratorios: </strong></td>
-                                        <td>4 equipados</td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>Desarrollo Tecnológico: </strong></td>
-                                        <td>1 Centro de formación de capital humano</td>
-                                    </tr>
-                                </table>
+                            <div class="col-md-6 img-certificado">
+                                <img src="img/certificado-cacei.png?1.0.0">
                             </div>
                         </div>
                     </div>
                 </div>
+                <div class="col-md-6">
+                    <div class="resume-item mb-4">
+                        <h3><strong>Información Relevante</strong></h3>
+                        <table>
+                            <tr>
+                                <td><strong>Ingeniería en Sistemas Computacionales: </strong></td>
+                                <td>Acreditado en 2019 por 5 años</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Matricula registrada 2019: </strong></td>
+                                <td>256 Estudiantes</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Especialidades: </strong></td>
+                                <td>2 registradas</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Laboratorios: </strong></td>
+                                <td>4 equipados</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Desarrollo Tecnológico: </strong></td>
+                                <td>1 Centro de formación de capital humano</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="resume-item mb-4">
+                        <h3><strong>Beneficios</strong></h3>
+                        <ul>
+                            <li>Formacion académica que cumple con estándares de
+                                calidad internacionales.
+                            </li>
+                            <li>Planes de estudio actualizados, fortaleciendo el desarrollo
+                                intelectual y profesional.
+                            </li>
+                            <li>
+                                Valor agregado para la inserción de egresados al mercado
+                                laboral (nacional e internacional) o el acceso a estudios de
+                                posgrado.
+                            </li>
+                            <li>
+                                Reconocimiento de títulos en el extranjero.
+                            </li>
+                            <li>
+                                Compromiso con la mejora continua.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!---->
                 <div class="col-md-12">
                     <div class="resume-item mb-4">
                         <h3><strong>Acerca de CACEI</strong></h3>

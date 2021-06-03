@@ -3,7 +3,7 @@ include('head.php');
 $servInfo = getServicio($_GET["idServ"]);
 ?>
 <div class="servicios">
-    <section class="seccion-1">
+    <section class="seccion-1" >
 
         <?php
         echo '<img src="img/servicios/' . $servInfo[0][0] . '.svg?1.0.0">';
@@ -39,9 +39,16 @@ $servInfo = getServicio($_GET["idServ"]);
             </div>
             <div class="row topmargin-xs">';
         $asAux = 0;
+        $contar = 0;
+        $numAsesoria = (int) (sizeof($asesor) / 2);
         for ($i = 0; $i < sizeof($asesor); $i++) { 
+            if($contar == 0){
+                echo '<div class="col-md-6">';
+            }elseif($contar == $numAsesoria){
+                echo '</div>
+                      <div class="col-md-6">';
+            }
             echo ' 
-                <div class="col-md-6">
                     <div class="resume-item mb-4">
                         <p>
                         <h3><strong>' . $asesor[$i][0] . '</strong></h3>
@@ -86,7 +93,12 @@ $servInfo = getServicio($_GET["idServ"]);
                             echo '
                         </table>
                     </div>
-                </div>';
+                ';
+                $contar++;
+                if ($contar == (sizeof($asesor))) {
+                    echo '</div>';
+                }
+                
         }
         echo '
             </div>

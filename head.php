@@ -31,8 +31,8 @@ session_start();
     <link rel="stylesheet" href="css/index.css" />
     <link rel="stylesheet" href="css/peisc.css" />
     <link rel="stylesheet" href="css/asociaciones.css"/>
-    <link rel="stylesheet" href="css/acreditacion.css"/>
-    <link rel="stylesheet" href="css/organigrama.css">
+    <link rel="stylesheet" href="css/acreditacion.css?1.0.0"/>
+    <link rel="stylesheet" href="css/organigrama.css?1.0.0">
     <link rel="stylesheet" href="css/asesorias.css">
     <link rel="stylesheet" type="text/css" href="css/estilos.css" />
     <link rel="stylesheet" type="text/css" href="css/especialidad.css" />
@@ -53,7 +53,7 @@ session_start();
             contenedor.style.visibility = 'hidden';
             contenedor.style.opacity = '0';
         }
-    </script>
+    </script> 
     <nav id="menu" class="navbar navbar-expand-lg fixed-top ">
         <div class="container">
             <a class="navbar-brand" target="_blank" href="http://www.itsoeh.edu.mx/front/">

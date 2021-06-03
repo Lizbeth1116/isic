@@ -5,7 +5,7 @@ $espInfo = getEspecialidadInfo($sp);
 $espAsig = getAsignaturasEsp($sp);
 $espEgr = getPerfilEgreso($sp);
 ?>
-<div class="especialidad">
+<div class="especialidad"> 
     <section id="sec1">
         <div class="contenedor">
             <div class="contenedor-texto">

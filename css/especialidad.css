@@ -4,6 +4,23 @@
     box-sizing: border-box;
 }
 
+@keyframes cambiar {
+    0% {
+        margin-top: 700px;
+    }
+    100% {
+        margin-top: 0;
+    }
+}
+.especialidad section .contenedor-texto {
+    width: 100%;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    overflow: hidden;
+}
+
 .especialidad #sec1 {
     height: 700px;
 }
@@ -29,12 +46,14 @@
     padding-top: 100px;
     padding-right: 5%;
     padding-left: 5%;
+    padding-bottom: 5%;
     height: 100%;
 }
 
 .especialidad #sec2 .perfiles {
     text-align: left;
-    padding: 0 15% 0 15%;
+    padding: 0 15%;
+    padding-bottom: 10%;
     background: #fff;
     border-radius: 8px;
 }
@@ -74,14 +93,15 @@
 .especialidad section p {
     font-weight: 300;
     margin-bottom: 15px;
+    animation: cambiar 3s none;
 }
 
 .especialidad section:nth-child(1) {
-    background-image: linear-gradient(to top, #38A5B4 0%, #235c9e 100%);
+    background-image: linear-gradient(to top, #38A5B4 0%, #235c9e 100%) !important;
 }
 
 .especialidad section:nth-child(2) {
-    background-image: linear-gradient(to top, #2d67e6 0%, #38A5B4 100%);
+    background-image: linear-gradient(to top, #2d67e6 0%, #38A5B4 100%) !important;
 }
 
 @media screen and (max-width: 1000px) {
@@ -123,7 +143,6 @@
         text-align: left !important;
         color: #f0f0f0;
         font-size: 14px;
-        margin: 15%;
     }
 }
 
@@ -135,10 +154,14 @@
 
 .especialidad #sec1>img {
     height: 300px;
+    animation: cambiar 3s none;
 }
 
-.especialidad .t-malla {
+.especialidad .t-malla h2{
     color: #5f5f5f;
+    font-size: 2.5em;
+    font-weight: 700;
+    letter-spacing: 2px;
 }
 
 .especialidad .malla {
@@ -159,6 +182,7 @@
     padding: 5px;
     border: 1px solid #424242;
     border-radius: 7px;
+    animation: cambiar 3s none;
 }
 
 .especialidad .malla .resume-item *:last-child {
@@ -171,22 +195,23 @@
     margin-left: 5%;
     margin-right: 5%;
     border-radius: 8px;
-    margin-bottom: 20px;
+    margin-bottom: 5%;
 }
 
 .especialidad .descripcion .resume-item h5 {
     font-size: 1.5em;
     color: #fff;
+    font-weight: 700;
 }
 
 .especialidad .descripcion .resume-item {
-    padding: 0px;
+    padding: 10%;
     border: 1px solid transparent;
     border-radius: 7px;
     text-align: left !important;
     color: #ececec;
     font-size: 14px;
-    margin: 15%;
+    animation: cambiar 3s none;
 }
 
 .especialidad .perfiles .resume-item span, h4, p {

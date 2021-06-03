@@ -16,12 +16,12 @@
     bottom: 0;
     overflow: hidden;
 }
-
+ 
 @keyframes cambiar {
     0% {
         margin-top: 700px;
     }
-    90% {
+    100% {
         margin-top: 0px;
     }
 }
@@ -38,7 +38,7 @@
 /*Fin animación imagen*/
 
 .peisc section:nth-child(1) {
-    background-image: linear-gradient(to top, #4cb6b9 0%,#476ac9  100%);
+    background-image: linear-gradient(to top,#476ac9  0%, #4cb6b9 100%);
 }
 
 @media screen and (max-width: 1000px) {
@@ -74,14 +74,14 @@
 .peisc section img {
     height: 300px;
     padding-right: 30px;
-    animation: cambiar 6s none;
+    animation: cambiar 3s none;
 }
 
 .peisc section p {
     font-weight: 300;
     margin-bottom: 15px;
     color: #5a5a5a !important;
-    animation: cambiar 6s none;
+    animation: cambiar 3s none;
 }
 
 .peisc section h2 {
