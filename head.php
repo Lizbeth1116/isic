@@ -38,12 +38,14 @@ session_start();
     <link rel="stylesheet" type="text/css" href="css/especialidad.css" />
     <link rel="stylesheet" type="text/css" href="css/normalize.css" />
     <link rel="stylesheet" type="text/css" href="css/servicios.css?1.0.0" />
+    <link rel="stylesheet" type="text/css" href="css/historialEspecialidad.css?1.0.0" />
     <!--iconos de la plataforma fontawesome-->
     <link rel="icon" type="image/png" href="img/icono.png" />
     <title>Isic</title>
 </head> 
 
 <body>
+    <!--
     <div id="contenedor-carga">
         <div id="carga"></div>
     </div>
@@ -54,6 +56,7 @@ session_start();
             contenedor.style.opacity = '0';
         }
     </script> 
+    -->
     <nav id="menu" class="navbar navbar-expand-lg fixed-top ">
         <div class="container">
             <a class="navbar-brand" target="_blank" href="http://www.itsoeh.edu.mx/front/">
@@ -90,6 +93,7 @@ session_start();
                                     echo '<a href="Especialidad.php?sp=' . $listEsp[$x][0] . '">' . $listEsp[$x][1] . '</a>';
                                 }
                                 ?>
+                                <a href="historialEspecialidad.php?1.0.0">Historial de Especialidades</a>
                             </div>
                         </div>
                     </li>

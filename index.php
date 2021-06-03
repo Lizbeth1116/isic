@@ -31,7 +31,7 @@ include('head.php');
 
 </div>
 <div class="conocenos">
-    <section class="site-section topmargin-sm" id="acerca">
+    <section class="site-section topmargin-xs" id="acerca">
         <div class="container texto">
             <div>
                 <div class="section-heading text-center">

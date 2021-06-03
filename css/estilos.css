@@ -34,7 +34,7 @@ ul.tabs li a .tab-text {
     }
 }
 
-/*Inicio Indicador de Carga Web*/
+/*Inicio Indicador de Carga Web
 
 #contenedor-carga {
     background-color: rgba(250, 240, 245, 0.9);
@@ -71,4 +71,4 @@ ul.tabs li a .tab-text {
     to{transform: rotate(360deg);}
 }
 
-/*Fin Indicador de Carga Web*/
+Fin Indicador de Carga Web*/

@@ -13,7 +13,7 @@
                                 <img src="img/logos/cacei-sf.png?1.0.0">
                                 <h3><strong>Programa acreditado por CACEI</strong></h3>
                                 <p>
-                                    El Programa Educativo de Ingeniería en Sistemas Computacionales está acreditado por el Consejo de Acreditación de la Enseñanza de la Ingeniería A.C. (CACE').
+                                    El Programa Educativo de Ingeniería en Sistemas Computacionales está acreditado por el Consejo de Acreditación de la Enseñanza de la Ingeniería A.C. (CACEI).
                                 </p>
                             </div>
                             <div class="col-md-6 img-certificado">
