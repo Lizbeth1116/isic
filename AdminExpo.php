@@ -174,7 +174,7 @@ $peri = getPeriodo();
                     for ($j = 0; $j < sizeof($imgExpo); $j++) {
                         echo '<tr> <td><img src="img/expoISC/'.$peri[$i][4].'/'.$imgExpo[$j][3].'" width=120px></img></td>';
                         echo '<td>' . $imgExpo[$j][1] . '</td><td>';
-                        if ($imgExpo[0][0] >= 0) {
+                        if ($imgExpo[0][0] > 0) {
                             echo ' <div class="btn-group btn-group-sm">
                                     <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#myModal" onclick="datosModalExp1(\'' . $imgExpo[$j][0] . '\', \'' . $imgExpo[$j][1] . '\', \'' . $imgExpo[$j][3] . '\', \'' . $peri[$i][4] . '\');"><i class="bi bi-pencil-square"></i></button>';
                             if ($imgExpo[$j][2] === 1) {

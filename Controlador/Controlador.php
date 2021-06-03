@@ -76,7 +76,7 @@ function getMalla($esp) {
             $malla[$i][$j][5] = $MC_PdfNombre;
             $j++;
         }
-        $maxMalla = (sizeof($malla[$i]) > $maxMalla)?sizeof($malla[$i]):$maxMalla;
+        $maxMalla = (sizeof($malla[$i]) > $maxMalla) ? sizeof($malla[$i]) : $maxMalla;
         $stmt->close();
     }
     return $malla;
@@ -257,7 +257,7 @@ function getAsignaturaEspAdmin() {
     return $asiEsp;
 }
 
-function getListaServicios(){
+function getListaServicios() {
     global $con;
     $stmt = $con->prepare("call isic.sp_getListaServicios();");
     $stmt->execute();
@@ -313,6 +313,11 @@ function getImagenesExpo($per) {
     $stmt->execute();
     $stmt->bind_result($idimagenExpo, $descripcion, $estado, $imagenNom, $carpetaImg);
     $i = 0;
+    $imgExpo[$i][0] = "";
+    $imgExpo[$i][1] = "";
+    $imgExpo[$i][2] = "";
+    $imgExpo[$i][3] = "";
+    $imgExpo[$i][4] = "";
     while ($stmt->fetch()) {
         $imgExpo[$i][0] = $idimagenExpo;
         $imgExpo[$i][1] = $descripcion; //2
