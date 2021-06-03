@@ -43,17 +43,24 @@ switch ($datos[0]):
         $aux = "Investigacion";
         break;
     case 6: // Deshabilitar/Borrar Imagen Expo
-        $carpetaImg = $datos[5].'_'.$datos[6];
-        if (file_exists("../img/expoISC/".$carpetaImg."/" . $datos[4])) {
-            unlink("../img/expoISC/".$carpetaImg."/" . $datos[4]);
+        $carpetaImg = $datos[5] . '_' . $datos[6];
+        if (file_exists("../img/expoISC/" . $carpetaImg . "/" . $datos[4])) {
+            unlink("../img/expoISC/" . $carpetaImg . "/" . $datos[4]);
         }
         $stmt = $con->prepare("call isic.sp_DesHabImagExpo(?,?,?)");
         $stmt->bind_param("iii", $datos[1], $datos[2], $datos[3]);
         $aux = "Expo";
         break;
     case 7: // Deshabilitar/Borrar Periodo Expo
-        $carpetaBorra = $datos[4].'_'.$datos[5];
+        $carpetaBorra = $datos[4] . '_' . $datos[5];
         if (file_exists("../img/expoISC/" . $carpetaBorra)) {
+            $files = glob("../img/expoISC/" . $carpetaBorra . "/*");
+            if (sizeof($files) > 0) {
+                foreach ($files as $file) {
+                    if (is_file($file))
+                        unlink($file); //elimino el fichero
+                }
+            }
             rmdir("../img/expoISC/" . $carpetaBorra);
         }
         $stmt = $con->prepare("call isic.sp_DesHabExpo(?,?,?)");
