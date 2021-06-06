@@ -16,12 +16,13 @@
     }, false);
 })();
 
-datosModalEsp1 = function (id, nombre, objetivo, pdf) {
+datosModalEsp1 = function (id, nombre, objetivo, pdf, imag) {
     $('#idespecialidadEsp').val(id);
     $('#nombreEsp').val(nombre);
     $('#objetivoEsp').val(objetivo);
     $('#opEsp').val(1);
-    $('#pdfReticula').val(pdf);
+    $('#nomOriPdfEsp').val(pdf);
+    $('#nomOriImgEsp').val(imag);
 };
 
 datosModalEsp2 = function (id, perfil) {
@@ -37,4 +38,10 @@ datosModalEsp3 = function (idEsp, idAsi, descripcion) {
     $('#claveEsp').val(idAsi);
     $('#descripcionEsp').val(descripcion);
     $('#opEsp').val(3);
+};
+
+datosModalEsp4 = function (id, nombre) {
+    var texto = ("¿Seguro que quiere pasar \"" + nombre + "\" y todos sus elementos al historial de especialidades?<br><br>Esta acion no puede ser deshecha.");
+    $('#idAdverEsp').val(id);
+    document.getElementById('NomAdverEsp').innerHTML = texto;
 };

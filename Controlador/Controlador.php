@@ -92,12 +92,13 @@ function getEspecialidadInfo($esp) {
     $stmt = $con->prepare("call isic.sp_especialidad(?);");
     $stmt->bind_param("i", $esp);
     $stmt->execute();
-    $stmt->bind_result($Nombre, $Objetivo, $pdfReticula);
+    $stmt->bind_result($Nombre, $Objetivo, $pdfReticula, $imagen);
     $i = 0;
     while ($stmt->fetch()) {
         $espInfo[$i][0] = $Nombre;
         $espInfo[$i][1] = $Objetivo;
         $espInfo[$i][2] = $pdfReticula;
+        $espInfo[$i][3] = $imagen;
         $i++;
     }
     $stmt->close();
@@ -193,11 +194,12 @@ function getDocente() {
     global $con;
     $stmt = $con->prepare("call isic.sp_getDocente();");
     $stmt->execute();
-    $stmt->bind_result($iddocente, $Docente);
+    $stmt->bind_result($iddocente, $Docente, $correo);
     $i = 0;
     while ($stmt->fetch()) {
         $doce[$i][0] = $iddocente;
         $doce[$i][1] = $Docente;
+        $doce[$i][2] = $correo;
         $i++;
     }
     $stmt->close();
@@ -208,7 +210,7 @@ function getEspecialidadAdmin() {
     global $con;
     $stmt = $con->prepare("call isic.sp_getEspecialidadAdmin();");
     $stmt->execute();
-    $stmt->bind_result($idespecialidad, $Nombre, $Objetivo, $Estado, $pdfReticula);
+    $stmt->bind_result($idespecialidad, $Nombre, $Objetivo, $Estado, $pdfReticula, $imagen);
     $i = 0;
     while ($stmt->fetch()) {
         $especialidad[$i][0] = $idespecialidad;
@@ -216,6 +218,7 @@ function getEspecialidadAdmin() {
         $especialidad[$i][2] = $Objetivo;
         $especialidad[$i][3] = $Estado;
         $especialidad[$i][4] = $pdfReticula;
+        $especialidad[$i][5] = $imagen;
         $i++;
     }
     $stmt->close();
@@ -396,4 +399,67 @@ function getAsesor() {
     }
     $stmt->close();
     return $asesorNam;
+}
+
+function getHistorialInfo() {
+    global $con;
+    $stmt = $con->prepare("call isic.sp_getHistorialInfo();");
+    $stmt->execute();
+    $stmt->bind_result($idhistorial, $HINombre, $HIObjetivo, $HIimagen);
+    $i = 0;
+    while ($stmt->fetch()) {
+        $historialInfo[$i][0] = $idhistorial;
+        $historialInfo[$i][1] = $HINombre;
+        $historialInfo[$i][2] = $HIObjetivo;
+        $historialInfo[$i][3] = $HIimagen;
+        $i++;
+    }
+    $stmt->close();
+    return $historialInfo;
+}
+
+function getContenidoHistorial($idH) {
+    global $con;
+    $stmt = $con->prepare("call isic.sp_getContenidoHistorial(?);");
+    $stmt->bind_param("i", $idH);
+    $stmt->execute();
+    $stmt->bind_result($nomContenidol);
+    $i = 0;
+    while ($stmt->fetch()) {
+        $contenHistorial[$i] = $nomContenidol;
+        $i++;
+    }
+    $stmt->close();
+    return $contenHistorial;
+}
+
+function getIdHistorial($nomb) {
+    global $con;
+    $stmt = $con->prepare("call isic.sp_getIdHistorial(?);");
+    $stmt->bind_param("s", $nomb);
+    $stmt->execute();
+    $stmt->bind_result($idhistorial);
+    $i = 0;
+    while ($stmt->fetch()) {
+        $idhisto[$i] = $idhistorial;
+        $i++;
+    }
+    $stmt->close();
+    return $idhisto;
+}
+
+function getDatosAPasarHistorial($esp) {
+    global $con;
+    $stmt = $con->prepare("call isic.sp_getDatosAPasarHistorial(?);");
+    $stmt->bind_param("i", $esp);
+    $stmt->execute();
+    $stmt->bind_result($MC_NombreAsignatura, $MC_PdfNombre);
+    $i = 0;
+    while ($stmt->fetch()) {
+        $pasarHistorial[$i][0] = $MC_NombreAsignatura;
+        $pasarHistorial[$i][1] = $MC_PdfNombre;
+        $i++;
+    }
+    $stmt->close();
+    return $pasarHistorial;
 }

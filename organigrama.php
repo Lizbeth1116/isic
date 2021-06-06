@@ -1,4 +1,6 @@
-<?php include('head.php'); ?>
+<?php include('head.php'); 
+$Docente = getDocente();
+?>
 <div class="organigrama topmargin-sm">
     <div class="container">
         <div class="level-1 rectangle">
@@ -40,35 +42,15 @@
                                                         <th>Correo</th>
                                                     </tr>
                                                 </thead>
-                                                <tr>
-                                                    <td>Hector Daniel Hernandez</td>
-                                                    <td>hhernandez@itsoeh.edu.mx</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Hector Daniel Hernandez</td>
-                                                    <td>hhernandez@itsoeh.edu.mx</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Hector Daniel Hernandez</td>
-                                                    <td>hhernandez@itsoeh.edu.mx</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Hector Daniel Hernandez</td>
-                                                    <td>hhernandez@itsoeh.edu.mx</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Hector Daniel Hernandez</td>
-                                                    <td>hhernandez@itsoeh.edu.mx</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Hector Daniel Hernandez</td>
-                                                    <td>hhernandez@itsoeh.edu.mx</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Hector Daniel Hernandez</td>
-                                                    <td>hhernandez@itsoeh.edu.mx</td>
-                                                </tr>
-                                                
+                                                <?php
+                                                for ($i = 0; $i<sizeof($Docente); $i++){
+                                                    echo '
+                                                    <tr>
+                                                        <td>'.$Docente[$i][1].'</td>
+                                                        <td>'.$Docente[$i][2].'</td>
+                                                    </tr>';
+                                                }
+                                                ?>
                                             </table>
                                         </div>
                                     </div>

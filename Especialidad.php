@@ -15,7 +15,7 @@ $espEgr = getPerfilEgreso($sp);
                 ?>
             </div>
         </div>
-        <?php echo '<img src="img/especialidades/' . $espInfo[0][0] . '.svg?1.0.0">' ?>
+        <?php echo '<img src="img/especialidades/' . $espInfo[0][3] . '?1.0.0">' ?>
 
     </section>
 

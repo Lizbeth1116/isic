@@ -48,21 +48,32 @@ if ($opGlobal < 5) {
 
 switch ($opGlobal):
     case 1://Admin Especialidad
-        $nomPdf = $_FILES['pdfReticula']['name'];
-        $guardadoPdf = $_FILES['pdfReticula']['tmp_name'];
-        if (strlen($nomPdf) > 0) {
-            if (file_exists("../pdf/malla/" . $_POST['nomOriPdfEsp'])) {
-                unlink("../pdf/malla/" . $_POST['nomOriPdfEsp']);
-            }
-            move_uploaded_file($guardadoPdf, '../pdf/malla/' . $nomPdf);
-            $newNomPdf = $nomPdf;
-        } else {
-            $newNomPdf = $_POST['nomOriPdfEsp'];
-        }
         switch ($opEsp):
             case 1:
-                $stmt = $con->prepare("call isic.sp_editarEsp(?,?,?,?)");
-                $stmt->bind_param("isss", $idespecialidadEsp, $nombreEsp, $objetivoEsp, $newNomPdf);
+                $nomPdf = $_FILES['pdfReticula']['name'];
+                $guardadoPdf = $_FILES['pdfReticula']['tmp_name'];
+                $nomImg = $_FILES['imagenEsp']['name'];
+                $guardadoImg = $_FILES['imagenEsp']['tmp_name'];
+                if (strlen($nomPdf) > 0) {
+                    if (file_exists("../pdf/malla/" . $_POST['nomOriPdfEsp'])) {
+                        unlink("../pdf/malla/" . $_POST['nomOriPdfEsp']);
+                    }
+                    move_uploaded_file($guardadoPdf, '../pdf/malla/' . $nomPdf);
+                    $newNomPdf = $nomPdf;
+                } else {
+                    $newNomPdf = $_POST['nomOriPdfEsp'];
+                }
+                if (strlen($nomImg) > 0) {
+                    if (file_exists("../img/especialidades/" . $_POST['nomOriImgEsp'])) {
+                        unlink("../img/especialidades/" . $_POST['nomOriImgEsp']);
+                    }
+                    move_uploaded_file($guardadoImg, '../img/especialidades/' . $nomImg);
+                    $newNomImg = $nomImg;
+                } else {
+                    $newNomImg = $_POST['nomOriImgEsp'];
+                }
+                $stmt = $con->prepare("call isic.sp_editarEsp(?,?,?,?,?)");
+                $stmt->bind_param("issss", $idespecialidadEsp, $nombreEsp, $objetivoEsp, $newNomPdf, $newNomImg);
                 break;
             case 2:
                 $stmt = $con->prepare("call isic.sp_editPEgreso(?,?,?)");
@@ -74,7 +85,6 @@ switch ($opGlobal):
                 break;
         endswitch;
         $aux = "Especialidad";
-        ;
         break;
     case 2://Admin Investigacion
         switch ($opInv) :
@@ -131,10 +141,10 @@ switch ($opGlobal):
                 $nomImg = $_FILES['ImgExp']['name'];
                 $guardadoImg = $_FILES['ImgExp']['tmp_name'];
                 if (strlen($nomImg) > 0) {
-                    if (file_exists('../img/expoISC/'.$CarpetaImag.'/' . $_POST['nomImagOri'])) {
-                        unlink('../img/expoISC/'.$CarpetaImag.'/' . $_POST['nomImagOri']);
+                    if (file_exists('../img/expoISC/' . $CarpetaImag . '/' . $_POST['nomImagOri'])) {
+                        unlink('../img/expoISC/' . $CarpetaImag . '/' . $_POST['nomImagOri']);
                     }
-                    move_uploaded_file($guardadoImg, '../img/expoISC/'.$CarpetaImag.'/' . $nomImg);
+                    move_uploaded_file($guardadoImg, '../img/expoISC/' . $CarpetaImag . '/' . $nomImg);
                     $newNomIng = $nomImg;
                 } else {
                     $newNomIng = $_POST['nomImagOri'];
@@ -149,6 +159,40 @@ switch ($opGlobal):
         $stmt = $con->prepare("call isic.sp_editAsesoria(?,?,?,?,?,?)");
         $stmt->bind_param("iisiii", $_POST['idAsesoria'], $_POST['docenteAs'], $_POST['asignaturaAs'], $_POST['horaIniAs'], $_POST['horaFinAs'], $_POST['diaAs']);
         $aux = "Asesorias";
+        break;
+    case 6://Pasar Especialidad a Historial
+        include("./Controlador.php");
+        $idAdverEsp = $_POST['idAdverEsp'];
+        $Info = getEspecialidadInfo($idAdverEsp);
+        $stmt = $con->prepare("call isic.sp_AddHistorialInfo(?,?,?)");
+        $stmt->bind_param("sss", $Info[0][0], $Info[0][1], $Info[0][3]);
+        $stmt->execute();
+        $stmt->close();
+
+        if (file_exists("../img/especialidades/" . $Info[0][3])) {
+            copy('../img/especialidades/' . $Info[0][3], '../img/especialidades/historial/' . $Info[0][3]);
+            unlink("../img/especialidades/" . $Info[0][3]);
+        }
+
+        if (file_exists("../pdf/malla/" . $Info[0][2])) {
+            unlink("../pdf/malla/" . $Info[0][2]);
+        }
+        $IdHistorial = getIdHistorial($Info[0][0]);
+        $contenido = getDatosAPasarHistorial($idAdverEsp);
+        for ($i = 0; $i < sizeof($contenido); $i++) {
+            if (file_exists("../pdf/asignaturas/" . $contenido[$i][1])) {
+                unlink("../pdf/asignaturas/" . $contenido[$i][1]);
+            }
+            $stmt = $con->prepare("call isic.sp_AddContenidoHistorial(?,?)");
+            $stmt->bind_param("is", $IdHistorial[0], $contenido[$i][0]);
+            $stmt->execute();
+            $stmt->close();
+        }
+        $stmt = $con->prepare("call isic.sp_DesHabEsp(?,?,?)");
+        $var1 = 0;
+        $var2 = 2;
+        $stmt->bind_param("iii", $idAdverEsp, $var1, $var2);
+        $aux = "Especialidad";
         break;
 endswitch;
 $stmt->execute();

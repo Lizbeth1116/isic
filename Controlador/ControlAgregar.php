@@ -43,20 +43,30 @@ if ($opGlobal != 4) {
 
 switch ($opGlobal):
     case 1://Admin Especialidad
-        $nomPdf = $_FILES['pdfReticulaAdd']['name'];
-        $guardadoPdf = $_FILES['pdfReticulaAdd']['tmp_name'];
-        if (!file_exists('../pdf/malla')) {
-            mkdir('../pdf/malla', 0777, TRUE);
-            if (file_exists('../pdf/malla')) {
-                move_uploaded_file($guardadoPdf, '../pdf/malla/' . $nomPdf);
-            }
-        } else {
-            move_uploaded_file($guardadoPdf, '../pdf/malla/' . $nomPdf);
-        }
         switch ($opEsp):
             case 1:
-                $stmt = $con->prepare("call isic.sp_AddEspecialidad(?,?,?)");
-                $stmt->bind_param("sss", $nombreEsp, $objetivoEsp, $nomPdf);
+                $nomPdf = $_FILES['pdfReticulaAdd']['name'];
+                $guardadoPdf = $_FILES['pdfReticulaAdd']['tmp_name'];
+                $nomImg = $_FILES['imagenAdd']['name'];
+                $guardadoImg = $_FILES['imagenAdd']['tmp_name'];
+                if (!file_exists('../pdf/malla')) {
+                    mkdir('../pdf/malla', 0777, TRUE);
+                    if (file_exists('../pdf/malla')) {
+                        move_uploaded_file($guardadoPdf, '../pdf/malla/' . $nomPdf);
+                    }
+                } else {
+                    move_uploaded_file($guardadoPdf, '../pdf/malla/' . $nomPdf);
+                }
+                if (!file_exists('../img/especialidades')) {
+                    mkdir('../img/especialidades', 0777, TRUE);
+                    if (file_exists('../img/especialidades')) {
+                        move_uploaded_file($guardadoImg, '../img/especialidades/' . $nomImg);
+                    }
+                } else {
+                    move_uploaded_file($guardadoImg, '../img/especialidades/' . $nomImg);
+                }
+                $stmt = $con->prepare("call isic.sp_AddEspecialidad(?,?,?,?)");
+                $stmt->bind_param("ssss", $nombreEsp, $objetivoEsp, $nomPdf, $nomImg);
                 break;
             case 2:
                 $stmt = $con->prepare("call isic.sp_AddPEgreEsp(?,?)");
@@ -111,13 +121,13 @@ switch ($opGlobal):
             case 1:
                 $nomImg = $_FILES['addImgExp']['name'];
                 $guardadoImg = $_FILES['addImgExp']['tmp_name'];
-                if (!file_exists('../img/expoISC/'.$addCarpetaImag)) {
-                    mkdir(('../img/expoISC/'.$addCarpetaImag), 0755, TRUE);
-                    if (file_exists('../img/expoISC/'.$addCarpetaImag)) {
-                        move_uploaded_file($guardadoImg, ('../img/expoISC/'.$addCarpetaImag.'/') . $nomImg);
+                if (!file_exists('../img/expoISC/' . $addCarpetaImag)) {
+                    mkdir(('../img/expoISC/' . $addCarpetaImag), 0755, TRUE);
+                    if (file_exists('../img/expoISC/' . $addCarpetaImag)) {
+                        move_uploaded_file($guardadoImg, ('../img/expoISC/' . $addCarpetaImag . '/') . $nomImg);
                     }
                 } else {
-                    move_uploaded_file($guardadoImg, ('../img/expoISC/'.$addCarpetaImag.'/') . $nomImg);
+                    move_uploaded_file($guardadoImg, ('../img/expoISC/' . $addCarpetaImag . '/') . $nomImg);
                 }
                 $stmt = $con->prepare("call isic.sp_AddImgExpo(?,?,?)");
                 $stmt->bind_param("iss", $addIdPeriImag, $addDescripcionExp, $nomImg);

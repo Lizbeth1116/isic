@@ -99,7 +99,7 @@ $listAsigEsp = getListAsigEspAdmin();
                                             </div>
                                             <div class="form-group">
                                                 <label for="pdfAsignaturaAdd" style="color:black;">PDF Datos Asignatura:</label>
-                                                <input type="file" accept="application/pdf" class="form-control" id="pdfAsignaturaAdd" name="pdfAsignaturaAdd" required>
+                                                <input type="file" accept="application/pdf" class="form-control" id="pdfAsignaturaAdd" name="pdfAsignaturaAdd">
                                                 <div class="valid-feedback">Valido.</div>
                                                 <div class="invalid-feedback">Por favor verifique los campos.</div>
                                             </div>

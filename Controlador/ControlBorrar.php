@@ -10,6 +10,9 @@ switch ($datos[0]):
         if (file_exists("../pdf/malla/" . $datos[4])) {
             unlink("../pdf/malla/" . $datos[4]);
         }
+        if (file_exists("../img/especialidades/" . $datos[5])) {
+            unlink("../img/especialidades/" . $datos[5]);
+        }
         $stmt = $con->prepare("call isic.sp_DesHabEsp(?,?,?)");
         $stmt->bind_param("iii", $datos[1], $datos[2], $datos[3]);
         $aux = "Especialidad";
