@@ -1,4 +1,5 @@
-<?php include('head.php'); 
+<?php
+include('head.php');
 $Docente = getDocente();
 ?>
 <div class="organigrama topmargin-sm">
@@ -43,12 +44,14 @@ $Docente = getDocente();
                                                     </tr>
                                                 </thead>
                                                 <?php
-                                                for ($i = 0; $i<sizeof($Docente); $i++){
-                                                    echo '
-                                                    <tr>
-                                                        <td>'.$Docente[$i][1].'</td>
-                                                        <td>'.$Docente[$i][2].'</td>
-                                                    </tr>';
+                                                for ($i = 0; $i < sizeof($Docente); $i++) {
+                                                    if ($Docente[$i][3] === 2) {
+                                                        echo '
+                                                        <tr>
+                                                            <td>' . $Docente[$i][1] . '</td>
+                                                            <td>' . $Docente[$i][2] . '</td>
+                                                        </tr>';
+                                                    }
                                                 }
                                                 ?>
                                             </table>
@@ -77,35 +80,17 @@ $Docente = getDocente();
                                                         <th>Correo</th>
                                                     </tr>
                                                 </thead>
-                                                <tr>
-                                                    <td>Hector Daniel Hernandez</td>
-                                                    <td>hhernandez@itsoeh.edu.mx</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Hector Daniel Hernandez</td>
-                                                    <td>hhernandez@itsoeh.edu.mx</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Hector Daniel Hernandez</td>
-                                                    <td>hhernandez@itsoeh.edu.mx</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Hector Daniel Hernandez</td>
-                                                    <td>hhernandez@itsoeh.edu.mx</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Hector Daniel Hernandez</td>
-                                                    <td>hhernandez@itsoeh.edu.mx</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Hector Daniel Hernandez</td>
-                                                    <td>hhernandez@itsoeh.edu.mx</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Hector Daniel Hernandez</td>
-                                                    <td>hhernandez@itsoeh.edu.mx</td>
-                                                </tr>
-                                                
+                                                <?php
+                                                for ($i = 0; $i < sizeof($Docente); $i++) {
+                                                    if ($Docente[$i][3] === 1) {
+                                                        echo '
+                                                        <tr>
+                                                            <td>' . $Docente[$i][1] . '</td>
+                                                            <td>' . $Docente[$i][2] . '</td>
+                                                        </tr>';
+                                                    }
+                                                }
+                                                ?>
                                             </table>
                                         </div>
                                     </div>

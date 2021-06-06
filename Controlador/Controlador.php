@@ -194,12 +194,13 @@ function getDocente() {
     global $con;
     $stmt = $con->prepare("call isic.sp_getDocente();");
     $stmt->execute();
-    $stmt->bind_result($iddocente, $Docente, $correo);
+    $stmt->bind_result($iddocente, $Docente, $correo, $tiempo);
     $i = 0;
     while ($stmt->fetch()) {
         $doce[$i][0] = $iddocente;
         $doce[$i][1] = $Docente;
         $doce[$i][2] = $correo;
+        $doce[$i][3] = $tiempo;
         $i++;
     }
     $stmt->close();
