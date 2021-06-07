@@ -38,7 +38,7 @@
 /*Fin animación imagen*/
 
 .peisc section:nth-child(1) {
-    background-image: linear-gradient(to top,#476ac9  0%, #4cb6b9 100%);
+    background-image: linear-gradient(to top,#6db4b4  0%, #363636 100%);
 }
 
 @media screen and (max-width: 1000px) {

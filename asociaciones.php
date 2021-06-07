@@ -2,10 +2,10 @@
 <div class="asociaciones">
     <section class="site-section"> 
         <div class="container texto">
-            <div class="section-heading text-center topmargin-xs">
+            <div class="section-heading text-center">
                 <h2><strong>ASOCIACIONES ESTRATEGICAS</strong></h2>
             </div>
-            <div class="row topmargin-xs">
+            <div class="row">
                 <div class="col-md-4">
                     <div class="resume-item mb-4 cisco">
                         <img src="img/asociaciones/cisco-w.png" class="logo-w">

@@ -34,6 +34,7 @@ session_start();
     <link rel="stylesheet" href="css/acreditacion.css?1.0.0"/>
     <link rel="stylesheet" href="css/organigrama.css?1.0.0">
     <link rel="stylesheet" href="css/asesorias.css">
+    <link rel="stylesheet" href="css/complementarias.css">
     <link rel="stylesheet" type="text/css" href="css/estilos.css" />
     <link rel="stylesheet" type="text/css" href="css/especialidad.css" />
     <link rel="stylesheet" type="text/css" href="css/normalize.css" />
