@@ -108,9 +108,8 @@ $servInfo = getServicio($_GET["idServ"]);
     ?>
     <?php
     if ($_GET["idServ"] == 3) {
-        echo '';
-    }
-    ?>
+        $complInfo = getComplementarias();
+        echo '
     <div class="complementaria">
         <div class="site-section">
             <div class="container texto">
@@ -118,104 +117,35 @@ $servInfo = getServicio($_GET["idServ"]);
                     <h2><strong>Actividades Complementarias Ofertadas por ISIC</strong></h2>
                 </div>
                 <div class="row topmargin-xs">
-                    <div class="col-md-12">
-                        <div class="resume-item mb-4">
-                            <h3><strong>Gamer ISIC</strong></h3>
-                            <div class="row">
-                                <div class="col-md-5"><img src="img/servicios/complementarias/game_isic.svg"></div>
-                                <div class="col-md-7">
-                                    <h4><strong>Objetivo</strong></h4>
-                                    <p>
-                                        Integrar un equipo de competencia para las diferentes ramas
-                                        de los e-sports, a través de la participación y practica de
-                                        estudiantes de los programas educativos de la institución,
-                                        para competir en torneos locales, estatales y/o nacionales
-                                    </p>
-                                    <p>
-                                        <button type="button" class="btn">Ver detalles</button>
-                                    </p>
-                                </div>
+                    <div class="col-md-12">';
+                    for ($i = 0; $i < sizeof($complInfo); $i++){
+                        if ($complInfo[$i][5] == 1) {
+                            echo '
+                            <div class="resume-item mb-4">
+                                <h3><strong>' . $complInfo[$i][1] . '</strong></h3>
+                                <div class="row">
+                                    <div class="col-md-5"><img src="img/servicios/complementarias/' . $complInfo[$i][3] . '"></div>
+                                    <div class="col-md-7">
+                                        <h4><strong>Objetivo</strong></h4>
+                                        <p>
+                                            ' . $complInfo[$i][2] . '
+                                        </p>
+                                        <p>
+                                            <a target="_black" href="http://' . $_SERVER['HTTP_HOST'] . '/isic/pdf/complementarias/' . $complInfo[$i][4] . '"><button type="button" class="btn">Ver detalles</button></a>
 
-                            </div>
-                        </div>
-                        <div class="resume-item mb-4">
-                            <h3><strong>Rally Networks</strong></h3>
-                            <div class="row">
-                                <div class="col-md-5"><img src="img/servicios/complementarias/really_networks.svg"></div>
-                                <div class="col-md-7">
-                                    <h4><strong>Objetivo</strong></h4>
-                                    <p>Brindar a las y los estudiantes de la carrera de Ingeniería en
-                                        Sistemas Computacionales, la oportunidad de probar sus
-                                        habilidades creando redes interactivas y demostrando tanto
-                                        sus conocimientos como aptitudes desarrolladas en los
-                                        cursos de Cisco Networking Academy
-                                    </p>
-                                    <p>
-                                        <button type="button" class="btn">Ver detalles</button>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="resume-item mb-4">
-                            <h3><strong>Robótica</strong></h3>
-                            <div class="row">
-                                <div class="col-md-5"><img src="img/servicios/complementarias/robotica.svg"></div>
-                                <div class="col-md-7">
-                                    <h4><strong>Objetivo</strong></h4>
-                                    <p>
-                                        Generar prototipos del área de robótica a través de la
-                                        participación de estudiantes y docentes de los diversos
-                                        programas educativos, que permitan competir en torneos
-                                        locales, estatales y/o nacionales.
-                                    </p>
-                                    <p>
-                                        <button type="button" class="btn">Ver detalles</button>
-                                    </p>
-                                </div>
+                                        </p>
+                                    </div>
 
-                            </div>
-                        </div>
-                        <div class="resume-item mb-4">
-                            <h3><strong>Taller de Lógica Matemática</strong></h3>
-                            <div class="row">
-                                <div class="col-md-5"><img src="img/servicios/complementarias/logica_matematica.svg"></div>
-                                <div class="col-md-7">
-                                    <h4><strong>Objetivo</strong></h4>
-                                    <p>
-                                        Desarrollar la lógica y reconocimiento de patrones de los
-                                        estudiantes utilizando rompecabezas tipo tangramas, el
-                                        juego en línea de aprendizaje de habilidades de
-                                        , y la plataforma en línea de
-                                        aprendizaje de habilidades de p
-                                    </p>
-                                    <p>
-                                        <button type="button" class="btn">Ver detalles</button>
-                                    </p>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="resume-item mb-4">
-                            <h3><strong>Taller de Fabrica de Software</strong></h3>
-                            <div class="row">
-                                <div class="col-md-5"><img src="img/servicios/complementarias/fabrica_de_software.svg"></div>
-                                <div class="col-md-7">
-                                    <h4><strong>Objetivo</strong></h4>
-                                    <p>
-                                        Desarrollar sistemas de información y aplicaciones de software,
-                                        mediante el uso de metodologías, hardware y software que den
-                                        solución a las necesidades en el área de Sistemas Computacionales
-                                        u algunas otras dentro del Instituto.
-                                    </p>
-                                    <p>
-                                        <button type="button" class="btn">Ver detalles</button>
-                                    </p>
-                                </div>
-
-                            </div>
-                        </div>
+                            </div>';
+                        }
+                    }
+                    echo '
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </div>';
+    }
+    ?>
     <?php include('footer.php'); ?>

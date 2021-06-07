@@ -64,6 +64,8 @@ if (!$_COOKIE['logueado']) {
                     <li><a href="AdminInvestigacion.php?1.0.0"><i class="bi bi-people"></i>Investigacion</a></li>
                     <li><a href="AdminExpo.php?1.0.0"><i class="bi bi-hdd-network"></i>Expo Sistemas</a></li>
                     <li><a href="AdminAsesorias.php?1.0.0"><i class="bi bi-file-earmark-person"></i>Asesorias</a></li>
+                    <li><a href="AdminComplementarias.php?1.0.0"><i class="bi bi-puzzle"></i>Complementarias</a></li>
+                    <li><a href="AdminHistorialEsp.php?1.0.0"><i class="bi bi-clock-history"></i>Hitorial Especialidad</a></li>
                 </ul>
             </nav>
         </div>

@@ -3,7 +3,7 @@
 include("../Config/Conexion.php");
 $con = conectar();
 $id = $_GET["id"];
-$datos = explode('_', $id);
+$datos = explode('*', $id);
 
 switch ($datos[0]):
     case 0: // Deshabilitar/Borrar Especialidad
@@ -46,25 +46,23 @@ switch ($datos[0]):
         $aux = "Investigacion";
         break;
     case 6: // Deshabilitar/Borrar Imagen Expo
-        $carpetaImg = $datos[5] . '_' . $datos[6];
-        if (file_exists("../img/expoISC/" . $carpetaImg . "/" . $datos[4])) {
-            unlink("../img/expoISC/" . $carpetaImg . "/" . $datos[4]);
+        if (file_exists("../img/expoISC/" . $datos[5] . "/" . $datos[4])) {
+            unlink("../img/expoISC/" . $datos[5] . "/" . $datos[4]);
         }
         $stmt = $con->prepare("call isic.sp_DesHabImagExpo(?,?,?)");
         $stmt->bind_param("iii", $datos[1], $datos[2], $datos[3]);
         $aux = "Expo";
         break;
     case 7: // Deshabilitar/Borrar Periodo Expo
-        $carpetaBorra = $datos[4] . '_' . $datos[5];
-        if (file_exists("../img/expoISC/" . $carpetaBorra)) {
-            $files = glob("../img/expoISC/" . $carpetaBorra . "/*");
+        if (file_exists("../img/expoISC/" . $datos[4])) {
+            $files = glob("../img/expoISC/" . $datos[4] . "/*");
             if (sizeof($files) > 0) {
                 foreach ($files as $file) {
                     if (is_file($file))
                         unlink($file); //elimino el fichero
                 }
             }
-            rmdir("../img/expoISC/" . $carpetaBorra);
+            rmdir("../img/expoISC/" . $datos[4]);
         }
         $stmt = $con->prepare("call isic.sp_DesHabExpo(?,?,?)");
         $stmt->bind_param("iii", $datos[1], $datos[2], $datos[3]);
@@ -74,6 +72,21 @@ switch ($datos[0]):
         $stmt = $con->prepare("call isic.sp_DesHabAsesoria(?,?,?)");
         $stmt->bind_param("iii", $datos[1], $datos[2], $datos[3]);
         $aux = "Asesorias";
+        break;
+    case 9: // Deshabilitar/Borrar Complementarias
+        if (file_exists("../pdf/complementarias/" . $datos[5])) {
+            unlink("../pdf/complementarias/" . $datos[5]);
+            
+        }
+        echo ("../pdf/complementarias/" . $datos[5]);
+        if (file_exists("../img/servicios/complementarias/" . $datos[4])) {
+            unlink("../img/servicios/complementarias/" . $datos[4]);
+            
+        }
+        echo ("<br>../img/servicios/complementarias/" . $datos[4]);
+        $stmt = $con->prepare("call isic.sp_DesHabComplement(?,?,?)");
+        $stmt->bind_param("iii", $datos[1], $datos[2], $datos[3]);
+        $aux = "Complementarias";
         break;
 endswitch;
 $stmt->execute();

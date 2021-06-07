@@ -62,11 +62,11 @@ $inv = getInv();
                                             <div class="btn-group btn-group-sm">
                                                 <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#myModal1Inv" onclick="datosModalInv1(\'' . $tema[$i][0] . '\', \'' . $tema[$i][1] . '\');"><i class="bi bi-pencil-square"></i></button>';
                     if ($tema[$i][2] === 1) {
-                        echo '<a type="" class="btn btn-secondary" href="Controlador/ControlBorrar.php?id=4_' . $tema[$i][0] . '_2_1"><i class = "bi bi-eye"></i></a>';
+                        echo '<a type="" class="btn btn-secondary" href="Controlador/ControlBorrar.php?id=4*' . $tema[$i][0] . '*2*1"><i class = "bi bi-eye"></i></a>';
                     } else {
-                        echo '<a type="" class="btn btn-secondary" href="Controlador/ControlBorrar.php?id=4_' . $tema[$i][0] . '_1_1"><i class = "bi bi-eye-slash"></i></a>';
+                        echo '<a type="" class="btn btn-secondary" href="Controlador/ControlBorrar.php?id=4*' . $tema[$i][0] . '*1*1"><i class = "bi bi-eye-slash"></i></a>';
                     }
-                    echo '<a type="" class="btn btn-secondary" href="Controlador/ControlBorrar.php?id=4_' . $tema[$i][0] . '_0_2"><i class="bi bi-trash-fill"></i></a>
+                    echo '<a type="" class="btn btn-secondary" href="Controlador/ControlBorrar.php?id=4*' . $tema[$i][0] . '*0*2"><i class="bi bi-trash-fill"></i></a>
                                             </div>
                                             <div class="modal topmargin-sm" id="myModal1Inv">
                                                 <div class="modal-dialog">
@@ -202,11 +202,11 @@ $inv = getInv();
                                         <div class="btn-group btn-group-sm">
                                             <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#myModalInv" onclick="datosModalInv2(\'' . $inv[$i][0] . '\', \'' . $inv[$i][3] . '\', \'' . $inv[$i][5] . '\');"><i class="bi bi-pencil-square"></i></button>';
                     if ($inv[$i][6] === 1) {
-                        echo '<a type="button" class="btn btn-secondary" href="Controlador/ControlBorrar.php?id=5_' . $inv[$i][0] . '_' . $inv[$i][3] . '_2_1"><i class = "bi bi-eye"></i></a>';
+                        echo '<a type="button" class="btn btn-secondary" href="Controlador/ControlBorrar.php?id=5*' . $inv[$i][0] . '*' . $inv[$i][3] . '*2*1"><i class = "bi bi-eye"></i></a>';
                     } else {
-                        echo '<a type="button" class="btn btn-secondary" href="Controlador/ControlBorrar.php?id=5_' . $inv[$i][0] . '_' . $inv[$i][3] . '_1_1"><i class = "bi bi-eye-slash"></i></a>';
+                        echo '<a type="button" class="btn btn-secondary" href="Controlador/ControlBorrar.php?id=5*' . $inv[$i][0] . '*' . $inv[$i][3] . '*1*1"><i class = "bi bi-eye-slash"></i></a>';
                     }
-                    echo '<a type="button" class="btn btn-secondary" href="Controlador/ControlBorrar.php?id=5_' . $inv[$i][0] . '_' . $inv[$i][3] . '_0_2"><i class="bi bi-trash-fill"></i></a>
+                    echo '<a type="button" class="btn btn-secondary" href="Controlador/ControlBorrar.php?id=5*' . $inv[$i][0] . '*' . $inv[$i][3] . '*0*2"><i class="bi bi-trash-fill"></i></a>
                                         </div>
                                         <div class="modal topmargin-sm" id="myModalInv">
                                             <div class="modal-dialog">

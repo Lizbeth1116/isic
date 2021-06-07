@@ -29,7 +29,7 @@ $HistorialInfo = getHistorialInfo();
                                         <ul>';
                                         $ContenidoHistorial = getContenidoHistorial($HistorialInfo[$i][0]);
                                         for ($j = 0; $j < sizeof($ContenidoHistorial); $j++){
-                                            echo '<li>'.$ContenidoHistorial[$j].'</li>';
+                                            echo '<li>'.$ContenidoHistorial[$j][0].'</li>';
                                         }
                                         echo '
                                         </ul>
