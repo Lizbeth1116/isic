@@ -188,7 +188,7 @@ switch ($opGlobal):
         $stmt->bind_param("iii", $idAdverEsp, $var1, $var2);
         $aux = "Especialidad";
         break;
-    case 7:
+    case 7://Admin Complementarias
         $idComplement = $_POST['idComplement'];
         $nombreComplement = $_POST['nombreComplement'];
         $descComplement = $_POST['descComplement'];
@@ -217,6 +217,41 @@ switch ($opGlobal):
         $stmt = $con->prepare("call isic.sp_editComplementarias(?,?,?,?,?)");
         $stmt->bind_param("ssssi", $nombreComplement, $descComplement, $newNomImg, $newNomPdf, $idComplement);
         $aux = "Complementarias";
+        break;
+
+    case 8://Admin Historial Especialidad
+        $opHist = $_POST['opHist'];
+        switch ($opHist):
+            case 1:
+                $idHist = $_POST['idHist'];
+                $nombreHist = $_POST['nombreHist'];
+                $objHist = $_POST['objHist'];
+                $nomImg = $_FILES['imagenHist']['name'];
+                $guardadoImg = $_FILES['imagenHist']['tmp_name'];
+                
+                if (strlen($nomImg) > 0) {
+                    echo ("../img/especialidades/historial/" . $_POST['imagenOriHist']);
+                    if (file_exists("../img/especialidades/historial/" . $_POST['imagenOriHist'])) {
+                        unlink("../img/especialidades/historial/" . $_POST['imagenOriHist']);
+                    }
+                    move_uploaded_file($guardadoImg, '../img/especialidades/historial/' . $nomImg);
+                    $newNomImg = $nomImg;
+                } else {
+                    $newNomImg = $_POST['imagenOriHist'];
+                }
+                $stmt = $con->prepare("call isic.sp_editHitorialEsp(?,?,?,?)");
+                $stmt->bind_param("isss", $idHist, $nombreHist, $objHist, $newNomImg);
+                break;
+            case 2:
+                $espConteHisto = $_POST['espConteHisto'];
+                $nombreCont = $_POST['nombreCont'];
+                $nombreOriCont = $_POST['nombreOriCont'];
+                $espOriCont = $_POST['espOriCont'];
+                $stmt = $con->prepare("call isic.sp_editContenidoHis(?,?,?,?)");
+                $stmt->bind_param("isis", $espOriCont, $nombreOriCont, $espConteHisto, $nombreCont);
+                break;
+        endswitch;
+        $aux = "HistorialEsp";
         break;
 endswitch;
 $stmt->execute();

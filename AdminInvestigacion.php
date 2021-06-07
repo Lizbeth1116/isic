@@ -120,70 +120,71 @@ $inv = getInv();
                     <th>Grado Académico</th>
                     <th>Profesor</th>
                     <th>Cargo</th>
-                    <th><button type="button" class="btn btn-light" data-toggle="modal" data-target="#myModal1AddCol"><i class="bi bi-plus-circle"></i></button></th>
-            <div class="modal topmargin-sm" id="myModal1AddCol">
-                <div class="modal-dialog">
-                    <div class="modal-content">
+                    <th><button type="button" class="btn btn-light" data-toggle="modal" data-target="#myModal1AddCol"><i class="bi bi-plus-circle"></i></button>
+                        <div class="modal topmargin-sm" id="myModal1AddCol">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
 
-                        <!-- Modal Header-->
-                        <div class="modal-header">
-                            <h5 class="modal-title" style="color:darkslategrey;">Agregar</h5>
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <!-- Modal Header-->
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" style="color:darkslategrey;">Agregar</h5>
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    </div>
+
+                                    <!-- Modal body -->
+                                    <div class="modal-body">
+                                        <form class="needs-validation" novalidate action="Controlador/ControlAgregar.php" method="POST">
+
+                                            <div class="from-group">
+                                                <label for="temaInvAdd" style="color:black;">Tema de Investigación:</label>
+                                                <select id="temaInvAdd" name="temaInvAdd" class="custom-select mb-3 form-control" required>
+                                                    <option selected>-Selecciona-</option>';
+                                                    <?php
+                                                    for ($j = 0; $j < sizeof($tema); $j++) {
+                                                        echo '<option value="' . $tema[$j][0] . '">' . $tema[$j][1] . '</option>';
+                                                    }
+                                                    echo '</select>
+                                                            <div class="valid-feedback">Valido.</div>
+                                                            <div class="invalid-feedback">Por favor verifique los campos.</div>
+                                                        </div>
+
+                                                        <div class="from-group">
+                                                            <label for="docenteInvAdd" style="color:black;">Docente:</label>
+                                                            <select id="docenteInvAdd" name="docenteInvAdd" class="custom-select mb-3 form-control" required>
+                                                                <option selected>-Selecciona-</option>';
+                                                    for ($j = 0; $j < sizeof($doce); $j++) {
+                                                        echo '<option value="' . $doce[$j][0] . '">' . $doce[$j][1] . '</option>';
+                                                    }
+                                                    ?></select>
+                                                <div class="valid-feedback">Valido.</div>
+                                                <div class="invalid-feedback">Por favor verifique los campos.</div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="cargoInvAdd" style="color:black;">Cargo:</label>
+                                                <select id="cargoInvAdd" name="cargoInvAdd" class="custom-select mb-3 form-control" required>
+                                                    <option selected>-Selecciona-</option>
+                                                    <option value="1">Lider</option>
+                                                    <option value="2">Colaborador</option>                                                     
+                                                </select>
+                                                <div class="valid-feedback">Valido.</div>
+                                                <div class="invalid-feedback">Por favor verifique los campos.</div>
+                                            </div>
+                                            <div class="form-group" style="display:none">
+                                                <input type="text" class="form-control" id="opInv" name="opInv" value="2">
+                                            </div>
+                                            <div class="form-group" style="display:none">
+                                                <input type="text" class="form-control" id="opGlobal" name="opGlobal" value="2">
+                                            </div>
+                                            <button type="submit" class="btn btn-primary">Aceptar</button>
+                                            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-
-                        <!-- Modal body -->
-                        <div class="modal-body">
-                            <form class="needs-validation" novalidate action="Controlador/ControlAgregar.php" method="POST">
-
-                                <div class="from-group">
-                                    <label for="temaInvAdd" style="color:black;">Tema de Investigación:</label>
-                                    <select id="temaInvAdd" name="temaInvAdd" class="custom-select mb-3 form-control" required>
-                                        <option selected>-Selecciona-</option>';
-                                        <?php
-                                        for ($j = 0; $j < sizeof($tema); $j++) {
-                                            echo '<option value="' . $tema[$j][0] . '">' . $tema[$j][1] . '</option>';
-                                        }
-                                        echo '</select>
-                                    <div class="valid-feedback">Valido.</div>
-                                    <div class="invalid-feedback">Por favor verifique los campos.</div>
-                                </div>
-
-                                <div class="from-group">
-                                    <label for="docenteInvAdd" style="color:black;">Docente:</label>
-                                    <select id="docenteInvAdd" name="docenteInvAdd" class="custom-select mb-3 form-control" required>
-                                        <option selected>-Selecciona-</option>';
-                                        for ($j = 0; $j < sizeof($doce); $j++) {
-                                            echo '<option value="' . $doce[$j][0] . '">' . $doce[$j][1] . '</option>';
-                                        }
-                                        ?></select>
-                                    <div class="valid-feedback">Valido.</div>
-                                    <div class="invalid-feedback">Por favor verifique los campos.</div>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="cargoInvAdd" style="color:black;">Cargo:</label>
-                                    <select id="cargoInvAdd" name="cargoInvAdd" class="custom-select mb-3 form-control" required>
-                                        <option selected>-Selecciona-</option>
-                                        <option value="1">Lider</option>
-                                        <option value="2">Colaborador</option>                                                     
-                                    </select>
-                                    <div class="valid-feedback">Valido.</div>
-                                    <div class="invalid-feedback">Por favor verifique los campos.</div>
-                                </div>
-                                <div class="form-group" style="display:none">
-                                    <input type="text" class="form-control" id="opInv" name="opInv" value="2">
-                                </div>
-                                <div class="form-group" style="display:none">
-                                    <input type="text" class="form-control" id="opGlobal" name="opGlobal" value="2">
-                                </div>
-                                <button type="submit" class="btn btn-primary">Aceptar</button>
-                                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            </tr>
+                    </th>
+                </tr>
             </thead>
             <tbody>
                 <?php

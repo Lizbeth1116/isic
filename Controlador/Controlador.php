@@ -436,6 +436,23 @@ function getContenidoHistorial($idH) {
     return $contenHistorial;
 }
 
+function getContenidoHistorialAdmin() {
+    global $con;
+    $stmt = $con->prepare("call isic.sp_getContenidoHistorialAdmin();");
+    $stmt->execute();
+    $stmt->bind_result($nomContenidol, $Estado, $HINombre, $idhistorial);
+    $i = 0;
+    while ($stmt->fetch()) {
+        $contenHistorialA[$i][0] = $nomContenidol;
+        $contenHistorialA[$i][1] = $Estado;
+        $contenHistorialA[$i][2] = $HINombre;
+        $contenHistorialA[$i][3] = $idhistorial;
+        $i++;
+    }
+    $stmt->close();
+    return $contenHistorialA;
+}
+
 function getIdHistorial($nomb) {
     global $con;
     $stmt = $con->prepare("call isic.sp_getIdHistorial(?);");

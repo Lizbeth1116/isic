@@ -88,6 +88,19 @@ switch ($datos[0]):
         $stmt->bind_param("iii", $datos[1], $datos[2], $datos[3]);
         $aux = "Complementarias";
         break;
+    case 10: // Historial Especialidad
+        if (file_exists("../img/especialidades/historial/" . $datos[4])) {
+            unlink("../img/especialidades/historial/" . $datos[4]);
+        }
+        $stmt = $con->prepare("call isic.sp_DesHabHist(?,?,?)");
+        $stmt->bind_param("iii", $datos[1], $datos[2], $datos[3]);
+        $aux = "HistorialEsp";
+        break; 
+    case 11: // Contenido Historial Especialidad
+        $stmt = $con->prepare("call isic.sp_DesHabContenidoHis(?,?,?,?)");
+        $stmt->bind_param("isii", $datos[1], $datos[2], $datos[3], $datos[4]);
+        $aux = "HistorialEsp";
+        break; 
 endswitch;
 $stmt->execute();
 $stmt->close();

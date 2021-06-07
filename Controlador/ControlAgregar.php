@@ -164,6 +164,35 @@ switch ($opGlobal):
         $stmt->bind_param("ssss", $nombreComplement, $descComplement, $nomImg, $nomPdf);
         $aux = "Complementarias";
         break;
+
+    case 7://Admin Historial Especialidad
+        $opHist = $_POST['opHist'];
+        switch ($opHist):
+            case 1:
+                $nombreHist = $_POST['nombreHistAdd'];
+                $objetivoHist = $_POST['objHistAdd'];
+                $nomImg = $_FILES['imagenHistAdd']['name'];
+                $guardadoImg = $_FILES['imagenHistAdd']['tmp_name'];
+                if (!file_exists('../img/especialidades')) {
+                    mkdir('../img/especialidades/historial', 0777, TRUE);
+                    if (file_exists('../img/especialidades/historial')) {
+                        move_uploaded_file($guardadoImg, '../img/especialidades/historial/' . $nomImg);
+                    }
+                } else {
+                    move_uploaded_file($guardadoImg, '../img/especialidades/historial/' . $nomImg);
+                }
+                $stmt = $con->prepare("call isic.sp_AddHistorialInfo(?,?,?)");
+                $stmt->bind_param("sss", $nombreHist, $objetivoHist, $nomImg);
+                break;
+            case 2:
+                $espConteHisto = $_POST['espConteHistoAdd'];
+                $nombreCont = $_POST['nombreContAdd'];
+                $stmt = $con->prepare("call isic.sp_AddContenidoHis(?,?)");
+                $stmt->bind_param("is", $espConteHisto, $nombreCont);
+                break;
+        endswitch;
+        $aux = "HistorialEsp";
+        break;  
 endswitch;
 $stmt->execute();
 $stmt->close();
