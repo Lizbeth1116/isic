@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3308
--- Tiempo de generación: 03-06-2021 a las 01:50:11
+-- Tiempo de generación: 08-06-2021 a las 22:53:26
 -- Versión del servidor: 10.4.6-MariaDB
 -- Versión de PHP: 7.3.8
 
@@ -37,8 +37,8 @@ IF @area <> 8 then
 	INSERT INTO `isic`.`mallacurricular` (`MC_ClaveAsignatura`, `MC_NombreAsignatura`, `MC_SemestreAsignatura`, `MC_HorasTot`, `MC_Area`, `MC_PdfNombre`) 
 	VALUES (clav, asig, sem, hor, @area, pdf);
 else 
-	INSERT INTO `isic`.`mallacurricular` (`MC_ClaveAsignatura`, `MC_NombreAsignatura`, `MC_SemestreAsignatura`, `MC_HorasTot`, `MC_Area`, `MC_PdfNombre`) 
-	VALUES (clav, asig, sem, hor, @area, pdf);
+	INSERT INTO `isic`.`mallacurricular` (`MC_ClaveAsignatura`, `MC_NombreAsignatura`, `MC_SemestreAsignatura`, `MC_HorasTot`, `MC_Area`, `MC_PdfNombre`, `MC_Especialidad`) 
+	VALUES (clav, asig, sem, hor, @area, pdf, esp);
 	INSERT INTO `isic`.`asignaturas_esp` (`idespecialidad`, `idasignatura`) 
     VALUES (esp, clav);
 END IF;
@@ -49,9 +49,29 @@ INSERT INTO `isic`.`linea_investigacion` (`temalinea`, `Docente`, `CargoDocente`
 VALUES (tema, docent, cargo);
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_AddEspecialidad` (`nom` VARCHAR(100), `obj` VARCHAR(600), `pdf` VARCHAR(100))  BEGIN
-INSERT INTO `isic`.`especialidad` (`Nombre`, `Objetivo`,`pdfReticula`) 
-VALUES (nom, obj, pdf);
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_AddComplementarias` (`nom` VARCHAR(60), `descrip` VARCHAR(600), `imag` VARCHAR(100), `pdf` VARCHAR(100))  BEGIN
+INSERT INTO `isic`.`complementarias` (`Nombre`, `Descripcion`, `Imagen`, `Pdf`) 
+VALUES (nom, descrip, imag, pdf);
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_AddContenidoHis` (`id` INT, `nom` VARCHAR(100))  BEGIN
+INSERT INTO `isic`.`historial_contenido` (`idhistorial`, `nomContenidol`) 
+VALUES (id, nom);
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_AddContenidoHistorial` (`id` INT, `nom` VARCHAR(60))  BEGIN
+INSERT INTO `isic`.`historial_contenido` (`idhistorial`, `nomContenidol`) 
+VALUES (id, nom);
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_AddEspecialidad` (`nom` VARCHAR(100), `obj` VARCHAR(600), `pdf` VARCHAR(100), `imag` VARCHAR(100))  BEGIN
+INSERT INTO `isic`.`especialidad` (`Nombre`, `Objetivo`, `pdfReticula`, `imagen`) 
+VALUES (nom, obj, pdf, imag);
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_AddHistorialInfo` (`nom` VARCHAR(100), `obj` VARCHAR(600), `imag` VARCHAR(100))  BEGIN
+INSERT INTO `isic`.`historial_esp` (`HINombre`, `HIObjetivo`, `HIimagen`) 
+VALUES (nom, obj, imag);
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_AddImgExpo` (`idPeri` INT, `descrip` VARCHAR(60), `imagenNom` VARCHAR(60))  BEGIN
@@ -105,6 +125,31 @@ WHERE (`idespecialidad` = idesp) and (`idasignatura` = idasig);
 end if;
 END$$
 
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_DesHabComplement` (`id` INT, `estado` INT, `op` INT)  BEGIN
+
+IF op = 1 then
+UPDATE `isic`.`complementarias` SET `Estado` = estado WHERE (`idComplementarias` = id);
+
+elseif op = 2 then
+DELETE FROM `isic`.`complementarias`
+WHERE `idComplementarias` = id;
+end if;
+
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_DesHabContenidoHis` (`id` INT, `nom` VARCHAR(100), `estado` INT, `op` INT)  BEGIN
+
+IF op = 1 then
+UPDATE `isic`.`historial_contenido` SET `Estado` = estado 
+WHERE (`idhistorial` = id) and (`nomContenidol` = nom);
+
+elseif op = 2 then
+DELETE FROM `isic`.`historial_contenido`
+WHERE (`idhistorial` = id) and (`nomContenidol` = nom);
+end if;
+
+END$$
+
 CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_DesHabEsp` (`esp` INT, `estado` INT, `op` INT)  BEGIN
 IF op = 1 then
 UPDATE `isic`.`especialidad` SET `Estado` = estado WHERE (`idespecialidad` = esp);
@@ -126,6 +171,18 @@ DELETE FROM `isic`.`periodoexpo`
 where `idperiodoExpo` = idPer;
 
 end if;
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_DesHabHist` (`id` INT, `estado` INT, `op` INT)  BEGIN
+
+IF op = 1 then
+UPDATE `isic`.`historial_esp` SET `Estado` = estado WHERE (`idhistorial` = id);
+
+elseif op = 2 then
+DELETE FROM `isic`.`historial_esp`
+WHERE `idhistorial` = id;
+end if;
+
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_DesHabImagExpo` (`idImg` INT, `estado` INT, `op` INT)  BEGIN
@@ -210,8 +267,8 @@ ELSEIF @area = 8 and op = 1 then
 END IF;
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_editarEsp` (`idesp` INT, `nom` VARCHAR(100), `obj` VARCHAR(600), `pdf` VARCHAR(100))  BEGIN
-UPDATE `isic`.`especialidad` SET `Nombre` = nom, `Objetivo` = obj, `pdfReticula` = pdf 
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_editarEsp` (`idesp` INT, `nom` VARCHAR(100), `obj` VARCHAR(600), `pdf` VARCHAR(100), `imag` VARCHAR(100))  BEGIN
+UPDATE `isic`.`especialidad` SET `Nombre` = nom, `Objetivo` = obj, `pdfReticula` = pdf, `imagen` = imag 
 WHERE (`idespecialidad` = idesp);
 END$$
 
@@ -229,6 +286,25 @@ END$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_editAsigEsp` (`idesp` INT, `idasig` VARCHAR(10), `des` VARCHAR(600))  BEGIN
 UPDATE `isic`.`asignaturas_esp` SET `descripcion` = des 
 WHERE (`idespecialidad` = idesp) and (`idasignatura` = idasig);
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_editComplementarias` (`nom` VARCHAR(60), `descrip` VARCHAR(600), `imag` VARCHAR(100), `pdf` VARCHAR(100), `id` INT)  BEGIN
+UPDATE `isic`.`complementarias` 
+SET `Nombre` = nom, `Descripcion` = descrip, `Imagen` = imag, `Pdf` = pdf 
+WHERE (`idComplementarias` = id);
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_editContenidoHis` (`id` INT, `nom` VARCHAR(100), `idn` INT, `nomn` VARCHAR(100))  BEGIN
+UPDATE `isic`.`historial_contenido` 
+SET `idhistorial` = idn, `nomContenidol` = nomn 
+WHERE (`idhistorial` = id) and (`nomContenidol` = nom);
+
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_editHitorialEsp` (`id` INT, `nom` VARCHAR(100), `obj` VARCHAR(600), `imag` VARCHAR(100))  BEGIN
+UPDATE `isic`.`historial_esp` 
+SET `HINombre` = nom, `HIObjetivo` = obj, `HIimagen` = imag 
+WHERE (`idhistorial` = id);
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_editImgExpo` (`idImg` INT, `descrip` VARCHAR(60), `imagenNom` VARCHAR(60))  BEGIN
@@ -258,7 +334,7 @@ where idespecialidad = pes and Estado = 1;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_especialidad` (`pes` INT)  BEGIN
-SELECT Nombre, Objetivo, pdfReticula
+SELECT Nombre, Objetivo, pdfReticula, imagen
 FROM isic.especialidad
 where idespecialidad = pes;
 END$$
@@ -295,8 +371,30 @@ FROM isic.asignaturas_esp ae join isic.especialidad es
 on ae.idespecialidad = es.idespecialidad;
 END$$
 
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_getComplementarias` ()  BEGIN
+SELECT * FROM isic.complementarias;
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_getContenidoHistorial` (`id` INT)  BEGIN
+SELECT nomContenidol, Estado
+FROM isic.historial_contenido
+where idhistorial = id;
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_getContenidoHistorialAdmin` ()  BEGIN
+SELECT c.nomContenidol, c.Estado, i.HINombre, c.idhistorial 
+FROM isic.historial_contenido c join isic.historial_esp i 
+on (c.idhistorial = i.idhistorial);
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_getDatosAPasarHistorial` (`esp` INT)  BEGIN
+SELECT MC_NombreAsignatura, MC_PdfNombre 
+FROM isic.mallacurricular 
+where MC_Especialidad = esp;
+END$$
+
 CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_getDocente` ()  BEGIN
-select iddocente, concat_ws(" ", Nombre, APaterno, AMaterno) as Docente
+select iddocente, concat_ws(" ", Nombre, APaterno, AMaterno) as Docente, correo, tiempo 
 FROM isic.docente;
 END$$
 
@@ -308,6 +406,16 @@ END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_getEspecialidadAdmin` ()  BEGIN
 SELECT * FROM isic.especialidad;
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_getHistorialInfo` ()  BEGIN
+SELECT * FROM isic.historial_esp;
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_getIdHistorial` (`nom` VARCHAR(100))  BEGIN
+SELECT idhistorial 
+FROM isic.historial_esp
+where HINombre = nom;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_getImagenesExpo` (`per` INT)  BEGIN
@@ -482,6 +590,32 @@ INSERT INTO `asignaturas_esp` (`idespecialidad`, `idasignatura`, `descripcion`, 
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `complementarias`
+--
+
+CREATE TABLE `complementarias` (
+  `idComplementarias` int(11) NOT NULL,
+  `Nombre` varchar(60) DEFAULT NULL,
+  `Descripcion` varchar(600) DEFAULT NULL,
+  `Imagen` varchar(100) DEFAULT 'Sin Imagen',
+  `Pdf` varchar(100) DEFAULT 'Sin Archivo',
+  `Estado` varchar(45) DEFAULT '1'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `complementarias`
+--
+
+INSERT INTO `complementarias` (`idComplementarias`, `Nombre`, `Descripcion`, `Imagen`, `Pdf`, `Estado`) VALUES
+(1, 'Gamer ISIC', 'Integrar un equipo de competencia para las diferentes ramas de los e-sports, a través de la participación y practica de estudiantes de los programas educativos de la institución, para competir en torneos locales, estatales y/o nacionales.', 'game_isic.svg', 'formato de registro de actividades complementarias GamerISIC 2021.pdf', '1'),
+(2, 'Rally Networks', 'Brindar a las y los estudiantes de la carrera de Ingeniería en Sistemas Computacionales, la oportunidad de probar sus habilidades creando redes interactivas y demostrando tanto sus conocimientos como aptitudes desarrolladas en los cursos de Cisco Networking Academy.', 'really_networks.svg', 'formato de registro de actividades complementarias RallyNetworksISIC 2021 vf.pdf', '1'),
+(3, 'Robótica', 'Generar prototipos del área de robótica a través de la participación de estudiantes y docentes de los diversos programas educativos, que permitan competir en torneos locales, estatales y/o nacionales.', 'robotica.svg', 'formato de registro de actividades complementarias Robótica 2021.pdf', '1'),
+(4, 'Taller de Lógica MatemáticaTaller de Lógica Matemática', 'Desarrollar la lógica y reconocimiento de patrones de los estudiantes utilizando rompecabezas tipo tangramas, el juego en línea de aprendizaje de habilidades de , y la plataforma en línea de aprendizaje de habilidades de p', 'logica_matematica.svg', 'formato de registro de actividades complementarias Taller de LógicaMatemática 2021.pdf', '1'),
+(5, 'Taller de Fabrica de Software', 'Desarrollar sistemas de información y aplicaciones de software, mediante el uso de metodologías, hardware y software que den solución a las necesidades en el área de Sistemas Computacionales u algunas otras dentro del Instituto.', 'fabrica_de_software.svg', 'formato de registro de actividades complementarias Taller FabricaDeSoftware 2021.pdf', '1');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `docente`
 --
 
@@ -490,29 +624,33 @@ CREATE TABLE `docente` (
   `GradoAcademico` varchar(15) DEFAULT NULL,
   `Nombre` varchar(45) DEFAULT NULL,
   `APaterno` varchar(45) DEFAULT NULL,
-  `AMaterno` varchar(45) DEFAULT NULL
+  `AMaterno` varchar(45) DEFAULT NULL,
+  `correo` varchar(45) DEFAULT NULL,
+  `tiempo` int(11) DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `docente`
 --
 
-INSERT INTO `docente` (`iddocente`, `GradoAcademico`, `Nombre`, `APaterno`, `AMaterno`) VALUES
-(1, 'Ingeniería', 'Javier', 'Pérez', 'Escamilla'),
-(2, 'Maestria', 'Lorena', 'Mendoza', 'Gúzman'),
-(3, 'Maestria', 'Dulce Jazmín', 'Navarrete', 'Arias'),
-(4, 'Maestria', 'Rodolfo', 'Luna', 'Pérez'),
-(5, 'Maestria', 'Mario', 'Pérez', 'Bautista'),
-(6, 'Maestria', 'Cristy Elizabeth', 'Aguilar', 'Ojeda'),
-(7, 'Maestria', 'Héctor Daniel', 'Hernández', 'García'),
-(8, 'Maestria', 'Eliud', 'Paredes', 'Reyes'),
-(9, 'Doctorado', 'Elizabeth', 'García', 'Ríos'),
-(10, 'Maestria', 'Guadalupe', 'Calvo', 'Torres'),
-(11, 'Maestria', 'Aline', 'Pérez', 'Martínez'),
-(12, 'Maestria', 'Juan Carlos', 'Céron', 'Almaraz'),
-(13, 'Maestria', 'Sergio', 'Cruz', 'Pérez'),
-(14, 'Maestria', 'Guillermo', 'Castañeda', 'Ortíz'),
-(15, 'Ingeniería', 'Jorge Armando', 'Garcia', 'Bautista');
+INSERT INTO `docente` (`iddocente`, `GradoAcademico`, `Nombre`, `APaterno`, `AMaterno`, `correo`, `tiempo`) VALUES
+(1, 'Ingeniería', 'Javier', 'Pérez', 'Escamilla', 'javierperez@itsoeh.edu.mx', 2),
+(2, 'Maestria', 'Lorena', 'Mendoza', 'Gúzman', 'lmendozag@itsoeh.edu.mx', 2),
+(3, 'Maestria', 'Dulce Jazmín', 'Navarrete', 'Arias', 'dnavarrete@itsoeh.edu.mx', 1),
+(5, 'Maestria', 'Mario', 'Pérez', 'Bautista', 'mperez@itsoeh.edu.mx', 2),
+(6, 'Maestria', 'Cristy Elizabeth', 'Aguilar', 'Ojeda', 'caguilar@itsoeh.edu.mx', 2),
+(7, 'Maestria', 'Héctor Daniel', 'Hernández', 'García', 'hhernandez@itsoeh.edu.mx', 2),
+(8, 'Maestria', 'Eliud', 'Paredes', 'Reyes', 'eparedes@itsoeh.edu.mx', 2),
+(9, 'Doctorado', 'Elizabeth', 'García', 'Ríos', 'egarciar@itsoeh.edu.mx', 2),
+(10, 'Maestria', 'Guadalupe', 'Calvo', 'Torres', 'gcalvo@itsoeh.edu.mx', 1),
+(11, 'Maestria', 'Aline', 'Pérez', 'Martínez', 'aperez@itsoeh.edu.mx', 1),
+(12, 'Maestria', 'Juan Carlos', 'Céron', 'Almaraz', 'jcerona@itsoeh.edu.mx', 1),
+(13, 'Maestria', 'Sergio', 'Cruz', 'Pérez', 'scruzp@itsoeh.edu.mx', 1),
+(14, 'Maestria', 'Guillermo', 'Castañeda', 'Ortíz', 'gcastaneda@itsoeh.edu.mx', 1),
+(15, 'Ingeniería', 'Jorge Armando', 'Garcia', 'Bautista', 'jgarciab@itsoeh.edu.mx', 1),
+(16, 'Maestria', 'Juan Lucino', 'Lugo', 'López', 'llugol@itsoeh.edu.mx', 1),
+(17, 'Maestria', 'Juan Adolfo', 'Alvarez', 'Martínez', 'jaalvarez@itsoeh.edu.mx', 1),
+(18, 'Licenciatura', 'German', 'Rebolledo', 'Avalos', 'grebolledo@itsoeh.edu.mx', 1);
 
 -- --------------------------------------------------------
 
@@ -525,16 +663,67 @@ CREATE TABLE `especialidad` (
   `Nombre` varchar(100) DEFAULT NULL,
   `Objetivo` varchar(600) DEFAULT NULL,
   `Estado` int(11) DEFAULT 1,
-  `pdfReticula` varchar(100) DEFAULT 'Sin Archivo'
+  `pdfReticula` varchar(100) DEFAULT 'Sin Archivo',
+  `imagen` varchar(100) DEFAULT 'Sin Imagen'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `especialidad`
 --
 
-INSERT INTO `especialidad` (`idespecialidad`, `Nombre`, `Objetivo`, `Estado`, `pdfReticula`) VALUES
-(1, 'Ciencia de los Datos', 'El especialista En Ciencia de los Datos será capaz de estudiar las diversas fuentes de información disponibles en una organización, extraer, depurar y analizar datos a partir de diversos formatos, idear y desarrollar algoritmos; realizar inferencias, preparar, comunicar resultados y transmitir conclusiones acerca de los estudios que ayude al organismo o compañí­a a tomar decisiones basadas en el conocimiento extraído.', 1, 'RETICULA ISIC 2010-224, Ciencia de datos.pdf'),
-(2, 'Tecnologías Emergentes para el Desarrollo de aplicaciones móviles', 'El especialista en tecnologías emergentes para el desarrollo de aplicaciones móviles será capaz de diseñar, construir e implementar aplicaciones móviles utilizando tecnología emergente que resuelva problemáticas y necesidades en las empresas e instituciones públicas y privadas.', 1, 'RETICULA ISIC 2010-224, Tecnologias emergentes para el desarrollo de aplicaciones mo¦üviles .pdf');
+INSERT INTO `especialidad` (`idespecialidad`, `Nombre`, `Objetivo`, `Estado`, `pdfReticula`, `imagen`) VALUES
+(1, 'Ciencia de los Datos', 'El especialista En Ciencia de los Datos será capaz de estudiar las diversas fuentes de información disponibles en una organización, extraer, depurar y analizar datos a partir de diversos formatos, idear y desarrollar algoritmos; realizar inferencias, preparar, comunicar resultados y transmitir conclusiones acerca de los estudios que ayude al organismo o compañí­a a tomar decisiones basadas en el conocimiento extraído.', 1, 'RETICULA ISIC 2010-224, Ciencia de datos.pdf', 'Ciencia de los Datos.svg'),
+(2, 'Tecnologías Emergentes para el Desarrollo de aplicaciones móviles', 'El especialista en tecnologías emergentes para el desarrollo de aplicaciones móviles será capaz de diseñar, construir e implementar aplicaciones móviles utilizando tecnología emergente que resuelva problemáticas y necesidades en las empresas e instituciones públicas y privadas.', 1, 'RETICULA ISIC 2010-224, Tecnologias emergentes para el desarrollo de aplicaciones mo¦üviles .pdf', 'Tecnologías Emergentes para el Desarrollo de aplicaciones móviles.svg');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `historial_contenido`
+--
+
+CREATE TABLE `historial_contenido` (
+  `idhistorial` int(11) NOT NULL,
+  `nomContenidol` varchar(60) NOT NULL,
+  `Estado` int(11) DEFAULT 1
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `historial_contenido`
+--
+
+INSERT INTO `historial_contenido` (`idhistorial`, `nomContenidol`, `Estado`) VALUES
+(1, 'Aplicaciones Multiplataforma', 1),
+(1, 'Modelos de Negocio y Marketing en Tecnología', 1),
+(1, 'Sensores y Actuadores', 1),
+(1, 'Sistemas Embebidos y Automatizados', 1),
+(1, 'Sistemas Inteligentes', 1),
+(2, 'Desarrollo Móvil I', 1),
+(2, 'Desarrollo Móvil II', 1),
+(2, 'Desarrollo Móvil Multiplataforma', 1),
+(2, 'Modelos de Negocio y Marketing en Tecnología', 1),
+(2, 'Segurirdad en Tecnología Móvil', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `historial_esp`
+--
+
+CREATE TABLE `historial_esp` (
+  `idhistorial` int(11) NOT NULL,
+  `HINombre` varchar(100) DEFAULT NULL,
+  `HIObjetivo` varchar(600) DEFAULT NULL,
+  `HIimagen` varchar(100) DEFAULT 'Sin Imagen',
+  `Estado` int(11) DEFAULT 1
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `historial_esp`
+--
+
+INSERT INTO `historial_esp` (`idhistorial`, `HINombre`, `HIObjetivo`, `HIimagen`, `Estado`) VALUES
+(1, 'Tecnologías y Aplicaciones con Sistemas Inteligentes', 'El especialista en Tecnologías y Aplicaciones con Sistemas Inteligentes será capaz de generar, adaptar y aplicar tecnología innovadora para resolver problemas de robótica e inteligencia artificial en proyectos del internet de las cosas, así como en ambientes académicos y de investigación.', 'historial_especialidad_1.svg', 1),
+(2, 'Desarrollo de Aplicaciones Móviles', 'El especialista en desarrollo de aplicaciones móviles será capaz de analizar y desarrollar aplicaciones móviles en ambientes nativas y de multiplataforma para las necesidades de las empresas e instituciones públicas y privadas que satisfagan las necesidades y problemas con tecnología móvil.', 'historial_especialidad_2.svg', 1);
 
 -- --------------------------------------------------------
 
@@ -547,7 +736,7 @@ CREATE TABLE `imagenexpo` (
   `idPeriodo` int(11) NOT NULL,
   `descripcion` varchar(60) DEFAULT NULL,
   `estado` int(1) DEFAULT 1,
-  `imagenNom` varchar(60) DEFAULT 'Sin Imagen'
+  `imagenNom` varchar(100) DEFAULT 'Sin Imagen'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -602,7 +791,6 @@ INSERT INTO `linea_investigacion` (`temalinea`, `Docente`, `CargoDocente`, `Esta
 (1, 2, 2, 1),
 (1, 8, 1, 1),
 (2, 3, 1, 1),
-(2, 4, 2, 1),
 (2, 9, 2, 1),
 (3, 5, 2, 1),
 (3, 6, 2, 1),
@@ -621,76 +809,77 @@ CREATE TABLE `mallacurricular` (
   `MC_HorasTot` varchar(15) DEFAULT NULL,
   `MC_Area` int(11) DEFAULT NULL,
   `MC_Estado` tinyint(4) DEFAULT 1,
-  `MC_PdfNombre` varchar(100) DEFAULT 'Sin Archivo'
+  `MC_PdfNombre` varchar(100) DEFAULT 'Sin Archivo',
+  `MC_Especialidad` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `mallacurricular`
 --
 
-INSERT INTO `mallacurricular` (`MC_ClaveAsignatura`, `MC_NombreAsignatura`, `MC_SemestreAsignatura`, `MC_HorasTot`, `MC_Area`, `MC_Estado`, `MC_PdfNombre`) VALUES
-('***', 'Residencia', 9, '10', 9, 1, 'Sin Archivo'),
-('ACA-0907', 'Taller de Etica', 1, '0-4-4 -> 64Hrs', 5, 1, 'AC007 Taller de Etica.pdf'),
-('ACA-0909', 'Taller de Investigacion I', 6, '0-4-4 -> 64Hrs', 5, 1, 'Sin Archivo'),
-('ACA-0910', 'Taller de Investigacion II', 8, '0-4-4 -> 64Hrs', 5, 1, 'Sin Archivo'),
-('ACC-0906', 'Fundamentos de Investigacion', 1, '2-2-4 -> 64Hrs', 5, 1, 'AC006 Fundamentos de Investigacion.pdf'),
-('ACD-0908', 'Desarollo Sustentable', 5, '2-3-5 -> 80Hrs', 7, 1, 'Sin Archivo'),
-('ACF-0901', 'Calculo Diferencial', 1, '3-2-5 -> 80Hrs', 1, 1, 'AC001 Calculo Diferencial.pdf'),
-('ACF-0902', 'Calculo Integral', 2, '3-2-5 -> 80Hrs', 1, 1, 'AC002 Calculo Integral.pdf'),
-('ACF-0903', 'Algebra Lineal', 2, '3-2-5 -> 80Hrs', 1, 1, 'Sin Archivo'),
-('ACF-0904', 'Calculo Vectorial', 3, '3-2-5 -> 80Hrs', 1, 1, 'Sin Archivo'),
-('ACF-0905', 'Ecuaciones Diferenciales', 4, '3-2-5 -> 80Hrs', 1, 1, 'Sin Archivo'),
-('ACM-0001', 'Actividad Complementaria I', 2, '0-1-1 -> 16Hrs', 6, 1, 'Sin Archivo'),
-('ACM-0002', 'Actividad Complementaria II', 3, '0-1-1 -> 16Hrs', 6, 1, 'Sin Archivo'),
-('ACM-0003', 'Actividad Complementaria III', 4, '0-1-1 -> 16Hrs', 6, 1, 'Sin Archivo'),
-('ACM-0004', 'Actividad Complementaria IV', 5, '0-1-1 -> 16Hrs', 6, 1, 'Sin Archivo'),
-('ACM-0005', 'Actividad Complementaria V', 6, '0-1-1 -> 16Hrs', 6, 1, 'Sin Archivo'),
-('AEB-1055', 'Programacion WEB', 5, '1-4-5 -> 80Hrs', 4, 1, 'Sin Archivo'),
-('AEC-1008', 'Contabilidad Financiera', 2, '2-2-4 -> 64Hrs', 7, 1, 'AE008 Contabilidad Financiera.pdf'),
-('AEC-1034', 'Fundamentos de Telecomunicaciones', 5, '2-2-4 -> 64Hrs', 2, 1, 'Sin Archivo'),
-('AEC-1058', 'Quimica General', 2, '2-2-4 -> 64Hrs', 1, 1, 'AE058 Quimica.pdf'),
-('AEC-1061', 'Sistemas Operativos', 3, '2-2-4 -> 64Hrs', 2, 1, 'Sin Archivo'),
-('AED-1026', 'Estructura de Datos', 3, '2-3-5 -> 80Hrs', 2, 1, 'Sin Archivo'),
-('AEF-1031', 'Fundamentos de Base de Datos', 4, '3-2-5 -> 80Hrs', 3, 1, 'Sin Archivo'),
-('AEF-1041', 'Matematicas Discretas', 1, '3-2-5 -> 80Hrs', 1, 1, 'AE041 Matematicas Discretas.pdf'),
-('AEF-1052', 'Probabilidad y Estadistica', 2, '3-2-5 -> 80Hrs', 1, 1, 'Sin Archivo'),
-('CDDT-2001', 'Introduccion a la Ciencia de los Datos', 7, '2-3-5 -> 80Hrs', 8, 1, 'Sin Archivo'),
-('CDDT-2002', 'Lenguajes de Programacion para Ciencia de los Datos', 7, '2-3-5 -> 80Hrs', 8, 1, 'Sin Archivo'),
-('CDDT-2003', 'Mineria de Datos', 8, '2-3-5 -> 80Hrs', 8, 1, 'Sin Archivo'),
-('CDDT-2004', 'Aprendizaje Maquina', 8, '2-3-5 -> 80Hrs', 8, 1, 'Sin Archivo'),
-('CDDT-2005', 'Inteligencia de Negocios', 8, '2-3-5 -> 80Hrs', 8, 1, 'Sin Archivo'),
-('SCA-1004', 'Administracion de Redes', 8, '0-4-4 -> 64Hrs', 4, 1, 'Administración de redes..pdf'),
-('SCA-1025', 'Taller de Base de Datos', 5, '0-4-4 -> 64Hrs', 4, 1, 'Sin Archivo'),
-('SCA-1026', 'Taller de Sistemas Operativos', 4, '0-4-4 -> 64Hrs', 4, 1, 'Sin Archivo'),
-('SCB-1001', 'Administracion de Base de Datos', 6, '1-4-5 -> 80Hrs', 4, 1, 'Sin Archivo'),
-('SCC-1005', 'Cultura Empresarial', 3, '2-2-4 -> 64Hrs', 7, 1, 'Sin Archivo'),
-('SCC-1007', 'Fundamentos de Ing. de Software', 5, '2-2-4 -> 64Hrs', 3, 1, 'Sin Archivo'),
-('SCC-1010', 'Graficacion', 8, '2-2-4 -> 64Hrs', 4, 1, 'Sin Archivo'),
-('SCC-1012', 'Inteligencia Artificial', 7, '2-2-4 -> 64Hrs', 4, 1, 'Sin Archivo'),
-('SCC-1013', 'Investigacion de Operaciones', 3, '2-2-4 -> 64Hrs', 1, 1, 'Sin Archivo'),
-('SCC-1014', 'Lenguajes de Interfaz', 6, '2-2-4 -> 64Hrs', 3, 1, 'Sin Archivo'),
-('SCC-1017', 'Metodos Numericos', 4, '2-2-4 -> 64Hrs', 1, 1, 'Sin Archivo'),
-('SCC-1019', 'Programacion Logica y Funcional', 6, '2-2-4 -> 64Hrs', 3, 1, 'Sin Archivo'),
-('SCC-1023', 'Sistemas Programables', 7, '2-2-4 -> 64Hrs', 4, 1, 'Sin Archivo'),
-('SCD-1003', 'Arquitectura de Computadoras', 5, '2-3-5 -> 80Hrs', 3, 1, 'Sin Archivo'),
-('SCD-1004', 'Conmutacion y Enrutamiento de Redes de Datos', 7, '2-3-5 -> 80Hrs', 4, 1, 'Sin Archivo'),
-('SCD-1008', 'Fundamentos de Programacion', 1, '2-3-5 -> 80Hrs', 2, 1, 'AE085 Fundamentos de Programacion.pdf'),
-('SCD-1011', 'Ingenieria de Software', 6, '2-3-5 -> 80Hrs', 4, 1, 'Sin Archivo'),
-('SCD-1015', 'Lenguajes y Automatas I', 6, '2-3-5 -> 80Hrs', 3, 1, 'Sin Archivo'),
-('SCD-1016', 'Lenguajes y Automatas II', 7, '2-3-5 -> 80Hrs', 4, 1, 'Sin Archivo'),
-('SCD-1018', 'Principios Electricos y Aplicaciones Digitale', 4, '2-3-5 -> 80Hrs', 2, 1, 'Sin Archivo'),
-('SCD-1020', 'Programacion Orientada a Objetos', 2, '2-3-5 -> 80Hrs', 2, 1, 'AE086 Programacion Orientada a Objetos.pdf'),
-('SCD-1021', 'Redes de Computadora', 6, '2-3-5 -> 80Hrs', 4, 1, 'Sin Archivo'),
-('SCD-1022', 'Simulacion', 5, '2-3-5 -> 80Hrs', 3, 1, 'Sin Archivo'),
-('SCD-1027', 'Topicos Avanzados de Programacion', 4, '2-3-5 -> 80Hrs', 2, 1, 'Sin Archivo'),
-('SCF-1006', 'Fisica General', 3, '3-2-5 -> 80Hrs', 1, 1, 'Sin Archivo'),
-('SCG-1009', 'Gestion de Proyectos de Software', 7, '3-3-6 -> 96Hrs', 3, 1, 'Sin Archivo'),
-('SCH-1024', 'Taller de Administracion', 1, '1-3-4 -> 64Hrs', 7, 1, 'Taller de Administración.pdf'),
-('TDAM-2001', 'Aplicaciones nativas para moviles de codigo abierto', 7, '2-3-5 -> 80Hrs', 8, 1, 'Sin Archivo'),
-('TDAM-2002', 'Programacion movil nativo para sistema propietario', 7, '2-3-5 -> 80Hrs', 8, 1, 'Sin Archivo'),
-('TDAM-2003', 'Visión por computadora en dispositivos moviles', 8, '2-3-5 -> 80Hrs', 8, 1, 'Sin Archivo'),
-('TDAM-2004', 'Lenguajes multiplataforma para el desarrollo movil', 8, '2-3-5 -> 80Hrs', 8, 1, 'Sin Archivo'),
-('TDAM-2005', 'Seguridad y testing en Tecnologia Movil', 8, '2-3-5 -> 80Hrs', 8, 1, 'Sin Archivo');
+INSERT INTO `mallacurricular` (`MC_ClaveAsignatura`, `MC_NombreAsignatura`, `MC_SemestreAsignatura`, `MC_HorasTot`, `MC_Area`, `MC_Estado`, `MC_PdfNombre`, `MC_Especialidad`) VALUES
+('***', 'Residencia', 9, '10', 9, 1, 'Sin Archivo', NULL),
+('ACA-0907', 'Taller de Etica', 1, '0-4-4 -> 64Hrs', 5, 1, 'AC007 Taller de Etica.pdf', NULL),
+('ACA-0909', 'Taller de Investigacion I', 6, '0-4-4 -> 64Hrs', 5, 1, 'Sin Archivo', NULL),
+('ACA-0910', 'Taller de Investigacion II', 8, '0-4-4 -> 64Hrs', 5, 1, 'Sin Archivo', NULL),
+('ACC-0906', 'Fundamentos de Investigacion', 1, '2-2-4 -> 64Hrs', 5, 1, 'AC006 Fundamentos de Investigacion.pdf', NULL),
+('ACD-0908', 'Desarollo Sustentable', 5, '2-3-5 -> 80Hrs', 7, 1, 'Sin Archivo', NULL),
+('ACF-0901', 'Calculo Diferencial', 1, '3-2-5 -> 80Hrs', 1, 1, 'AC001 Calculo Diferencial.pdf', NULL),
+('ACF-0902', 'Calculo Integral', 2, '3-2-5 -> 80Hrs', 1, 1, 'AC002 Calculo Integral.pdf', NULL),
+('ACF-0903', 'Algebra Lineal', 2, '3-2-5 -> 80Hrs', 1, 1, 'Sin Archivo', NULL),
+('ACF-0904', 'Calculo Vectorial', 3, '3-2-5 -> 80Hrs', 1, 1, 'Sin Archivo', NULL),
+('ACF-0905', 'Ecuaciones Diferenciales', 4, '3-2-5 -> 80Hrs', 1, 1, 'Sin Archivo', NULL),
+('ACM-0001', 'Actividad Complementaria I', 2, '0-1-1 -> 16Hrs', 6, 1, 'Sin Archivo', NULL),
+('ACM-0002', 'Actividad Complementaria II', 3, '0-1-1 -> 16Hrs', 6, 1, 'Sin Archivo', NULL),
+('ACM-0003', 'Actividad Complementaria III', 4, '0-1-1 -> 16Hrs', 6, 1, 'Sin Archivo', NULL),
+('ACM-0004', 'Actividad Complementaria IV', 5, '0-1-1 -> 16Hrs', 6, 1, 'Sin Archivo', NULL),
+('ACM-0005', 'Actividad Complementaria V', 6, '0-1-1 -> 16Hrs', 6, 1, 'Sin Archivo', NULL),
+('AEB-1055', 'Programacion WEB', 5, '1-4-5 -> 80Hrs', 4, 1, 'Sin Archivo', NULL),
+('AEC-1008', 'Contabilidad Financiera', 2, '2-2-4 -> 64Hrs', 7, 1, 'AE008 Contabilidad Financiera.pdf', NULL),
+('AEC-1034', 'Fundamentos de Telecomunicaciones', 5, '2-2-4 -> 64Hrs', 2, 1, 'Sin Archivo', NULL),
+('AEC-1058', 'Quimica General', 2, '2-2-4 -> 64Hrs', 1, 1, 'AE058 Quimica.pdf', NULL),
+('AEC-1061', 'Sistemas Operativos', 3, '2-2-4 -> 64Hrs', 2, 1, 'Sin Archivo', NULL),
+('AED-1026', 'Estructura de Datos', 3, '2-3-5 -> 80Hrs', 2, 1, 'Sin Archivo', NULL),
+('AEF-1031', 'Fundamentos de Base de Datos', 4, '3-2-5 -> 80Hrs', 3, 1, 'Sin Archivo', NULL),
+('AEF-1041', 'Matematicas Discretas', 1, '3-2-5 -> 80Hrs', 1, 1, 'AE041 Matematicas Discretas.pdf', NULL),
+('AEF-1052', 'Probabilidad y Estadistica', 2, '3-2-5 -> 80Hrs', 1, 1, 'Sin Archivo', NULL),
+('CDDT-2001', 'Introduccion a la Ciencia de los Datos', 7, '2-3-5 -> 80Hrs', 8, 1, 'Sin Archivo', 1),
+('CDDT-2002', 'Lenguajes de Programacion para Ciencia de los Datos', 7, '2-3-5 -> 80Hrs', 8, 1, 'Sin Archivo', 1),
+('CDDT-2003', 'Mineria de Datos', 8, '2-3-5 -> 80Hrs', 8, 1, 'Sin Archivo', 1),
+('CDDT-2004', 'Aprendizaje Maquina', 8, '2-3-5 -> 80Hrs', 8, 1, 'Sin Archivo', 1),
+('CDDT-2005', 'Inteligencia de Negocios', 8, '2-3-5 -> 80Hrs', 8, 1, 'Sin Archivo', 1),
+('SCA-1004', 'Administracion de Redes', 8, '0-4-4 -> 64Hrs', 4, 1, 'Administración de redes..pdf', NULL),
+('SCA-1025', 'Taller de Base de Datos', 5, '0-4-4 -> 64Hrs', 4, 1, 'Sin Archivo', NULL),
+('SCA-1026', 'Taller de Sistemas Operativos', 4, '0-4-4 -> 64Hrs', 4, 1, 'Sin Archivo', NULL),
+('SCB-1001', 'Administracion de Base de Datos', 6, '1-4-5 -> 80Hrs', 4, 1, 'Sin Archivo', NULL),
+('SCC-1005', 'Cultura Empresarial', 3, '2-2-4 -> 64Hrs', 7, 1, 'Sin Archivo', NULL),
+('SCC-1007', 'Fundamentos de Ing. de Software', 5, '2-2-4 -> 64Hrs', 3, 1, 'Sin Archivo', NULL),
+('SCC-1010', 'Graficacion', 8, '2-2-4 -> 64Hrs', 4, 1, 'Sin Archivo', NULL),
+('SCC-1012', 'Inteligencia Artificial', 7, '2-2-4 -> 64Hrs', 4, 1, 'Sin Archivo', NULL),
+('SCC-1013', 'Investigacion de Operaciones', 3, '2-2-4 -> 64Hrs', 1, 1, 'Sin Archivo', NULL),
+('SCC-1014', 'Lenguajes de Interfaz', 6, '2-2-4 -> 64Hrs', 3, 1, 'Sin Archivo', NULL),
+('SCC-1017', 'Metodos Numericos', 4, '2-2-4 -> 64Hrs', 1, 1, 'Sin Archivo', NULL),
+('SCC-1019', 'Programacion Logica y Funcional', 6, '2-2-4 -> 64Hrs', 3, 1, 'Sin Archivo', NULL),
+('SCC-1023', 'Sistemas Programables', 7, '2-2-4 -> 64Hrs', 4, 1, 'Sin Archivo', NULL),
+('SCD-1003', 'Arquitectura de Computadoras', 5, '2-3-5 -> 80Hrs', 3, 1, 'Sin Archivo', NULL),
+('SCD-1004', 'Conmutacion y Enrutamiento de Redes de Datos', 7, '2-3-5 -> 80Hrs', 4, 1, 'Sin Archivo', NULL),
+('SCD-1008', 'Fundamentos de Programacion', 1, '2-3-5 -> 80Hrs', 2, 1, 'AE085 Fundamentos de Programacion.pdf', NULL),
+('SCD-1011', 'Ingenieria de Software', 6, '2-3-5 -> 80Hrs', 4, 1, 'Sin Archivo', NULL),
+('SCD-1015', 'Lenguajes y Automatas I', 6, '2-3-5 -> 80Hrs', 3, 1, 'Sin Archivo', NULL),
+('SCD-1016', 'Lenguajes y Automatas II', 7, '2-3-5 -> 80Hrs', 4, 1, 'Sin Archivo', NULL),
+('SCD-1018', 'Principios Electricos y Aplicaciones Digitale', 4, '2-3-5 -> 80Hrs', 2, 1, 'Sin Archivo', NULL),
+('SCD-1020', 'Programacion Orientada a Objetos', 2, '2-3-5 -> 80Hrs', 2, 1, 'AE086 Programacion Orientada a Objetos.pdf', NULL),
+('SCD-1021', 'Redes de Computadora', 6, '2-3-5 -> 80Hrs', 4, 1, 'Sin Archivo', NULL),
+('SCD-1022', 'Simulacion', 5, '2-3-5 -> 80Hrs', 3, 1, 'Sin Archivo', NULL),
+('SCD-1027', 'Topicos Avanzados de Programacion', 4, '2-3-5 -> 80Hrs', 2, 1, 'Sin Archivo', NULL),
+('SCF-1006', 'Fisica General', 3, '3-2-5 -> 80Hrs', 1, 1, 'Sin Archivo', NULL),
+('SCG-1009', 'Gestion de Proyectos de Software', 7, '3-3-6 -> 96Hrs', 3, 1, 'Sin Archivo', NULL),
+('SCH-1024', 'Taller de Administracion', 1, '1-3-4 -> 64Hrs', 7, 1, 'Taller de Administración.pdf', NULL),
+('TDAM-2001', 'Aplicaciones nativas para moviles de codigo abierto', 7, '2-3-5 -> 80Hrs', 8, 1, 'Sin Archivo', 2),
+('TDAM-2002', 'Programacion movil nativo para sistema propietario', 7, '2-3-5 -> 80Hrs', 8, 1, 'Sin Archivo', 2),
+('TDAM-2003', 'Visión por computadora en dispositivos moviles', 8, '2-3-5 -> 80Hrs', 8, 1, 'Sin Archivo', 2),
+('TDAM-2004', 'Lenguajes multiplataforma para el desarrollo movil', 8, '2-3-5 -> 80Hrs', 8, 1, 'Sin Archivo', 2),
+('TDAM-2005', 'Seguridad y testing en Tecnologia Movil', 8, '2-3-5 -> 80Hrs', 8, 1, 'Sin Archivo', 2);
 
 -- --------------------------------------------------------
 
@@ -878,6 +1067,12 @@ ALTER TABLE `asignaturas_esp`
   ADD KEY `idasignatura_idx` (`idasignatura`);
 
 --
+-- Indices de la tabla `complementarias`
+--
+ALTER TABLE `complementarias`
+  ADD PRIMARY KEY (`idComplementarias`);
+
+--
 -- Indices de la tabla `docente`
 --
 ALTER TABLE `docente`
@@ -888,6 +1083,18 @@ ALTER TABLE `docente`
 --
 ALTER TABLE `especialidad`
   ADD PRIMARY KEY (`idespecialidad`);
+
+--
+-- Indices de la tabla `historial_contenido`
+--
+ALTER TABLE `historial_contenido`
+  ADD PRIMARY KEY (`idhistorial`,`nomContenidol`);
+
+--
+-- Indices de la tabla `historial_esp`
+--
+ALTER TABLE `historial_esp`
+  ADD PRIMARY KEY (`idhistorial`);
 
 --
 -- Indices de la tabla `imagenexpo`
@@ -908,7 +1115,8 @@ ALTER TABLE `linea_investigacion`
 -- Indices de la tabla `mallacurricular`
 --
 ALTER TABLE `mallacurricular`
-  ADD PRIMARY KEY (`MC_ClaveAsignatura`);
+  ADD PRIMARY KEY (`MC_ClaveAsignatura`),
+  ADD KEY `MC_Especialidad_idx` (`MC_Especialidad`);
 
 --
 -- Indices de la tabla `periodoexpo`
@@ -961,25 +1169,37 @@ ALTER TABLE `areaconocimiento`
 -- AUTO_INCREMENT de la tabla `asesorias`
 --
 ALTER TABLE `asesorias`
-  MODIFY `idasesorias` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
+  MODIFY `idasesorias` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
+
+--
+-- AUTO_INCREMENT de la tabla `complementarias`
+--
+ALTER TABLE `complementarias`
+  MODIFY `idComplementarias` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `especialidad`
 --
 ALTER TABLE `especialidad`
-  MODIFY `idespecialidad` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `idespecialidad` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+
+--
+-- AUTO_INCREMENT de la tabla `historial_esp`
+--
+ALTER TABLE `historial_esp`
+  MODIFY `idhistorial` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT de la tabla `imagenexpo`
 --
 ALTER TABLE `imagenexpo`
-  MODIFY `idimagenExpo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
+  MODIFY `idimagenExpo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
 
 --
 -- AUTO_INCREMENT de la tabla `periodoexpo`
 --
 ALTER TABLE `periodoexpo`
-  MODIFY `idperiodoExpo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `idperiodoExpo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT de la tabla `pe_isic`
@@ -997,7 +1217,7 @@ ALTER TABLE `servicios`
 -- AUTO_INCREMENT de la tabla `tema_linea_investigacion`
 --
 ALTER TABLE `tema_linea_investigacion`
-  MODIFY `idtema_linea_investigacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `idtema_linea_investigacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `tipo_pe`
@@ -1024,6 +1244,12 @@ ALTER TABLE `asignaturas_esp`
   ADD CONSTRAINT `idespecialidad` FOREIGN KEY (`idespecialidad`) REFERENCES `especialidad` (`idespecialidad`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
+-- Filtros para la tabla `historial_contenido`
+--
+ALTER TABLE `historial_contenido`
+  ADD CONSTRAINT `idhistorial` FOREIGN KEY (`idhistorial`) REFERENCES `historial_esp` (`idhistorial`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
 -- Filtros para la tabla `imagenexpo`
 --
 ALTER TABLE `imagenexpo`
@@ -1035,6 +1261,12 @@ ALTER TABLE `imagenexpo`
 ALTER TABLE `linea_investigacion`
   ADD CONSTRAINT `idDocente` FOREIGN KEY (`Docente`) REFERENCES `docente` (`iddocente`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `temalinea` FOREIGN KEY (`temalinea`) REFERENCES `tema_linea_investigacion` (`idtema_linea_investigacion`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `mallacurricular`
+--
+ALTER TABLE `mallacurricular`
+  ADD CONSTRAINT `MC_Especialidad` FOREIGN KEY (`MC_Especialidad`) REFERENCES `especialidad` (`idespecialidad`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `pe_isic`

@@ -108,16 +108,9 @@ $servInfo = getServicio($_GET["idServ"]);
     ?>
     <?php
     if ($_GET["idServ"] == 3) {
-<<<<<<< HEAD
-        echo '';
-    }
-    ?>
-    <div class="complementaria"> 
-=======
         $complInfo = getComplementarias();
         echo '
     <div class="complementaria">
->>>>>>> 3bda6ee0bbf5e4f5136e196bfb789d48fb8722b6
         <div class="site-section">
             <div class="container texto">
                 <div class="section-heading text-center">
