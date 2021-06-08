@@ -155,11 +155,11 @@ $peri = getPeriodo();
                                             </div>
                                         </div>';
                     if ($peri[$i][3] === 1) {
-                        echo '<a type="button" class="btn btn-secondary" href="Controlador/ControlBorrar.php?id=7_' . $peri[$i][0] . '_2_1"><i class = "bi bi-eye"></i></a>';
+                        echo '<a type="button" class="btn btn-secondary" href="Controlador/ControlBorrar.php?id=7*' . $peri[$i][0] . '*2*1"><i class = "bi bi-eye"></i></a>';
                     } else {
-                        echo '<a type="button" class="btn btn-secondary" href="Controlador/ControlBorrar.php?id=7_' . $peri[$i][0] . '_1_1"><i class = "bi bi-eye-slash"></i></a>';
+                        echo '<a type="button" class="btn btn-secondary" href="Controlador/ControlBorrar.php?id=7*' . $peri[$i][0] . '*1*1"><i class = "bi bi-eye-slash"></i></a>';
                     }
-                    echo '<a type = "button" class = "btn btn-secondary" href = "Controlador/ControlBorrar.php?id=7_' . $peri[$i][0] . '_0_2_' . $peri[$i][4] . '"><i class = "bi bi-trash-fill"></i></a>
+                    echo '<a type = "button" class = "btn btn-secondary" href = "Controlador/ControlBorrar.php?id=7*' . $peri[$i][0] . '*0*2*' . $peri[$i][4] . '"><i class = "bi bi-trash-fill"></i></a>
                             </div></h6>
                     </div>
                     <table class="table table-light table-hover">
@@ -178,11 +178,11 @@ $peri = getPeriodo();
                             echo ' <div class="btn-group btn-group-sm">
                                     <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#myModal" onclick="datosModalExp1(\'' . $imgExpo[$j][0] . '\', \'' . $imgExpo[$j][1] . '\', \'' . $imgExpo[$j][3] . '\', \'' . $peri[$i][4] . '\');"><i class="bi bi-pencil-square"></i></button>';
                             if ($imgExpo[$j][2] === 1) {
-                                echo '<a type="button" class="btn btn-secondary" href="Controlador/ControlBorrar.php?id=6_' . $imgExpo[$j][0] . '_2_1"><i class = "bi bi-eye"></i></a>';
+                                echo '<a type="button" class="btn btn-secondary" href="Controlador/ControlBorrar.php?id=6*' . $imgExpo[$j][0] . '*2*1"><i class = "bi bi-eye"></i></a>';
                             } else {
-                                echo '<a type="button" class="btn btn-secondary" href="Controlador/ControlBorrar.php?id=6_' . $imgExpo[$j][0] . '_1_1"><i class = "bi bi-eye-slash"></i></a>';
+                                echo '<a type="button" class="btn btn-secondary" href="Controlador/ControlBorrar.php?id=6*' . $imgExpo[$j][0] . '*1*1"><i class = "bi bi-eye-slash"></i></a>';
                             }
-                            echo '<a type = "button" class = "btn btn-secondary" href = "Controlador/ControlBorrar.php?id=6_' . $imgExpo[$j][0] . '_0_2_'. $imgExpo[$j][3] .'_'. $peri[$i][4] .'"><i class = "bi bi-trash-fill"></i></a>
+                            echo '<a type = "button" class = "btn btn-secondary" href = "Controlador/ControlBorrar.php?id=6*' . $imgExpo[$j][0] . '*0*2*'. $imgExpo[$j][3] .'*'. $peri[$i][4] .'"><i class = "bi bi-trash-fill"></i></a>
                                             </div>
                                         <div class="modal topmargin-sm" id="myModal">
                                             <div class="modal-dialog">

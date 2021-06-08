@@ -101,11 +101,11 @@ $asiEsp = getAsignaturaEspAdmin();
                                         <div class="btn-group btn-group-sm">
                                             <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#myModal" onclick="datosModalEsp1(\'' . $especialidad[$i][0] . '\', \'' . $especialidad[$i][1] . '\', \'' . $especialidad[$i][2] . '\', \'' . $especialidad[$i][4] . '\', \'' . $especialidad[$i][5] . '\');"><i class="bi bi-pencil-square"></i></button>';
                         if ($especialidad[$i][3] === 1) {
-                            echo '<a type="button" class="btn btn-secondary" href="Controlador/ControlBorrar.php?id=0_' . $especialidad[$i][0] . '_2_1"><i class = "bi bi-eye"></i></a>';
+                            echo '<a type="button" class="btn btn-secondary" href="Controlador/ControlBorrar.php?id=0*' . $especialidad[$i][0] . '*2*1"><i class = "bi bi-eye"></i></a>';
                         } else {
-                            echo '<a type="button" class="btn btn-secondary" href="Controlador/ControlBorrar.php?id=0_' . $especialidad[$i][0] . '_1_1"><i class = "bi bi-eye-slash"></i></a>';
+                            echo '<a type="button" class="btn btn-secondary" href="Controlador/ControlBorrar.php?id=0*' . $especialidad[$i][0] . '*1*1"><i class = "bi bi-eye-slash"></i></a>';
                         }
-                        echo '<a type = "button" class = "btn btn-secondary" href = "Controlador/ControlBorrar.php?id=0_' . $especialidad[$i][0] . '_0_2_' . $especialidad[$i][4] . '_' . $especialidad[$i][5] . '"><i class = "bi bi-trash-fill"></i></a>
+                        echo '<a type = "button" class = "btn btn-secondary" href = "Controlador/ControlBorrar.php?id=0*' . $especialidad[$i][0] . '*0*2*' . $especialidad[$i][4] . '*' . $especialidad[$i][5] . '"><i class = "bi bi-trash-fill"></i></a>
                               <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#myModalAdver" onclick="datosModalEsp4(\'' . $especialidad[$i][0] . '\', \'' . $especialidad[$i][1] . '\');"><i class="bi bi-clock-history"></i></button>
                                             </div>
                                             <div class="modal topmargin-sm" id="myModalAdver">
@@ -281,11 +281,11 @@ $asiEsp = getAsignaturaEspAdmin();
                                             <div class="btn-group btn-group-sm">
                                                 <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#myModal1" onclick="datosModalEsp2(\'' . $egreso[$i][0] . '\', \'' . $egreso[$i][2] . '\');"><i class="bi bi-pencil-square"></i></button>';
                     if ($egreso[$i][3] === 1) {
-                        echo '<a type="button" class="btn btn-secondary" href="Controlador/ControlBorrar.php?id=1_' . $egreso[$i][0] . '_' . $egreso[$i][2] . '_2_1"><i class = "bi bi-eye"></i></a>';
+                        echo '<a type="button" class="btn btn-secondary" href="Controlador/ControlBorrar.php?id=1*' . $egreso[$i][0] . '*' . $egreso[$i][2] . '*2*1"><i class = "bi bi-eye"></i></a>';
                     } else {
-                        echo '<a type="button" class="btn btn-secondary" href="Controlador/ControlBorrar.php?id=1_' . $egreso[$i][0] . '_' . $egreso[$i][2] . '_1_1"><i class = "bi bi-eye-slash"></i></a>';
+                        echo '<a type="button" class="btn btn-secondary" href="Controlador/ControlBorrar.php?id=1*' . $egreso[$i][0] . '*' . $egreso[$i][2] . '*1*1"><i class = "bi bi-eye-slash"></i></a>';
                     }
-                    echo '<a type="button" class="btn btn-secondary" href="Controlador/ControlBorrar.php?id=1_' . $egreso[$i][0] . '_' . $egreso[$i][2] . '_0_2"><i class="bi bi-trash-fill"></i></a>
+                    echo '<a type="button" class="btn btn-secondary" href="Controlador/ControlBorrar.php?id=1*' . $egreso[$i][0] . '*' . $egreso[$i][2] . '*0*2"><i class="bi bi-trash-fill"></i></a>
                                             </div>
                                             <div class="modal topmargin-sm" id="myModal1">
                                                 <div class="modal-dialog">
@@ -373,11 +373,11 @@ $asiEsp = getAsignaturaEspAdmin();
                                                 <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#myModal2" onclick="datosModalEsp3(\'' . $asiEsp[$i][0] . '\', \'' . $asiEsp[$i][2] . '\', \'' . $asiEsp[$i][3] . '\');"><i class="bi bi-pencil-square"></i></button>';
 
                     if ($asiEsp[$i][4] === 1) {
-                        echo '<a type="button" class="btn btn-secondary" href="Controlador/ControlBorrar.php?id=2_' . $asiEsp[$i][0] . '_' . $asiEsp[$i][2] . '_2_1"><i class = "bi bi-eye"></i></a>';
+                        echo '<a type="button" class="btn btn-secondary" href="Controlador/ControlBorrar.php?id=2*' . $asiEsp[$i][0] . '*' . $asiEsp[$i][2] . '*2*1"><i class = "bi bi-eye"></i></a>';
                     } else {
-                        echo '<a type="button" class="btn btn-secondary" href="Controlador/ControlBorrar.php?id=2_' . $asiEsp[$i][0] . '_' . $asiEsp[$i][2] . '_1_1"><i class = "bi bi-eye-slash"></i></a>';
+                        echo '<a type="button" class="btn btn-secondary" href="Controlador/ControlBorrar.php?id=2*' . $asiEsp[$i][0] . '*' . $asiEsp[$i][2] . '*1*1"><i class = "bi bi-eye-slash"></i></a>';
                     }
-                    echo '<a type="button" class="btn btn-secondary" href="Controlador/ControlBorrar.php?id=2_' . $asiEsp[$i][0] . '_' . $asiEsp[$i][2] . '_0_2"><i class="bi bi-trash-fill"></i></a>
+                    echo '<a type="button" class="btn btn-secondary" href="Controlador/ControlBorrar.php?id=2*' . $asiEsp[$i][0] . '*' . $asiEsp[$i][2] . '*0*2"><i class="bi bi-trash-fill"></i></a>
                                             </div>
                                             <div class="modal topmargin-sm" id="myModal2">
                                                 <div class="modal-dialog">

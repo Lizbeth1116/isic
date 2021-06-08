@@ -406,13 +406,14 @@ function getHistorialInfo() {
     global $con;
     $stmt = $con->prepare("call isic.sp_getHistorialInfo();");
     $stmt->execute();
-    $stmt->bind_result($idhistorial, $HINombre, $HIObjetivo, $HIimagen);
+    $stmt->bind_result($idhistorial, $HINombre, $HIObjetivo, $HIimagen, $Estado);
     $i = 0;
     while ($stmt->fetch()) {
         $historialInfo[$i][0] = $idhistorial;
         $historialInfo[$i][1] = $HINombre;
         $historialInfo[$i][2] = $HIObjetivo;
         $historialInfo[$i][3] = $HIimagen;
+        $historialInfo[$i][4] = $Estado;
         $i++;
     }
     $stmt->close();
@@ -424,14 +425,32 @@ function getContenidoHistorial($idH) {
     $stmt = $con->prepare("call isic.sp_getContenidoHistorial(?);");
     $stmt->bind_param("i", $idH);
     $stmt->execute();
-    $stmt->bind_result($nomContenidol);
+    $stmt->bind_result($nomContenidol, $Estado);
     $i = 0;
     while ($stmt->fetch()) {
-        $contenHistorial[$i] = $nomContenidol;
+        $contenHistorial[$i][0] = $nomContenidol;
+        $contenHistorial[$i][1] = $Estado;
         $i++;
     }
     $stmt->close();
     return $contenHistorial;
+}
+
+function getContenidoHistorialAdmin() {
+    global $con;
+    $stmt = $con->prepare("call isic.sp_getContenidoHistorialAdmin();");
+    $stmt->execute();
+    $stmt->bind_result($nomContenidol, $Estado, $HINombre, $idhistorial);
+    $i = 0;
+    while ($stmt->fetch()) {
+        $contenHistorialA[$i][0] = $nomContenidol;
+        $contenHistorialA[$i][1] = $Estado;
+        $contenHistorialA[$i][2] = $HINombre;
+        $contenHistorialA[$i][3] = $idhistorial;
+        $i++;
+    }
+    $stmt->close();
+    return $contenHistorialA;
 }
 
 function getIdHistorial($nomb) {
@@ -463,4 +482,23 @@ function getDatosAPasarHistorial($esp) {
     }
     $stmt->close();
     return $pasarHistorial;
+}
+
+function getComplementarias() {
+    global $con;
+    $stmt = $con->prepare("call isic.sp_getComplementarias();");
+    $stmt->execute();
+    $stmt->bind_result($idComplementarias, $Nombre, $Descripcion, $Imagen, $Pdf, $Estado);
+    $i = 0;
+    while ($stmt->fetch()) {
+        $complInfo[$i][0] = $idComplementarias;
+        $complInfo[$i][1] = $Nombre;
+        $complInfo[$i][2] = $Descripcion;
+        $complInfo[$i][3] = $Imagen;
+        $complInfo[$i][4] = $Pdf;
+        $complInfo[$i][5] = $Estado;
+        $i++;
+    }
+    $stmt->close();
+    return $complInfo;
 }

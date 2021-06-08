@@ -5,51 +5,14 @@ $con = conectar();
 
 $opGlobal = $_POST['opGlobal'];
 
-if ($opGlobal < 5) {
-    $opEsp = $_POST['opEsp'];
-    $idespecialidadEsp = $_POST['idespecialidadEsp'];
-    $nombreEsp = $_POST['nombreEsp'];
-    $objetivoEsp = $_POST['objetivoEsp'];
-    $perfilEsp = $_POST['perfilEsp'];
-    $idegresoEsp = $_POST['idegresoEsp'];
-    $perfilOriEsp = $_POST['perfilOriEsp'];
-    $claveEsp = $_POST['claveEsp'];
-    $idEspEsp = $_POST['idEspEsp'];
-    $descripcionEsp = $_POST['descripcionEsp'];
-
-    $opInv = $_POST['opInv'];
-    $temaInvInv = $_POST['temaInvInv'];
-    $idtemaInvInv = $_POST['idtemaInvInv'];
-
-    $temaInv = $_POST['temaInv'];
-    $docenteInv = $_POST['docenteInv'];
-    $cargoInv = $_POST['cargoInv'];
-    $temaOriInv = $_POST['temaOriInv'];
-    $docenteOriInv = $_POST['docenteOriInv'];
-
-    $opMC = $_POST['opMC'];
-    $claveMC = $_POST['claveMC'];
-    $horasMC = $_POST['horasMC'];
-    $semestreMC = $_POST['semestreMC'];
-    $conocimientoMC = $_POST['conocimientoMC'];
-    $especialidadMC = $_POST['especialidadMC'];
-    $nombreMC = $_POST['nombreMC'];
-    $claveOriMC = $_POST['claveOriMC'];
-    $idespecialidadOriMC = $_POST['idespecialidadOriMC'];
-
-    $idImgEsp = $_POST['idImgExp'];
-    $CarpetaImag = $_POST['CarpetaImag'];
-    $opExp = $_POST['opExp'];
-    $descripcionExp = $_POST['descripcionExp'];
-    $idPeriExp = $_POST['idPeriExp'];
-    $AnioExp = $_POST['AnioExp'];
-    $periodoExpo = $_POST['periodoExpo'];
-}
-
 switch ($opGlobal):
     case 1://Admin Especialidad
+        $opEsp = $_POST['opEsp'];
         switch ($opEsp):
             case 1:
+                $idespecialidadEsp = $_POST['idespecialidadEsp'];
+                $nombreEsp = $_POST['nombreEsp'];
+                $objetivoEsp = $_POST['objetivoEsp'];
                 $nomPdf = $_FILES['pdfReticula']['name'];
                 $guardadoPdf = $_FILES['pdfReticula']['tmp_name'];
                 $nomImg = $_FILES['imagenEsp']['name'];
@@ -76,23 +39,38 @@ switch ($opGlobal):
                 $stmt->bind_param("issss", $idespecialidadEsp, $nombreEsp, $objetivoEsp, $newNomPdf, $newNomImg);
                 break;
             case 2:
+                $perfilEsp = $_POST['perfilEsp'];
+                $idegresoEsp = $_POST['idegresoEsp'];
+                $perfilOriEsp = $_POST['perfilOriEsp'];
                 $stmt = $con->prepare("call isic.sp_editPEgreso(?,?,?)");
                 $stmt->bind_param("iss", $idegresoEsp, $perfilOriEsp, $perfilEsp);
                 break;
             case 3:
+                $claveEsp = $_POST['claveEsp'];
+                $idEspEsp = $_POST['idEspEsp'];
+                $descripcionEsp = $_POST['descripcionEsp'];
                 $stmt = $con->prepare("call isic.sp_editAsigEsp(?,?,?)");
                 $stmt->bind_param("iss", $idEspEsp, $claveEsp, $descripcionEsp);
                 break;
         endswitch;
         $aux = "Especialidad";
         break;
+
     case 2://Admin Investigacion
+        $opInv = $_POST['opInv'];
         switch ($opInv) :
             case 1:
+                $temaInvInv = $_POST['temaInvInv'];
+                $idtemaInvInv = $_POST['idtemaInvInv'];
                 $stmt = $con->prepare("call isic.sp_editTemaIvs(?,?)");
                 $stmt->bind_param("is", $idtemaInvInv, $temaInvInv);
                 break;
             case 2:
+                $temaInv = $_POST['temaInv'];
+                $docenteInv = $_POST['docenteInv'];
+                $cargoInv = $_POST['cargoInv'];
+                $temaOriInv = $_POST['temaOriInv'];
+                $docenteOriInv = $_POST['docenteOriInv'];
                 $stmt = $con->prepare("call isic.sp_editarLineaInv(?,?,?,?,?)");
                 $stmt->bind_param("iiiii", $temaOriInv, $docenteOriInv, $temaInv, $docenteInv, $cargoInv);
                 break;
@@ -102,6 +80,15 @@ switch ($opGlobal):
         $aux = "Investigacion";
         break;
     case 3://Admin Malla
+        $opMC = $_POST['opMC'];
+        $claveMC = $_POST['claveMC'];
+        $horasMC = $_POST['horasMC'];
+        $semestreMC = $_POST['semestreMC'];
+        $conocimientoMC = $_POST['conocimientoMC'];
+        $especialidadMC = $_POST['especialidadMC'];
+        $nombreMC = $_POST['nombreMC'];
+        $claveOriMC = $_POST['claveOriMC'];
+        $idespecialidadOriMC = $_POST['idespecialidadOriMC'];
         $nomPdf = $_FILES['pdfAsignatura']['name'];
         $guardadoPdf = $_FILES['pdfAsignatura']['tmp_name'];
         if (strlen($nomPdf) > 0) {
@@ -118,8 +105,12 @@ switch ($opGlobal):
         $aux = "Malla";
         break;
     case 4://Admin Expo
+        $opExp = $_POST['opExp'];
         switch ($opExp):
             case 0:
+                $idPeriExp = $_POST['idPeriExp'];
+                $AnioExp = $_POST['AnioExp'];
+                $periodoExpo = $_POST['periodoExpo'];
                 $periodoExpoOri = $_POST['periodoExpoOri'];
                 $AnioExpOri = $_POST['AnioExpOri'];
                 $AnioExp = $_POST['AnioExp'];
@@ -138,6 +129,9 @@ switch ($opGlobal):
                 $aux = "Expo";
                 break;
             case 1:
+                $idImgEsp = $_POST['idImgExp'];
+                $CarpetaImag = $_POST['CarpetaImag'];
+                $descripcionExp = $_POST['descripcionExp'];
                 $nomImg = $_FILES['ImgExp']['name'];
                 $guardadoImg = $_FILES['ImgExp']['tmp_name'];
                 if (strlen($nomImg) > 0) {
@@ -193,6 +187,71 @@ switch ($opGlobal):
         $var2 = 2;
         $stmt->bind_param("iii", $idAdverEsp, $var1, $var2);
         $aux = "Especialidad";
+        break;
+    case 7://Admin Complementarias
+        $idComplement = $_POST['idComplement'];
+        $nombreComplement = $_POST['nombreComplement'];
+        $descComplement = $_POST['descComplement'];
+        $nomPdf = $_FILES['pdfComplement']['name'];
+        $guardadoPdf = $_FILES['pdfComplement']['tmp_name'];
+        $nomImg = $_FILES['imagenComplement']['name'];
+        $guardadoImg = $_FILES['imagenComplement']['tmp_name'];
+        if (strlen($nomPdf) > 0) {
+            if (file_exists("../pdf/complementarias/" . $_POST['nomOriPdfComplement'])) {
+                unlink("../pdf/complementarias/" . $_POST['nomOriPdfComplement']);
+            }
+            move_uploaded_file($guardadoPdf, '../pdf/complementarias/' . $nomPdf);
+            $newNomPdf = $nomPdf;
+        } else {
+            $newNomPdf = $_POST['nomOriPdfComplement'];
+        }
+        if (strlen($nomImg) > 0) {
+            if (file_exists("../img/servicios/complementarias/" . $_POST['nomOriImgComplement'])) {
+                unlink("../img/servicios/complementarias/" . $_POST['nomOriImgComplement']);
+            }
+            move_uploaded_file($guardadoImg, '../img/servicios/complementarias/' . $nomImg);
+            $newNomImg = $nomImg;
+        } else {
+            $newNomImg = $_POST['nomOriImgComplement'];
+        }
+        $stmt = $con->prepare("call isic.sp_editComplementarias(?,?,?,?,?)");
+        $stmt->bind_param("ssssi", $nombreComplement, $descComplement, $newNomImg, $newNomPdf, $idComplement);
+        $aux = "Complementarias";
+        break;
+
+    case 8://Admin Historial Especialidad
+        $opHist = $_POST['opHist'];
+        switch ($opHist):
+            case 1:
+                $idHist = $_POST['idHist'];
+                $nombreHist = $_POST['nombreHist'];
+                $objHist = $_POST['objHist'];
+                $nomImg = $_FILES['imagenHist']['name'];
+                $guardadoImg = $_FILES['imagenHist']['tmp_name'];
+                
+                if (strlen($nomImg) > 0) {
+                    echo ("../img/especialidades/historial/" . $_POST['imagenOriHist']);
+                    if (file_exists("../img/especialidades/historial/" . $_POST['imagenOriHist'])) {
+                        unlink("../img/especialidades/historial/" . $_POST['imagenOriHist']);
+                    }
+                    move_uploaded_file($guardadoImg, '../img/especialidades/historial/' . $nomImg);
+                    $newNomImg = $nomImg;
+                } else {
+                    $newNomImg = $_POST['imagenOriHist'];
+                }
+                $stmt = $con->prepare("call isic.sp_editHitorialEsp(?,?,?,?)");
+                $stmt->bind_param("isss", $idHist, $nombreHist, $objHist, $newNomImg);
+                break;
+            case 2:
+                $espConteHisto = $_POST['espConteHisto'];
+                $nombreCont = $_POST['nombreCont'];
+                $nombreOriCont = $_POST['nombreOriCont'];
+                $espOriCont = $_POST['espOriCont'];
+                $stmt = $con->prepare("call isic.sp_editContenidoHis(?,?,?,?)");
+                $stmt->bind_param("isis", $espOriCont, $nombreOriCont, $espConteHisto, $nombreCont);
+                break;
+        endswitch;
+        $aux = "HistorialEsp";
         break;
 endswitch;
 $stmt->execute();

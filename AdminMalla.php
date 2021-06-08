@@ -149,11 +149,11 @@ $listAsigEsp = getListAsigEspAdmin();
                     }
 
                     if ($asignatura[$i][5] === 1) {
-                        echo '<a type="button" class="btn btn-secondary" href="Controlador/ControlBorrar.php?id=3_' . $asignatura[$i][1] . '_2_1"><i class = "bi bi-eye"></i></a>';
+                        echo '<a type="button" class="btn btn-secondary" href="Controlador/ControlBorrar.php?id=3*' . $asignatura[$i][1] . '*2*1"><i class = "bi bi-eye"></i></a>';
                     } else {
-                        echo '<a type="button" class="btn btn-secondary" href="Controlador/ControlBorrar.php?id=3_' . $asignatura[$i][1] . '_1_1"><i class = "bi bi-eye-slash"></i></a>';
+                        echo '<a type="button" class="btn btn-secondary" href="Controlador/ControlBorrar.php?id=3*' . $asignatura[$i][1] . '*1*1"><i class = "bi bi-eye-slash"></i></a>';
                     }
-                    echo '<a type="button" class="btn btn-secondary" href="Controlador/ControlBorrar.php?id=3_' . $asignatura[$i][1] . '_0_2_' . $asignatura[$i][6] . '"><i class="bi bi-trash-fill"></i></a>
+                    echo '<a type="button" class="btn btn-secondary" href="Controlador/ControlBorrar.php?id=3*' . $asignatura[$i][1] . '*0*2*' . $asignatura[$i][6] . '"><i class="bi bi-trash-fill"></i></a>
                                                 <!-- The Modal -->
                                             </div>
                                             <div class="modal topmargin-sm" id="myModalMC">
