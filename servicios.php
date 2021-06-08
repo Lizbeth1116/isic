@@ -108,16 +108,9 @@ $servInfo = getServicio($_GET["idServ"]);
     ?>
     <?php
     if ($_GET["idServ"] == 3) {
-<<<<<<< HEAD
-        echo '';
-    }
-    ?>
-    <div class="complementaria"> 
-=======
         $complInfo = getComplementarias();
         echo '
     <div class="complementaria">
->>>>>>> 3bda6ee0bbf5e4f5136e196bfb789d48fb8722b6
         <div class="site-section">
             <div class="container texto">
                 <div class="section-heading text-center">
@@ -125,9 +118,9 @@ $servInfo = getServicio($_GET["idServ"]);
                 </div>
                 <div class="row topmargin-xs">
                     <div class="col-md-12">';
-                    for ($i = 0; $i < sizeof($complInfo); $i++){
-                        if ($complInfo[$i][5] == 1) {
-                            echo '
+        for ($i = 0; $i < sizeof($complInfo); $i++) {
+            if ($complInfo[$i][5] == 1) {
+                echo '
                             <div class="resume-item mb-4">
                                 <h3><strong>' . $complInfo[$i][1] . '</strong></h3>
                                 <div class="row">
@@ -145,9 +138,9 @@ $servInfo = getServicio($_GET["idServ"]);
 
                                 </div>
                             </div>';
-                        }
-                    }
-                    echo '
+            }
+        }
+        echo '
                     </div>
                 </div>
             </div>
@@ -155,4 +148,5 @@ $servInfo = getServicio($_GET["idServ"]);
     </div>';
     }
     ?>
+    </div>
     <?php include('footer.php'); ?>
