@@ -15,7 +15,7 @@ $servInfo = getServicio($_GET["idServ"]);
                 echo '<h2>' . $servInfo[0][0] . '</h2><p>';
                 $tmp = explode("*", $servInfo[0][1]);
                 for ($i = 0; $i < sizeof($tmp); $i++) {
-                    echo '<small><i class="bi bi-check2"></i> ' . $tmp[$i] . '</small><br>';
+                    echo '<i class="bi bi-check2"></i> ' . $tmp[$i] . '<br>';
                 }
                 echo '</p>';
             } else {
@@ -111,7 +111,7 @@ $servInfo = getServicio($_GET["idServ"]);
         echo '';
     }
     ?>
-    <div class="complementaria">
+    <div class="complementaria"> 
         <div class="site-section">
             <div class="container texto">
                 <div class="section-heading text-center">

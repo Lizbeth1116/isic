@@ -1,14 +1,10 @@
 .asociaciones {
     background: linear-gradient(to top, #ffffff 0%, #ffffff 100%);
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
-.asociaciones .row{
-    width: 100%;
-    top: 0;
-    right: 0;
-    left: 0;
-    bottom: 0;
-    overflow: hidden;
-}
+
 @keyframes cambiar {
     0% {
         margin-top: 700px;
@@ -17,6 +13,7 @@
         margin-top: 0;
     }
 }
+
 .asociaciones .site-section {
     padding-bottom: 5em;
 }
@@ -47,29 +44,25 @@
 
 .asociaciones .resume-item {
     text-align: center;
-    padding: 30px;
+    padding: 20px;
     border: 4px solid transparent;
     border-radius: 7px;
     animation: cambiar 2s none;
     -moz-transition: 0.2s;
     -webkit-transition: 0.2s;
     transition: 0.2s;
-    
 }
-.asociaciones .nokia{
-    background-color: #3b78bd;
-}
-.asociaciones .cisco{
-    background-color: #41a8ec;
-}
-.asociaciones .oracle{
-    background-color: #c92f2f;
+
+.asociaciones .icono {
+    height: 230px;
+    padding-bottom: 20px;
+    animation: cambiar 2s none;
 }
 
 .asociaciones .resume-item:hover {
     -moz-transform: scale(1.01);
-    -webkit-transform: scale(1.01);
-    transform: scale(1.01);
+    -webkit-transform: scale(1.05);
+    transform: scale(1.05);
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
 }
 
@@ -82,6 +75,15 @@
     outline: none;
 }
 
+.asociaciones .resume-item a:hover {
+    text-decoration: none;
+    color: #5a5858 !important;
+}
+
+.asociaciones .resume-item .school {
+    display: block;
+    font-size: 16px;
+}
 
 .asociaciones .texto .resume-item h3 {
     color: #f1f1f1;
@@ -93,18 +95,27 @@
     margin-bottom: 0;
 }
 
-.asociaciones .icono {
-    height: 200px;
-    padding-bottom: 20px;
-    animation: cambiar 2s none;
-}
-
 .asociaciones .logo-w {
-    height: 50px;
+    height: 40px;
     padding-bottom: 10px;
     animation: cambiar 2s none;
 }
 
-.asociaciones .resume-item a{
-    color:#585858 !important;
+.asociaciones .resume-item a {
+    color: #585858 !important;
+    text-decoration: none;
 }
+
+.asociaciones .nokia {
+    background-color: #3b78bd;
+}
+
+.asociaciones .cisco {
+    background-color: #41a8ec;
+}
+
+.asociaciones .oracle {
+    background-color: #c92f2f;
+}
+
+@media screen and (min-width: 360px) {}

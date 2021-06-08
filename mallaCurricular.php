@@ -23,7 +23,7 @@ $max = getMaxMalla();
                     $aux2 = 0;
                     for ($i = 1; $i < 10; $i++) {
                         echo '<div class="col-sm">';
-                        echo '<div class="resume-item mb-2 partedos">
+                        echo '<div class="mb-3 semestres text-center">
                                                     <p><b>' . $i . '° Semestre</b></p>
                                                     </div>';
                         for ($j = 0; $j < sizeof($malla[$i]); $j++) {

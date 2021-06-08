@@ -66,7 +66,7 @@ include('head.php');
                         </p>
                         <button type="button" class="btn btn-outline-primary">Ver detalles</button>
                     </div>
-                </div>
+                </div> 
                 <div class="col-md-4">
                     <div class="resume-item mb-4 partedos">
                         <img src="img/iconos-conocenos/garrapata.svg?1.0.0" class="icono">

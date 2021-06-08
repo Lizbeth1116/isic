@@ -40,6 +40,7 @@ session_start();
     <link rel="stylesheet" type="text/css" href="css/normalize.css" />
     <link rel="stylesheet" type="text/css" href="css/servicios.css?1.0.0" />
     <link rel="stylesheet" type="text/css" href="css/historialEspecialidad.css?1.0.0" />
+    <link rel="stylesheet" href="css/particula.css?1.0.0">
     <!--iconos de la plataforma fontawesome-->
     <link rel="icon" type="image/png" href="img/icono.png" />
     <title>Isic</title>
