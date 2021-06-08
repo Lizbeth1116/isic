@@ -3,7 +3,7 @@
     padding: 0;
     box-sizing: border-box;
 }
-
+ 
 @keyframes cambiar {
     0% {
         margin-top: 700px;
@@ -92,7 +92,6 @@
 
 .especialidad section p {
     font-weight: 300;
-    margin-bottom: 15px;
     animation: cambiar 3s none;
 }
 

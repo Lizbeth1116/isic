@@ -57,10 +57,10 @@ include('head.php');
             </div>
             <div class="row topmargin-xs">
                 <div class="col-md-4">
-                    <div class="resume-item mb-4 partedos">
+                    <div class="resume-item mb-4">
                         <img src="img/iconos-conocenos/data.svg?1.0.0" class="icono">
                         <h3><strong>Centro de Formación de Capital Humano</strong></h3>
-                        <p class="text-center">
+                        <p class="text-center" style="color: #8a8a8a;">
                             Laboratorio de dispositivos móviles.
                             Enfocado al desarrollo de software y aplicaciones móviles
                         </p>
@@ -68,19 +68,19 @@ include('head.php');
                     </div>
                 </div> 
                 <div class="col-md-4">
-                    <div class="resume-item mb-4 partedos">
+                    <div class="resume-item mb-4">
                         <img src="img/iconos-conocenos/garrapata.svg?1.0.0" class="icono">
                         <h3><strong>Acreditación</strong></h3>
-                        <p class="text-center">Actualemente la carrera de Ingeniería en Sistemas Computacionales se encuentra acreditado por el CACEI.</p>
+                        <p class="text-center" style="color: #8a8a8a;">Actualemente la carrera de Ingeniería en Sistemas Computacionales se encuentra acreditado por el CACEI.</p>
                         <button type="button" class="btn btn-outline-primary"><a href="acreditacion.php?1.0.0">Ver detalles</a></button>
                     </div>
                 </div>
 
                 <div class="col-md-4">
-                    <div class="resume-item mb-4 partedos">
+                    <div class="resume-item mb-4">
                         <img src="img/iconos-conocenos/aprendizaje.svg?1.0.0" class="icono">
                         <h3><strong>Expo Sistemas 2020</strong></h3>
-                        <p class="text-center">Preparate y muestra el logro de los Atributos Educacionales así como los de tu perfil de egreso en Expo Proyecta Tec 2020.</p>
+                        <p class="text-center" style="color: #8a8a8a;">Preparate y muestra el logro de los Atributos Educacionales así como los de tu perfil de egreso en Expo Proyecta Tec 2020.</p>
                         <button type="button" class="btn btn-outline-primary">Ver detalles</button>
                     </div>
                 </div>

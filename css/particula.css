@@ -11,12 +11,6 @@
     margin: auto;
 }
 
-#particles-js {
-    width: 100%;
-    height: 100%;
-    position: fixed;
-}
-
 /* Texto Inicial */
 
 .modulo-cisco .texto {
@@ -29,7 +23,6 @@
     /*background: rgba(0, 0, 0, .8);*/
     display: inline-block;
     text-align: center;
-    padding-top: 50px;
     color: #fff;
 }
 
@@ -46,7 +39,7 @@
 
 /* Principal */
 
-.modulo-cisco  .principal {
+.modulo-cisco .principal {
     position: relative;
     color: #000;
     padding-bottom: 100px;
@@ -58,7 +51,6 @@
 }
 
 .modulo-cisco .principal article p {
-    margin-bottom: 20px;
     line-height: 24px;
     color: #cfcfcf;
     text-align: center;
@@ -116,5 +108,5 @@
 }
 
 .modulo-cisco .resume-item *:last-child {
-    margin-bottom: 20px;
+    margin-bottom: 0px;
 }
