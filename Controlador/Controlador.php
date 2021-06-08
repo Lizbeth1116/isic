@@ -502,3 +502,18 @@ function getComplementarias() {
     $stmt->close();
     return $complInfo;
 }
+
+
+function getUltimaExpo() {
+    global $con;
+    $stmt = $con->prepare("call isic.sp_getUltimaExpo();");
+    $stmt->execute();
+    $stmt->bind_result($idperiodoExpo, $periodo, $año);
+    while ($stmt->fetch()) {
+        $ultExpo[0][0] = $idperiodoExpo;
+        $ultExpo[0][1] = $periodo;
+        $ultExpo[0][2] = $año;
+    }
+    $stmt->close();
+    return $ultExpo;
+}
