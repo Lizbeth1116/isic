@@ -118,9 +118,9 @@ $servInfo = getServicio($_GET["idServ"]);
                 </div>
                 <div class="row topmargin-xs">
                     <div class="col-md-12">';
-                    for ($i = 0; $i < sizeof($complInfo); $i++){
-                        if ($complInfo[$i][5] == 1) {
-                            echo '
+        for ($i = 0; $i < sizeof($complInfo); $i++) {
+            if ($complInfo[$i][5] == 1) {
+                echo '
                             <div class="resume-item mb-4">
                                 <h3><strong>' . $complInfo[$i][1] . '</strong></h3>
                                 <div class="row">
@@ -138,9 +138,9 @@ $servInfo = getServicio($_GET["idServ"]);
 
                                 </div>
                             </div>';
-                        }
-                    }
-                    echo '
+            }
+        }
+        echo '
                     </div>
                 </div>
             </div>
@@ -148,4 +148,5 @@ $servInfo = getServicio($_GET["idServ"]);
     </div>';
     }
     ?>
+    </div>
     <?php include('footer.php'); ?>
