@@ -6,6 +6,7 @@ $area = getArea();
 $listServ = getListaServicios();
 $peri = getPeriodo(); 
 $listaPE = getListaPE();
+$ultimaExpo = getUltimaExpo();
 session_start();
 
 ?>

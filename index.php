@@ -59,29 +59,32 @@ include('head.php');
                 <div class="col-md-4">
                     <div class="resume-item mb-4">
                         <img src="img/iconos-conocenos/data.svg?1.0.0" class="icono">
-                        <h3><strong>Centro de Formación de Capital Humano</strong></h3>
-                        <p class="text-center" style="color: #8a8a8a;">
-                            Laboratorio de dispositivos móviles.
-                            Enfocado al desarrollo de software y aplicaciones móviles
-                        </p>
-                        <button type="button" class="btn btn-outline-primary">Ver detalles</button>
+                            <h3><strong>Centro de Formación de Capital Humano</strong></h3>
+                            <p class="text-center" style="color: #8a8a8a;">
+                                Laboratorio de dispositivos móviles.
+                                Enfocado al desarrollo de software y aplicaciones móviles
+                            </p>
+                            <button type="button" class="btn btn-outline-primary">Ver detalles</button>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="resume-item mb-4">
                         <img src="img/iconos-conocenos/garrapata.svg?1.0.0" class="icono">
-                        <h3><strong>Acreditación</strong></h3>
-                        <p class="text-center" style="color: #8a8a8a;">Actualemente la carrera de Ingeniería en Sistemas Computacionales se encuentra acreditado por el CACEI.</p>
-                        <button type="button" class="btn btn-outline-primary"><a href="acreditacion.php?1.0.0">Ver detalles</a></button>
+                            <h3><strong>Acreditación</strong></h3>
+                            <p class="text-center" style="color: #8a8a8a;">Actualemente la carrera de Ingeniería en Sistemas Computacionales se encuentra acreditado por el CACEI.</p>
+                            <button type="button" class="btn btn-outline-primary"><a href="acreditacion.php?1.0.0">Ver detalles</a></button>
                     </div>
                 </div>
 
                 <div class="col-md-4">
                     <div class="resume-item mb-4">
                         <img src="img/iconos-conocenos/aprendizaje.svg?1.0.0" class="icono">
-                        <h3><strong>Expo Sistemas 2020</strong></h3>
-                        <p class="text-center" style="color: #8a8a8a;">Preparate y muestra el logro de los Atributos Educacionales así como los de tu perfil de egreso en Expo Proyecta Tec 2020.</p>
-                        <button type="button" class="btn btn-outline-primary">Ver detalles</button>
+                            <?php
+                            echo '
+                            <h3><strong>Expo Sistemas ' . $ultimaExpo[0][2] . '</strong></h3>
+                            <p class="text-center" style="color: #8a8a8a;">Preparate y muestra el logro de los Atributos Educacionales así como los de tu perfil de egreso en Expo Proyecta Tec ' . $ultimaExpo[0][2] . '.</p>
+                            <button type="button" class="btn btn-outline-primary"><a href="expo-sistemas.php?per=' . $ultimaExpo[0][0] . '_' . $ultimaExpo[0][1] . '_' . $ultimaExpo[0][2] . '">Ver detalles</a></button>';
+                            ?>
                     </div>
                 </div>
             </div>
