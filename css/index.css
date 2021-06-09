@@ -263,6 +263,7 @@ a {
 
 .resumen {
     background: linear-gradient(to top, #106ce4 0%, #00ddd2 100%);
+    padding-bottom: 100px;
 }
 
 .resumen .site-section {
@@ -358,7 +359,42 @@ a {
 .resumen .resume-item *:last-child {
     margin-bottom: 0;
 }
+.resumen .contacto h3,p{
+    color: #f1f1f1;
+}
+.resumen .contacto .form-control {
+    background-color: #73b0ff !important;
+    font-size: 12px;
+    border: none;
+    padding: 0 15px;
+    border-radius: 9px;
+}
 
+.resumen .contacto .form-control:focus {
+    border: 1px solid var(--dark-color);
+    color: #ffffff;
+    outline: none;
+    box-shadow: none;
+}
+
+.resumen .contacto button {
+    background-color: #10b475 !important;
+    color: #ffffff !important;
+    margin-top: 10px;
+    border-radius: 50px !important;
+    -webkit-transition: .3s all;
+    -o-transition: .3s all;
+    transition: .3s all;
+}
+
+.resumen .contacto button:hover {
+    color: #ffffff !important;
+    background-color: #1fa170 !important;
+}
+
+.resumen .contacto button:focus {
+    outline: none;
+}
 /*Inicio Sub-Menu*/
 
 .dropdown-local {
@@ -561,3 +597,4 @@ html {
     background-repeat: no-repeat;
     background-size: 1rem 1rem;
 }
+

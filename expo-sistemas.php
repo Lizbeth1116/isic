@@ -6,7 +6,6 @@ $ImagenesExpo = getImagenesExpo($perio[0]);
 $CarruselExpo = getCarruselExpo();
 ?>
 <link rel="stylesheet" href="css/fluid-gallery.css">
-
 <div class="content-carousel">
     <div id="demo" class="carousel slide" data-ride="carousel">
         <ul class="carousel-indicators">

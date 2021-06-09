@@ -12,8 +12,9 @@ $servInfo = getServicio($_GET["idServ"]);
 
             <?php
             if ($_GET["idServ"] == 4) {
-                echo '<h2>' . $servInfo[0][0] . '</h2><p>';
+                echo '<h2>' . $servInfo[0][0] . '</h2>';
                 $tmp = explode("*", $servInfo[0][1]);
+                echo '<p>';
                 for ($i = 0; $i < sizeof($tmp); $i++) {
                     echo '<i class="bi bi-check2"></i> ' . $tmp[$i] . '<br>';
                 }

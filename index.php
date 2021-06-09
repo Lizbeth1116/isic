@@ -66,7 +66,7 @@ include('head.php');
                             </p>
                             <button type="button" class="btn btn-outline-primary">Ver detalles</button>
                     </div>
-                </div> 
+                </div>
                 <div class="col-md-4">
                     <div class="resume-item mb-4">
                         <img src="img/iconos-conocenos/garrapata.svg?1.0.0" class="icono">
@@ -90,8 +90,65 @@ include('head.php');
             </div>
         </div>
     </section>
-
+    <section class="contacto">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 mt-4">
+                    <h3>¿Estas listo para formar parte de un proyecto? <b>comienza ahora.</b></h3>
+                    <p>Registrate en el siguiente formulario</p>
+                </div>
+                <div class="col-md-6 mt-4">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="" placeholder="Nombre(s)">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="" placeholder="Apellido(s)">
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <input type="email" class="form-control" id="" placeholder="Email">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="number" class="form-control" id="" placeholder="Semestre">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="" placeholder="Grupo">
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <input type="number" class="form-control" id="" placeholder="Número de telefono (opcional)">
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <select name="cars" class="custom-select mb-3 form-control">
+                                    <option selected>Nombre del Proyecto</option>
+                                    <option value="volvo">Volvo</option>
+                                    <option value="fiat">Fiat</option>
+                                    <option value="audi">Audi</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <button type="button" class="btn fluid">Enviar mensaje</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 </div>
+
 <!--Fin pagina principal-->
 <!--Inicia footer-->
 <?php include('footer.php'); ?>
