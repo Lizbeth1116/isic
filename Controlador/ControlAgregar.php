@@ -121,6 +121,22 @@ switch ($opGlobal):
                 $stmt->bind_param("iss", $addIdPeriImag, $addDescripcionExp, $nomImg);
                 $aux = "Expo";
                 break;
+            case 2:
+                $txtCarAdd = $_POST['txtCarAdd'];
+                $nomImg = $_FILES['imgCarAdd']['name'];
+                $guardadoImg = $_FILES['imgCarAdd']['tmp_name'];
+                if (!file_exists('../img/carousel-eventos')) {
+                    mkdir('../img/carousel-eventos', 0777, TRUE);
+                    if (file_exists('../img/carousel-eventos')) {
+                        move_uploaded_file($guardadoImg, '../img/carousel-eventos/' . $nomImg);
+                    }
+                } else {
+                    move_uploaded_file($guardadoImg, '../img/carousel-eventos/' . $nomImg);
+                }
+                $stmt = $con->prepare("call isic.sp_AddCarruselExpo(?,?)");
+                $stmt->bind_param("ss", $nomImg, $txtCarAdd);
+                $aux = "Expo";
+                break;
         endswitch;
         break;
 
@@ -192,7 +208,7 @@ switch ($opGlobal):
                 break;
         endswitch;
         $aux = "HistorialEsp";
-        break;  
+        break;
 endswitch;
 $stmt->execute();
 $stmt->close();

@@ -126,7 +126,6 @@ switch ($opGlobal):
                 }
                 $stmt = $con->prepare("call isic.sp_editPeriodoExpo(?,?,?,?)");
                 $stmt->bind_param("iiis", $idPeriExp, $periodoExpo, $AnioExp, $nomCarpeta);
-                $aux = "Expo";
                 break;
             case 1:
                 $idImgEsp = $_POST['idImgExp'];
@@ -144,10 +143,27 @@ switch ($opGlobal):
                     $newNomIng = $_POST['nomImagOri'];
                 }
                 $stmt = $con->prepare("call isic.sp_editImgExpo(?,?,?)");
-                $stmt->bind_param("iss", $idImgEsp, $descripcionExp, $newNomIng);
-                $aux = "Expo";
+                $stmt->bind_param("iss", $idImgEsp, $descripcionExp, $newNomIng);                
+                break;
+            case 2:
+                $idCarrou = $_POST['idCarrou'];
+                $txtCar = $_POST['txtCar'];
+                $nomImg = $_FILES['imgCar']['name'];
+                $guardadoImg = $_FILES['imgCar']['tmp_name'];
+                if (strlen($nomImg) > 0) {
+                    if (file_exists("../img/carousel-eventos/" . $_POST['nomOriImgCarr'])) {
+                        unlink("../img/carousel-eventos/" . $_POST['nomOriImgCarr']);
+                    }
+                    move_uploaded_file($guardadoImg, '../img/carousel-eventos/' . $nomImg);
+                    $newNomImg = $nomImg;
+                } else {
+                    $newNomImg = $_POST['nomOriImgCarr'];
+                }
+                $stmt = $con->prepare("call isic.sp_editCarruselExpo(?,?,?)");
+                $stmt->bind_param("iss", $idCarrou, $newNomImg, $txtCar);
                 break;
         endswitch;
+        $aux = "Expo";
         break;
     case 5://Admin Asesorias
         $stmt = $con->prepare("call isic.sp_editAsesoria(?,?,?,?,?,?)");
@@ -228,7 +244,7 @@ switch ($opGlobal):
                 $objHist = $_POST['objHist'];
                 $nomImg = $_FILES['imagenHist']['name'];
                 $guardadoImg = $_FILES['imagenHist']['tmp_name'];
-                
+
                 if (strlen($nomImg) > 0) {
                     echo ("../img/especialidades/historial/" . $_POST['imagenOriHist']);
                     if (file_exists("../img/especialidades/historial/" . $_POST['imagenOriHist'])) {
@@ -252,6 +268,27 @@ switch ($opGlobal):
                 break;
         endswitch;
         $aux = "HistorialEsp";
+        break;
+    case 9://Admin Usuario y Contraseña
+        include("./Controlador.php");
+        $admin = getAdminOri();
+        $adminN = getAdmin();
+        $usAdmin = $_POST['UsAdmin'];
+        $passAdmin = $_POST['PassAdmin'];
+        if (strlen($usAdmin) <= 0 && strlen($passAdmin) <= 0) {
+            $stmt = $con->prepare("call isic.sp_editAdmin(?,?,?)");
+            $stmt->bind_param("sss", $adminN[0][0], $adminN[0][1], $admin[0][0]);
+        } elseif (strlen($usAdmin) <= 0 && strlen($passAdmin) > 0) {
+            $stmt = $con->prepare("call isic.sp_editAdmin(?,?,?)");
+            $stmt->bind_param("sss", $adminN[0][0], $passAdmin, $admin[0][0]);
+        } elseif (strlen($usAdmin) > 0 && strlen($passAdmin) <= 0) {
+            $stmt = $con->prepare("call isic.sp_editAdmin(?,?,?)");
+            $stmt->bind_param("sss", $usAdmin, $adminN[0][1], $admin[0][0]);
+        } else {
+            $stmt = $con->prepare("call isic.sp_editAdmin(?,?,?)");
+            $stmt->bind_param("sss", $usAdmin, $passAdmin, $admin[0][0]);
+        }
+        $aux = "Contraseña";
         break;
 endswitch;
 $stmt->execute();

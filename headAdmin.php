@@ -3,7 +3,8 @@ include("./Controlador/Controlador.php");
 if (!$_COOKIE['logueado']) {
     $admin = $_POST['admin'];
     $pass = $_POST['pass'];
-    if ($admin === 'isic' && $pass === 'itsoeh.isic2021') {
+    $Usadmin = getAdmin();
+    if ($admin === $Usadmin[0][0] && $pass === $Usadmin[0][1]) {
         setcookie('logueado', TRUE, time() + 2 * 60 * 60); 
     } else {
         session_destroy();
@@ -66,6 +67,7 @@ if (!$_COOKIE['logueado']) {
                     <li><a href="AdminAsesorias.php?1.0.0"><i class="bi bi-file-earmark-person"></i>Asesorias</a></li>
                     <li><a href="AdminComplementarias.php?1.0.0"><i class="bi bi-puzzle"></i>Complementarias</a></li>
                     <li><a href="AdminHistorialEsp.php?1.0.0"><i class="bi bi-clock-history"></i>Hitorial Especialidad</a></li>
+                    <li><a href="AdminContraseña.php?1.0.0"><i class="bi bi-shield-lock"></i>Seguridad</a></li>
                 </ul>
             </nav>
         </div>
