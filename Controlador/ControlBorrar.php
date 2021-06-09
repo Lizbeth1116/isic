@@ -76,12 +76,10 @@ switch ($datos[0]):
     case 9: // Deshabilitar/Borrar Complementarias
         if (file_exists("../pdf/complementarias/" . $datos[5])) {
             unlink("../pdf/complementarias/" . $datos[5]);
-            
         }
         echo ("../pdf/complementarias/" . $datos[5]);
         if (file_exists("../img/servicios/complementarias/" . $datos[4])) {
             unlink("../img/servicios/complementarias/" . $datos[4]);
-            
         }
         echo ("<br>../img/servicios/complementarias/" . $datos[4]);
         $stmt = $con->prepare("call isic.sp_DesHabComplement(?,?,?)");
@@ -95,12 +93,20 @@ switch ($datos[0]):
         $stmt = $con->prepare("call isic.sp_DesHabHist(?,?,?)");
         $stmt->bind_param("iii", $datos[1], $datos[2], $datos[3]);
         $aux = "HistorialEsp";
-        break; 
+        break;
     case 11: // Contenido Historial Especialidad
         $stmt = $con->prepare("call isic.sp_DesHabContenidoHis(?,?,?,?)");
         $stmt->bind_param("isii", $datos[1], $datos[2], $datos[3], $datos[4]);
         $aux = "HistorialEsp";
-        break; 
+        break;
+    case 12: // Carrusel Expo
+        if (file_exists("../img/carousel-eventos/" . $datos[4])) {
+            unlink("../img/carousel-eventos/" . $datos[4]);
+        }
+        $stmt = $con->prepare("call isic.sp_DesHabCarruselExpo(?,?,?)");
+        $stmt->bind_param("iii", $datos[1], $datos[2], $datos[3]);
+        $aux = "Expo";
+        break;
 endswitch;
 $stmt->execute();
 $stmt->close();

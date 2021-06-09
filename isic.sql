@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3308
--- Tiempo de generación: 08-06-2021 a las 22:53:26
+-- Tiempo de generación: 09-06-2021 a las 03:33:54
 -- Versión del servidor: 10.4.6-MariaDB
 -- Versión de PHP: 7.3.8
 
@@ -42,6 +42,11 @@ else
 	INSERT INTO `isic`.`asignaturas_esp` (`idespecialidad`, `idasignatura`) 
     VALUES (esp, clav);
 END IF;
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_AddCarruselExpo` (`imag` VARCHAR(100), `txt` VARCHAR(45))  BEGIN
+INSERT INTO `isic`.`carruselexpo` (`ImagenCarr`, `Texto`) 
+VALUES (imag, txt);
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_AddColaboradorInv` (`tema` INT, `docent` INT, `cargo` INT)  BEGIN
@@ -121,6 +126,18 @@ WHERE (`idespecialidad` = idesp) and (`idasignatura` = idasig);
 elseif op = 2 then
 DELETE FROM `isic`.`asignaturas_esp`
 WHERE (`idespecialidad` = idesp) and (`idasignatura` = idasig);
+
+end if;
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_DesHabCarruselExpo` (`id` INT, `estado` INT, `op` INT)  BEGIN
+IF op = 1 then
+UPDATE `isic`.`carruselexpo` SET `Estado` = estado 
+where `idcarruselExpo` = id;
+
+elseif op = 2 then
+DELETE FROM `isic`.`carruselexpo`
+where `idcarruselExpo` = id;
 
 end if;
 END$$
@@ -245,6 +262,12 @@ WHERE (`idtema_linea_investigacion` = idTemaInv);
 end if;
 END$$
 
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_editAdmin` (`nUs` VARCHAR(50), `nPass` VARCHAR(50), `Us` VARCHAR(50))  BEGIN
+UPDATE `isic`.`admin` SET `Usuario` = (select isic.fn_encript(nUs)), 
+`Contraseña` = (select isic.fn_encript(nPass)) 
+WHERE (`Usuario` = Us);
+END$$
+
 CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_editarAsig` (`nclav` VARCHAR(10), `nasig` VARCHAR(60), `nsem` INT, `nhor` VARCHAR(15), `narea` VARCHAR(45), `clav` VARCHAR(10), `esp` INT, `nesp` INT, `op` INT, `pdf` VARCHAR(100))  BEGIN
 set @area = (select idareaConocimiento from isic.areaconocimiento  where Nombre = narea);
 IF @area <> 8 then
@@ -286,6 +309,11 @@ END$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_editAsigEsp` (`idesp` INT, `idasig` VARCHAR(10), `des` VARCHAR(600))  BEGIN
 UPDATE `isic`.`asignaturas_esp` SET `descripcion` = des 
 WHERE (`idespecialidad` = idesp) and (`idasignatura` = idasig);
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_editCarruselExpo` (`id` INT, `imag` VARCHAR(100), `txt` VARCHAR(45))  BEGIN
+UPDATE `isic`.`carruselexpo` SET `ImagenCarr` = imag, `Texto` = txt 
+WHERE (`idcarruselExpo` = id);
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_editComplementarias` (`nom` VARCHAR(60), `descrip` VARCHAR(600), `imag` VARCHAR(100), `pdf` VARCHAR(100), `id` INT)  BEGIN
@@ -344,6 +372,16 @@ SELECT idespecialidad,Nombre FROM isic.especialidad
 where Estado = 1;
 END$$
 
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_getAdmin` ()  BEGIN
+select isic.fn_desencript(Usuario) Usuario, 
+isic.fn_desencript(Contraseña) Contraseña 
+FROM isic.admin;
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_getAdminOri` ()  BEGIN
+SELECT * FROM isic.admin;
+END$$
+
 CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_getAsesor` ()  BEGIN
 SELECT concat(d.Nombre, " ", d.APaterno, " ", d.AMaterno) asesor 
 FROM isic.asesorias a join isic.docente d
@@ -369,6 +407,10 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_getAsignaturaEspAdmin` ()  BEGIN
 SELECT es.idespecialidad, es.Nombre, ae.idasignatura, ae.descripcion, ae.Estado
 FROM isic.asignaturas_esp ae join isic.especialidad es
 on ae.idespecialidad = es.idespecialidad;
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_getCarruselExpo` ()  BEGIN
+SELECT * FROM isic.carruselexpo;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_getComplementarias` ()  BEGIN
@@ -459,6 +501,10 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_getTemaInv` ()  BEGIN
 SELECT * FROM isic.tema_linea_investigacion;
 END$$
 
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_getUltimaExpo` ()  BEGIN
+SELECT idperiodoExpo, periodo, año FROM isic.periodoexpo order by año desc, periodo desc limit 1;
+END$$
+
 CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_get_ListaMateriasEsp` ()  BEGIN
 SELECT ae.idespecialidad, es.Nombre, ae.idasignatura
 FROM  isic.especialidad es join isic.asignaturas_esp ae
@@ -484,7 +530,80 @@ FROM isic.asignaturas_esp ae join isic.mallacurricular m
 on (ae.idasignatura = m.MC_ClaveAsignatura) where ae.idespecialidad <> pes);
 END$$
 
+--
+-- Funciones
+--
+CREATE DEFINER=`root`@`localhost` FUNCTION `fn_desencript` (`passE` VARCHAR(50)) RETURNS VARCHAR(50) CHARSET latin1 NO SQL
+BEGIN
+
+declare pass varchar(50) default '';
+declare aux int;
+declare aux2 int default 1;
+declare ascEnc int;
+declare keyP int default (SELECT ASCII(SUBSTR(passE,(length(passE)),1)));
+
+i: loop
+	IF aux2 < (select length(passE)) THEN
+		set aux = (SELECT ASCII(SUBSTR(passE,aux2,1)));
+		set aux2 = aux2+1;
+		set ascEnc = aux-keyP;
+		set pass = (SELECT CONCAT(pass, cast(CHAR(ascEnc using utf8)as char)));
+		ITERATE i;
+	END IF;    
+	LEAVE i;
+END LOOP i;
+	
+RETURN pass;
+END$$
+
+CREATE DEFINER=`root`@`localhost` FUNCTION `fn_encript` (`pass` VARCHAR(50)) RETURNS VARCHAR(50) CHARSET latin1 NO SQL
+BEGIN
+
+declare passE varchar(50) default '';
+declare aux int;
+declare aux2 int default 1;
+declare ascEnc int;
+declare keyP int default (select FLOOR(rand()*127+1)); 
+
+i: loop
+	IF aux2 <= (select length(pass)) THEN
+		set aux = (SELECT ASCII(SUBSTR(pass,aux2,1)));
+		set aux2 = aux2+1;
+		set ascEnc = aux+keyP; 
+		set passE = (SELECT CONCAT(passE, cast(CHAR(ascEnc using utf8)as char)));
+        if ascEnc > 127 then
+			set passE = '';
+            set keyP = (select FLOOR(rand()*127+1)); 
+            set aux2=1;
+        END IF; 
+		ITERATE i;
+	END IF;    
+    set passE = (SELECT CONCAT(passE, cast(CHAR(keyP using utf8)as char)));
+	LEAVE i;
+END LOOP i;
+	
+RETURN passE;
+END$$
+
 DELIMITER ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `admin`
+--
+
+CREATE TABLE `admin` (
+  `Usuario` varchar(50) NOT NULL,
+  `Contraseña` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `admin`
+--
+
+INSERT INTO `admin` (`Usuario`, `Contraseña`) VALUES
+('uuo', 'p{zvlo5pzpj9798');
 
 -- --------------------------------------------------------
 
@@ -586,6 +705,29 @@ INSERT INTO `asignaturas_esp` (`idespecialidad`, `idasignatura`, `descripcion`, 
 (2, 'TDAM-2003', 'Conocer técnicas avanzadas de visión por computadora para que los estudiantes formen una capacidad de resolución de problemas en entornos nuevos o poco conocido dentro de contextos más amplios (o multidisciplinares) relacionados con su área de estudio. Capacidad de integrar tecnologías y algoritmos propios de la visión por computadora, con carácter generalista, y en contextos más amplios y multidisciplinares.', 1),
 (2, 'TDAM-2004', 'Conoce e implementa las herramientas y técnicas de un framework propietario y abierto para el desarrollo de aplicaciones móviles multiplataforma.', 1),
 (2, 'TDAM-2005', 'Identifica, analiza y simula amenazas cibernéticas que vulneran la integridad de la información y recursos de una infraestructura de red así como técnicas de pruebas para aseverar la calidad en un proyecto.', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `carruselexpo`
+--
+
+CREATE TABLE `carruselexpo` (
+  `idcarruselExpo` int(11) NOT NULL,
+  `ImagenCarr` varchar(100) DEFAULT NULL,
+  `Texto` varchar(45) DEFAULT 'Expo Sistemas',
+  `Estado` int(11) DEFAULT 1
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `carruselexpo`
+--
+
+INSERT INTO `carruselexpo` (`idcarruselExpo`, `ImagenCarr`, `Texto`, `Estado`) VALUES
+(1, 'demo4.jpg', 'Agosto - Diciembre 2020', 1),
+(2, 'demo3.jpg', 'Enero - Mayo 2020', 1),
+(3, 'demo6.jpg', 'Agosto - Diciembre 2019', 1),
+(4, 'demo5.jpg', 'Enero - Mayo 2019', 1);
 
 -- --------------------------------------------------------
 
@@ -1046,6 +1188,12 @@ INSERT INTO `tipo_pe` (`idtipo_PE`, `Nombre`) VALUES
 --
 
 --
+-- Indices de la tabla `admin`
+--
+ALTER TABLE `admin`
+  ADD PRIMARY KEY (`Usuario`);
+
+--
 -- Indices de la tabla `areaconocimiento`
 --
 ALTER TABLE `areaconocimiento`
@@ -1065,6 +1213,12 @@ ALTER TABLE `asesorias`
 ALTER TABLE `asignaturas_esp`
   ADD PRIMARY KEY (`idespecialidad`,`idasignatura`),
   ADD KEY `idasignatura_idx` (`idasignatura`);
+
+--
+-- Indices de la tabla `carruselexpo`
+--
+ALTER TABLE `carruselexpo`
+  ADD PRIMARY KEY (`idcarruselExpo`);
 
 --
 -- Indices de la tabla `complementarias`
@@ -1172,6 +1326,12 @@ ALTER TABLE `asesorias`
   MODIFY `idasesorias` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
 
 --
+-- AUTO_INCREMENT de la tabla `carruselexpo`
+--
+ALTER TABLE `carruselexpo`
+  MODIFY `idcarruselExpo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
 -- AUTO_INCREMENT de la tabla `complementarias`
 --
 ALTER TABLE `complementarias`
@@ -1199,7 +1359,7 @@ ALTER TABLE `imagenexpo`
 -- AUTO_INCREMENT de la tabla `periodoexpo`
 --
 ALTER TABLE `periodoexpo`
-  MODIFY `idperiodoExpo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `idperiodoExpo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT de la tabla `pe_isic`

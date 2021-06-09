@@ -503,7 +503,6 @@ function getComplementarias() {
     return $complInfo;
 }
 
-
 function getUltimaExpo() {
     global $con;
     $stmt = $con->prepare("call isic.sp_getUltimaExpo();");
@@ -516,4 +515,47 @@ function getUltimaExpo() {
     }
     $stmt->close();
     return $ultExpo;
+}
+
+function getAdmin() {
+    global $con;
+    $stmt = $con->prepare("call isic.sp_getAdmin();");
+    $stmt->execute();
+    $stmt->bind_result($Usuario, $Contraseña);
+    while ($stmt->fetch()) {
+        $admin[0][0] = $Usuario;
+        $admin[0][1] = $Contraseña;
+    }
+    $stmt->close();
+    return $admin;
+}
+
+function getAdminOri() {
+    global $con;
+    $stmt = $con->prepare("call isic.sp_getAdminOri();");
+    $stmt->execute();
+    $stmt->bind_result($Usuario, $Contraseña);
+    while ($stmt->fetch()) {
+        $admin[0][0] = $Usuario;
+        $admin[0][1] = $Contraseña;
+    }
+    $stmt->close();
+    return $admin;
+}
+
+function getCarruselExpo() {
+    global $con;
+    $stmt = $con->prepare("call isic.sp_getCarruselExpo();");
+    $stmt->execute();
+    $i = 0;
+    $stmt->bind_result($idcarruselExpo, $ImagenCarr, $Texto, $Estado);
+    while ($stmt->fetch()) {
+        $carrExp[$i][0] = $idcarruselExpo;
+        $carrExp[$i][1] = $ImagenCarr;
+        $carrExp[$i][2] = $Texto;
+        $carrExp[$i][3] = $Estado;
+        $i++;
+    }
+    $stmt->close();
+    return $carrExp;
 }

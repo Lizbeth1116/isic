@@ -39,3 +39,9 @@ datosModalExp = function (id, per, anio) {
     $('#AnioExpOri').val(anio);
 };
 
+
+datosModalCarr = function (id, imag, text) {
+    $('#idCarrou').val(id);
+    $('#nomOriImgCarr').val(imag);
+    $('#txtCar').val(text);
+};
