@@ -378,9 +378,10 @@ a {
 }
 
 .resumen .contacto button {
-    background-color: #10b475 !important;
-    color: #ffffff !important;
+    background-color: #e2e2e2 !important;
+    color: #929292 !important;
     margin-top: 10px;
+    font-size: 14px;
     border-radius: 50px !important;
     -webkit-transition: .3s all;
     -o-transition: .3s all;
@@ -388,8 +389,8 @@ a {
 }
 
 .resumen .contacto button:hover {
-    color: #ffffff !important;
-    background-color: #1fa170 !important;
+    color: #292929 !important;
+    background-color: #dfdfdf !important;
 }
 
 .resumen .contacto button:focus {
