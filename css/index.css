@@ -262,7 +262,7 @@ a {
 
 
 .resumen {
-    background: linear-gradient(to top, #106ce4 0%, #00ddd2 100%);
+    background: linear-gradient(to top, #0c60ce 0%, #ffffff 100%);
     padding-bottom: 100px;
 }
 
@@ -280,7 +280,7 @@ a {
     position: relative;
     font-weight: 200;
     font-size: 30px;
-    color: #f3f3f3;
+    color: #575757;
 }
 
 .resumen .texto .section-heading h2 strong {
@@ -395,6 +395,12 @@ a {
 
 .resumen .contacto button:focus {
     outline: none;
+}
+
+.resumen .carousel-inner img {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
 }
 /*Inicio Sub-Menu*/
 

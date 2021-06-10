@@ -4,7 +4,7 @@ $listEsp = getListEsp();
 $inv = getInv();
 $area = getArea();
 $listServ = getListaServicios();
-$peri = getPeriodo(); 
+$peri = getPeriodo();
 $listaPE = getListaPE();
 $ultimaExpo = getUltimaExpo();
 session_start();
@@ -16,12 +16,12 @@ session_start();
 <head>
     <meta http-equiv="Content-Type" content="text/html" charset="utf-8" />
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <!--Componente galeria-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.css">
     <!--BootStrap CSS-->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" 
-    integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-     <!--ICONOS-->
+    <!--ICONOS-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
     <!--Tipografia-->
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -31,8 +31,8 @@ session_start();
     <link rel="stylesheet" type="text/css" href="css/login.css?1.0.0" />
     <link rel="stylesheet" href="css/index.css" />
     <link rel="stylesheet" href="css/peisc.css" />
-    <link rel="stylesheet" href="css/asociaciones.css"/>
-    <link rel="stylesheet" href="css/acreditacion.css?1.0.0"/>
+    <link rel="stylesheet" href="css/asociaciones.css" />
+    <link rel="stylesheet" href="css/acreditacion.css?1.0.0" />
     <link rel="stylesheet" href="css/organigrama.css?1.0.0">
     <link rel="stylesheet" href="css/asesorias.css">
     <link rel="stylesheet" href="css/complementarias.css">
@@ -45,7 +45,7 @@ session_start();
     <!--iconos de la plataforma fontawesome-->
     <link rel="icon" type="image/png" href="img/icono.png" />
     <title>Isic</title>
-</head> 
+</head>
 
 <body>
     <!--
@@ -132,10 +132,10 @@ session_start();
                             <div class="dropdown-content">
                                 <?php
                                 for ($x = 0; $x < sizeof($peri); $x++) {
-                                    if($peri[$x][3]===1){
-                                        $aux = $peri[$x][1] === 1?"ENE-MAY":"AGO-DIC";
+                                    if ($peri[$x][3] === 1) {
+                                        $aux = $peri[$x][1] === 1 ? "ENE-MAY" : "AGO-DIC";
                                     }
-                                    echo '<a href="expo-sistemas.php?per=' . $peri[$x][0] . '_' . $peri[$x][1] . '_'.$peri[$x][2].'">' . $aux . ' '.$peri[$x][2].'</a>';
+                                    echo '<a href="expo-sistemas.php?per=' . $peri[$x][0] . '_' . $peri[$x][1] . '_' . $peri[$x][2] . '">' . $aux . ' ' . $peri[$x][2] . '</a>';
                                 }
                                 ?>
                             </div>
@@ -145,4 +145,3 @@ session_start();
             </div>
         </div>
     </nav>
-    
