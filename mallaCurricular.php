@@ -9,7 +9,7 @@ $max = getMaxMalla();
     <div class="contenedor-texto topmargin-xs">
         <div class="t-malla container">
             <h2 class="text-center" style="color:#5f5f5f !important;">Malla Curricular</h2>
-            <p class="text-center">RETICULA DE INGENIERÍA EN SISTEMAS COMPUTACIONALES CLAVE ISIC-2010-224, Especilidad: <?php echo '' . $espInfo[0][0] . '' ?></p>
+            <p class="text-center" style="color:#5f5f5f !important;">RETICULA DE INGENIERÍA EN SISTEMAS COMPUTACIONALES CLAVE ISIC-2010-224, Especilidad: <?php echo '' . $espInfo[0][0] . '' ?></p>
         </div>
         <div class="text-center">
             <?php
@@ -23,8 +23,8 @@ $max = getMaxMalla();
                     $aux2 = 0;
                     for ($i = 1; $i < 10; $i++) {
                         echo '<div class="col-sm">';
-                        echo '<div class="mb-3 semestres text-center">
-                                                    <p><b>' . $i . '° Semestre</b></p>
+                        echo '<div class="mb-3 semestres text-center" >
+                                                    <p style="color:#5f5f5f !important;"><b>' . $i . '° Semestre</b></p>
                                                     </div>';
                         for ($j = 0; $j < sizeof($malla[$i]); $j++) {
                             if ($malla[$i][$j][5] != "Sin Archivo") {
@@ -32,7 +32,7 @@ $max = getMaxMalla();
                             } else {
                                 echo '<div id="etiqueta' . $aux2 . '" class="' . $malla[$i][$j][3] . ' resume-item mb-2 partedos">';
                             }
-                            echo'   <p class="text-center">
+                            echo'   <p class="text-center" style="color:#5f5f5f !important;">
                                         <b>' . $malla[$i][$j][2] . '</b>
                                         <br>' . $malla[$i][$j][1] . '
                                         <br>' . $malla[$i][$j][0] . '
