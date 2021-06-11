@@ -8,8 +8,8 @@ $Docente = getDocente();
             <div class="row">
                 <div class="col">
                     <h3><strong>Rolando Porras Muñoz</strong></h3>
-                    <p>Jefe de carrera</p>
-                    <p><i class="bi bi-envelope"></i> rporras@itsoeh.edu.mx</p>
+                    <p style="color:#fff !important;">Jefe de carrera</p>
+                    <p style="color:#fff !important;"><i class="bi bi-envelope"></i> rporras@itsoeh.edu.mx</p>
                 </div>
             </div>
         </div>
@@ -19,8 +19,8 @@ $Docente = getDocente();
                     <div class="row">
                         <div class="col">
                             <h5><strong>Mario Pérez Bautista</strong></h5>
-                            <p>Presidente de academia</p>
-                            <p><i class="bi bi-envelope"></i> mperez@itsoeh.edu.mx</p>
+                            <p style="color:#fff !important;">Presidente de academia</p>
+                            <p style="color:#fff !important;"><i class="bi bi-envelope"></i> mperez@itsoeh.edu.mx</p>
                         </div>
                     </div>
                 </div>
@@ -106,8 +106,8 @@ $Docente = getDocente();
                         <!--<div class="col-sm-4"><img src="img/organigrama/xo.png" class="nivel-2"></div>-->
                         <div class="col">
                             <h5><strong>Xochitl Torres Reyes</strong></h5>
-                            <p>Asistente</p>
-                            <p><i class="bi bi-envelope"></i> xtorres@itsoeh.edu.mx</p>
+                            <p style="color:#fff !important;">Asistente</p>
+                            <p style="color:#fff !important;"><i class="bi bi-envelope"></i> xtorres@itsoeh.edu.mx</p>
                         </div>
                     </div>
 

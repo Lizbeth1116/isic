@@ -120,11 +120,11 @@ $doce = getDocente();
                     echo '<td> <div class="btn-group btn-group-sm">
                     <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#myModalAs" onclick="datosModalAs(\'' . $asesoria[$i][0] . '\', \'' . $asesoria[$i][1] . '\', \'' . $asesoria[$i][3] . '\', \'' . $asesoria[$i][7] . '\', \'' . $asesoria[$i][5] . '\', \'' . $asesoria[$i][6] . '\');"><i class="bi bi-pencil-square"></i></button>';
                     if ($asesoria[$i][8] === 1) {
-                        echo '<a type="button" class="btn btn-secondary" href="Controlador/ControlBorrar.php?id=8*' . $asesoria[$i][0] . '*2*1"><i class = "bi bi-eye"></i></a>';
+                        echo '<button type="button" class="btn btn-secondary" href="Controlador/ControlBorrar.php?id=8*' . $asesoria[$i][0] . '*2*1"><i class = "bi bi-eye"></i></button>';
                     } else {
-                        echo '<a type="button" class="btn btn-secondary" href="Controlador/ControlBorrar.php?id=8*' . $asesoria[$i][0] . '*1*1"><i class = "bi bi-eye-slash"></i></a>';
+                        echo '<button type="button" class="btn btn-secondary" href="Controlador/ControlBorrar.php?id=8*' . $asesoria[$i][0] . '*1*1"><i class = "bi bi-eye-slash"></i></button>';
                     }
-                    echo '<a type="button" class="btn btn-secondary" href="Controlador/ControlBorrar.php?id=8*' . $asesoria[$i][0] . '*0*2"><i class="bi bi-trash-fill"></i></a>
+                    echo '<button type="button" class="btn btn-secondary" href="Controlador/ControlBorrar.php?id=8*' . $asesoria[$i][0] . '*0*2"><i class="bi bi-trash-fill"></i></button>
                             <!-- The Modal -->
                             <div class="modal topmargin-sm" id="myModalAs">
                                 <div class="modal-dialog">

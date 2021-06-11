@@ -349,3 +349,10 @@
   }
 */
   /*Inicio restriccion de texto a dos lineas*/
+
+  [class^="bi"], [class*=" bi"] {
+    display: inline-block;
+    vertical-align: 0.16em;
+    background-repeat: no-repeat;
+    background-size: 1rem 1rem;
+}

@@ -10,8 +10,8 @@ $espEgr = getPerfilEgreso($sp);
         <div class="contenedor">
             <div class="contenedor-texto">
                 <?php
-                echo '<h2>' . $espInfo[0][0] . '</h2>
-                        <p>' . $espInfo[0][1] . '</p>';
+                echo '<h2 style="color:#fff; !important">' . $espInfo[0][0] . '</h2>
+                        <p style="color:#fff; !important">' . $espInfo[0][1] . '</p>';
                 ?>
             </div>
         </div>

@@ -1,6 +1,7 @@
 <div class="investigacion">
     <div class="container">
         <h1 class="text-center text">LINEAS DE <strong>INVESTIGACIÓN</strong></h1>
+        <div class="cont-invest">
         <?php
         $aux = "";
         for ($i = 0; $i < sizeof($inv); $i++) {
@@ -46,5 +47,6 @@
         }
         ?>
         </table>
+        </div>
     </div>
 </div>

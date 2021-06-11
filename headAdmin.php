@@ -34,6 +34,7 @@ if (!$_COOKIE['logueado']) {
         <link rel="stylesheet" type="text/css" href="css/normalize.css?1.0.0" />
         <link rel="stylesheet" type="text/css" href="css/estilos.css?1.0.0" />
         <link rel="stylesheet" type="text/css" href="css/adminInicio.css?1.0.0" />
+        <link rel="stylesheet" type="text/css" href="css/tabs.css?1.0.0" />
         <script type="text/javascript" src="js/main.js?1.0.0"></script>
         <link rel="icon" type="image/png" href="img/icono.png" />
         <title>Administrador</title>

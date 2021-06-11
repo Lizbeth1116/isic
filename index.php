@@ -105,12 +105,11 @@ include('head.php');
                 <div class="col-md-4">
                     <div class="resume-item mb-4">
                         <img src="img/iconos-conocenos/data.svg?1.0.0" class="icono">
-                        <h3><strong>Centro de Formación de Capital Humano</strong></h3>
+                        <h3><strong>Académia</strong></h3>
                         <p class="text-center" style="color: #8a8a8a;">
-                            Laboratorio de dispositivos móviles.
-                            Enfocado al desarrollo de software y aplicaciones móviles
+                            Conoce al personal docente que forma parte de la Ingeniería en Sistemas Computacionales y los proyectos que llevan acabo
                         </p>
-                        <button type="button" class="btn btn-outline-primary">Ver detalles</button>
+                        <button type="button" class="btn btn-primary"><a href="organigrama.php?1.0.0">Ver detalles</a></button>
                     </div>
                 </div>
                 <div class="col-md-4">
@@ -118,7 +117,7 @@ include('head.php');
                         <img src="img/iconos-conocenos/garrapata.svg?1.0.0" class="icono">
                         <h3><strong>Acreditación</strong></h3>
                         <p class="text-center" style="color: #8a8a8a;">Actualemente la carrera de Ingeniería en Sistemas Computacionales se encuentra acreditado por el CACEI.</p>
-                        <button type="button" class="btn btn-outline-primary"><a href="acreditacion.php?1.0.0">Ver detalles</a></button>
+                        <button type="button" class="btn btn-primary"><a href="acreditacion.php?1.0.0">Ver detalles</a></button>
                     </div>
                 </div>
 
@@ -129,7 +128,7 @@ include('head.php');
                         echo '
                             <h3><strong>Expo Sistemas ' . $ultimaExpo[0][2] . '</strong></h3>
                             <p class="text-center" style="color: #8a8a8a;">Preparate y muestra el logro de los Atributos Educacionales así como los de tu perfil de egreso en Expo Proyecta Tec ' . $ultimaExpo[0][2] . '.</p>
-                            <button type="button" class="btn btn-outline-primary"><a href="expo-sistemas.php?per=' . $ultimaExpo[0][0] . '_' . $ultimaExpo[0][1] . '_' . $ultimaExpo[0][2] . '">Ver detalles</a></button>';
+                            <button type="button" class="btn btn-primary"><a href="expo-sistemas.php?per=' . $ultimaExpo[0][0] . '_' . $ultimaExpo[0][1] . '_' . $ultimaExpo[0][2] . '">Ver detalles</a></button>';
                         ?>
                     </div>
                 </div>
@@ -140,17 +139,21 @@ include('head.php');
         <div class="container">
             <div class="row topmargin-sm">
                 <div class="col-md-6 mt-4 mb-4">
+                    <iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fpermalink.php%3Fstory_fbid%3D2117953188347195%26id%3D142983839177483&show_text=true&width=500" width="100%" height="454" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+                </div>
+                <div class="col-md-6 mt-4 mb-4">
                     <iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fpermalink.php%3Fstory_fbid%3D1877206242307273%26id%3D916964301664810&show_text=true&width=500" width="100%" height="740" style="border:none;overflow:hidden;" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
                 </div>
                 <div class="col-md-6 mt-4 mb-4">
                     <iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fpermalink.php%3Fstory_fbid%3D1653763444651555%26id%3D916964301664810&show_text=true&width=500" width="100%" height="778" style="border:none;overflow:hidden;" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
                 </div>
                 <div class="col-md-6 mt-4 mb-4">
-                    <iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fpermalink.php%3Fstory_fbid%3D2055901021219079%26id%3D142983839177483&show_text=true&width=500" width="100%" height="559" style="border:none;overflow:hidden;background-color:#fff;" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+                    <iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fpermalink.php%3Fstory_fbid%3D2055901021219079%26id%3D142983839177483&show_text=true&width=500" width="100%" height="559" style="border:none;overflow:hidden;" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
                 </div>
                 <div class="col-md-6 mt-4 mb-4">
-                    <iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2F916964301664810%2Fphotos%2Fa.943603462334227%2F1725766717451227%2F%3Ftype%3D3&show_text=true&width=500" width="100%" height="562" style="border:none;overflow:hidden;background-color:#fff;" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+                    <iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2F916964301664810%2Fphotos%2Fa.943603462334227%2F1725766717451227%2F%3Ftype%3D3&show_text=true&width=500" width="100%" height="562" style="border:none;overflow:hidden;" scrolling="no" frameborder="0" allowfullscreen="true" alround-color:#fff;low="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
                 </div>
+
             </div>
             <div class="row topmargin-sm">
                 <div class="col-md-6 mt-4">
@@ -184,9 +187,14 @@ include('head.php');
                                 <input type="text" class="form-control" id="" placeholder="Grupo">
                             </div>
                         </div>
-                        <div class="col-md-12">
+                        <div class="col-md-6">
                             <div class="form-group">
-                                <input type="number" class="form-control" id="" placeholder="Número de telefono (opcional)">
+                                <input type="number" class="form-control" id="" placeholder="Número de telefono">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="number" class="form-control" id="" placeholder="Matricula">
                             </div>
                         </div>
                         <div class="col-md-12">
