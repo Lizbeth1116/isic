@@ -35,7 +35,7 @@
   }
 
   .navbar .salir:hover {
-    color: #F2F2F2;
+    color: #b1b1b1;
   }
 
   #logo {
@@ -90,11 +90,6 @@
     margin-left: -250px;
   }
 
-  #sidebar .sidebar-header {
-    padding: 20px 42px;
-    background: #1C1C1C;
-  }
-
   #sidebar ul.components {
     padding: 20px 0px;
   }
@@ -105,6 +100,10 @@
     display: block;
   }
 
+  #sidebar ul li:nth-child(1){
+    padding-top: 60px;
+  }
+  
   #sidebar ul li a {
     padding: 10px 10px 10px 20px;
     font-size: 1.0em;

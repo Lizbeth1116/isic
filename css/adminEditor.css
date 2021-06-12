@@ -43,7 +43,12 @@
     padding: 0 15px;
     border-radius: 50px;
 }
-
+.admon table.solicitud-n td{
+    color: #0091ca;
+}
+.admon table.solicitud-v td{
+    color: #0091ca;
+}
 @media screen and (min-width: 801px) {
     .admon .cont-invest tr, td {
         font-size: 16px;

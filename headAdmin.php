@@ -59,8 +59,6 @@ if (!$_COOKIE['logueado']) {
         </nav>
         <div class="wrapper fixed-left">
             <nav id="sidebar">
-            <div class="sidebar-header">
-            </div>
                 <ul class="tabs list-unstyled components">
                     <li><a href="AdminInicio.php?1.0.0"><i class="bi bi-house"></i>Inicio</a></li>
                     <li><a href="AdminEspecialidad.php?1.0.0"><i class="bi bi-journal-text"></i>Especialidad</a></li>
