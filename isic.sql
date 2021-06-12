@@ -6,7 +6,8 @@
 -- Tiempo de generación: 12-06-2021 a las 05:54:25
 -- Versión del servidor: 10.4.6-MariaDB
 -- Versión de PHP: 7.3.8
-
+create database isic;
+use isic;
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
 START TRANSACTION;
