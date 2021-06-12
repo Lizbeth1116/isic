@@ -8,7 +8,6 @@
 
   body {
     font-family: 'Poppins', sans-serif;
-    background: #f1f1f1;
   }
   button:focus{
     outline: none !important;
@@ -354,4 +353,11 @@
     vertical-align: 0.16em;
     background-repeat: no-repeat;
     background-size: 1rem 1rem;
+}
+
+.notificacion{
+  border-radius: 100px;
+  background-color: rgb(0, 127, 211); 
+  color:white; 
+  padding: 0 9px;
 }

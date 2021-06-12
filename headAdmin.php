@@ -68,7 +68,20 @@ if (!$_COOKIE['logueado']) {
                     <li><a href="AdminAsesorias.php?1.0.0"><i class="bi bi-file-earmark-person"></i>Asesorias</a></li>
                     <li><a href="AdminComplementarias.php?1.0.0"><i class="bi bi-puzzle"></i>Complementarias</a></li>
                     <li><a href="AdminHistorialEsp.php?1.0.0"><i class="bi bi-clock-history"></i>Hitorial Especialidad</a></li>
-                    <li><a href="AdminSolicitudes.php?1.0.0"><i class="bi bi-envelope"></i>Solicitudes</a></li>
+                    <li><a href="AdminSolicitudes.php?1.0.0"><i class="bi bi-envelope"></i>
+                    <?php $pendientes = getSolicitud();
+                    $contar = (int) 0;
+                    if ($pendientes[0][0] != 'x') {foreach ($pendientes as $solicitudNV) {if ($solicitudNV[10] == 2) {
+                                $contar++;
+                            }
+                        }
+                    }
+                    if($contar==0){
+                        echo 'Solicitudes</a></li>';
+                    }else{
+                        echo 'Solicitudes <b class="notificacion" style="font-size: 12px;">'. $contar.'</b></a></li>';
+                    }
+                    ?>
                     <li><a href="AdminContraseña.php?1.0.0"><i class="bi bi-shield-lock"></i>Seguridad</a></li>
                 </ul>
             </nav>

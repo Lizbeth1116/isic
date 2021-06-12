@@ -7,14 +7,15 @@ $solicitud = getSolicitud();
         <h2>Solicitudes</h2>
         <!--Tabla de especialidad: Sección 1-->
         <div class="tab">
-            <button class="tablinks" onclick="openCity(event, 'tab1')" id="defaultOpen"><i class="bi bi-envelope-fill"></i>Solicitudes no vistas</button>
-            <button class="tablinks" onclick="openCity(event, 'tab2')"><i class="bi bi-envelope-open-fill"></i>Solicitudes vistas</button>
-
+            <button class="tablinks" onclick="openCity(event, 'tab1')" id="defaultOpen"><i class="bi bi-envelope-fill"></i>Pendientes</button>
+            <button class="tablinks" onclick="openCity(event, 'tab2')"><i class="bi bi-envelope-open-fill"></i>Vistas</button>
         </div>
         <div id="tab1" class="tabcontent">
             <!--Tabla de solicitudes no vistas: Sección 1-->
             <div id="titulo">
-                <h6><b>Solicitudes no vistas</b></h6>
+            <h6><b>Solicitudes no vistas </b>
+            <?php echo '<b class="notificacion" style="font-size: 15px;">'. $contar .'</b>';?>
+                </h6>
             </div>
             <table class="table table-light table-hover solicitud-n">
                 <thead>

@@ -3,7 +3,7 @@
   .inicio {
       padding-top: 90px;
       min-height: 700px;
-      background-image: linear-gradient(to top, #1d1d1d 0%, #242424 100%);
+      background-color:#dadada;;
   }
 
   .inicio .logo-isic {
