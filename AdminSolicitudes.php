@@ -93,8 +93,8 @@ $solicitud = getSolicitud();
                                     <td>' . $solicitudNV[9] . '</td>
                                     <!--<td>' . $solicitudNV[7] . '</td>-->
                                     <td>' . $solicitudNV[8] . '</td>
-                                    <td> <a href="#" data-toggle="modal" data-target="#myModalSoliComNo2" onclick="modVerMasSoli(\'' . $solicitudNV[1] . '\', \'' . $solicitudNV[2] . '\', \'' . $solicitudNV[3] . '\', \'' . $solicitudNV[4] . '\', \'' . $solicitudNV[5] . '\', \'' . $solicitudNV[6] . '\', \'' . $solicitudNV[7] . '\', \'' . $solicitudNV[8] . '\', \'' . $solicitudNV[9] . '\');">Ver mas...</a>
-                                        <div class="modal topmargin-sm" id="myModalSoliComNo2">
+                                    <td> <a href=# data-toggle="modal" data-target="#myModalSoliCom" onclick="modVerMasSoli2(\'' . $solicitudNV[1] . '\', \'' . $solicitudNV[2] . '\', \'' . $solicitudNV[3] . '\', \'' . $solicitudNV[4] . '\', \'' . $solicitudNV[5] . '\', \'' . $solicitudNV[6] . '\', \'' . $solicitudNV[7] . '\', \'' . $solicitudNV[8] . '\', \'' . $solicitudNV[9] . '\');">Ver mas</a>
+                                        <div class="modal topmargin-sm" id="myModalSoliCom">
                                             <div class="modal-dialog">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
@@ -102,7 +102,7 @@ $solicitud = getSolicitud();
                                                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                                                     </div>
                                                     <div class="modal-body">
-                                                        <p id="pSoliNo"></p>
+                                                        <p id="pSoli"></p>
                                                     </div>
                                                 </div>
                                             </div>
