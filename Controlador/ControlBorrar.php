@@ -107,6 +107,11 @@ switch ($datos[0]):
         $stmt->bind_param("iii", $datos[1], $datos[2], $datos[3]);
         $aux = "Expo";
         break;
+    case 13: // Solicitudes
+        $stmt = $con->prepare("call isic.sp_DesHabSolicitud(?,?)");
+        $stmt->bind_param("ii", $datos[1], $datos[2]);
+        $aux = "Solicitudes";
+        break;
 endswitch;
 $stmt->execute();
 $stmt->close();

@@ -209,9 +209,27 @@ switch ($opGlobal):
         endswitch;
         $aux = "HistorialEsp";
         break;
+
+    case 8://Solicitud
+        $nomSol = $_POST['nombrSol'];
+        $ApSol = $_POST['ApSol'];
+        $emailSol = $_POST['emailSol'];
+        $semSol = $_POST['semSol'];
+        $grupSol = $_POST['grupSol'];
+        $telefSol = $_POST['telefSol'];
+        $matriSol = $_POST['matriSol'];
+        $proySol = $_POST['proySol'];
+        $stmt = $con->prepare("call isic.sp_AddSolicitud(?,?,?,?,?,?,?,?)");
+        $stmt->bind_param("sssisssi", $nomSol, $ApSol, $emailSol, $semSol, $grupSol, $telefSol, $matriSol, $proySol);
+        break;
+
 endswitch;
 $stmt->execute();
 $stmt->close();
-header("Location: ../Admin" . $aux . ".php");
+if ($opGlobal != 8) {
+    header("Location: ../Admin" . $aux . ".php");
+} else {
+    header("Location: ../index.php");
+}
 ?>
 
