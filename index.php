@@ -161,56 +161,68 @@ include('head.php');
                     <p>Registrate en el siguiente formulario</p>
                 </div>
                 <div class="col-md-6 mt-4">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <input type="text" class="form-control" id="" placeholder="Nombre(s)">
+                    <form action="Controlador/ControlAgregar.php" method="POST">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" id="nombrSol" name="nombrSol" placeholder="Nombre(s)">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" id="ApSol" name="ApSol" placeholder="Apellido(s)">
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <input type="email" class="form-control" id="emailSol" name="emailSol" placeholder="Email">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="number" class="form-control" id="semSol" name="semSol" placeholder="Semestre">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" id="grupSol" name="grupSol" placeholder="Grupo">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="number" class="form-control" id="telefSol" name="telefSol" placeholder="Número de telefono">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="number" class="form-control" id="matriSol" name="matriSol" placeholder="Matricula">
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <select id="proySol" name="proySol" class="custom-select mb-3 form-control">
+                                        <option selected>Nombre del Proyecto</option>
+                                        <?php
+                                        $temInv = getTemaInv();
+                                        foreach ($temInv as $tem) {
+                                            if ($tem[2] == 1) {
+                                                echo '<option value="' . $tem[0] . '">' . $tem[1] . '</option>';
+                                            }
+                                        }
+                                        ?>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group" style="display:none">
+                                    <input type="text" class="form-control" id="opGlobal" name="opGlobal" value="8">
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <button type="submit" class="btn fluid">Enviar solicitud</button>
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <input type="text" class="form-control" id="" placeholder="Apellido(s)">
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <input type="email" class="form-control" id="" placeholder="Email">
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <input type="number" class="form-control" id="" placeholder="Semestre">
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <input type="text" class="form-control" id="" placeholder="Grupo">
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <input type="number" class="form-control" id="" placeholder="Número de telefono">
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <input type="number" class="form-control" id="" placeholder="Matricula">
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <select name="cars" class="custom-select mb-3 form-control">
-                                    <option selected>Nombre del Proyecto</option>
-                                    <option value="volvo">Volvo</option>
-                                    <option value="fiat">Fiat</option>
-                                    <option value="audi">Audi</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <button type="button" class="btn fluid">Enviar mensaje</button>
-                        </div>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>

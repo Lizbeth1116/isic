@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3308
--- Tiempo de generación: 09-06-2021 a las 03:33:54
+-- Tiempo de generación: 12-06-2021 a las 05:54:25
 -- Versión del servidor: 10.4.6-MariaDB
 -- Versión de PHP: 7.3.8
 
@@ -93,6 +93,12 @@ END$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_AddPeroExpo` (`peri` INT, `an` INT, `carpeta` VARCHAR(25))  BEGIN
 INSERT INTO `isic`.`periodoexpo` (`periodo`, `año`, `carpetaImg`) 
 VALUES (peri, an, carpeta);
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_AddSolicitud` (`nomb` VARCHAR(45), `apellidos` VARCHAR(45), `email` VARCHAR(80), `sem` INT, `grupo` VARCHAR(1), `tel` VARCHAR(10), `matricula` VARCHAR(8), `proy` INT)  BEGIN
+INSERT INTO `isic`.`solicitud` 
+(`Nombre`, `Apellidos`, `Email`, `Semestre`, `Grupo`, `Telefono`, `Matricula`, `Proyecto`, `Fecha`) 
+VALUES (nomb, apellidos, email, sem, grupo, tel, matricula, proy, (SELECT CURDATE()));
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_AddTemaLineaInvest` (`nom` VARCHAR(100))  BEGIN
@@ -247,6 +253,14 @@ elseif op = 2 then
 DELETE FROM `isic`.`p_egreso_esp`
 WHERE (`idespecialidad` = idesp and `capacidad` = cap);
 
+end if;
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_DesHabSolicitud` (`soli` INT, `op` INT)  BEGIN
+IF op = 1 then
+UPDATE `isic`.`solicitud` SET `Leida` = '1' WHERE (`idsolicitud` = soli);
+elseif op = 2 then
+DELETE FROM `isic`.`solicitud` WHERE (`idsolicitud` = soli);
 end if;
 END$$
 
@@ -495,6 +509,14 @@ END$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_getServicio` (`idServ` INT)  BEGIN
 SELECT Nombre_Servicio, Objetivo FROM isic.servicios
 WHERE idservicios = idServ;
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_getSolicitud` ()  BEGIN
+SELECT s.idsolicitud, s.Nombre, s.Apellidos, s.Email, s.Semestre, s.Grupo, 
+s.Telefono, s.Matricula, t.Nombre Proyecto, s.Fecha, s.Leida 
+FROM isic.solicitud s join isic.tema_linea_investigacion t
+on (s.Proyecto = t.idtema_linea_investigacion)
+group by s.Proyecto order by s.Fecha DESC; 
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_getTemaInv` ()  BEGIN
@@ -1142,6 +1164,33 @@ INSERT INTO `servicios` (`idservicios`, `Nombre_Servicio`, `Objetivo`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `solicitud`
+--
+
+CREATE TABLE `solicitud` (
+  `idsolicitud` int(11) NOT NULL,
+  `Nombre` varchar(45) DEFAULT NULL,
+  `Apellidos` varchar(45) DEFAULT NULL,
+  `Email` varchar(80) DEFAULT NULL,
+  `Semestre` int(2) DEFAULT NULL,
+  `Grupo` varchar(1) DEFAULT NULL,
+  `Telefono` varchar(10) DEFAULT NULL,
+  `Matricula` varchar(8) DEFAULT NULL,
+  `Proyecto` int(11) DEFAULT NULL,
+  `Fecha` date DEFAULT NULL,
+  `Leida` int(1) DEFAULT 2
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `solicitud`
+--
+
+INSERT INTO `solicitud` (`idsolicitud`, `Nombre`, `Apellidos`, `Email`, `Semestre`, `Grupo`, `Telefono`, `Matricula`, `Proyecto`, `Fecha`, `Leida`) VALUES
+(7, 'David Alejandro', 'Cruz Fuentes', 'acruzf@itsoeh.edu.mx', 8, 'B', '7731580158', '17011310', 3, '2021-06-11', 2);
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `tema_linea_investigacion`
 --
 
@@ -1298,6 +1347,13 @@ ALTER TABLE `servicios`
   ADD PRIMARY KEY (`idservicios`);
 
 --
+-- Indices de la tabla `solicitud`
+--
+ALTER TABLE `solicitud`
+  ADD PRIMARY KEY (`idsolicitud`),
+  ADD KEY `Proyecto_idx` (`Proyecto`);
+
+--
 -- Indices de la tabla `tema_linea_investigacion`
 --
 ALTER TABLE `tema_linea_investigacion`
@@ -1374,6 +1430,12 @@ ALTER TABLE `servicios`
   MODIFY `idservicios` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
+-- AUTO_INCREMENT de la tabla `solicitud`
+--
+ALTER TABLE `solicitud`
+  MODIFY `idsolicitud` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
 -- AUTO_INCREMENT de la tabla `tema_linea_investigacion`
 --
 ALTER TABLE `tema_linea_investigacion`
@@ -1439,6 +1501,12 @@ ALTER TABLE `pe_isic`
 --
 ALTER TABLE `p_egreso_esp`
   ADD CONSTRAINT `especialidadegre` FOREIGN KEY (`idespecialidad`) REFERENCES `especialidad` (`idespecialidad`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `solicitud`
+--
+ALTER TABLE `solicitud`
+  ADD CONSTRAINT `Proyecto` FOREIGN KEY (`Proyecto`) REFERENCES `tema_linea_investigacion` (`idtema_linea_investigacion`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

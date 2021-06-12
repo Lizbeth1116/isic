@@ -3,6 +3,7 @@
 include("./Config/Conexion.php");
 $con = conectar();
 $maxMalla = 0;
+$solicitudNo = 0;
 if (!$con) {
     die("no se pudo conectar");
 }
@@ -558,4 +559,29 @@ function getCarruselExpo() {
     }
     $stmt->close();
     return $carrExp;
+}
+
+function getSolicitud() {
+    global $con;
+    $stmt = $con->prepare("call isic.sp_getSolicitud();");
+    $stmt->execute();
+    $i = 0;
+    $soli[0][0] = 'x';
+    $stmt->bind_result($idsolicitud, $Nombre, $Apellidos, $Email, $Semestre, $Grupo, $Telefono, $Matricula, $Proyecto, $Fecha, $Leida);
+    while ($stmt->fetch()) {
+        $soli[$i][0] = $idsolicitud;
+        $soli[$i][1] = $Nombre;
+        $soli[$i][2] = $Apellidos;
+        $soli[$i][3] = $Email;
+        $soli[$i][4] = $Semestre;
+        $soli[$i][5] = $Grupo;
+        $soli[$i][6] = $Telefono;
+        $soli[$i][7] = $Matricula;
+        $soli[$i][8] = $Proyecto;
+        $soli[$i][9] = $Fecha;
+        $soli[$i][10] = $Leida;
+        $i++;
+    }
+    $stmt->close();
+    return $soli;
 }
