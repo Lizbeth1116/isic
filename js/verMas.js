@@ -21,11 +21,11 @@ modVerMasDesc = function (Clave, Des) {
 
 modVerMasSoli = function (Nombre, Apellidos, Email, Semestre, Grupo, Telefono, Matricula, Proyecto, Fecha) {
     var texto = '<h4>' + Proyecto + '</h4><br>'
-            + '<p>Nombre: ' + Nombre + ' ' + Apellidos
-            + '<br>Email: ' + Email + '<br>Matricula: ' + Matricula 
-            + '<br>Telefono: ' + Telefono 
-            + '<br>Semestre y Grupo: ' + Semestre + '-' + Grupo 
-            + '<br>Fecha: ' + Fecha + '</p>';
+            + '<p>Nombre: <b>' + Nombre + ' ' + Apellidos
+            + '<br>Email: <b>' + Email + '<br>Matricula: ' + Matricula 
+            + '<br>Telefono: <b>' + Telefono 
+            + '<br>Semestre y Grupo: <b>' + Semestre + '-' + Grupo 
+            + '<br>Fecha: <b>' + Fecha + '</b></p>';
     document.getElementById('pSoliNo').innerHTML = texto;
 }
 
