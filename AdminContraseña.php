@@ -4,27 +4,31 @@ include('./headAdmin.php');
 <div class="admon">
     <div class="container">
         <h2>Administrador</h2>
-        <div id="titulo">
-            <h6><b>Cambio de usuario y contraseña</b></h6>
+        <div class="sec-buscador" style="background-color: #fff;">
+            <div class="columna">
+                <h5><b>Cambio de usuario y contraseña</b></h5>
+            </div>
+            <div class="columna">
+                <form class="needs-validation" novalidate action="Controlador/ControlEditar.php" method="POST">
+                    <div class="form-group">
+                        <label for="nombre" style="color:black;">Nuevo Usuario:</label>
+                        <input type="text" class="form-control" id="UsAdmin" placeholder="Ingresa el nuevo nombre de administrador" name="UsAdmin">
+                        <div class="valid-feedback">Valido.</div>
+                        <div class="invalid-feedback">Por favor verifique los campos.</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="nombre" style="color:black;">Nueva Contraseña:</label>
+                        <input type="password" class="form-control" id="PassAdmin" placeholder="Ingresa la nueva contraseña" name="PassAdmin">
+                        <div class="valid-feedback">Valido.</div>
+                        <div class="invalid-feedback">Por favor verifique los campos.</div>
+                    </div>
+                    <div class="form-group" style="display:none">
+                        <input type="text" class="form-control" id="opGlobal" name="opGlobal" value="9">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Cambiar</button>
+                </form>
+            </div>
         </div>
-        <form class="needs-validation" novalidate action="Controlador/ControlEditar.php"  method="POST">
-            <div class="form-group">
-                <label for="nombre" style="color:black;">Nuevo Usuario:</label>
-                <input type="text" class="form-control" id="UsAdmin" placeholder="Ingresa el nuevo nombre de administrador" name="UsAdmin">
-                <div class="valid-feedback">Valido.</div>
-                <div class="invalid-feedback">Por favor verifique los campos.</div>
-            </div>
-            <div class="form-group">
-                <label for="nombre" style="color:black;">Nueva Contraseña:</label>
-                <input type="password" class="form-control" id="PassAdmin" placeholder="Ingresa la nueva contraseña" name="PassAdmin">
-                <div class="valid-feedback">Valido.</div>
-                <div class="invalid-feedback">Por favor verifique los campos.</div>
-            </div>
-            <div class="form-group" style="display:none">
-                <input type="text" class="form-control" id="opGlobal" name="opGlobal" value="9">
-            </div>
-            <button type="submit" class="btn btn-primary">Cambiar</button>
-        </form>
     </div>
 </div>
 <!--inicia footer-->

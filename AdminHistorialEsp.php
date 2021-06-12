@@ -7,6 +7,11 @@ $contenidoHistorialAdmin = getContenidoHistorialAdmin();
     <div class="container">
         <h2>Historial de Especialidades</h2>
         <!--Tabla de especialidad: Sección 1-->
+        <div class="tab">
+            <button class="tablinks" onclick="openCity(event, 'tab1')" id="defaultOpen"><i class="bi bi-clock-history"></i>Historial</button>
+            <button class="tablinks" onclick="openCity(event, 'tab2')"><i class="bi bi-book-fill"></i>Contenido</button>
+        </div>
+        <div id="tab1" class="tabcontent">
         <div id="titulo">
             <h6><b>Historial de las especialidades asociadas a la Ingeniería en Sistemas Computacionales</b></h6>
         </div>
@@ -17,7 +22,7 @@ $contenidoHistorialAdmin = getContenidoHistorialAdmin();
                     <th>Nombre</th>
                     <th>Objetivo</th>
                     <th><button type="button" class="btn btn-light" data-toggle="modal" data-target="#myModal1AddHist"><i class="bi bi-plus-circle"></i></button>
-                        <div class="modal topmargin-sm" id="myModal1AddHist">
+                        <div class="modal topmargin-xs" id="myModal1AddHist">
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <!-- Modal Header-->
@@ -68,7 +73,7 @@ $contenidoHistorialAdmin = getContenidoHistorialAdmin();
                                 <td><img src="img/especialidades/historial/' . $historialInfo[$i][3] . '" width=120px></img></td>
                                 <td>' . $historialInfo[$i][1] . '</td>
                                 <td> <a href=# data-toggle="modal" data-target="#myModaObjetivo" onclick="modVerMas(\'' . $historialInfo[$i][1] . '\', \'' . $historialInfo[$i][2] . '\');">Ver mas</a>
-                                    <div class="modal topmargin-sm" id="myModaObjetivo">
+                                    <div class="modal topmargin-xs" id="myModaObjetivo">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
                                                 <!-- Modal Header-->
@@ -86,17 +91,22 @@ $contenidoHistorialAdmin = getContenidoHistorialAdmin();
                                     </div>
                                 </td>
                                 <td> 
-                                        <div class="btn-group btn-group-sm">
-                                            <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#myModalHisInfo" onclick="datosModalHistoInfo(\'' . $historialInfo[$i][0] . '\', \'' . $historialInfo[$i][1] . '\', \'' . $historialInfo[$i][2] . '\', \'' . $historialInfo[$i][3] . '\');"><i class="bi bi-pencil-square"></i></button>';
+                                <div class="btn-group">
+                                <button class="btn btn-light btn-sm" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="bi bi-three-dots-vertical"></i>Opciones
+                                </button>
+                                <div class="dropdown-menu dropdown-menu-right">
+                                            <a class="dropdown-item" data-toggle="modal" data-target="#myModalHisInfo" onclick="datosModalHistoInfo(\'' . $historialInfo[$i][0] . '\', \'' . $historialInfo[$i][1] . '\', \'' . $historialInfo[$i][2] . '\', \'' . $historialInfo[$i][3] . '\');"><i class="bi bi-pencil-square"></i>Editar</a>';
                         if ($historialInfo[$i][4] == 1) {
-                            echo '<a type="button" class="btn btn-secondary" href="Controlador/ControlBorrar.php?id=10*' . $historialInfo[$i][0] . '*2*1"><i class = "bi bi-eye"></i></a>';
+                            echo '<a class="dropdown-item" href="Controlador/ControlBorrar.php?id=10*' . $historialInfo[$i][0] . '*2*1"><i class = "bi bi-eye-slash"></i>Ocultar</a>';
                         } else {
-                            echo '<a type="button" class="btn btn-secondary" href="Controlador/ControlBorrar.php?id=10*' . $historialInfo[$i][0] . '*1*1"><i class = "bi bi-eye-slash"></i></a>';
+                            echo '<a class="dropdown-item" href="Controlador/ControlBorrar.php?id=10*' . $historialInfo[$i][0] . '*1*1"><i class = "bi bi-eye"></i>Activar</a>';
                         }
-                        echo '<a type = "button" class = "btn btn-secondary" href = "Controlador/ControlBorrar.php?id=10*' . $historialInfo[$i][0] . '*0*2*' . $historialInfo[$i][3] . '"><i class = "bi bi-trash-fill"></i></a>
+                        echo '<a class="dropdown-item" href = "Controlador/ControlBorrar.php?id=10*' . $historialInfo[$i][0] . '*0*2*' . $historialInfo[$i][3] . '"><i class = "bi bi-trash-fill"></i>Eliminar</a>
                                             </div>
                                         </div>
-                                        <div class="modal topmargin-sm" id="myModalHisInfo">
+                                        </div>
+                                        <div class="modal topmargin-xs" id="myModalHisInfo">
                                             <div class="modal-dialog">
                                                 <div class="modal-content">
                                                     <!-- Modal Header-->
@@ -149,9 +159,10 @@ $contenidoHistorialAdmin = getContenidoHistorialAdmin();
                     ?>
             </tbody>
         </table>
-
+        </div>
+        <div id="tab2" class="tabcontent">
         <div id="titulo">
-            <h6><b>Contenido</b></h6>
+            <h6><b>Contenido de las especialidades en historial</b></h6>
         </div>
         <table class="table table-light table-hover">
             <thead>
@@ -159,7 +170,7 @@ $contenidoHistorialAdmin = getContenidoHistorialAdmin();
                     <th>Especialidad</th>
                     <th>Asignatura</th>
                     <th><button type="button" class="btn btn-light" data-toggle="modal" data-target="#myModal1AddCont"><i class="bi bi-plus-circle"></i></button>
-                        <div class="modal topmargin-sm" id="myModal1AddCont">
+                        <div class="modal topmargin-xs" id="myModal1AddCont">
                             <div class="modal-dialog">
                                 <div class="modal-content">
 
@@ -215,16 +226,21 @@ $contenidoHistorialAdmin = getContenidoHistorialAdmin();
                             <td>' . $contenidoHistorialAdmin[$i][2] . '</td>
                             <td>' . $contenidoHistorialAdmin[$i][0] . '</td>
                             <td> 
-                            <div class="btn-group btn-group-sm">
-                                <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#myModalCont" onclick="datosModalCont(\'' . $contenidoHistorialAdmin[$i][3] . '\', \'' . $contenidoHistorialAdmin[$i][0] . '\');"><i class="bi bi-pencil-square"></i></button>';
+                            <div class="btn-group">
+                        <button class="btn btn-light btn-sm" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="bi bi-three-dots-vertical"></i>Opciones
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-right">
+                                <a class="dropdown-item" data-toggle="modal" data-target="#myModalCont" onclick="datosModalCont(\'' . $contenidoHistorialAdmin[$i][3] . '\', \'' . $contenidoHistorialAdmin[$i][0] . '\');"><i class="bi bi-pencil-square"></i>Editar</a>';
                     if ($contenidoHistorialAdmin[$i][1] === 1) {
-                        echo '<a type="button" class="btn btn-secondary" href="Controlador/ControlBorrar.php?id=11*' . $contenidoHistorialAdmin[$i][3] . '*' . $contenidoHistorialAdmin[$i][0] . '*2*1"><i class = "bi bi-eye"></i></a>';
+                        echo '<a class="dropdown-item" href="Controlador/ControlBorrar.php?id=11*' . $contenidoHistorialAdmin[$i][3] . '*' . $contenidoHistorialAdmin[$i][0] . '*2*1"><i class = "bi bi-eye-slash"></i>Ocultar</a>';
                     } else {
-                        echo '<a type="button" class="btn btn-secondary" href="Controlador/ControlBorrar.php?id=11*' . $contenidoHistorialAdmin[$i][3] . '*' . $contenidoHistorialAdmin[$i][0] . '*1*1"><i class = "bi bi-eye-slash"></i></a>';
+                        echo '<a class="dropdown-item" href="Controlador/ControlBorrar.php?id=11*' . $contenidoHistorialAdmin[$i][3] . '*' . $contenidoHistorialAdmin[$i][0] . '*1*1"><i class = "bi bi-eye"></i>Activar</a>';
                     }
-                    echo '<a type="button" class="btn btn-secondary" href="Controlador/ControlBorrar.php?id=11*' . $contenidoHistorialAdmin[$i][3] . '*' . $contenidoHistorialAdmin[$i][0] . '*0*2"><i class="bi bi-trash-fill"></i></a>
+                    echo '<a class="dropdown-item" href="Controlador/ControlBorrar.php?id=11*' . $contenidoHistorialAdmin[$i][3] . '*' . $contenidoHistorialAdmin[$i][0] . '*0*2"><i class="bi bi-trash-fill"></i>Eliminar</a>
                             </div>
-                            <div class="modal topmargin-sm" id="myModalCont">
+                            </div>
+                            <div class="modal topmargin-xs" id="myModalCont">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
 
@@ -279,6 +295,8 @@ $contenidoHistorialAdmin = getContenidoHistorialAdmin();
                 ?>
             </tbody>
         </table>
+        </div>
+        <script type="text/javascript" src="js/tabs.js"></script>
     </div>
 </div>
 </div>

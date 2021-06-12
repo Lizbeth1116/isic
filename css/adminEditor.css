@@ -1,36 +1,78 @@
-.admon{
-    background-color: #f1f1f1;
+.admon {
+    background-color:#dadada;
     padding-bottom: 150px;
 }
-.admon h2{
+
+.admon h2 {
     padding-top: 100px;
     padding-bottom: 20px;
     font-size: 2.2em;
     font-weight: 700;
     letter-spacing: 2px;
-    color: #424242;
+    color: #555555;
 }
 
-.admon .container #titulo{
+.admon .container #titulo {
     background-color: #ffffff;
-    border-radius: 5px;
+    border-bottom: 1px solid #cccccc;
+    padding: 20px;
+    vertical-align: middle;
 }
 
-.admon .container #titulo h6{
-    padding: 20px;
-    color:#505050;
+.admon .container #titulo h6 {
+    color: #505050;
     font-size: 1.3em;
 }
 
-@media screen and (min-width: 601px) {
-    .admon .cont-invest tr, td{
+.admon button.btn-light, .btn-group-sm{
+    float:right;
+}
+.admon .sec-buscador{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px;
+}
+.admon .sec-buscador .columna{
+    padding: 10px 5px;
+    flex: auto;
+}
+.admon .sec-buscador .form-control{
+    background-color: #f0f0f0 !important;
+    font-size: 16px;
+    border: none;
+    padding: 0 15px;
+    border-radius: 50px;
+}
+
+@media screen and (min-width: 801px) {
+    .admon .cont-invest tr, td {
         font-size: 16px;
     }
-  }
-  
-  /* If the screen size is 600px wide or less, set the font-size of <div> to 30px */
-  @media screen and (max-width: 600px) {
-    .admon tr, td {
-      font-size: 11px;
+    .admon button.btn-light{
+        font-size: 16px;
     }
-  }
+}
+
+/* If the screen size is 600px wide or less, set the font-size of <div> to 30px */
+
+@media screen and (max-width: 800px) {
+    .admon tr, td {
+        font-size: 11px;
+    }
+    .admon button.btn-light, .btn-group-sm{
+        padding: 10px 0;
+        float:none;
+    }
+    .admon button.btn-light{
+        font-size: 0px;
+    }
+    .admon button.btn-light i.bi{
+        font-size: 11px;
+    }
+    .admon .sec-buscador{
+        float: none;
+    }
+    .admon .sec-buscador .columna{
+        padding: 0px;
+    }
+}

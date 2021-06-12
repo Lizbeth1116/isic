@@ -17,7 +17,7 @@ $complInfo = getComplementarias();
                     <th>Descripción</th>
                     <th>PDF</th>
                     <th><button type="button" class="btn btn-light" data-toggle="modal" data-target="#myModal1AddComp"><i class="bi bi-plus-circle"></i></button>
-                        <div class="modal topmargin-sm" id="myModal1AddComp">
+                        <div class="modal" id="myModal1AddComp">
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <!-- Modal Header-->
@@ -92,17 +92,22 @@ $complInfo = getComplementarias();
                         } else
                             echo'<td class="text-center"><i class="bi bi-file-earmark-excel"></i></td>';
                         echo '<td> 
-                                        <div class="btn-group btn-group-sm">
-                                            <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#myModal" onclick="datosModalComp(\'' . $complInfo[$i][0] . '\', \'' . $complInfo[$i][1] . '\', \'' . $complInfo[$i][2] . '\', \'' . $complInfo[$i][3] . '\', \'' . $complInfo[$i][4] . '\');"><i class="bi bi-pencil-square"></i></button>';
+                        <div class="btn-group">
+                        <button class="btn btn-light btn-sm" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="bi bi-three-dots-vertical"></i>Opciones
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-right">
+                                            <a class="dropdown-item" data-toggle="modal" data-target="#myModal" onclick="datosModalComp(\'' . $complInfo[$i][0] . '\', \'' . $complInfo[$i][1] . '\', \'' . $complInfo[$i][2] . '\', \'' . $complInfo[$i][3] . '\', \'' . $complInfo[$i][4] . '\');"><i class="bi bi-pencil-square"></i>Editar</a>';
                         if ($complInfo[$i][5] == 1) {
-                            echo '<a type="button" class="btn btn-secondary" href="Controlador/ControlBorrar.php?id=9*' . $complInfo[$i][0] . '*2*1"><i class = "bi bi-eye"></i></a>';
+                            echo '<a class="dropdown-item" href="Controlador/ControlBorrar.php?id=9*' . $complInfo[$i][0] . '*2*1"><i class = "bi bi-eye-slash"></i>Ocultar</a>';
                         } else {
-                            echo '<a type="button" class="btn btn-secondary" href="Controlador/ControlBorrar.php?id=9*' . $complInfo[$i][0] . '*1*1"><i class = "bi bi-eye-slash"></i></a>';
+                            echo '<a class="dropdown-item" href="Controlador/ControlBorrar.php?id=9*' . $complInfo[$i][0] . '*1*1"><i class = "bi bi-eye"></i>Activar</a>';
                         }
-                        echo '<a type = "button" class = "btn btn-secondary" href = "Controlador/ControlBorrar.php?id=9*' . $complInfo[$i][0] . '*0*2*' . $complInfo[$i][3] . '*' . $complInfo[$i][4] . '"><i class = "bi bi-trash-fill"></i></a>
+                        echo '<a class="dropdown-item" href = "Controlador/ControlBorrar.php?id=9*' . $complInfo[$i][0] . '*0*2*' . $complInfo[$i][3] . '*' . $complInfo[$i][4] . '"><i class = "bi bi-trash-fill"></i>Eliminar</a>
                                             </div>
                                         </div>
-                                        <div class="modal topmargin-sm" id="myModal">
+                                        </div>
+                                        <div class="modal" id="myModal">
                                             <div class="modal-dialog">
                                                 <div class="modal-content">
                                                     <!-- Modal Header-->

@@ -7,7 +7,12 @@ $listAsigEsp = getListAsigEspAdmin();
 <div class="admon">
     <div class="container">
         <h2>Malla Curricular</h2>
-        <input class="form-control" id="myInput" type="text" placeholder="Buscar...">
+        <div class="sec-buscador">
+            <div class="columna">
+                <h4>Buscar por asignatura</h4>
+            </div>
+            <div class="columna"><input class="form-control" id="myInput" type="text" placeholder="Buscar..."></div>
+        </div>
         <br>
         <table class="table table-light table-hover">
             <thead>
@@ -19,7 +24,7 @@ $listAsigEsp = getListAsigEspAdmin();
                     <th>Horas</th>
                     <th>Temario</th>
                     <th><button type="button" class="btn btn-light" data-toggle="modal" data-target="#myModal1AddMalla"><i class="bi bi-plus-circle"></i></button>
-                        <div class="modal topmargin-sm" id="myModal1AddMalla">
+                        <div class="modal" id="myModal1AddMalla">
                             <div class="modal-dialog">
                                 <div class="modal-content">
 
@@ -127,36 +132,42 @@ $listAsigEsp = getListAsigEspAdmin();
                                         <td>' . $asignatura[$i][3] . '</td>
                                         <td>' . $asignatura[$i][2] . '</td>';
                     if ($asignatura[$i][6] != 'Sin Archivo' && strlen($asignatura[$i][6]) > 0) {
-                        echo'<td class="text-center">
+                        echo '<td class="text-center">
                                             <a target="_black" href="http://' . $_SERVER['HTTP_HOST'] . '/isic/pdf/asignaturas/' . $asignatura[$i][6] . '">
                                             <i class="bi bi-file-earmark-check"></i></a></td>';
                     } else
-                        echo'<td class="text-center"><i class="bi bi-file-earmark-excel"></i></td>';
-                    echo'<td> 
-                                            <div class="btn-group btn-group-sm">';
+                        echo '<td class="text-center"><i class="bi bi-file-earmark-excel"></i></td>';
+                    echo '<td> 
+                            <div class="btn-group">
+                                <button class="btn btn-light btn-sm" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="bi bi-three-dots-vertical"></i>
+                                </button>
+                                <div class="dropdown-menu dropdown-menu-right">';
                     $tmp2 = "f";
                     for ($j = 0; $j < sizeof($listAsigEsp); $j++) {
                         if ($tmp2 != "t") {
                             $tmp2 = "f";
                         }
                         if ($listAsigEsp[$j][2] === $asignatura[$i][1]) {
-                            echo '<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#myModalMC" onclick="datosModalMC2(\'' . $asignatura[$i][0] . '\', \'' . $asignatura[$i][4] . '\', \'' . $asignatura[$i][1] . '\', \'' . $asignatura[$i][3] . '\', \'' . $asignatura[$i][2] . '\', \'' . $listAsigEsp[$j][0] . '\', \'' . $asignatura[$i][6] . '\');"><i class="bi bi-pencil-square"></i></button>';
+                            echo '<a class="dropdown-item" data-toggle="modal" data-target="#myModalMC" onclick="datosModalMC2(\'' . $asignatura[$i][0] . '\', \'' . $asignatura[$i][4] . '\', \'' . $asignatura[$i][1] . '\', \'' . $asignatura[$i][3] . '\', \'' . $asignatura[$i][2] . '\', \'' . $listAsigEsp[$j][0] . '\', \'' . $asignatura[$i][6] . '\');"><i class="bi bi-pencil-square"></i>editar</a>';
                             $tmp2 = "t";
                         }
                     }
                     if ($tmp2 == "f") {
-                        echo '<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#myModalMC" onclick="datosModalMC1(\'' . $asignatura[$i][0] . '\', \'' . $asignatura[$i][4] . '\', \'' . $asignatura[$i][1] . '\', \'' . $asignatura[$i][3] . '\', \'' . $asignatura[$i][2] . '\', \'' . $asignatura[$i][6] . '\');"><i class="bi bi-pencil-square"></i></button>';
+                        echo '<a class="dropdown-item" data-toggle="modal" data-target="#myModalMC" onclick="datosModalMC1(\'' . $asignatura[$i][0] . '\', \'' . $asignatura[$i][4] . '\', \'' . $asignatura[$i][1] . '\', \'' . $asignatura[$i][3] . '\', \'' . $asignatura[$i][2] . '\', \'' . $asignatura[$i][6] . '\');"><i class="bi bi-pencil-square"></i>Editar</a>';
                     }
 
                     if ($asignatura[$i][5] === 1) {
-                        echo '<a type="button" class="btn btn-secondary" href="Controlador/ControlBorrar.php?id=3*' . $asignatura[$i][1] . '*2*1"><i class = "bi bi-eye"></i></a>';
+                        echo '<a class="dropdown-item" href="Controlador/ControlBorrar.php?id=3*' . $asignatura[$i][1] . '*2*1"><i class = "bi bi-eye-slash"></i>Ocultar</a>';
                     } else {
-                        echo '<a type="button" class="btn btn-secondary" href="Controlador/ControlBorrar.php?id=3*' . $asignatura[$i][1] . '*1*1"><i class = "bi bi-eye-slash"></i></a>';
+                        echo '<a class="dropdown-item" href="Controlador/ControlBorrar.php?id=3*' . $asignatura[$i][1] . '*1*1"><i class = "bi bi-eye"></i>Activar</a>';
                     }
-                    echo '<a type="button" class="btn btn-secondary" href="Controlador/ControlBorrar.php?id=3*' . $asignatura[$i][1] . '*0*2*' . $asignatura[$i][6] . '"><i class="bi bi-trash-fill"></i></a>
-                                                <!-- The Modal -->
+                    echo '<a class="dropdown-item" href="Controlador/ControlBorrar.php?id=3*' . $asignatura[$i][1] . '*0*2*' . $asignatura[$i][6] . '"><i class="bi bi-trash-fill"></i>Eliminar</a>
+                                                
                                             </div>
-                                            <div class="modal topmargin-sm" id="myModalMC">
+                                            </div>
+                                            <!-- The Modal -->
+                                            <div class="modal" id="myModalMC">
                                                 <div class="modal-dialog">
                                                     <div class="modal-content">
 
