@@ -7,8 +7,8 @@ $solicitud = getSolicitud();
         <h2>Solicitudes</h2>
         <!--Tabla de especialidad: Sección 1-->
         <div class="tab">
-            <button class="tablinks" onclick="openCity(event, 'tab1')" id="defaultOpen"><i class="bi bi-envelope-fill"></i>Perfil Egreso</button>
-            <button class="tablinks" onclick="openCity(event, 'tab2')"><i class="bi bi-envelope-open-fill"></i>Asignaturas</button>
+            <button class="tablinks" onclick="openCity(event, 'tab1')" id="defaultOpen"><i class="bi bi-envelope-fill"></i>Solicitudes no vistas</button>
+            <button class="tablinks" onclick="openCity(event, 'tab2')"><i class="bi bi-envelope-open-fill"></i>Solicitudes vistas</button>
 
         </div>
         <div id="tab1" class="tabcontent">
@@ -57,7 +57,7 @@ $solicitud = getSolicitud();
                                                 <i class="bi bi-three-dots-vertical"></i>Opciones
                                             </button>
                                             <div class="dropdown-menu dropdown-menu-right">
-                                                <a type="button" class="dropdown-item" href="Controlador/ControlBorrar.php?id=13*' . $solicitudNV[0] . '*1"><i class = "bi bi-envelope-open-fill"></i>Marcar como leido</a>
+                                                <a type="button" class="dropdown-item" href="Controlador/ControlBorrar.php?id=13*' . $solicitudNV[0] . '*1"><i class = "bi bi-envelope-open-fill"></i>Marcar como vista</a>
                                                 <a type="button" class="dropdown-item" href="Controlador/ControlBorrar.php?id=13*' . $solicitudNV[0] . '*2"><i class="bi bi-trash-fill"></i>Eliminar</a>
                                             </div>
                                         </div>
