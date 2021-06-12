@@ -61,16 +61,16 @@
   }
 
   .dark {
-    background: #2E2E2E;
-    color: #fff;
+    background: #ffffff;
+    color: #696969;
   }
 
   #sidebar {
     min-width: 250px;
     max-width: 250px;
     /*background:#154360;*/
-    background: #1C1C1C;
-    color: #E6E6E6;
+    background: #ebebeb;
+    color: #7e7e7e;
     transition: all 0.3s;
     position: fixed;
     height: 100%;
@@ -107,9 +107,9 @@
 
   #sidebar ul li a {
     padding: 10px 10px 10px 20px;
-    font-size: 1.1em;
+    font-size: 1.0em;
     display: block;
-    color: #D8D8D8;
+    color: #7e7e7e;
     border-left: 3px solid transparent;
     position: relative;
     box-sizing: border-box;
@@ -118,10 +118,10 @@
   }
 
   #sidebar ul li a:hover {
-    color: #fff;
-    background: #151515;
+    color: #7e7e7e;
+    background: #cacaca;
     text-decoration: none;
-    border-left-color: white;
+    border-left-color: #7e7e7e;
   }
 
   #sidebar ul li.active>a, a[aria-expanded="true"] {

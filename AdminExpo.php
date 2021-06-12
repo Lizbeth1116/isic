@@ -8,8 +8,8 @@ $CarruselExpo = getCarruselExpo();
     <div class="container">
         <h2>Galerias</h2>
         <div class="tab">
-            <button class="tablinks" onclick="openCity(event, 'tab1')" id="defaultOpen"><i class="bi bi-file-check-fill"></i>Carrusel</button>
-            <button class="tablinks" onclick="openCity(event, 'tab2')"><i class="bi bi-file-earmark-person-fill"></i>Expo ISIC</button>
+            <button class="tablinks" onclick="openCity(event, 'tab1')" id="defaultOpen"><i class="bi bi-card-image"></i>Carrusel</button>
+            <button class="tablinks" onclick="openCity(event, 'tab2')"><i class="bi bi-calendar-week-fill"></i>Expo ISIC</button>
         </div>
         <div id="tab1" class="tabcontent">
             <div id="titulo">
