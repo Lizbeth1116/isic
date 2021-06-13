@@ -2,16 +2,248 @@
 include('./headAdmin.php');
 $peri = getPeriodo();
 $CarruselExpo = getCarruselExpo();
+$postfb = getPostfb();
 ?>
 <!DOCTYPE HTML>
 <div class="admon">
     <div class="container">
         <h2>Galerias</h2>
         <div class="tab">
-            <button class="tablinks" onclick="openCity(event, 'tab1')" id="defaultOpen"><i class="bi bi-card-image"></i>Carrusel</button>
-            <button class="tablinks" onclick="openCity(event, 'tab2')"><i class="bi bi-calendar-week-fill"></i>Expo ISIC</button>
+            <button class="tablinks" onclick="openCity(event, 'tab1')" id="defaultOpen"><i class="bi bi-facebook"></i>Post Facebook</button>
+            <button class="tablinks" onclick="openCity(event, 'tab2')"><i class="bi bi-images"></i>Carrusel Inicio</button>
+            <button class="tablinks" onclick="openCity(event, 'tab3')"><i class="bi bi-card-image"></i>Carrusel Expo</button>
+            <button class="tablinks" onclick="openCity(event, 'tab4')"><i class="bi bi-calendar-week-fill"></i>Expo ISIC</button>
         </div>
         <div id="tab1" class="tabcontent">
+            <div id="titulo">
+                <h6><b>Post a mostrar en el inicio</b></h6>
+            </div>
+            <table class="table table-light table-hover">
+                <thead>
+                    <tr>
+                        <th>Subtitulo</th>
+                        <th><button type="button" class="btn btn-light" data-toggle="modal" data-target="#myModal1AddPost"><i class="bi bi-plus-circle"></i></button>
+                            <div class="modal topmargin-sm" id="myModal1AddPost">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <!-- Modal Header-->
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" style="color:darkslategrey;">Agregar</h5>
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        </div>
+                                        <!-- Modal body -->
+                                        <div class="modal-body">
+                                            <form class="needs-validation" novalidate action="Controlador/ControlAgregar.php" method="POST">
+                                                <div class="form-group" style="display:none">
+                                                    <input type="text" class="form-control" id="opExp" name="opExp" value="4">
+                                                </div>
+                                                <div class="form-group" style="display:none">
+                                                    <input type="text" class="form-control" id="opGlobal" name="opGlobal" value="4">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="nombre" style="color:black;">Subtitulo:</label>
+                                                    <input type="text" class="form-control" id="subPostAdd" placeholder="Ingrese un subtitulo a mostrar" name="subPostAdd" required>
+                                                    <div class="valid-feedback">Valido.</div>
+                                                    <div class="invalid-feedback">Por favor verifique los campos.</div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="objetivo" style="color:black;">Post:</label>
+                                                    <textarea class="form-control" rows="5" id="postLinkAdd" placeholder="Ingrese el codigo del post a mostrar" name="postLinkAdd" required></textarea>
+                                                    <div class="valid-feedback">Valido.</div>
+                                                    <div class="invalid-feedback">Por favor verifique los campos.</div>
+                                                </div>
+                                                <button type="submit" class="btn btn-primary">Aceptar</button>
+                                                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <?php
+                        for ($i = 0; $i < sizeof($postfb); $i++) {
+                            echo '<tr>
+                            <td>'.$postfb[$i][3].'</td>
+                            <td> 
+                            <div class="btn-group">
+                            <button class="btn btn-light btn-sm" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="bi bi-three-dots-vertical"></i>Opciones
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-right">
+                                <a class="dropdown-item" data-toggle="modal" data-target="#myModalEditPost" onclick="datosModalPost(\'' . $postfb[$i][0] . '\', \'' . $postfb[$i][3] . '\');"><i class="bi bi-pencil-square"></i>Editar</a>';
+                            if ($postfb[$i][2] === 1) {
+                                echo '<a class="dropdown-item" href="Controlador/ControlBorrar.php?id=15*' . $postfb[$i][0] . '*2*1"><i class = "bi bi-eye-slash"></i>Ocultar</a>';
+                            } else {
+                                echo '<a class="dropdown-item" href="Controlador/ControlBorrar.php?id=15*' . $postfb[$i][0] . '*1*1"><i class = "bi bi-eye"></i>Activar</a>';
+                            }
+                            echo '<a class="dropdown-item" href = "Controlador/ControlBorrar.php?id=15*' . $postfb[$i][0] . '*0*2"><i class = "bi bi-trash-fill"></i>Eliminar</a>
+                                    </div>
+                                    </div>
+                                    </div>
+                                    <div class="modal topmargin-sm" id="myModalEditPost">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <!-- Modal Header-->
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" style="color:darkslategrey;">Editar</h5>
+                                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                </div>
+                                                <!-- Modal body -->
+                                                <div class="modal-body">
+                                                    <form class="needs-validation" novalidate action="Controlador/ControlEditar.php" method="POST">
+                                                        <div class="form-group" style="display:none">
+                                                            <input type="text" class="form-control" id="idPost" name="idPost">
+                                                        </div>
+                                                        <div class="form-group" style="display:none">
+                                                            <input type="text" class="form-control" id="opExp" name="opExp" value="4">
+                                                        </div>
+                                                        <div class="form-group" style="display:none">
+                                                            <input type="text" class="form-control" id="opGlobal" name="opGlobal" value="4">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="nombre" style="color:black;">Subtitulo:</label>
+                                                            <input type="text" class="form-control" id="subPost" placeholder="Ingrese un subtitulo a mostrar" name="subPost" required>
+                                                            <div class="valid-feedback">Valido.</div>
+                                                            <div class="invalid-feedback">Por favor verifique los campos.</div>
+                                                        </div>
+                                                        <button type="submit" class="btn btn-primary">Aceptar</button>
+                                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                </tr>';
+                        }
+                        ?>
+                </tbody>
+            </table>
+        </div>
+        <div id="tab2" class="tabcontent">
+            <div id="titulo">
+                <h6><b>Imagenes a mostrar en el carrusel</b></h6>
+            </div>
+            <table class="table table-light table-hover">
+                <thead>
+                    <tr>
+                        <th>Imagen</th>
+                        <th><button type="button" class="btn btn-light" data-toggle="modal" data-target="#myModal1AddCarrIni"><i class="bi bi-plus-circle"></i></button>
+                            <div class="modal topmargin-sm" id="myModal1AddCarrIni">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <!-- Modal Header-->
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" style="color:darkslategrey;">Agregar</h5>
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        </div>
+                                        <!-- Modal body -->
+                                        <div class="modal-body">
+                                            <form class="needs-validation" novalidate action="Controlador/ControlAgregar.php" enctype="multipart/form-data" method="POST">
+                                                <div class="form-group" style="display:none">
+                                                    <input type="text" class="form-control" id="opExp" name="opExp" value="3">
+                                                </div>
+                                                <div class="form-group" style="display:none">
+                                                    <input type="text" class="form-control" id="opGlobal" name="opGlobal" value="4">
+                                                </div>
+                                                <div class="form-group" style="display:none">
+                                                    <input type="text" class="form-control" id="pertCarIni" name="pertCarIni" value="1">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="imagenAdd" style="color:black;">Imagen:</label>
+                                                    <input type="file" class="form-control" id="imgCarIniAdd" name="imgCarIniAdd" required>
+                                                </div>
+                                                <button type="submit" class="btn btn-primary">Aceptar</button>
+                                                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <?php
+                        for ($i = 0; $i < sizeof($CarruselExpo); $i++) {
+                            if ($CarruselExpo[$i][4] == 1) {
+                                echo '<tr>
+                                <td><img src="img/conocenos/carousel/' . $CarruselExpo[$i][1] . '" width=160px></img></td>
+                                <td> 
+                                <div class="btn-group">
+                                <button class="btn btn-light btn-sm" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="bi bi-three-dots-vertical"></i>Opciones
+                                </button>
+                                <div class="dropdown-menu dropdown-menu-right">
+                                    <a class="dropdown-item" data-toggle="modal" data-target="#myModalEditCarIni" onclick="datosModalCarrIni(\'' . $CarruselExpo[$i][0] . '\', \'' . $CarruselExpo[$i][1] . '\');"><i class="bi bi-pencil-square"></i>Editar</a>';
+                                if ($CarruselExpo[$i][3] === 1) {
+                                    echo '<a class="dropdown-item" href="Controlador/ControlBorrar.php?id=14*' . $CarruselExpo[$i][0] . '*2*1"><i class = "bi bi-eye-slash"></i>Ocultar</a>';
+                                } else {
+                                    echo '<a class="dropdown-item" href="Controlador/ControlBorrar.php?id=14*' . $CarruselExpo[$i][0] . '*1*1"><i class = "bi bi-eye"></i>Activar</a>';
+                                }
+                                echo '<a class="dropdown-item" href = "Controlador/ControlBorrar.php?id=14*' . $CarruselExpo[$i][0] . '*0*2*' . $CarruselExpo[$i][1] . '"><i class = "bi bi-trash-fill"></i>Eliminar</a>
+                                        </div>
+                                        </div>
+                                        </div>
+                                        <div class="modal topmargin-sm" id="myModalEditCarIni">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <!-- Modal Header-->
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" style="color:darkslategrey;">Editar</h5>
+                                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                    </div>
+
+                                                    <!-- Modal body -->
+                                                    <div class="modal-body">
+                                                        <form class="needs-validation" novalidate action="Controlador/ControlEditar.php" enctype="multipart/form-data" method="POST">
+                                                            <div class="form-group" style="display:none">
+                                                                <input type="text" class="form-control" id="idCarrouIni" name="idCarrouIni">
+                                                            </div>
+                                                            <div class="form-group" style="display:none">
+                                                                <input type="text" class="form-control" id="opExp" name="opExp" value="3">
+                                                            </div>
+                                                            <div class="form-group" style="display:none">
+                                                                <input type="text" class="form-control" id="opGlobal" name="opGlobal" value="4">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="imagenAdd" style="color:black;">Imagen:</label>
+                                                                <input type="file" class="form-control" id="imgCarIni" name="imgCarIni">
+                                                            </div>
+                                                            <div class="form-group" style="display:none">
+                                                                <input type="text" class="form-control" id="nomOriImgCarrIni"  name="nomOriImgCarrIni">
+                                                            </div>
+                                                            <button type="submit" class="btn btn-primary">Aceptar</button>
+                                                            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    </tr>';
+                            }
+                        }
+                        ?>
+                </tbody>
+            </table>
+            <div class="row">
+                <div class="col-md-6">
+                </div>
+                <div class="col-md-6">
+                    <div class="alert alert-info alert-dismissible fade show">
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        <strong><i class="bi bi-exclamation-diamond-fill"></i> Nota</strong> La medida recomendada para las imagenes de carrusel de eventos es 1100 x 500 pixeles.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="tab3" class="tabcontent">
             <div id="titulo">
                 <h6><b>Imagenes a mostrar en el carrusel</b></h6>
             </div>
@@ -38,6 +270,9 @@ $CarruselExpo = getCarruselExpo();
                                                 <div class="form-group" style="display:none">
                                                     <input type="text" class="form-control" id="opGlobal" name="opGlobal" value="4">
                                                 </div>
+                                                <div class="form-group" style="display:none">
+                                                    <input type="text" class="form-control" id="pertCarExp" name="pertCarExp" value="2">
+                                                </div>
                                                 <div class="form-group">
                                                     <label for="nombre" style="color:black;">Texto Inferior:</label>
                                                     <input type="text" class="form-control" id="txtCarAdd" placeholder="Ingresa un breve texto a mostrar" name="txtCarAdd">
@@ -62,22 +297,23 @@ $CarruselExpo = getCarruselExpo();
                     <tr>
                         <?php
                         for ($i = 0; $i < sizeof($CarruselExpo); $i++) {
-                            echo '<tr>
+                            if ($CarruselExpo[$i][4] == 2) {
+                                echo '<tr>
                                 <td><img src="img/carousel-eventos/' . $CarruselExpo[$i][1] . '" width=160px></img></td>
-                                <td>' . $CarruselExpo[$i][2] . '</td>';
-                            echo '<td> 
+                                <td>' . $CarruselExpo[$i][2] . '</td>
+                                <td> 
                                 <div class="btn-group">
                                 <button class="btn btn-light btn-sm" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <i class="bi bi-three-dots-vertical"></i>Opciones
                                 </button>
                                 <div class="dropdown-menu dropdown-menu-right">
                                     <a class="dropdown-item" data-toggle="modal" data-target="#myModalEditCar" onclick="datosModalCarr(\'' . $CarruselExpo[$i][0] . '\', \'' . $CarruselExpo[$i][1] . '\', \'' . $CarruselExpo[$i][2] . '\');"><i class="bi bi-pencil-square"></i>Editar</a>';
-                            if ($CarruselExpo[$i][3] === 1) {
-                                echo '<a class="dropdown-item" href="Controlador/ControlBorrar.php?id=12*' . $CarruselExpo[$i][0] . '*2*1"><i class = "bi bi-eye-slash"></i>Ocultar</a>';
-                            } else {
-                                echo '<a class="dropdown-item" href="Controlador/ControlBorrar.php?id=12*' . $CarruselExpo[$i][0] . '*1*1"><i class = "bi bi-eye"></i>Activar</a>';
-                            }
-                            echo '<a class="dropdown-item" href = "Controlador/ControlBorrar.php?id=12*' . $CarruselExpo[$i][0] . '*0*2*' . $CarruselExpo[$i][1] . '"><i class = "bi bi-trash-fill"></i>Eliminar</a>
+                                if ($CarruselExpo[$i][3] === 1) {
+                                    echo '<a class="dropdown-item" href="Controlador/ControlBorrar.php?id=12*' . $CarruselExpo[$i][0] . '*2*1"><i class = "bi bi-eye-slash"></i>Ocultar</a>';
+                                } else {
+                                    echo '<a class="dropdown-item" href="Controlador/ControlBorrar.php?id=12*' . $CarruselExpo[$i][0] . '*1*1"><i class = "bi bi-eye"></i>Activar</a>';
+                                }
+                                echo '<a class="dropdown-item" href = "Controlador/ControlBorrar.php?id=12*' . $CarruselExpo[$i][0] . '*0*2*' . $CarruselExpo[$i][1] . '"><i class = "bi bi-trash-fill"></i>Eliminar</a>
                                         </div>
                                         </div>
                                         </div>
@@ -124,6 +360,7 @@ $CarruselExpo = getCarruselExpo();
                                         </div>
                                     </td>
                                     </tr>';
+                            }
                         }
                         ?>
                 </tbody>
@@ -139,7 +376,7 @@ $CarruselExpo = getCarruselExpo();
                 </div>
             </div>
         </div>
-        <div id="tab2" class="tabcontent">
+        <div id="tab4" class="tabcontent">
             <!--Tabla de especialidad: Sección 1-->
             <div id="titulo">
                 <h6><b>Expo Sistemas Proyectatec </b> <button type="button" class="btn btn-light" data-toggle="modal" data-target="#myModalAddPeri"><i class="bi bi-calendar-plus"></i> Agregar nueva galería</button></h6>
@@ -405,7 +642,7 @@ $CarruselExpo = getCarruselExpo();
 </section>
 <!--fin footer-->
 <!--JS Local-->
-<script type="text/javascript" src="js/editarExpo.js"></script>
+<script type="text/javascript" src="js/editarGalerias.js?1.0.0"></script>
 <!--Bootstrap JS-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

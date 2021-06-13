@@ -12,9 +12,9 @@ $CarruselExpo = getCarruselExpo();
             <?php
             $auxCar = 0;
             foreach ($CarruselExpo as $lisCarruselExpo) {
-                if ($lisCarruselExpo[3] == 1) {
+                if ($lisCarruselExpo[3] == 1 && $lisCarruselExpo[4] == 2) {
                     echo '
-                    <li data-target="#demo" data-slide-to="' . $auxCar . '"></li>
+                    <li data-target="#demo" data-slide-to="' . $auxCar . '" ' . ($auxCar == 0 ? ' class="active"' : '') . '></li>
                     ';
                     $auxCar++;
                 }
@@ -25,19 +25,15 @@ $CarruselExpo = getCarruselExpo();
             <?php
             $i = 0;
             foreach ($CarruselExpo as $lisCarruselExpo) {
-                if ($lisCarruselExpo[3] == 1) {
-                    if ($i == 0) {
-                        echo '<div class="carousel-item active">';
-                        $i++;
-                    } else {
-                        echo '<div class="carousel-item">';
-                    }
+                if ($lisCarruselExpo[3] == 1 && $lisCarruselExpo[4] == 2) {
                     echo '
-                    <img src="img/carousel-eventos/' . $lisCarruselExpo[1] . '" alt="banner' . $lisCarruselExpo[0] . '">
-                    <div class="carousel-caption">
-                        <h3>' . $lisCarruselExpo[2] . '</h3>
-                    </div>
-                </div>';
+                    <div class="carousel-item' . ($i == 0 ? ' active' : '') . '">
+                        <img src="img/carousel-eventos/' . $lisCarruselExpo[1] . '" alt="banner' . $lisCarruselExpo[0] . '">
+                        <div class="carousel-caption">
+                            <h3>' . $lisCarruselExpo[2] . '</h3>
+                        </div>
+                    </div>';
+                    $i++;
                 }
             }
             ?>
@@ -92,7 +88,7 @@ $CarruselExpo = getCarruselExpo();
     baguetteBox.run('.tz-gallery');
 </script>
 <script>
-    $(document).ready(function() {
+    $(document).ready(function () {
         $('#demo').carousel({
             interval: 2000
         });

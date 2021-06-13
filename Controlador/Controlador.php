@@ -549,12 +549,13 @@ function getCarruselExpo() {
     $stmt = $con->prepare("call isic.sp_getCarruselExpo();");
     $stmt->execute();
     $i = 0;
-    $stmt->bind_result($idcarruselExpo, $ImagenCarr, $Texto, $Estado);
+    $stmt->bind_result($idcarruselExpo, $ImagenCarr, $Texto, $Estado, $Perteneciente);
     while ($stmt->fetch()) {
         $carrExp[$i][0] = $idcarruselExpo;
         $carrExp[$i][1] = $ImagenCarr;
         $carrExp[$i][2] = $Texto;
         $carrExp[$i][3] = $Estado;
+        $carrExp[$i][4] = $Perteneciente;
         $i++;
     }
     $stmt->close();
@@ -584,4 +585,22 @@ function getSolicitud() {
     }
     $stmt->close();
     return $soli;
+}
+
+
+function getPostfb() {
+    global $con;
+    $stmt = $con->prepare("call isic.sp_getPostfb();");
+    $stmt->execute();
+    $i = 0;
+    $stmt->bind_result($idpostfb, $post, $Estado, $subtitulo);
+    while ($stmt->fetch()) {
+        $postFb[$i][0] = $idpostfb;
+        $postFb[$i][1] = $post;
+        $postFb[$i][2] = $Estado;
+        $postFb[$i][3] = $subtitulo;
+        $i++;
+    }
+    $stmt->close();
+    return $postFb;
 }
