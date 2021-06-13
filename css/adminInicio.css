@@ -3,7 +3,7 @@
   .inicio {
       padding-top: 90px;
       min-height: 700px;
-      background-color:#dadada;;
+      background-color: #dadada;
   }
 
   .inicio .logo-isic {
@@ -11,49 +11,31 @@
       max-width: 170px;
   }
 
-  .inicio .site-section {
-      padding-bottom: 5em;
+  .inicio h2 {
+    padding-bottom: 20px;
+    font-size: 2.2em;
+    font-weight: 800;
+    letter-spacing: 2px;
+    color: #555555;
   }
+  .inicio .container .titulo h6 {
+    color: #505050;
+    font-size: 1.3em;
+}
 
-  .inicio .section-heading {
-      margin-bottom: 30px;
-      position: relative;
-      z-index: 10;
-  }
-
-  .inicio .texto .section-heading h2 {
-      position: relative;
-      font-weight: 200;
-      font-size: 30px;
-      color: #f5fcff;
-  }
-
-  .inicio .texto .section-heading h2 strong {
-      font-weight: 800;
-  }
-
-  .inicio .texto .section-heading.text-center h2:before {
-      left: 50%;
-      -webkit-transform: translateX(-50%);
-      -ms-transform: translateX(-50%);
-      transform: translateX(-50%);
+  .inicio .container .titulo {
+    background-color: #ffffff;
+    border-bottom: 1px solid #cccccc;
+    padding: 20px;
+    vertical-align: middle;
   }
 
   .inicio .resume-item {
-      background-color: #3a3a3a;
+      background-color: #ffffff;
       text-align: center;
       padding: 30px;
-      border: 4px solid transparent;
+      border: 1px solid #cfcfcf;
       border-radius: 7px;
-      -moz-transition: 0.2s;
-      -webkit-transition: 0.2s;
-      transition: 0.2s;
-  }
-
-  .inicio .resume-item:hover {
-      -moz-transform: scale(1.01);
-      -webkit-transform: scale(1.05);
-      transform: scale(1.05);
       box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   }
 
@@ -65,9 +47,10 @@
       outline: none;
   }
 
-  .inicio .texto .resume-item h3 {
+  .inicio .resume-item h3 {
       color: #2f90ff;
-      font-size: 20px;
+      font-size: 30px;
+      font-weight: 800;
   }
 
   .inicio .resume-item *:last-child {
@@ -91,18 +74,29 @@
   }
 
   .inicio .resume-item a {
-      color: #00bd74 !important;
+      color: #13f579 !important;
   }
 
   .inicio .resume-item p {
-      color: #cfcfcf;
+      color: #5e5e5e;
   }
 
   .inicio table td {
       padding-right: 10px;
       text-align: left;
-      color: #cfcfcf;
+      color: #494949;
       font-size: 14px;
+  }
+
+  .inicio .fila {
+      display: flex;
+      flex-wrap: wrap;
+      padding: 10px 0;
+  }
+
+  .inicio .fila .colum {
+      padding: 5px 5px;
+      flex: auto;
   }
 
   /*fin seccion 'inicio'*/
