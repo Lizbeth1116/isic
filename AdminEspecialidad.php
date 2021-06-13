@@ -23,7 +23,6 @@ $asiEsp = getAsignaturaEspAdmin();
                     <tr>
                         <th>Imagen</th>
                         <th>Nombre</th>
-                        <th>Objetivo</th>
                         <th>Reticula</th>
                         <th><button type="button" class="btn btn-light" data-toggle="modal" data-target="#myModal1AddEsp"><i class="bi bi-plus-circle"></i></button>
                             <div class="modal" id="myModal1AddEsp">
@@ -77,9 +76,9 @@ $asiEsp = getAsignaturaEspAdmin();
                         <?php
                         for ($i = 0; $i < sizeof($especialidad); $i++) {
                             echo '<tr>
-                                    <td><img src="img/especialidades/' . $especialidad[$i][5] . '" width=120px></img></td>
-                                    <td>' . $especialidad[$i][1] . '</td>
-                                    <td> <a href=# data-toggle="modal" data-target="#myModaObjetivo" onclick="modVerMas(\'' . $especialidad[$i][1] . '\', \'' . $especialidad[$i][2] . '\');">Ver mas</a>
+                                    <td><img src="img/especialidades/' . $especialidad[$i][5] . '" width=70px></img></td>
+                                    <td>' . $especialidad[$i][1] . '<br>
+                                    <a href=# data-toggle="modal" data-target="#myModaObjetivo" onclick="modVerMas(\'' . $especialidad[$i][1] . '\', \'' . $especialidad[$i][2] . '\');">Objetivo</a>
                                         <div class="modal" id="myModaObjetivo">
                                                 <div class="modal-dialog">
                                                     <div class="modal-content">
@@ -107,7 +106,7 @@ $asiEsp = getAsignaturaEspAdmin();
                             echo '<td> 
                                         <div class="btn-group">
                                             <button class="btn btn-light btn-sm" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                <i class="bi bi-three-dots-vertical"></i>Opciones
+                                                <i class="bi bi-three-dots-vertical"></i>
                                             </button>
                                             <div class="dropdown-menu dropdown-menu-right">
                                             <a class="dropdown-item" data-toggle="modal" data-target="#myModal" onclick="datosModalEsp1(\'' . $especialidad[$i][0] . '\', \'' . $especialidad[$i][1] . '\', \'' . $especialidad[$i][2] . '\', \'' . $especialidad[$i][4] . '\', \'' . $especialidad[$i][5] . '\');"><i class="bi bi-pencil-square"></i>Editar</a>';
@@ -220,7 +219,7 @@ $asiEsp = getAsignaturaEspAdmin();
                         <th>Especialidad</th>
                         <th>Perfil de Egreso</th>
                         <th><button type="button" class="btn btn-light" data-toggle="modal" data-target="#myModal1AddPerEsp"><i class="bi bi-plus-circle"></i></button></th>
-                        <div class="modal" id="myModal1AddPerEsp">
+                        <div class="modal topmargin-xs" id="myModal1AddPerEsp">
                             <div class="modal-dialog">
                                 <div class="modal-content">
 
@@ -273,7 +272,7 @@ $asiEsp = getAsignaturaEspAdmin();
                         echo '<tr>
                                         <td>' . $egreso[$i][1] . '</td>
                                         <td> <a href=# data-toggle="modal" data-target="#myModalEgr" onclick="modVerMasEgr(\'' . $egreso[$i][1] . '\', \'' . $egreso[$i][2] . '\');">Ver mas</a>
-                                            <div class="modal" id="myModalEgr">
+                                            <div class="modal topmargin-sm" id="myModalEgr">
                                                 <div class="modal-dialog">
                                                     <div class="modal-content">
 
@@ -294,7 +293,7 @@ $asiEsp = getAsignaturaEspAdmin();
                                         <td>
                                         <div class="btn-group">
                                         <button class="btn btn-light btn-sm" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="bi bi-three-dots-vertical"></i>Opciones
+                                            <i class="bi bi-three-dots-vertical"></i>
                                         </button>
                                         <div class="dropdown-menu dropdown-menu-right">
                                                 <a class="dropdown-item" data-toggle="modal" data-target="#myModal1" onclick="datosModalEsp2(\'' . $egreso[$i][0] . '\', \'' . $egreso[$i][2] . '\');"><i class="bi bi-pencil-square"></i>Editar</a>';
@@ -306,7 +305,7 @@ $asiEsp = getAsignaturaEspAdmin();
                         echo '<a class="dropdown-item" href="Controlador/ControlBorrar.php?id=1*' . $egreso[$i][0] . '*' . $egreso[$i][2] . '*0*2"><i class="bi bi-trash-fill"></i>Eliminar</a>
                                             </div>
                                             </div>
-                                            <div class="modal" id="myModal1">
+                                            <div class="modal topmargin-sm" id="myModal1">
                                                 <div class="modal-dialog">
                                                     <div class="modal-content">
 
@@ -361,7 +360,6 @@ $asiEsp = getAsignaturaEspAdmin();
                     <tr>
                         <th>Especialidad</th>
                         <th>Clave Asignatura</th>
-                        <th>Descripción</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -369,9 +367,9 @@ $asiEsp = getAsignaturaEspAdmin();
                     for ($i = 0; $i < sizeof($asiEsp); $i++) {
                         echo '<tr>
                                         <td>' . $asiEsp[$i][1] . '</td>
-                                        <td>' . $asiEsp[$i][2] . '</td>
-                                        <td> <a href=# data-toggle="modal" data-target="#myModalDesc" onclick="modVerMasDesc(\'' . $asiEsp[$i][2] . '\', \'' . $asiEsp[$i][3] . '\');">Ver mas</a>
-                                            <div class="modal" id="myModalDesc">
+                                        <td>' . $asiEsp[$i][2] . '<br>
+                                        <a href=# data-toggle="modal" data-target="#myModalDesc" onclick="modVerMasDesc(\'' . $asiEsp[$i][2] . '\', \'' . $asiEsp[$i][3] . '\');">Descripción</a>
+                                            <div class="modal topmargin-sm" id="myModalDesc">
                                                 <div class="modal-dialog">
                                                     <div class="modal-content">
 
@@ -392,7 +390,7 @@ $asiEsp = getAsignaturaEspAdmin();
                                         <td>
                                         <div class="btn-group">
                                         <button class="btn btn-light btn-sm" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="bi bi-three-dots-vertical"></i>Opciones
+                                            <i class="bi bi-three-dots-vertical"></i>
                                         </button>
                                         <div class="dropdown-menu dropdown-menu-right">
                                                 <a class="dropdown-item" data-toggle="modal" data-target="#myModal2" onclick="datosModalEsp3(\'' . $asiEsp[$i][0] . '\', \'' . $asiEsp[$i][2] . '\', \'' . $asiEsp[$i][3] . '\');"><i class="bi bi-pencil-square"></i>Editar</a>';

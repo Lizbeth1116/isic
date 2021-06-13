@@ -7,16 +7,15 @@ $complInfo = getComplementarias();
         <h2>Complementarias</h2>
         <!--Tabla de especialidad: Sección 1-->
         <div id="titulo">
-            <h6><b>Complementarias existentes asociadas a la Ingeniería en Sistemas Computacionales</b></h6>
+            <h6><b>Complementarias existentes asociadas a la Ingeniería en Sistemas Computacionales</b><button type="button" class="btn btn-light" data-toggle="modal" data-target="#myModal1AddComp"><i class="bi bi-plus-circle"></i></button></h6>
         </div>
         <table class="table table-light table-hover">
             <thead>
                 <tr>
                     <th>Imagen</th>
                     <th>Nombre</th>
-                    <th>Descripción</th>
                     <th>PDF</th>
-                    <th><button type="button" class="btn btn-light" data-toggle="modal" data-target="#myModal1AddComp"><i class="bi bi-plus-circle"></i></button>
+                    <th>
                         <div class="modal" id="myModal1AddComp">
                             <div class="modal-dialog">
                                 <div class="modal-content">
@@ -65,9 +64,9 @@ $complInfo = getComplementarias();
                     <?php
                     for ($i = 0; $i < sizeof($complInfo); $i++) {
                         echo '<tr>
-                                <td><img src="img/servicios/complementarias/' . $complInfo[$i][3] . '" width=120px></img></td>
-                                <td>' . $complInfo[$i][1] . '</td>
-                                <td> <a href=# data-toggle="modal" data-target="#myModaObjetivo" onclick="modVerMas(\'' . $complInfo[$i][1] . '\', \'' . $complInfo[$i][2] . '\');">Ver mas</a>
+                                <td><img src="img/servicios/complementarias/' . $complInfo[$i][3] . '" width=70px></img></td>
+                                <td>' . $complInfo[$i][1] . '
+                                <p><a href=# data-toggle="modal" data-target="#myModaObjetivo" onclick="modVerMas(\'' . $complInfo[$i][1] . '\', \'' . $complInfo[$i][2] . '\');">Ver mas</a></p>
                                     <div class="modal topmargin-sm" id="myModaObjetivo">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
@@ -94,7 +93,7 @@ $complInfo = getComplementarias();
                         echo '<td> 
                         <div class="btn-group">
                         <button class="btn btn-light btn-sm" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="bi bi-three-dots-vertical"></i>Opciones
+                            <i class="bi bi-three-dots-vertical"></i>
                         </button>
                         <div class="dropdown-menu dropdown-menu-right">
                                             <a class="dropdown-item" data-toggle="modal" data-target="#myModal" onclick="datosModalComp(\'' . $complInfo[$i][0] . '\', \'' . $complInfo[$i][1] . '\', \'' . $complInfo[$i][2] . '\', \'' . $complInfo[$i][3] . '\', \'' . $complInfo[$i][4] . '\');"><i class="bi bi-pencil-square"></i>Editar</a>';

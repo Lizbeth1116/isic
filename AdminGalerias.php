@@ -67,7 +67,7 @@ $postfb = getPostfb();
                         <?php
                         for ($i = 0; $i < sizeof($postfb); $i++) {
                             echo '<tr>
-                            <td>'.$postfb[$i][3].'</td>
+                            <td>' . $postfb[$i][3] . '</td>
                             <td> 
                             <div class="btn-group">
                             <button class="btn btn-light btn-sm" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -245,14 +245,14 @@ $postfb = getPostfb();
         </div>
         <div id="tab3" class="tabcontent">
             <div id="titulo">
-                <h6><b>Imagenes a mostrar en el carrusel</b></h6>
+                <h6><b>Imagenes a mostrar en el carrusel</b><button type="button" class="btn btn-light" data-toggle="modal" data-target="#myModal1AddcCarr"><i class="bi bi-plus-circle"></i>Agregar</button></h6>
             </div>
             <table class="table table-light table-hover">
                 <thead>
                     <tr>
                         <th>Imagen</th>
                         <th>Texto</th>
-                        <th><button type="button" class="btn btn-light" data-toggle="modal" data-target="#myModal1AddcCarr"><i class="bi bi-plus-circle"></i></button>
+                        <th>
                             <div class="modal topmargin-sm" id="myModal1AddcCarr">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
@@ -304,7 +304,7 @@ $postfb = getPostfb();
                                 <td> 
                                 <div class="btn-group">
                                 <button class="btn btn-light btn-sm" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i class="bi bi-three-dots-vertical"></i>Opciones
+                                    <i class="bi bi-three-dots-vertical"></i>
                                 </button>
                                 <div class="dropdown-menu dropdown-menu-right">
                                     <a class="dropdown-item" data-toggle="modal" data-target="#myModalEditCar" onclick="datosModalCarr(\'' . $CarruselExpo[$i][0] . '\', \'' . $CarruselExpo[$i][1] . '\', \'' . $CarruselExpo[$i][2] . '\');"><i class="bi bi-pencil-square"></i>Editar</a>';
@@ -365,15 +365,8 @@ $postfb = getPostfb();
                         ?>
                 </tbody>
             </table>
-            <div class="row">
-                <div class="col-md-6">
-                </div>
-                <div class="col-md-6">
-                    <div class="alert alert-info alert-dismissible fade show">
-                        <button type="button" class="close" data-dismiss="alert">&times;</button>
-                        <strong><i class="bi bi-exclamation-diamond-fill"></i> Nota</strong> La medida recomendada para las imagenes de carrusel de eventos es 2732 x 900 pixeles.
-                    </div>
-                </div>
+            <div class="" style="color: gray;">
+                <i class="bi bi-exclamation-diamond-fill"></i><b>Nota</b> La medida recomendada para las imagenes de carrusel de eventos es 2732 x 900 pixeles.
             </div>
         </div>
         <div id="tab4" class="tabcontent">
@@ -431,9 +424,9 @@ $postfb = getPostfb();
                 } else if ($peri[$i][1] === 2) {
                     echo '<h6><b style="padding-right: 10px;">Agosto - Diciembre ' . $peri[$i][2] . '</b>';
                 }
-                echo '<div class="btn-group btn-group-sm">
-                    <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#myModalAddImg" onclick="datosModalExp2(\'' . $peri[$i][0] . '\', \'' . $peri[$i][4] . '\');"><i class="bi bi-card-image"></i></button>
-                    <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#myModalEdExp" onclick="datosModalExp(\'' . $peri[$i][0] . '\', \'' . $peri[$i][1] . '\', \'' . $peri[$i][2] . '\');"><i class="bi bi-pencil-square"></i></button>
+                echo '<div class="btn-group-sm">
+                    <a type="button" class="btn btn-light" data-toggle="modal" data-target="#myModalAddImg" onclick="datosModalExp2(\'' . $peri[$i][0] . '\', \'' . $peri[$i][4] . '\');"><i class="bi bi-card-image"></i></a>
+                    <a type="button" class="btn btn-light" data-toggle="modal" data-target="#myModalEdExp" onclick="datosModalExp(\'' . $peri[$i][0] . '\', \'' . $peri[$i][1] . '\', \'' . $peri[$i][2] . '\');"><i class="bi bi-pencil-square"></i></a>
                         <div class="modal topmargin-sm" id="myModalEdExp">
                             <div class="modal-dialog">
                                 <div class="modal-content">
@@ -528,11 +521,11 @@ $postfb = getPostfb();
                             </div>
                         </div>';
                 if ($peri[$i][3] === 1) {
-                    echo '<a type="button" class="btn btn-secondary" href="Controlador/ControlBorrar.php?id=7*' . $peri[$i][0] . '*2*1"><i class = "bi bi-eye"></i></a>';
+                    echo '<a type="button" class="btn btn-light mr-2" href="Controlador/ControlBorrar.php?id=7*' . $peri[$i][0] . '*2*1"><i class = "bi bi-eye"></i></a>';
                 } else {
-                    echo '<a type="button" class="btn btn-secondary" href="Controlador/ControlBorrar.php?id=7*' . $peri[$i][0] . '*1*1"><i class = "bi bi-eye-slash"></i></a>';
+                    echo '<a type="button" class="btn btn-light" href="Controlador/ControlBorrar.php?id=7*' . $peri[$i][0] . '*1*1"><i class = "bi bi-eye-slash"></i></a>';
                 }
-                echo '<a type = "button" class = "btn btn-secondary" href = "Controlador/ControlBorrar.php?id=7*' . $peri[$i][0] . '*0*2*' . $peri[$i][4] . '"><i class = "bi bi-trash-fill"></i></a>
+                echo '<a type = "button" class = "btn btn-light" href = "Controlador/ControlBorrar.php?id=7*' . $peri[$i][0] . '*0*2*' . $peri[$i][4] . '"><i class = "bi bi-trash-fill"></i></a>
                             </div></h6>
                     </div>
                     <table class="table table-light table-hover">
@@ -550,7 +543,7 @@ $postfb = getPostfb();
                     if ($imgExpo[0][0] > 0) {
                         echo ' <div class="btn-group">
                         <button class="btn btn-light btn-sm" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="bi bi-three-dots-vertical"></i> Opciones
+                        <i class="bi bi-three-dots-vertical"></i>
                         </button>
                          <div class="dropdown-menu dropdown-menu-right">
                             <a class="dropdown-item" data-toggle="modal" data-target="#myModal" onclick="datosModalExp1(\'' . $imgExpo[$j][0] . '\', \'' . $imgExpo[$j][1] . '\', \'' . $imgExpo[$j][3] . '\', \'' . $peri[$i][4] . '\');"><i class="bi bi-pencil-square"></i> Editar</a>';

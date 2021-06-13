@@ -2,7 +2,9 @@
     background-color:#dadada;
     padding-bottom: 150px;
 }
-
+.admon a{
+    text-decoration: none;
+}
 .admon h2 {
     padding-top: 100px;
     padding-bottom: 20px;
@@ -26,6 +28,7 @@
 
 .admon button.btn-light, .btn-group-sm{
     float:right;
+    border-radius: 100px;
 }
 .admon .sec-buscador{
     display: flex;

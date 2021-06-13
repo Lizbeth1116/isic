@@ -13,14 +13,14 @@ $inv = getInv();
         </div>
         <div id="tab1" class="tabcontent">
             <div id="titulo">
-                <h6><b>Tema Linea Ivestigacion</b></h6>
+                <h6><b>Tema Linea Ivestigacion</b><button type="button" class="btn btn-light" data-toggle="modal" data-target="#myModal1AddInv"><i class="bi bi-plus-circle"></i>Agregar</button></h6>
             </div>
             <table class="table table-light table-hover">
                 <thead>
                     <tr>
                         <th>ID</th>
                         <th>Tema</th>
-                        <th><button type="button" class="btn btn-light" data-toggle="modal" data-target="#myModal1AddInv"><i class="bi bi-plus-circle"></i></button>
+                        <th>
                         <th>
                             <div class="modal topmargin-sm" id="myModal1AddInv">
                                 <div class="modal-dialog">
@@ -66,7 +66,7 @@ $inv = getInv();
                                         <td>
                                         <div class="btn-group">
                                             <button class="btn btn-light btn-sm" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                <i class="bi bi-three-dots-vertical"></i>Opciones
+                                                <i class="bi bi-three-dots-vertical"></i>
                                             </button>
                                             <div class="dropdown-menu dropdown-menu-right">
                                                 <a class="dropdown-item" data-toggle="modal" data-target="#myModal1Inv" onclick="datosModalInv1(\'' . $tema[$i][0] . '\', \'' . $tema[$i][1] . '\');"><i class="bi bi-pencil-square"></i>Editar</a>';
@@ -122,16 +122,14 @@ $inv = getInv();
         </div>
         <div id="tab2" class="tabcontent">
             <div id="titulo">
-                <h6><b>Profesores colaboradores en la investigación</b></h6>
+                <h6><b>Profesores colaboradores en la investigación</b><button type="button" class="btn btn-light" data-toggle="modal" data-target="#myModal1AddCol"><i class="bi bi-plus-circle"></i>Agregar</button></h6>
             </div>
             <table class="table table-light table-hover">
                 <thead>
                     <tr>
                         <th>Tema de Investigación</th>
-                        <th>Grado Académico</th>
                         <th>Profesor</th>
-                        <th>Cargo</th>
-                        <th><button type="button" class="btn btn-light" data-toggle="modal" data-target="#myModal1AddCol"><i class="bi bi-plus-circle"></i></button>
+                        <th>
                             <div class="modal topmargin-sm" id="myModal1AddCol">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
@@ -203,13 +201,14 @@ $inv = getInv();
                     for ($i = 0; $i < sizeof($inv); $i++) {
                         echo '<tr>
                                         <td>' . $inv[$i][1] . '</td>
-                                        <td>' . $inv[$i][2] . '</td>
-                                        <td>' . $inv[$i][4] . '</td>';
+                                        <td>Grado: ' . $inv[$i][2] . '<p>
+                                        ';
                         if ($inv[$i][5] === 1) {
-                            echo '<td>Lider</td>';
+                            echo 'Lider: ';
                         } else {
-                            echo '<td>Colaborador</td>';
+                            echo 'Colaborador: ';
                         }
+                        echo '' . $inv[$i][4] . '</p></td>';
                         echo '   
                                         <td> 
                                         <div class="btn-group">

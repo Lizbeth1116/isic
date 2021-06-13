@@ -17,12 +17,9 @@ $listAsigEsp = getListAsigEspAdmin();
         <table class="table table-light table-hover">
             <thead>
                 <tr>
-                    <th>Sem</th>
                     <th>Área de conocimiento</th>
-                    <th>Clave</th>
                     <th>Asignatura</th>
                     <th>Horas</th>
-                    <th>Temario</th>
                     <th><button type="button" class="btn btn-light" data-toggle="modal" data-target="#myModal1AddMalla"><i class="bi bi-plus-circle"></i></button>
                         <div class="modal" id="myModal1AddMalla">
                             <div class="modal-dialog">
@@ -126,17 +123,16 @@ $listAsigEsp = getListAsigEspAdmin();
                 for ($i = 0; $i < sizeof($asignatura); $i++) {
                     echo '
                                     <tr>
-                                        <td>' . $asignatura[$i][0] . '</td>
-                                        <td>' . $asignatura[$i][4] . '</td>
-                                        <td>' . $asignatura[$i][1] . '</td>
-                                        <td>' . $asignatura[$i][3] . '</td>
-                                        <td>' . $asignatura[$i][2] . '</td>';
+                                        <td>Semestre: ' . $asignatura[$i][0] . '<br>
+                                        Clave: ' . $asignatura[$i][1] . '<br>
+                                        Área: ' . $asignatura[$i][4] . '</td>';
                     if ($asignatura[$i][6] != 'Sin Archivo' && strlen($asignatura[$i][6]) > 0) {
-                        echo '<td class="text-center">
-                                            <a target="_black" href="http://' . $_SERVER['HTTP_HOST'] . '/isic/pdf/asignaturas/' . $asignatura[$i][6] . '">
-                                            <i class="bi bi-file-earmark-check"></i></a></td>';
+                        echo '<td>
+                                            <a style="text-decoration: none;" target="_black" href="http://' . $_SERVER['HTTP_HOST'] . '/isic/pdf/asignaturas/' . $asignatura[$i][6] . '">
+                                            <i class="bi bi-file-earmark-check"></i>' . $asignatura[$i][3] .'</a></td>';
                     } else
-                        echo '<td class="text-center"><i class="bi bi-file-earmark-excel"></i></td>';
+                    echo '<td><i class="bi bi-file-earmark-excel"></i>' . $asignatura[$i][3] .'</td>';
+                    echo '<td>' . $asignatura[$i][2] . '</td>';
                     echo '<td> 
                             <div class="btn-group">
                                 <button class="btn btn-light btn-sm" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
