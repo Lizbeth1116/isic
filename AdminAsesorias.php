@@ -14,7 +14,6 @@ $doce = getDocente();
                     <th>Asesor</th>
                     <th>Asignatura</th>
                     <th>Horario</th>
-                    <th>Dia</th>
                     <th><button type="button" class="btn btn-light" data-toggle="modal" data-target="#myModal1AddAs"><i class="bi bi-plus-circle"></i></button></th>
             <div class="modal topmargin-sm" id="myModal1AddAs">
                 <div class="modal-dialog">
@@ -98,25 +97,25 @@ $doce = getDocente();
                     echo '
                                     <tr>
                                         <td>' . $asesoria[$i][2] . '</td>
-                                        <td>' . $asesoria[$i][4] . '</td>
-                                        <td>' . $asesoria[$i][5] . ' - ' . $asesoria[$i][6] . '</td>';
+                                        <td>' . $asesoria[$i][4] . '</td>';
                     switch ($asesoria[$i][7]) {
                         case 1:
-                            echo '<td>Lunes</td>';
+                            echo '<td>Lunes ';
                             break;
                         case 2:
-                            echo '<td>Martes</td>';
+                            echo '<td>Martes ';
                             break;
                         case 3:
-                            echo '<td>Miercoles</td>';
+                            echo '<td>Miercoles ';
                             break;
                         case 4:
-                            echo '<td>Jueves</td>';
+                            echo '<td>Jueves ';
                             break;
                         case 5:
-                            echo '<td>Viernes</td>';
+                            echo '<td>Viernes ';
                             break;
                     }
+                    echo '- ' . $asesoria[$i][5] . '-' . $asesoria[$i][6] . '</td>';
                     echo '<td> <div class="btn-group">
                     <button class="btn btn-light btn-sm" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="bi bi-three-dots-vertical"></i>

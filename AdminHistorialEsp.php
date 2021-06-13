@@ -13,7 +13,7 @@ $contenidoHistorialAdmin = getContenidoHistorialAdmin();
         </div>
         <div id="tab1" class="tabcontent">
         <div id="titulo">
-            <h6><b>Historial de las especialidades asociadas a la Ingeniería en Sistemas Computacionales</b></h6>
+            <h6><b>Historial de especialidades de la Ingeniería en Sistemas Computacionales</b><button type="button" class="btn btn-light" data-toggle="modal" data-target="#myModal1AddHist"><i class="bi bi-plus-circle"></i></button></h6>
         </div>
         <table class="table table-light table-hover">
             <thead>
@@ -21,7 +21,7 @@ $contenidoHistorialAdmin = getContenidoHistorialAdmin();
                     <th>Imagen</th>
                     <th>Nombre</th>
                     <th>Objetivo</th>
-                    <th><button type="button" class="btn btn-light" data-toggle="modal" data-target="#myModal1AddHist"><i class="bi bi-plus-circle"></i></button>
+                    <th>
                         <div class="modal topmargin-xs" id="myModal1AddHist">
                             <div class="modal-dialog">
                                 <div class="modal-content">
@@ -70,7 +70,7 @@ $contenidoHistorialAdmin = getContenidoHistorialAdmin();
                     <?php
                     for ($i = 0; $i < sizeof($historialInfo); $i++) {
                         echo '<tr>
-                                <td><img src="img/especialidades/historial/' . $historialInfo[$i][3] . '" width=120px></img></td>
+                                <td><img src="img/especialidades/historial/' . $historialInfo[$i][3] . '" width=70px></img></td>
                                 <td>' . $historialInfo[$i][1] . '</td>
                                 <td> <a href=# data-toggle="modal" data-target="#myModaObjetivo" onclick="modVerMas(\'' . $historialInfo[$i][1] . '\', \'' . $historialInfo[$i][2] . '\');">Ver mas</a>
                                     <div class="modal topmargin-xs" id="myModaObjetivo">
@@ -93,7 +93,7 @@ $contenidoHistorialAdmin = getContenidoHistorialAdmin();
                                 <td> 
                                 <div class="btn-group">
                                 <button class="btn btn-light btn-sm" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i class="bi bi-three-dots-vertical"></i>Opciones
+                                    <i class="bi bi-three-dots-vertical"></i>
                                 </button>
                                 <div class="dropdown-menu dropdown-menu-right">
                                             <a class="dropdown-item" data-toggle="modal" data-target="#myModalHisInfo" onclick="datosModalHistoInfo(\'' . $historialInfo[$i][0] . '\', \'' . $historialInfo[$i][1] . '\', \'' . $historialInfo[$i][2] . '\', \'' . $historialInfo[$i][3] . '\');"><i class="bi bi-pencil-square"></i>Editar</a>';
@@ -162,14 +162,14 @@ $contenidoHistorialAdmin = getContenidoHistorialAdmin();
         </div>
         <div id="tab2" class="tabcontent">
         <div id="titulo">
-            <h6><b>Contenido de las especialidades en historial</b></h6>
+            <h6><b>Contenido de las especialidades en historial</b><button type="button" class="btn btn-light" data-toggle="modal" data-target="#myModal1AddCont"><i class="bi bi-plus-circle"></i>Agregar</button></h6>
         </div>
         <table class="table table-light table-hover">
             <thead>
                 <tr>
                     <th>Especialidad</th>
                     <th>Asignatura</th>
-                    <th><button type="button" class="btn btn-light" data-toggle="modal" data-target="#myModal1AddCont"><i class="bi bi-plus-circle"></i></button>
+                    <th>
                         <div class="modal topmargin-xs" id="myModal1AddCont">
                             <div class="modal-dialog">
                                 <div class="modal-content">
@@ -228,7 +228,7 @@ $contenidoHistorialAdmin = getContenidoHistorialAdmin();
                             <td> 
                             <div class="btn-group">
                         <button class="btn btn-light btn-sm" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="bi bi-three-dots-vertical"></i>Opciones
+                            <i class="bi bi-three-dots-vertical"></i>
                         </button>
                         <div class="dropdown-menu dropdown-menu-right">
                                 <a class="dropdown-item" data-toggle="modal" data-target="#myModalCont" onclick="datosModalCont(\'' . $contenidoHistorialAdmin[$i][3] . '\', \'' . $contenidoHistorialAdmin[$i][0] . '\');"><i class="bi bi-pencil-square"></i>Editar</a>';
