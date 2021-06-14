@@ -8,6 +8,55 @@ if (!$con) {
     die("no se pudo conectar");
 }
 
+function sumarVista() {
+    $user_agent = $_SERVER['HTTP_USER_AGENT'];
+    if (!file_exists("./Config/Vistas.txt")) {
+        touch("./Config/Vistas.txt");
+    }
+    $contenido = trim(file_get_contents("./Config/Vistas.txt"));
+    if ($contenido == "") {
+        $renglon[0] = "Visitas:0";
+        $renglon[1] = "Exporer:0";
+        $renglon[2] = "Edge:0";
+        $renglon[3] = "Opera:0";
+        $renglon[4] = "Firefox:0";
+        $renglon[5] = "Chrome:0";
+        $renglon[6] = "Safari:0";
+        $renglon[7] = "Otros:0";
+    } else {
+        $renglon = explode("\n", $contenido);
+    }
+    for ($i = 0; $i < sizeof($renglon); $i++) {
+        $visitas[$i] = explode(":", $renglon[$i]);
+    }
+    $navegador = sumarNavegador($user_agent);
+    $visitas[0][1] ++;
+    $visitas[$navegador][1] ++;
+    $contenidoN = "";
+    foreach ($visitas as $ncon) {
+        $contenidoN .= ($ncon[0] . ':' . $ncon[1] . "\n");
+    }
+    file_put_contents("./Config/Vistas.txt", $contenidoN);
+}
+
+function sumarNavegador($user_agent) {
+    if (strpos($user_agent, 'MSIE') !== FALSE || strpos($user_agent, 'Trident') !== FALSE) {
+        return 1;
+    } elseif (strpos($user_agent, 'Edge') !== FALSE) {
+        return 2;
+    } elseif (strpos($user_agent, 'Opera Mini') !== FALSE || strpos($user_agent, 'Opera') || strpos($user_agent, 'OPR') !== FALSE) {
+        return 3;
+    } elseif (strpos($user_agent, 'Firefox') !== FALSE) {
+        return 4;
+    } elseif (strpos($user_agent, 'Chrome') !== FALSE) {
+        return 5;
+    } elseif (strpos($user_agent, 'Safari') !== FALSE) {
+        return 6;
+    } else {
+        return 7;
+    }
+}
+
 function getArea() {
     global $con;
     $stmt = $con->prepare("call isic.sp_area();");
@@ -586,7 +635,6 @@ function getSolicitud() {
     $stmt->close();
     return $soli;
 }
-
 
 function getPostfb() {
     global $con;

@@ -1,13 +1,16 @@
 <?php
 include("./Controlador/Controlador.php");
-if (!$_COOKIE['logueado']) {
+if (!isset($_COOKIE['logueado'])) {
     $admin = $_POST['admin'];
     $pass = $_POST['pass'];
     $Usadmin = getAdmin();
     if ($admin === $Usadmin[0][0] && $pass === $Usadmin[0][1]) {
-        setcookie('logueado', TRUE, time() + 2 * 60 * 60); 
+        setcookie('logueado', TRUE, time() + 3 * 60 * 60);
     } else {
-        session_destroy();
+        header("Location: index.php");
+    }
+} else {
+    if (!$_COOKIE['logueado']) {
         header("Location: index.php");
     }
 }
@@ -24,8 +27,8 @@ if (!$_COOKIE['logueado']) {
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <!--Tipografia-->
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;700&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;700&display=swap" rel="stylesheet">
         <!--ICONOS-->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
         <!--CSS local-->
@@ -69,20 +72,23 @@ if (!$_COOKIE['logueado']) {
                     <li><a href="AdminComplementarias.php?1.0.0"><i class="bi bi-puzzle"></i>Complementarias</a></li>
                     <li><a href="AdminHistorialEsp.php?1.0.0"><i class="bi bi-clock-history"></i>Hitorial Especialidad</a></li>
                     <li><a href="AdminSolicitudes.php?1.0.0"><i class="bi bi-envelope"></i>
-                    <?php $pendientes = getSolicitud();
-                    $contar = (int) 0;
-                    if ($pendientes[0][0] != 'x') {foreach ($pendientes as $solicitudNV) {if ($solicitudNV[10] == 2) {
-                                $contar++;
+                            <?php
+                            $pendientes = getSolicitud();
+                            $contar = (int) 0;
+                            if ($pendientes[0][0] != 'x') {
+                                foreach ($pendientes as $solicitudNV) {
+                                    if ($solicitudNV[10] == 2) {
+                                        $contar++;
+                                    }
+                                }
                             }
-                        }
-                    }
-                    if($contar==0){
-                        echo 'Solicitudes</a></li>';
-                    }else{
-                        echo 'Solicitudes <b class="notificacion" style="font-size: 12px;">'. $contar.'</b></a></li>';
-                    }
-                    ?>
-                    <li><a href="AdminContraseña.php?1.0.0"><i class="bi bi-shield-lock"></i>Seguridad</a></li>
+                            if ($contar == 0) {
+                                echo 'Solicitudes</a></li>';
+                            } else {
+                                echo 'Solicitudes <b class="notificacion" style="font-size: 12px;">' . $contar . '</b></a></li>';
+                            }
+                            ?>
+                            <li><a href="AdminContraseña.php?1.0.0"><i class="bi bi-shield-lock"></i>Seguridad</a></li>
                 </ul>
             </nav>
         </div>

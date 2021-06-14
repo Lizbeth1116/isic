@@ -3,6 +3,7 @@ setcookie('logueado', FALSE, time() + 24 * 60 * 60);
 include('head.php');
 $Carrusel = getCarruselExpo();
 $postfb = getPostfb();
+sumarVista();
 ?>
 <!--Inicia pagina principal-->
 <div class="inicio">
