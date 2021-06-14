@@ -1,8 +1,8 @@
-Visitas:0
+Visitas:14
 Exporer:0
 Edge:0
 Opera:0
 Firefox:0
-Chrome:0
+Chrome:14
 Safari:0
 Otros:0

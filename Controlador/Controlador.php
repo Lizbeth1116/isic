@@ -652,3 +652,23 @@ function getPostfb() {
     $stmt->close();
     return $postFb;
 }
+
+function getInforelevante() {
+    global $con;
+    $stmt = $con->prepare("call isic.sp_getInforelevante();");
+    $stmt->execute();
+    $i = 0;
+    $stmt->bind_result($idinfoRelevante, $año, $tiempo, $matriculas, $numEspecialidades, $numLaboratorios, $desTecno);
+    while ($stmt->fetch()) {
+        $infoR[$i][0] = $idinfoRelevante;
+        $infoR[$i][1] = $año;
+        $infoR[$i][2] = $tiempo;
+        $infoR[$i][3] = $matriculas;
+        $infoR[$i][4] = $numEspecialidades;
+        $infoR[$i][5] = $numLaboratorios;
+        $infoR[$i][6] = $desTecno;
+        $i++;
+    }
+    $stmt->close();
+    return $infoR;
+}

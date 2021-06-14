@@ -313,6 +313,19 @@ switch ($opGlobal):
         }
         $aux = "Contraseña";
         break;
+    case 10://Admin Información relevante
+        include("./Controlador.php");
+        $idGen = $_POST['idGen'];
+        $AnioGen = $_POST['AnioGen'];
+        $TiempGen = $_POST['TiempGen'];
+        $MatGen = $_POST['MatGen'];
+        $EspGen = $_POST['EspGen'];
+        $LabGen = $_POST['LabGen'];
+        $DTGen = $_POST['DTGen'];
+        $stmt = $con->prepare("call isic.sp_editInfoRelevante(?,?,?,?,?,?,?)");
+        $stmt->bind_param("iiisiis", $idGen, $AnioGen, $TiempGen, $MatGen, $EspGen, $LabGen, $DTGen);
+        $aux = "Generales";
+        break;
 endswitch;
 $stmt->execute();
 $stmt->close();

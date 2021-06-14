@@ -13,8 +13,8 @@ $solicitud = getSolicitud();
         <div id="tab1" class="tabcontent">
             <!--Tabla de solicitudes no vistas: Sección 1-->
             <div id="titulo">
-            <h6><b>Solicitudes no vistas </b>
-            <?php echo '<b class="notificacion" style="font-size: 15px;">'. $contar .'</b>';?>
+                <h6><b>Solicitudes no vistas </b>
+                    <?php echo '<b class="notificacion" id="contarN" style="font-size: 15px;">' . $contar . '</b>'; ?>
                 </h6>
             </div>
             <table class="table table-light table-hover solicitud-n">
@@ -30,6 +30,7 @@ $solicitud = getSolicitud();
                     if ($solicitud[0][0] != 'x') {
                         foreach ($solicitud as $solicitudNV) {
                             if ($solicitudNV[10] == 2) {
+                                $contar ++;
                                 echo '
                                 <tr>
                                     <td><b>' . $solicitudNV[9] . '</b></td>
@@ -150,8 +151,6 @@ $solicitud = getSolicitud();
 </section>
 <!--fin footer-->
 <!--JS Local-->
-<script type="text/javascript" src="js/editarMallaCurricular.js?1.0.0"></script>
-<script type="text/javascript" src="js/editarInvestigacion.js?1.0.0"></script>
 <script type="text/javascript" src="js/verMas.js"></script>
 <!--Bootstrap JS-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>

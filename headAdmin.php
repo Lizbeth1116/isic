@@ -6,6 +6,7 @@ if (!isset($_COOKIE['logueado'])) {
     $Usadmin = getAdmin();
     if ($admin === $Usadmin[0][0] && $pass === $Usadmin[0][1]) {
         setcookie('logueado', TRUE, time() + 3 * 60 * 60);
+        setcookie('verifi', TRUE, time() + 24 * 60 * 60);
     } else {
         header("Location: index.php");
     }
@@ -14,6 +15,7 @@ if (!isset($_COOKIE['logueado'])) {
         header("Location: index.php");
     }
 }
+$inforelevante = getInforelevante();
 ?>
 <!DOCTYPE HTML>
 <html lang="en">
@@ -88,6 +90,7 @@ if (!isset($_COOKIE['logueado'])) {
                                 echo 'Solicitudes <b class="notificacion" style="font-size: 12px;">' . $contar . '</b></a></li>';
                             }
                             ?>
+                            <li><a href="AdminGenerales.php?1.0.0"><i class="bi bi-card-heading"></i>Datos Generales</a></li>
                             <li><a href="AdminContraseña.php?1.0.0"><i class="bi bi-shield-lock"></i>Seguridad</a></li>
                 </ul>
             </nav>

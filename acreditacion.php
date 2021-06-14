@@ -1,4 +1,5 @@
-<?php include('head.php'); ?>
+<?php include('head.php'); 
+$inforelevante = getInforelevante();?>
 <div class="acreditacion">
     <section class="site-section">
         <div class="container texto">
@@ -25,28 +26,32 @@
                 <div class="col-md-6">
                     <div class="resume-item mb-4">
                         <h3><strong>Información Relevante</strong></h3>
+                        <?php
+                        echo '
                         <table>
                             <tr>
                                 <td><strong>Ingeniería en Sistemas Computacionales: </strong></td>
-                                <td>Acreditado en 2019 por 5 años</td>
+                                <td>Acreditado en ' . $inforelevante[0][1] . ' por ' . $inforelevante[0][2] . ' años</td>
                             </tr>
                             <tr>
-                                <td><strong>Matricula registrada 2019: </strong></td>
-                                <td>256 Estudiantes</td>
+                                <td><strong>Matricula registrada ' . $inforelevante[0][1] . ': </strong></td>
+                                <td>' . $inforelevante[0][3] . '</td>
                             </tr>
                             <tr>
                                 <td><strong>Especialidades: </strong></td>
-                                <td>2 registradas</td>
+                                <td>' . $inforelevante[0][4] . ' registradas</td>
                             </tr>
                             <tr>
                                 <td><strong>Laboratorios: </strong></td>
-                                <td>4 equipados</td>
+                                <td>' . $inforelevante[0][5] . ' equipados</td>
                             </tr>
                             <tr>
                                 <td><strong>Desarrollo Tecnológico: </strong></td>
-                                <td>1 Centro de formación de capital humano</td>
+                                <td>' . $inforelevante[0][6] . '</td>
                             </tr>
                         </table>
+                        ';
+                        ?>
                     </div>
                 </div>
                 <div class="col-md-6">

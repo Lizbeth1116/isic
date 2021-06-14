@@ -47,28 +47,32 @@ for ($i = 0; $i < sizeof($contenidoAux); $i++) {
             <div class="colum">
                 <div class="resume-item">
                     <h3>Datos generales</h3>
+                    <?php
+                    echo '
                     <table>
                         <tr>
                             <td>Ingeniería en Sistemas Computacionales:</td>
-                            <td><b>Acreditado en 2019 por 5 años</b></td>
+                            <td><b>Acreditado en ' . $inforelevante[0][1] . ' por ' . $inforelevante[0][2] . ' años</b></td>
                         </tr>
                         <tr>
-                            <td>Matricula registrada 2019:</td>
-                            <td><b>256 Estudiantes</b></td>
+                            <td>Matricula registrada ' . $inforelevante[0][1] . ':</td>
+                            <td><b>' . $inforelevante[0][3] . '</b></td>
                         </tr>
                         <tr>
                             <td>Especialidades:</td>
-                            <td><b>2 registradas</b></td>
+                            <td><b>' . $inforelevante[0][4] . ' registradas</b></td>
                         </tr>
                         <tr>
                             <td>Laboratorios:</td>
-                            <td><b>4 equipados</b></td>
+                            <td><b>' . $inforelevante[0][5] . ' equipados</b></td>
                         </tr>
                         <tr>
                             <td>Desarrollo Tecnológico:</td>
-                            <td><b>1 Centro de formación de capital humano</b></td>
+                            <td><b>' . $inforelevante[0][6] . '</b></td>
                         </tr>
                     </table>
+                    ';
+                    ?>
                 </div>
             </div>
             <div class="colum">
