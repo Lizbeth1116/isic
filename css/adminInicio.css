@@ -74,9 +74,12 @@
   }
 
   .inicio .resume-item a {
-      color: #13f579 !important;
+      color: #5e5e5e !important;
   }
-
+  .inicio .resume-item a:hover{
+      text-decoration: none;
+      color: #858585;
+  }
   .inicio .resume-item p {
       color: #5e5e5e;
   }

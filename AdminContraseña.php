@@ -1,6 +1,6 @@
 <?php
 include('./headAdmin.php');
-$pagina9 = 'active';
+$pagina10 = 'active';
 include('AdminSidebar.php');
 ?>
 <div class="admon">
@@ -27,7 +27,7 @@ include('AdminSidebar.php');
                     <div class="form-group" style="display:none">
                         <input type="text" class="form-control" id="opGlobal" name="opGlobal" value="9">
                     </div>
-                    <button type="submit" class="btn btn-primary">Cambiar</button>
+                    <button style="border-radius:50px;" type="submit" class="btn btn-primary">Cambiar</button>
                 </form>
             </div>
         </div>

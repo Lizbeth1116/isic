@@ -49,14 +49,14 @@ $inforelevante = getInforelevante();
     <nav class="navbar navbar-expand-lg navbar-light dark fixed-top">
         <div class="container-fluid">
             <div id="hamburger">
-                <button id="sidebarCollapse" class="">
+                <button id="sidebarCollapse" class="active">
                     <!--<i class="fas fa-lg fa-bars"></i>-->
                     <span class="top-line"></span>
                     <span class="middle-line"></span>
                     <span class="bottom-line"></span>
                 </button>
             </div>
-            <a href="index.php" class="salir">Log out</a>
+            <a href="index.php" class="salir"><i class="bi bi-door-open"></i>Log out</a>
         </div>
     </nav>
 

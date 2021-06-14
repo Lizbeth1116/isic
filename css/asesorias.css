@@ -38,11 +38,20 @@
     margin-bottom: 0;
 }
 
-@media screen and (max-width: 360px) {
+
+@media screen and (min-width: 1001px) {
+    .asesorias tr, td {
+        font-size: 16px;
+    }
+}
+
+/* If the screen size is 600px wide or less, set the font-size of <div> to 30px */
+
+@media screen and (max-width: 1000px) {
+    .asesorias tr, td {
+        font-size: 11px;
+    } 
     .asesorias .resume-item {
         padding: 10px !important;   
-    }
-    .asesorias .resume-item table{
-        font-size: 10px !important;
     }
 }

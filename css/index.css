@@ -302,9 +302,10 @@ a {
 .resumen .resume-item {
     text-align: center;
     padding: 30px;
-    background-color: #dbdbdb;
+    background-color: #f3f3f3;
     border: none;
     border-radius: 7px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     -moz-transition: 0.2s;
     -webkit-transition: 0.2s;
     transition: 0.2s;
@@ -363,7 +364,8 @@ a {
     color: #494949;
 }
 .resumen .contacto .form-control {
-    background-color: #8f949b !important;
+    background-color: #cecece !important;
+    color: #777777;
     font-size: 12px;
     border: none;
     padding: 0 15px;
@@ -372,7 +374,7 @@ a {
 
 .resumen .contacto .form-control:focus {
     border: 1px solid var(--dark-color);
-    color: #ffffff;
+    color: #777777;
     outline: none;
     box-shadow: none;
 }

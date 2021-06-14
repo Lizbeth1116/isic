@@ -27,29 +27,29 @@ for ($i = 0; $i < sizeof($contenidoAux); $i++) {
                     if ($contar == 0) {
                         echo '<h3 style="color:#5e5e5e;"><i class="bi bi-envelope-fill"></i></h3>';
                     } else {
-                        echo '<h3><i class="bi bi-envelope-fill"><b style="font-size: 10px; color:#13f579;">+' . $contar . '</b></i></h3>';
+                        echo '<h3><i class="bi bi-envelope-fill"></i><b style="font-size: 14px; color:#5e5e5e;">+' . $contar . '</b></h3>';
                     }
                     ?>
-                    <p>Solicitud</p>
+                    <p><a href="AdminSolicitudes.php?1.0.0"><b>Solicitudes</b></a></p>
                 </div>
             </div>
             <div class="colum">
                 <div class="resume-item">
                     <h3><?php echo $visitas[0][1] ?></h3>
-                    <p>Visitas</p>
+                    <p><b>Visitas</b></p>
                 </div>
             </div>
             <div class="colum">
                 <div class="resume-item">
                     <h3>Rolando Porras Muñoz</h3>
-                    <p>Jefe de carrera</p>
+                    <p><b>Jefe de carrera</b></p>
                 </div>
             </div>
         </div>
         <div class="fila">
             <div class="colum">
                 <div class="resume-item">
-                    <h3>Datos generales</h3>
+                    <h3>Datos de Acreditación</h3>
                     <?php
                     echo '
                     <table>

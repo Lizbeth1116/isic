@@ -137,13 +137,21 @@ sumarVista();
         <div class="container">
             <div class="row topmargin-sm">
                 <?php
+                $cont = (int) 0;
+                $nPost = (int) (sizeof($postfb) / 2);
+
                 foreach ($postfb as $value) {
                     if ($value[2] == 1) {
-                        echo '
-                    <div class="col-md-6 mt-4 mb-4">
-                        ' . $value[1] . '
-                        <h4 class="text-center">' . $value[3] . '</h4>
-                    </div>';
+                        if ($cont == 0) {
+                            echo '<div class="col-md-6 mt-4 mb-4">';
+                        } else if ($cont == $nPost) {
+                            echo '</div><div class="col-md-6 mt-4 mb-4">';
+                        }
+                        echo '<div class="mb-4"><h4 class="text-center" style="color:#2e73b4;"><b>' . $value[3] . '</b></h4>' . $value[1] .'</div>';
+                        $cont++;
+                        if ($cont == sizeof($postfb)) {
+                            echo '</div>';
+                        }
                     }
                 }
                 ?>

@@ -1,23 +1,20 @@
 <?php
 include('./headAdmin.php');
-$peri = getPeriodo();
-$CarruselExpo = getCarruselExpo();
-<<<<<<< HEAD:AdminExpo.php
 $pagina4 = 'active';
 include('AdminSidebar.php');
-=======
+$peri = getPeriodo();
+$CarruselExpo = getCarruselExpo();
 $postfb = getPostfb();
->>>>>>> e1a2d4c55bb5984e8728727eae4cc8df74303167:AdminGalerias.php
 ?>
 <!DOCTYPE HTML>
 <div class="admon">
     <div class="container">
         <h2>Galerias</h2>
         <div class="tab">
-            <button class="tablinks" onclick="openCity(event, 'tab1')" id="defaultOpen"><i class="bi bi-facebook"></i>Post Facebook</button>
+            <button class="tablinks" onclick="openCity(event, 'tab1')" id="defaultOpen"><i class="bi bi-award"></i>Reconocimientos</button>
             <button class="tablinks" onclick="openCity(event, 'tab2')"><i class="bi bi-images"></i>Carrusel Inicio</button>
             <button class="tablinks" onclick="openCity(event, 'tab3')"><i class="bi bi-card-image"></i>Carrusel Expo</button>
-            <button class="tablinks" onclick="openCity(event, 'tab4')"><i class="bi bi-calendar-week-fill"></i>Expo ISIC</button>
+            <button class="tablinks" onclick="openCity(event, 'tab4')"><i class="bi bi-calendar-week"></i>Expo ISIC</button>
         </div>
         <div id="tab1" class="tabcontent">
             <div id="titulo">
@@ -27,7 +24,7 @@ $postfb = getPostfb();
                 <thead>
                     <tr>
                         <th>Subtitulo</th>
-                        <th><button type="button" class="btn btn-light" data-toggle="modal" data-target="#myModal1AddPost"><i class="bi bi-plus-circle"></i></button>
+                        <th><button type="button" class="btn btn-light" data-toggle="modal" data-target="#myModal1AddPost"><i class="bi bi-plus-circle"></i>Agregar nuevo post</button>
                             <div class="modal topmargin-sm" id="myModal1AddPost">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
@@ -76,7 +73,7 @@ $postfb = getPostfb();
                             <td> 
                             <div class="btn-group">
                             <button class="btn btn-light btn-sm" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="bi bi-three-dots-vertical"></i>Opciones
+                                <i class="bi bi-three-dots-vertical"></i>
                             </button>
                             <div class="dropdown-menu dropdown-menu-right">
                                 <a class="dropdown-item" data-toggle="modal" data-target="#myModalEditPost" onclick="datosModalPost(\'' . $postfb[$i][0] . '\', \'' . $postfb[$i][3] . '\');"><i class="bi bi-pencil-square"></i>Editar</a>';
@@ -128,10 +125,13 @@ $postfb = getPostfb();
                         ?>
                 </tbody>
             </table>
+            <div class="" style="color: gray; background: lightgoldenrodyellow; padding: 15px; border-radius:5px; border: 1px solid darkkhaki;">
+                <i class="bi bi-exclamation-diamond-fill"></i><b>Importante</b> Cambie el valor del ancho o 'width' del enlace de facebook a 100%. Ejemplo: <b>width="100%"</b>
+            </div>
         </div>
         <div id="tab2" class="tabcontent">
             <div id="titulo">
-                <h6><b>Imagenes a mostrar en el carrusel</b></h6>
+                <h6><b>Imagenes a mostrar en el carrusel de la página de inicio</b></h6>
             </div>
             <table class="table table-light table-hover">
                 <thead>
@@ -182,7 +182,7 @@ $postfb = getPostfb();
                                 <td> 
                                 <div class="btn-group">
                                 <button class="btn btn-light btn-sm" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i class="bi bi-three-dots-vertical"></i>Opciones
+                                    <i class="bi bi-three-dots-vertical"></i>
                                 </button>
                                 <div class="dropdown-menu dropdown-menu-right">
                                     <a class="dropdown-item" data-toggle="modal" data-target="#myModalEditCarIni" onclick="datosModalCarrIni(\'' . $CarruselExpo[$i][0] . '\', \'' . $CarruselExpo[$i][1] . '\');"><i class="bi bi-pencil-square"></i>Editar</a>';
@@ -237,20 +237,13 @@ $postfb = getPostfb();
                         ?>
                 </tbody>
             </table>
-            <div class="row">
-                <div class="col-md-6">
-                </div>
-                <div class="col-md-6">
-                    <div class="alert alert-info alert-dismissible fade show">
-                        <button type="button" class="close" data-dismiss="alert">&times;</button>
-                        <strong><i class="bi bi-exclamation-diamond-fill"></i> Nota</strong> La medida recomendada para las imagenes de carrusel de eventos es 1100 x 500 pixeles.
-                    </div>
-                </div>
+            <div class="" style="color: gray; background: lightgoldenrodyellow; padding: 15px; border-radius:5px; border: 1px solid darkkhaki;">
+                <i class="bi bi-exclamation-diamond-fill"></i><b>Nota</b> La medida recomendada para las imagenes de carrusel de eventos es 1100 x 500 pixeles.
             </div>
         </div>
         <div id="tab3" class="tabcontent">
             <div id="titulo">
-                <h6><b>Imagenes a mostrar en el carrusel</b><button type="button" class="btn btn-light" data-toggle="modal" data-target="#myModal1AddcCarr"><i class="bi bi-plus-circle"></i>Agregar</button></h6>
+                <h6><b>Imagenes a mostrar en el carrusel de la página de eventos</b><button type="button" class="btn btn-light" data-toggle="modal" data-target="#myModal1AddcCarr"><i class="bi bi-plus-circle"></i>Agregar</button></h6>
             </div>
             <table class="table table-light table-hover">
                 <thead>
@@ -370,7 +363,7 @@ $postfb = getPostfb();
                         ?>
                 </tbody>
             </table>
-            <div class="" style="color: gray;">
+            <div class="" style="color: gray; background: lightgoldenrodyellow; padding: 15px; border-radius:5px; border: 1px solid darkkhaki;">
                 <i class="bi bi-exclamation-diamond-fill"></i><b>Nota</b> La medida recomendada para las imagenes de carrusel de eventos es 2732 x 900 pixeles.
             </div>
         </div>
@@ -619,14 +612,8 @@ $postfb = getPostfb();
 </div>
 <?php include('AdminFooter.php')?>
 <!--JS Local-->
-<<<<<<< HEAD:AdminExpo.php
 <script type="text/javascript" src="js/editarExpo.js"></script>
-=======
 <script type="text/javascript" src="js/editarGalerias.js?1.0.0"></script>
-<!--Bootstrap JS-->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
->>>>>>> e1a2d4c55bb5984e8728727eae4cc8df74303167:AdminGalerias.php
 </body>
 
 </html>

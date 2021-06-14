@@ -65,7 +65,7 @@
 @media screen and (max-width: 800px) {
     .admon tr, td {
         font-size: 11px;
-    }
+    } 
     .admon button.btn-light, .btn-group-sm{
         padding: 10px 0;
         float:none;

@@ -85,13 +85,8 @@ i {
 }
 
 .itsoeh-logo-white {
-  min-width: 130px;
-  max-width: 140px;
-}
-
-.isic-logo-white {
-  min-width: 140px;
-  max-width: 160px;
+  min-width: 180px;
+  max-width: 190px;
 }
 
 #sidebar.active {
@@ -125,16 +120,17 @@ i {
 }
 
 #sidebar ul li a:hover {
-  color: #327aaa;
+  color: rgb(0, 127, 211);
   background: #f8f8f8;
   text-decoration: none;
-  border-left-color: #327aaa;
+  border-left-color: rgb(0, 127, 211);
 }
 #sidebar ul li a.active {
-  color: #327aaa;
+  color: rgb(0, 127, 211);
+  font-weight: 700;
   background: #f8f8f8;
   text-decoration: none;
-  border-left-color: #327aaa;
+  border-left-color: rgb(0, 127, 211);
 }
 #sidebar ul li.active>a, a[aria-expanded="true"] {
   color: #fff;
@@ -158,9 +154,9 @@ a[data-toggle="collapse"] {
   width: 100%;
   min-height: 100vh;
   transition: all 0.3s;
-  background: #f1f1f1;
+  background: #f3f3f3;
 }
-
+/*#d31717*/
 @media (max-width:1000px) {
   #sidebarCollapse span {
     display: none;
@@ -342,7 +338,11 @@ section.bg-dark {
 #footer small {
   color: #848484;
 }
-
+/*
+.xd{
+  color: #2e73b4;
+}
+*/
 /*Fin Footer*/
 
 /*Inicio restriccion de texto a dos lineas*/
@@ -375,4 +375,10 @@ section.bg-dark {
   background-color: rgb(0, 127, 211);
   color: white;
   padding: 0 9px;
+}
+
+@media screen and (max-width: 800px) {
+  .inicio tr, td {
+      font-size: 11px;
+  }
 }

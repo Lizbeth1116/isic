@@ -133,7 +133,7 @@ include('AdminSidebar.php');
                                             <a style="text-decoration: none;" target="_black" href="http://' . $_SERVER['HTTP_HOST'] . '/isic/pdf/asignaturas/' . $asignatura[$i][6] . '">
                                             <i class="bi bi-file-earmark-check"></i>' . $asignatura[$i][3] .'</a></td>';
                     } else
-                    echo '<td><i class="bi bi-file-earmark-excel"></i>' . $asignatura[$i][3] .'</td>';
+                    echo '<td><i class="bi bi-file-earmark-excel" style="color:#d31717;"></i>' . $asignatura[$i][3] .'</td>';
                     echo '<td>' . $asignatura[$i][2] . '</td>';
                     echo '<td> 
                             <div class="btn-group">
