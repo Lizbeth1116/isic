@@ -45,3 +45,13 @@ datosModalCarr = function (id, imag, text) {
     $('#nomOriImgCarr').val(imag);
     $('#txtCar').val(text);
 };
+
+datosModalCarrIni = function (id, imag) {
+    $('#idCarrouIni').val(id);
+    $('#nomOriImgCarrIni').val(imag);
+};
+
+datosModalPost = function (id, subt) {
+    $('#idPost').val(id);
+    $('#subPost').val(subt);
+};

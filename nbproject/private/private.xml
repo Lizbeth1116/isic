@@ -5,6 +5,10 @@
         <group>
             <file>file:/C:/xampp/htdocs/isic/headAdmin.php</file>
             <file>file:/C:/xampp/htdocs/isic/Controlador/Controlador.php</file>
+            <file>file:/C:/xampp/htdocs/isic/AdminGenerales.php</file>
+            <file>file:/C:/xampp/htdocs/isic/AdminInicio.php</file>
+            <file>file:/C:/xampp/htdocs/isic/Controlador/ControlEditar.php</file>
+            <file>file:/C:/xampp/htdocs/isic/acreditacion.php</file>
         </group>
     </open-files>
 </project-private>

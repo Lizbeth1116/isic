@@ -66,7 +66,7 @@ switch ($datos[0]):
         }
         $stmt = $con->prepare("call isic.sp_DesHabExpo(?,?,?)");
         $stmt->bind_param("iii", $datos[1], $datos[2], $datos[3]);
-        $aux = "Expo";
+        $aux = "Galerias";
         break;
     case 8: // Deshabilitar/Borrar Asesorias
         $stmt = $con->prepare("call isic.sp_DesHabAsesoria(?,?,?)");
@@ -105,13 +105,24 @@ switch ($datos[0]):
         }
         $stmt = $con->prepare("call isic.sp_DesHabCarruselExpo(?,?,?)");
         $stmt->bind_param("iii", $datos[1], $datos[2], $datos[3]);
-        $aux = "Expo";
+        $aux = "Galerias";
         break;
     case 13: // Solicitudes
         $stmt = $con->prepare("call isic.sp_DesHabSolicitud(?,?)");
         $stmt->bind_param("ii", $datos[1], $datos[2]);
         $aux = "Solicitudes";
         break;
+    case 14: // Carrusel Expo
+        if (file_exists("../img/conocenos/carousel/" . $datos[4])) {
+            unlink("../img/conocenos/carousel/" . $datos[4]);
+        }
+        $stmt = $con->prepare("call isic.sp_DesHabCarruselExpo(?,?,?)");
+        $stmt->bind_param("iii", $datos[1], $datos[2], $datos[3]);
+        $aux = "Galerias";
+    case 15: // Post FB
+        $stmt = $con->prepare("call isic.DesHabPostFb(?,?,?)");
+        $stmt->bind_param("iii", $datos[1], $datos[2], $datos[3]);
+        $aux = "Galerias";
 endswitch;
 $stmt->execute();
 $stmt->close();

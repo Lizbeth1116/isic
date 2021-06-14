@@ -89,7 +89,7 @@ switch ($opGlobal):
         $aux = "Malla";
         break;
 
-    case 4://Admin Expo
+    case 4://Admin Galerias
         $opExp = $_POST['opExp'];
         switch ($opExp):
             case 0:
@@ -99,9 +99,8 @@ switch ($opGlobal):
                 if (!file_exists('../img/expoISC/' . $nomCarpeta)) {
                     mkdir(('../img/expoISC/' . $nomCarpeta), 0755, TRUE);
                 }
-                $stmt = $con->prepare("call isic.sp_AddPeroExpo(?,?,?)");
-                $stmt->bind_param("iis", $addperiodoExpo, $addAnioExp, $nomCarpeta);
-                $aux = "Expo";
+                $stmt = $con->prepare("call isic.sp_AddPeroExpo(?,?,?,?)");
+                $stmt->bind_param("iisi", $addperiodoExpo, $addAnioExp, $nomCarpeta);
                 break;
             case 1:
                 $addCarpetaImag = $_POST['addCarpetaImag'];
@@ -119,10 +118,10 @@ switch ($opGlobal):
                 }
                 $stmt = $con->prepare("call isic.sp_AddImgExpo(?,?,?)");
                 $stmt->bind_param("iss", $addIdPeriImag, $addDescripcionExp, $nomImg);
-                $aux = "Expo";
                 break;
             case 2:
                 $txtCarAdd = $_POST['txtCarAdd'];
+                $pertCar = $_POST['pertCarExp'];
                 $nomImg = $_FILES['imgCarAdd']['name'];
                 $guardadoImg = $_FILES['imgCarAdd']['tmp_name'];
                 if (!file_exists('../img/carousel-eventos')) {
@@ -133,11 +132,33 @@ switch ($opGlobal):
                 } else {
                     move_uploaded_file($guardadoImg, '../img/carousel-eventos/' . $nomImg);
                 }
-                $stmt = $con->prepare("call isic.sp_AddCarruselExpo(?,?)");
-                $stmt->bind_param("ss", $nomImg, $txtCarAdd);
-                $aux = "Expo";
+                $stmt = $con->prepare("call isic.sp_AddCarruselExpo(?,?,?)");
+                $stmt->bind_param("ssi", $nomImg, $txtCarAdd, $pertCar);
+                break;
+            case 3:
+                $txtCarAdd = "";
+                $pertCar = $_POST['pertCarIni'];
+                $nomImg = $_FILES['imgCarIniAdd']['name'];
+                $guardadoImg = $_FILES['imgCarIniAdd']['tmp_name'];
+                if (!file_exists('../img/conocenos/carousel')) {
+                    mkdir('../img/conocenos/carousel', 0777, TRUE);
+                    if (file_exists('../img/conocenos/carousel')) {
+                        move_uploaded_file($guardadoImg, '../img/conocenos/carousel/' . $nomImg);
+                    }
+                } else {
+                    move_uploaded_file($guardadoImg, '../img/conocenos/carousel/' . $nomImg);
+                }
+                $stmt = $con->prepare("call isic.sp_AddCarruselExpo(?,?,?)");
+                $stmt->bind_param("ssi", $nomImg, $txtCarAdd, $pertCar);
+                break;
+            case 4:
+                $subPost = $_POST['subPostAdd'];
+                $postLink= $_POST['postLinkAdd'];
+                $stmt = $con->prepare("call isic.sp_AddPostFb(?,?)");
+                $stmt->bind_param("ss", $postLink, $subPost);
                 break;
         endswitch;
+        $aux = "Galerias";
         break;
 
     case 5://Admin Asesorias

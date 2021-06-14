@@ -143,7 +143,7 @@ switch ($opGlobal):
                     $newNomIng = $_POST['nomImagOri'];
                 }
                 $stmt = $con->prepare("call isic.sp_editImgExpo(?,?,?)");
-                $stmt->bind_param("iss", $idImgEsp, $descripcionExp, $newNomIng);                
+                $stmt->bind_param("iss", $idImgEsp, $descripcionExp, $newNomIng);
                 break;
             case 2:
                 $idCarrou = $_POST['idCarrou'];
@@ -162,8 +162,31 @@ switch ($opGlobal):
                 $stmt = $con->prepare("call isic.sp_editCarruselExpo(?,?,?)");
                 $stmt->bind_param("iss", $idCarrou, $newNomImg, $txtCar);
                 break;
+            case 3:
+                $idCarrou = $_POST['idCarrouIni'];
+                $txtCar = "";
+                $nomImg = $_FILES['imgCarIni']['name'];
+                $guardadoImg = $_FILES['imgCarIni']['tmp_name'];
+                if (strlen($nomImg) > 0) {
+                    if (file_exists("../img/conocenos/carousel/" . $_POST['nomOriImgCarrIni'])) {
+                        unlink("../img/conocenos/carousel/" . $_POST['nomOriImgCarrIni']);
+                    }
+                    move_uploaded_file($guardadoImg, '../img/conocenos/carousel/' . $nomImg);
+                    $newNomImg = $nomImg;
+                } else {
+                    $newNomImg = $_POST['nomOriImgCarrIni'];
+                }
+                $stmt = $con->prepare("call isic.sp_editCarruselExpo(?,?,?)");
+                $stmt->bind_param("iss", $idCarrou, $newNomImg, $txtCar);
+                break;
+            case 4:
+                $idPost = $_POST['idPost'];
+                $subPost = $_POST['subPost'];
+                $stmt = $con->prepare("call isic.sp_editPostFb(?,?)");
+                $stmt->bind_param("is", $idPost, $subPost);
+                break;
         endswitch;
-        $aux = "Expo";
+        $aux = "Galerias";
         break;
     case 5://Admin Asesorias
         $stmt = $con->prepare("call isic.sp_editAsesoria(?,?,?,?,?,?)");
@@ -289,6 +312,19 @@ switch ($opGlobal):
             $stmt->bind_param("sss", $usAdmin, $passAdmin, $admin[0][0]);
         }
         $aux = "Contraseña";
+        break;
+    case 10://Admin Información relevante
+        include("./Controlador.php");
+        $idGen = $_POST['idGen'];
+        $AnioGen = $_POST['AnioGen'];
+        $TiempGen = $_POST['TiempGen'];
+        $MatGen = $_POST['MatGen'];
+        $EspGen = $_POST['EspGen'];
+        $LabGen = $_POST['LabGen'];
+        $DTGen = $_POST['DTGen'];
+        $stmt = $con->prepare("call isic.sp_editInfoRelevante(?,?,?,?,?,?,?)");
+        $stmt->bind_param("iiisiis", $idGen, $AnioGen, $TiempGen, $MatGen, $EspGen, $LabGen, $DTGen);
+        $aux = "Generales";
         break;
 endswitch;
 $stmt->execute();

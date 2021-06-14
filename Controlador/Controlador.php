@@ -8,6 +8,55 @@ if (!$con) {
     die("no se pudo conectar");
 }
 
+function sumarVista() {
+    $user_agent = $_SERVER['HTTP_USER_AGENT'];
+    if (!file_exists("./Config/Vistas.txt")) {
+        touch("./Config/Vistas.txt");
+    }
+    $contenido = trim(file_get_contents("./Config/Vistas.txt"));
+    if ($contenido == "") {
+        $renglon[0] = "Visitas:0";
+        $renglon[1] = "Exporer:0";
+        $renglon[2] = "Edge:0";
+        $renglon[3] = "Opera:0";
+        $renglon[4] = "Firefox:0";
+        $renglon[5] = "Chrome:0";
+        $renglon[6] = "Safari:0";
+        $renglon[7] = "Otros:0";
+    } else {
+        $renglon = explode("\n", $contenido);
+    }
+    for ($i = 0; $i < sizeof($renglon); $i++) {
+        $visitas[$i] = explode(":", $renglon[$i]);
+    }
+    $navegador = sumarNavegador($user_agent);
+    $visitas[0][1] ++;
+    $visitas[$navegador][1] ++;
+    $contenidoN = "";
+    foreach ($visitas as $ncon) {
+        $contenidoN .= ($ncon[0] . ':' . $ncon[1] . "\n");
+    }
+    file_put_contents("./Config/Vistas.txt", $contenidoN);
+}
+
+function sumarNavegador($user_agent) {
+    if (strpos($user_agent, 'MSIE') !== FALSE || strpos($user_agent, 'Trident') !== FALSE) {
+        return 1;
+    } elseif (strpos($user_agent, 'Edge') !== FALSE) {
+        return 2;
+    } elseif (strpos($user_agent, 'Opera Mini') !== FALSE || strpos($user_agent, 'Opera') || strpos($user_agent, 'OPR') !== FALSE) {
+        return 3;
+    } elseif (strpos($user_agent, 'Firefox') !== FALSE) {
+        return 4;
+    } elseif (strpos($user_agent, 'Chrome') !== FALSE) {
+        return 5;
+    } elseif (strpos($user_agent, 'Safari') !== FALSE) {
+        return 6;
+    } else {
+        return 7;
+    }
+}
+
 function getArea() {
     global $con;
     $stmt = $con->prepare("call isic.sp_area();");
@@ -549,12 +598,13 @@ function getCarruselExpo() {
     $stmt = $con->prepare("call isic.sp_getCarruselExpo();");
     $stmt->execute();
     $i = 0;
-    $stmt->bind_result($idcarruselExpo, $ImagenCarr, $Texto, $Estado);
+    $stmt->bind_result($idcarruselExpo, $ImagenCarr, $Texto, $Estado, $Perteneciente);
     while ($stmt->fetch()) {
         $carrExp[$i][0] = $idcarruselExpo;
         $carrExp[$i][1] = $ImagenCarr;
         $carrExp[$i][2] = $Texto;
         $carrExp[$i][3] = $Estado;
+        $carrExp[$i][4] = $Perteneciente;
         $i++;
     }
     $stmt->close();
@@ -584,4 +634,41 @@ function getSolicitud() {
     }
     $stmt->close();
     return $soli;
+}
+
+function getPostfb() {
+    global $con;
+    $stmt = $con->prepare("call isic.sp_getPostfb();");
+    $stmt->execute();
+    $i = 0;
+    $stmt->bind_result($idpostfb, $post, $Estado, $subtitulo);
+    while ($stmt->fetch()) {
+        $postFb[$i][0] = $idpostfb;
+        $postFb[$i][1] = $post;
+        $postFb[$i][2] = $Estado;
+        $postFb[$i][3] = $subtitulo;
+        $i++;
+    }
+    $stmt->close();
+    return $postFb;
+}
+
+function getInforelevante() {
+    global $con;
+    $stmt = $con->prepare("call isic.sp_getInforelevante();");
+    $stmt->execute();
+    $i = 0;
+    $stmt->bind_result($idinfoRelevante, $año, $tiempo, $matriculas, $numEspecialidades, $numLaboratorios, $desTecno);
+    while ($stmt->fetch()) {
+        $infoR[$i][0] = $idinfoRelevante;
+        $infoR[$i][1] = $año;
+        $infoR[$i][2] = $tiempo;
+        $infoR[$i][3] = $matriculas;
+        $infoR[$i][4] = $numEspecialidades;
+        $infoR[$i][5] = $numLaboratorios;
+        $infoR[$i][6] = $desTecno;
+        $i++;
+    }
+    $stmt->close();
+    return $infoR;
 }

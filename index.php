@@ -1,6 +1,9 @@
 <?php
 setcookie('logueado', FALSE, time() + 24 * 60 * 60);
 include('head.php');
+$Carrusel = getCarruselExpo();
+$postfb = getPostfb();
+sumarVista();
 ?>
 <!--Inicia pagina principal-->
 <div class="inicio">
@@ -54,38 +57,33 @@ include('head.php');
 
         <!-- Indicators -->
         <ul class="carousel-indicators">
-            <li data-target="#demo" data-slide-to="0" class="active"></li>
-            <li data-target="#demo" data-slide-to="1"></li>
-            <li data-target="#demo" data-slide-to="2"></li>
-            <li data-target="#demo" data-slide-to="3"></li>
-            <li data-target="#demo" data-slide-to="4"></li>
-            <li data-target="#demo" data-slide-to="5"></li>
-            <li data-target="#demo" data-slide-to="6"></li>
+            <?php
+            $auxCar = 0;
+            foreach ($Carrusel as $lisCarrusel) {
+                if ($lisCarrusel[3] == 1 && $lisCarrusel[4] == 1) {
+                    echo '
+                    <li data-target="#demo" data-slide-to="' . $auxCar . '" ' . ($auxCar == 0 ? ' class="active"' : '') . '></li>
+                    ';
+                    $auxCar++;
+                }
+            }
+            ?>
         </ul>
 
         <!-- The slideshow -->
         <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img src="img/conocenos/carousel/imagen-home_01.jpg" alt="Sistemas ITSOEH 01" width="1100" height="500">
-            </div>
-            <div class="carousel-item">
-                <img src="img/conocenos/carousel/imagen-home_02.jpg" alt="Sistemas ITSOEH 02" width="1100" height="500">
-            </div>
-            <div class="carousel-item">
-                <img src="img/conocenos/carousel/imagen-home_03.jpg" alt="Sistemas ITSOEH 03" width="1100" height="500">
-            </div>
-            <div class="carousel-item">
-                <img src="img/conocenos/carousel/imagen-home_04.jpg" alt="Sistemas ITSOEH 04" width="1100" height="500">
-            </div>
-            <div class="carousel-item">
-                <img src="img/conocenos/carousel/imagen-home_05.jpg" alt="Sistemas ITSOEH 05" width="1100" height="500">
-            </div>
-            <div class="carousel-item">
-                <img src="img/conocenos/carousel/imagen-home_06.jpg" alt="Sistemas ITSOEH 06" width="1100" height="500">
-            </div>
-            <div class="carousel-item">
-                <img src="img/conocenos/carousel/imagen-home_07.jpg" alt="Sistemas ITSOEH 07" width="1100" height="500">
-            </div>
+            <?php
+            $i = 0;
+            foreach ($Carrusel as $lisCarrusel) {
+                if ($lisCarrusel[3] == 1 && $lisCarrusel[4] == 1) {
+                    echo '
+                    <div class="carousel-item' . ($i == 0 ? ' active' : '') . '">
+                        <img src="img/conocenos/carousel/' . $lisCarrusel[1] . '" alt="Sistemas ITSOEH ' . $lisCarrusel[0] . '">
+                    </div>';
+                    $i++;
+                }
+            }
+            ?>
         </div>
 
         <!-- Left and right controls -->
@@ -138,22 +136,17 @@ include('head.php');
     <section class="contacto">
         <div class="container">
             <div class="row topmargin-sm">
-                <div class="col-md-6 mt-4 mb-4">
-                    <iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fpermalink.php%3Fstory_fbid%3D2117953188347195%26id%3D142983839177483&show_text=true&width=500" width="100%" height="454" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
-                </div>
-                <div class="col-md-6 mt-4 mb-4">
-                    <iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fpermalink.php%3Fstory_fbid%3D1877206242307273%26id%3D916964301664810&show_text=true&width=500" width="100%" height="740" style="border:none;overflow:hidden;" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
-                </div>
-                <div class="col-md-6 mt-4 mb-4">
-                    <iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fpermalink.php%3Fstory_fbid%3D1653763444651555%26id%3D916964301664810&show_text=true&width=500" width="100%" height="778" style="border:none;overflow:hidden;" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
-                </div>
-                <div class="col-md-6 mt-4 mb-4">
-                    <iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fpermalink.php%3Fstory_fbid%3D2055901021219079%26id%3D142983839177483&show_text=true&width=500" width="100%" height="559" style="border:none;overflow:hidden;" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
-                </div>
-                <div class="col-md-6 mt-4 mb-4">
-                    <iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2F916964301664810%2Fphotos%2Fa.943603462334227%2F1725766717451227%2F%3Ftype%3D3&show_text=true&width=500" width="100%" height="562" style="border:none;overflow:hidden;" scrolling="no" frameborder="0" allowfullscreen="true" alround-color:#fff;low="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
-                </div>
-
+                <?php
+                foreach ($postfb as $value) {
+                    if ($value[2] == 1) {
+                        echo '
+                    <div class="col-md-6 mt-4 mb-4">
+                        ' . $value[1] . '
+                        <h4 class="text-center">' . $value[3] . '</h4>
+                    </div>';
+                    }
+                }
+                ?>
             </div>
             <div class="row topmargin-sm">
                 <div class="col-md-6 mt-4">

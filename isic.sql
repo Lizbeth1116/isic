@@ -3,11 +3,10 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3308
--- Tiempo de generación: 12-06-2021 a las 05:54:25
+-- Tiempo de generación: 14-06-2021 a las 05:43:24
 -- Versión del servidor: 10.4.6-MariaDB
 -- Versión de PHP: 7.3.8
-create database isic;
-use isic;
+
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
 START TRANSACTION;
@@ -27,6 +26,14 @@ DELIMITER $$
 --
 -- Procedimientos
 --
+CREATE DEFINER=`root`@`localhost` PROCEDURE `DesHabPostFb` (`id` INT, `estado` INT, `op` INT)  BEGIN
+IF op = 1 then
+UPDATE `isic`.`postfb` SET `Estado` = estado WHERE (`idpostfb` = id);
+elseif op = 2 then
+DELETE FROM `isic`.`postfb` WHERE (`idpostfb` = id);
+end if;
+END$$
+
 CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_AddAsesoria` (`asesor` INT, `asig` VARCHAR(10), `ini` INT, `fin` INT, `dia` INT)  BEGIN
 INSERT INTO `isic`.`asesorias` (`idAsesor`, `clavAsignatura`, `horaInicio`, `horaFin`, `dia`) 
 VALUES (asesor, asig, ini, fin, dia);
@@ -45,9 +52,9 @@ else
 END IF;
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_AddCarruselExpo` (`imag` VARCHAR(100), `txt` VARCHAR(45))  BEGIN
-INSERT INTO `isic`.`carruselexpo` (`ImagenCarr`, `Texto`) 
-VALUES (imag, txt);
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_AddCarruselExpo` (`imag` VARCHAR(100), `txt` VARCHAR(45), `pert` INT)  BEGIN
+INSERT INTO `isic`.`carruselexpo` (`ImagenCarr`, `Texto`, `Perteneciente`) 
+VALUES (imag, txt, pert);
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_AddColaboradorInv` (`tema` INT, `docent` INT, `cargo` INT)  BEGIN
@@ -94,6 +101,11 @@ END$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_AddPeroExpo` (`peri` INT, `an` INT, `carpeta` VARCHAR(25))  BEGIN
 INSERT INTO `isic`.`periodoexpo` (`periodo`, `año`, `carpetaImg`) 
 VALUES (peri, an, carpeta);
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_AddPostFb` (`post` VARCHAR(800), `subtitulo` VARCHAR(80))  BEGIN
+INSERT INTO `isic`.`postfb` (`post`, `subtitulo`) 
+VALUES (post, subtitulo);
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_AddSolicitud` (`nomb` VARCHAR(45), `apellidos` VARCHAR(45), `email` VARCHAR(80), `sem` INT, `grupo` VARCHAR(1), `tel` VARCHAR(10), `matricula` VARCHAR(8), `proy` INT)  BEGIN
@@ -356,6 +368,17 @@ SET `descripcion` = descrip, `imagenNom` = imagenNom
 where `idimagenExpo` = idImg;
 END$$
 
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_editInfoRelevante` (`id` INT, `año` INT, `tiempo` INT, `mat` VARCHAR(45), `numEsp` INT, `numLab` INT, `desTecno` VARCHAR(65))  BEGIN
+UPDATE `isic`.`inforelevante` 
+SET `año` = año, 
+`tiempo` = tiempo, 
+`matriculas` = mat, 
+`numEspecialidades` = numEsp, 
+`numLaboratorios` = numLab, 
+`desTecno` = desTecno 
+WHERE (`idinfoRelevante` = id);
+END$$
+
 CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_editPEgreso` (`idesp` INT, `capOri` VARCHAR(300), `cap` VARCHAR(300))  BEGIN
 UPDATE `isic`.`p_egreso_esp` SET `capacidad` = cap
 WHERE (`idespecialidad` = idesp and `capacidad` = capOri);
@@ -364,6 +387,10 @@ END$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_editPeriodoExpo` (`idExpo` INT, `periodo` INT, `año` INT, `carpeta` VARCHAR(25))  BEGIN
 UPDATE `isic`.`periodoexpo` SET `periodo` = periodo, `año` = año, `carpetaImg` = carpeta 
 WHERE (`idperiodoExpo` = idExpo);
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_editPostFb` (`id` INT, `subtitulo` VARCHAR(80))  BEGIN
+UPDATE `isic`.`postfb` SET `subtitulo` = subtitulo WHERE (`idpostfb` = id);
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_editTemaIvs` (`idTema` INT, `tema` VARCHAR(100))  BEGIN
@@ -482,6 +509,10 @@ on i.idPeriodo = p.idperiodoExpo
 where idPeriodo = per;
 END$$
 
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_getInforelevante` ()  BEGIN
+SELECT * FROM isic.inforelevante;
+END$$
+
 CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_getListaPE` ()  BEGIN
 SELECT * FROM isic.tipo_pe;
 END$$
@@ -505,6 +536,10 @@ END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_getPeriodo` ()  BEGIN
 SELECT * FROM isic.periodoexpo order by año, periodo;
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_getPostfb` ()  BEGIN
+SELECT * FROM isic.postfb;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_getServicio` (`idServ` INT)  BEGIN
@@ -739,18 +774,26 @@ CREATE TABLE `carruselexpo` (
   `idcarruselExpo` int(11) NOT NULL,
   `ImagenCarr` varchar(100) DEFAULT NULL,
   `Texto` varchar(45) DEFAULT 'Expo Sistemas',
-  `Estado` int(11) DEFAULT 1
+  `Estado` int(11) DEFAULT 1,
+  `Perteneciente` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `carruselexpo`
 --
 
-INSERT INTO `carruselexpo` (`idcarruselExpo`, `ImagenCarr`, `Texto`, `Estado`) VALUES
-(1, 'demo4.jpg', 'Agosto - Diciembre 2020', 1),
-(2, 'demo3.jpg', 'Enero - Mayo 2020', 1),
-(3, 'demo6.jpg', 'Agosto - Diciembre 2019', 1),
-(4, 'demo5.jpg', 'Enero - Mayo 2019', 1);
+INSERT INTO `carruselexpo` (`idcarruselExpo`, `ImagenCarr`, `Texto`, `Estado`, `Perteneciente`) VALUES
+(1, 'demo4.jpg', 'Agosto - Diciembre 2020', 1, 2),
+(2, 'demo3.jpg', 'Enero - Mayo 2020', 1, 2),
+(3, 'demo6.jpg', 'Agosto - Diciembre 2019', 1, 2),
+(4, 'demo5.jpg', 'Enero - Mayo 2019', 1, 2),
+(8, 'imagen-home_01.jpg', '', 1, 1),
+(9, 'imagen-home_02.jpg', '', 1, 1),
+(10, 'imagen-home_03.jpg', '', 1, 1),
+(11, 'imagen-home_04.jpg', '', 1, 1),
+(12, 'imagen-home_05.jpg', '', 1, 1),
+(13, 'imagen-home_06.jpg', '', 1, 1),
+(14, 'imagen-home_07.jpg', '', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -937,6 +980,29 @@ INSERT INTO `imagenexpo` (`idimagenExpo`, `idPeriodo`, `descripcion`, `estado`, 
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `inforelevante`
+--
+
+CREATE TABLE `inforelevante` (
+  `idinfoRelevante` int(11) NOT NULL,
+  `año` int(11) DEFAULT NULL,
+  `tiempo` int(11) DEFAULT NULL,
+  `matriculas` varchar(45) DEFAULT NULL,
+  `numEspecialidades` int(11) DEFAULT NULL,
+  `numLaboratorios` int(11) DEFAULT NULL,
+  `desTecno` varchar(65) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `inforelevante`
+--
+
+INSERT INTO `inforelevante` (`idinfoRelevante`, `año`, `tiempo`, `matriculas`, `numEspecialidades`, `numLaboratorios`, `desTecno`) VALUES
+(1, 2019, 5, '256 Estudiantes', 2, 4, '1 Centro de formación de capital humano');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `linea_investigacion`
 --
 
@@ -1106,6 +1172,30 @@ INSERT INTO `pe_isic` (`idpe_isic`, `idPETipo`, `DescripcionPE`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `postfb`
+--
+
+CREATE TABLE `postfb` (
+  `idpostfb` int(11) NOT NULL,
+  `post` varchar(800) DEFAULT NULL,
+  `Estado` int(11) DEFAULT 1,
+  `subtitulo` varchar(80) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `postfb`
+--
+
+INSERT INTO `postfb` (`idpostfb`, `post`, `Estado`, `subtitulo`) VALUES
+(1, '<iframe src=\"https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fpermalink.php%3Fstory_fbid%3D2117953188347195%26id%3D142983839177483&show_text=true&width=500\" width=\"100%\" height=\"454\" style=\"border:none;overflow:hidden\" scrolling=\"no\" frameborder=\"0\" allowfullscreen=\"true\" allow=\"autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share\"></iframe>', 1, 'Mejores Promedios'),
+(2, '<iframe src=\"https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fpermalink.php%3Fstory_fbid%3D1877206242307273%26id%3D916964301664810&show_text=true&width=500\" width=\"100%\" height=\"740\" style=\"border:none;overflow:hidden;\" scrolling=\"no\" frameborder=\"0\" allowfullscreen=\"true\" allow=\"autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share\"></iframe>', 1, '4ta edición de la Expo Sistemas'),
+(3, '<iframe src=\"https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fpermalink.php%3Fstory_fbid%3D1653763444651555%26id%3D916964301664810&show_text=true&width=500\" width=\"100%\" height=\"778\" style=\"border:none;overflow:hidden;\" scrolling=\"no\" frameborder=\"0\" allowfullscreen=\"true\" allow=\"autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share\"></iframe>', 1, 'Entrega de reconocimientos a mejores promedios'),
+(4, '<iframe src=\"https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fpermalink.php%3Fstory_fbid%3D2055901021219079%26id%3D142983839177483&show_text=true&width=500\" width=\"100%\" height=\"559\" style=\"border:none;overflow:hidden;\" scrolling=\"no\" frameborder=\"0\" allowfullscreen=\"true\" allow=\"autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share\"></iframe>', 1, 'Reconocimiento a Mtra. Cristy Elizabeth Aguilar Ojeda'),
+(5, '<iframe src=\"https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2F916964301664810%2Fphotos%2Fa.943603462334227%2F1725766717451227%2F%3Ftype%3D3&show_text=true&width=500\" width=\"500\" height=\"543\" style=\"border:none;overflow:hidden\" scrolling=\"no\" frameborder=\"0\" allowfullscreen=\"true\" allow=\"autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share\"></iframe>', 1, 'Segunda ronda de la competencia internacional NetRiders');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `p_egreso_esp`
 --
 
@@ -1187,7 +1277,7 @@ CREATE TABLE `solicitud` (
 --
 
 INSERT INTO `solicitud` (`idsolicitud`, `Nombre`, `Apellidos`, `Email`, `Semestre`, `Grupo`, `Telefono`, `Matricula`, `Proyecto`, `Fecha`, `Leida`) VALUES
-(7, 'David Alejandro', 'Cruz Fuentes', 'acruzf@itsoeh.edu.mx', 8, 'B', '7731580158', '17011310', 3, '2021-06-11', 2);
+(12, '', '', 'smaye@itsoeh.edu.mx', 8, 'B', '84965', '21651', 2, '2021-06-13', 2);
 
 -- --------------------------------------------------------
 
@@ -1308,6 +1398,12 @@ ALTER TABLE `imagenexpo`
   ADD KEY `idPeriodo_idx` (`idPeriodo`);
 
 --
+-- Indices de la tabla `inforelevante`
+--
+ALTER TABLE `inforelevante`
+  ADD PRIMARY KEY (`idinfoRelevante`);
+
+--
 -- Indices de la tabla `linea_investigacion`
 --
 ALTER TABLE `linea_investigacion`
@@ -1334,6 +1430,12 @@ ALTER TABLE `periodoexpo`
 ALTER TABLE `pe_isic`
   ADD PRIMARY KEY (`idpe_isic`),
   ADD KEY `idPETipo_idx` (`idPETipo`);
+
+--
+-- Indices de la tabla `postfb`
+--
+ALTER TABLE `postfb`
+  ADD PRIMARY KEY (`idpostfb`);
 
 --
 -- Indices de la tabla `p_egreso_esp`
@@ -1386,7 +1488,7 @@ ALTER TABLE `asesorias`
 -- AUTO_INCREMENT de la tabla `carruselexpo`
 --
 ALTER TABLE `carruselexpo`
-  MODIFY `idcarruselExpo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `idcarruselExpo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT de la tabla `complementarias`
@@ -1413,6 +1515,12 @@ ALTER TABLE `imagenexpo`
   MODIFY `idimagenExpo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
 
 --
+-- AUTO_INCREMENT de la tabla `inforelevante`
+--
+ALTER TABLE `inforelevante`
+  MODIFY `idinfoRelevante` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT de la tabla `periodoexpo`
 --
 ALTER TABLE `periodoexpo`
@@ -1425,6 +1533,12 @@ ALTER TABLE `pe_isic`
   MODIFY `idpe_isic` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
+-- AUTO_INCREMENT de la tabla `postfb`
+--
+ALTER TABLE `postfb`
+  MODIFY `idpostfb` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
 -- AUTO_INCREMENT de la tabla `servicios`
 --
 ALTER TABLE `servicios`
@@ -1434,7 +1548,7 @@ ALTER TABLE `servicios`
 -- AUTO_INCREMENT de la tabla `solicitud`
 --
 ALTER TABLE `solicitud`
-  MODIFY `idsolicitud` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `idsolicitud` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de la tabla `tema_linea_investigacion`
