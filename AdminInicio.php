@@ -1,9 +1,7 @@
 <?php
 include('headAdmin.php');
-<<<<<<< HEAD
 $pagina0 = 'active';
 include('AdminSidebar.php');
-=======
 $contenido = file_get_contents("Config/Vistas.txt");
 $contenidoAux = explode("\n", $contenido);
 for ($i = 0; $i < sizeof($contenidoAux); $i++) {
@@ -17,7 +15,7 @@ for ($i = 0; $i < sizeof($contenidoAux); $i++) {
 //$visitas[$i][5] --> Chrome
 //$visitas[$i][6] --> Safari
 //$visitas[$i][7] --> Otros
->>>>>>> e1a2d4c55bb5984e8728727eae4cc8df74303167
+
 ?>
 <div class="inicio">
     <div class="container">

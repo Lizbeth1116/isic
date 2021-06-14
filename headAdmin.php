@@ -71,4 +71,5 @@ $inforelevante = getInforelevante();
     $pagina7 = '';
     $pagina8 = '';
     $pagina9 = '';
+    $pagina10 = '';
     ?>
