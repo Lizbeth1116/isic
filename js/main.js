@@ -1,6 +1,6 @@
 $(document).ready(function () {
 	/*articulos para llamar a las secciones del menu*/
-	$('ul.tabs li a:first').addClass('active');
+	/*$('ul.tabs li a:first').addClass('active');*/
 	$('.secciones article').hide();
 	$('.secciones article:first').show();
 
@@ -24,5 +24,4 @@ $(document).ready(function () {
 		document.getElementById("bodyContent").style.width = "100%";
 	});
 });
-
 /*Indicador de Carga Web */

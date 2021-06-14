@@ -3,6 +3,8 @@ include('./headAdmin.php');
 $especialidad = getEspecialidadAdmin();
 $egreso = getEgresoAdmin();
 $asiEsp = getAsignaturaEspAdmin();
+$pagina1 = 'active';
+include('AdminSidebar.php');
 ?>
 <div class="admon">
     <div class="container">
@@ -10,7 +12,7 @@ $asiEsp = getAsignaturaEspAdmin();
         <!--Tabla de especialidad: Sección 1-->
         <div class="tab">
             <button class="tablinks" onclick="openCity(event, 'tab1')" id="defaultOpen"><i class="bi bi-file-check-fill"></i>Existentes</button>
-            <button class="tablinks" onclick="openCity(event, 'tab2')"><i class="bi bi-file-earmark-person-fill"></i>Perfil Egreso</button>
+            <button class="tablinks" onclick="openCity(event, 'tab2')"><i class="bi bi-file-earmark-person-fill"></i>Perfil de Egreso</button>
             <button class="tablinks" onclick="openCity(event, 'tab3')"><i class="bi bi-book-fill"></i>Asignaturas</button>
 
         </div>
@@ -454,36 +456,12 @@ $asiEsp = getAsignaturaEspAdmin();
 </div>
 </div>
 </div>
-<!--inicia footer-->
-<section id="footer" class="bg-dark">
-    <div class="container">
-        <img src="img/logos/isic-itsoeh-logo-blanco.png?1.0.0" alt="logo" class="itsoeh-logo-white">
-
-        <ul class="list-inline">
-            <li class="list-inline-item footer-menu"><i class="bi bi-envelope"></i><span> rporras@itsoeh.edu.mx</span></li>
-            <li class="list-inline-item footer-menu"><i class="bi bi-telephone"></i><span> 01 738-73-54000 ext 240</span></li>
-            <li class="list-inline-item footer-menu">
-                <a target="_blank" href="https://www.facebook.com/ING-Sistemas-Computacionales-ITSOEH-916964301664810/">
-                    <i class="bi bi-facebook"></i> Facebook</a>
-            </li>
-        </ul>
-        <ul class="list-inline">
-            <li class="list-inline-item footer-menu">
-                <i class="bi bi-check2"></i><span> Atención: M.C. Rolando Porras Muñoz</span></a>
-            </li>
-        </ul>
-        <small>© 2021 Ingeniería en Sistemas Computacionales | ITSOEH</small>
-    </div>
-</section>
-<!--fin footer-->
+<?php include('AdminFooter.php')?>
 <!--JS Local-->
 <script type="text/javascript" src="js/editarEspecialidad.js"></script>
 <script type="text/javascript" src="js/editarMallaCurricular.js?1.0.0"></script>
 <script type="text/javascript" src="js/editarInvestigacion.js?1.0.0"></script>
 <script type="text/javascript" src="js/verMas.js?1.0.0"></script>
-<!--Bootstrap JS-->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 
 </html>

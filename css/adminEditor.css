@@ -28,7 +28,6 @@
 
 .admon button.btn-light, .btn-group-sm{
     float:right;
-    border-radius: 100px;
 }
 .admon .sec-buscador{
     display: flex;
