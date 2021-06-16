@@ -16,7 +16,7 @@ function sumarVista() {
     $contenido = trim(file_get_contents("./Config/Vistas.txt"));
     if ($contenido == "") {
         $renglon[0] = "Visitas:0";
-        $renglon[1] = "Exporer:0";
+        $renglon[1] = "Explorer:0";
         $renglon[2] = "Edge:0";
         $renglon[3] = "Opera:0";
         $renglon[4] = "Firefox:0";

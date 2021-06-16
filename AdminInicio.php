@@ -8,14 +8,13 @@ for ($i = 0; $i < sizeof($contenidoAux); $i++) {
     $visitas[$i] = explode(":", $contenidoAux[$i]);
 }
 //$visitas[$i][0] --> Visitas
-//$visitas[$i][1] --> Exporer
+//$visitas[$i][1] --> Explorer
 //$visitas[$i][2] --> Edge
 //$visitas[$i][3] --> Opera
 //$visitas[$i][4] --> Firefox
 //$visitas[$i][5] --> Chrome
 //$visitas[$i][6] --> Safari
 //$visitas[$i][7] --> Otros
-
 ?>
 <div class="inicio">
     <div class="container">
@@ -81,54 +80,20 @@ for ($i = 0; $i < sizeof($contenidoAux); $i++) {
             <div class="colum">
                 <div class="resume-item">
                     <table class="navegador">
-                        <tr>
-                            <td><b class="chrome">Chrome</b><br></td>
-                            <td class="barra">
-                                <div id="myProgress">
-                                    <div id="myBar1">10%</div>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><b class="firefox">Firefox</b><br></td>
-                            <td class="barra">
-                                <div id="myProgress">
-                                    <div id="myBar2">10%</div>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><b class="edge">Edge</b><br></td>
-                            <td class="barra">
-                                <div id="myProgress">
-                                    <div id="myBar3">10%</div>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><b class="explorer">Explorer</b><br></td>
-                            <td class="barra">
-                                <div id="myProgress">
-                                    <div id="myBar4">10%</div>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><b class="safari">Safari</b><br></td>
-                            <td class="barra">
-                                <div id="myProgress">
-                                    <div id="myBar5">10%</div>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><b class="otros">Otros</b><br></td>
-                            <td class="barra">
-                                <div id="myProgress">
-                                    <div id="myBar6">10%</div>
-                                </div>
-                            </td>
-                        </tr>
+                        <?php
+                        for ($i = 1; $i < 8; $i++){
+                            $auxVits = $visitas[$i][1]/$visitas[0][1]*100;
+                            echo '
+                            <tr>
+                                <td><b class="'.$visitas[$i][0].'">'.$visitas[$i][0].'</b><br></td>
+                                <td class="barra">
+                                    <div id="myProgress">
+                                        <div style="width: '.$auxVits.'%" id="myBar'.$i.'">'.round($auxVits,2) .'%</div>
+                                    </div>
+                                </td>
+                            </tr>';
+                        }
+                        ?>
                     </table>
                 </div>
             </div>
@@ -136,8 +101,6 @@ for ($i = 0; $i < sizeof($contenidoAux); $i++) {
     </div>
 </div>
 </div>
-<script type="text/javascript" src="js/progressbar.js"></script>
-<?php include('AdminFooter.php') ?>
+<!--<script type="text/javascript" src="js/progressbar.js"></script>-->
 </body>
-
 </html>

@@ -1,4 +1,4 @@
-$(document).ready(function () {
+$(document).ready(function (Firefox) {
     var i = 0;
     if (i == 0) {
         i = 1;
