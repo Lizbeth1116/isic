@@ -79,11 +79,65 @@ for ($i = 0; $i < sizeof($contenidoAux); $i++) {
                 </div>
             </div>
             <div class="colum">
-                <div class="resume-item">Content</div>
+                <div class="resume-item">
+                    <table class="navegador">
+                        <tr>
+                            <td><b class="chrome">Chrome</b><br></td>
+                            <td class="barra">
+                                <div id="myProgress">
+                                    <div id="myBar1">10%</div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><b class="firefox">Firefox</b><br></td>
+                            <td class="barra">
+                                <div id="myProgress">
+                                    <div id="myBar2">10%</div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><b class="edge">Edge</b><br></td>
+                            <td class="barra">
+                                <div id="myProgress">
+                                    <div id="myBar3">10%</div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><b class="explorer">Explorer</b><br></td>
+                            <td class="barra">
+                                <div id="myProgress">
+                                    <div id="myBar4">10%</div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><b class="safari">Safari</b><br></td>
+                            <td class="barra">
+                                <div id="myProgress">
+                                    <div id="myBar5">10%</div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><b class="otros">Otros</b><br></td>
+                            <td class="barra">
+                                <div id="myProgress">
+                                    <div id="myBar6">10%</div>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
 </div>
-<?php include('AdminFooter.php')?>
+</div>
+<script type="text/javascript" src="js/progressbar.js"></script>
+<?php include('AdminFooter.php') ?>
 </body>
+
 </html>

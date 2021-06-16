@@ -377,8 +377,4 @@ section.bg-dark {
   padding: 0 9px;
 }
 
-@media screen and (max-width: 800px) {
-  .inicio tr, td {
-      font-size: 11px;
-  }
-}
+

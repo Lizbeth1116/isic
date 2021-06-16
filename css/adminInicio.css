@@ -12,22 +12,23 @@
   }
 
   .inicio h2 {
-    padding-bottom: 20px;
-    font-size: 2.2em;
-    font-weight: 800;
-    letter-spacing: 2px;
-    color: #555555;
+      padding-bottom: 20px;
+      font-size: 2.2em;
+      font-weight: 800;
+      letter-spacing: 2px;
+      color: #555555;
   }
+
   .inicio .container .titulo h6 {
-    color: #505050;
-    font-size: 1.3em;
-}
+      color: #505050;
+      font-size: 1.3em;
+  }
 
   .inicio .container .titulo {
-    background-color: #ffffff;
-    border-bottom: 1px solid #cccccc;
-    padding: 20px;
-    vertical-align: middle;
+      background-color: #ffffff;
+      border-bottom: 1px solid #cccccc;
+      padding: 20px;
+      vertical-align: middle;
   }
 
   .inicio .resume-item {
@@ -76,12 +77,22 @@
   .inicio .resume-item a {
       color: #5e5e5e !important;
   }
-  .inicio .resume-item a:hover{
+
+  .inicio .resume-item a:hover {
       text-decoration: none;
       color: #858585;
   }
+
   .inicio .resume-item p {
       color: #5e5e5e;
+  }
+
+  .inicio .navegador {
+      width: 100%;
+  }
+
+  .inicio table .barra {
+      width: 250px;
   }
 
   .inicio table td {
@@ -102,4 +113,57 @@
       flex: auto;
   }
 
+  .inicio b.chrome {
+      color: #c5d157 !important;
+      font-size: 16px;
+  }
+
+  .inicio b.firefox {
+      color: #ec7956 !important;
+      font-size: 16px;
+  }
+
+  .inicio b.edge {
+      color: #59b9d6 !important;
+      font-size: 16px;
+  }
+
+  .inicio b.explorer {
+      color: #76bdff !important;
+      font-size: 16px;
+  }
+
+  .inicio b.safari {
+      color: #268ab8 !important;
+      font-size: 16px;
+  }
+
+  .inicio td b.otros {
+      color: #999999 !important;
+      font-size: 16px;
+  }
+
+  @media screen and (max-width: 800px) {
+      .inicio tr, td {
+          font-size: 11px;
+      }
+      .inicio table .barra {
+          width: 250px;
+      }
+  }
+
   /*fin seccion 'inicio'*/
+
+  .inicio #myProgress {
+      width: 100%;
+      background-color: #ddd;
+  }
+
+  .inicio #myBar1, #myBar2, #myBar3, #myBar4, #myBar5, #myBar6 {
+      width: 10%;
+      height: 15px;
+      background-color: #4c5753;
+      text-align: center;
+      line-height: 15px;
+      color: white;
+  }
