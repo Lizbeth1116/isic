@@ -21,7 +21,8 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `isic`
 --
-
+create database isic;
+use isic;
 DELIMITER $$
 --
 -- Procedimientos

@@ -14,18 +14,28 @@ $servInfo = getServicio($_GET["idServ"]);
             if ($_GET["idServ"] == 4) {
                 echo '<h2>' . $servInfo[0][0] . '</h2>';
                 $tmp = explode("*", $servInfo[0][1]);
+                 echo '<table>';
                 echo '<p>';
+                echo '<tr>';
+                echo  '<th>' . '<p> Nombre </p>'. '</th>';
+                echo  '<th>' . '<p> Edificio </p>'. '</th>';
+                echo  '<th>' . '<p> Extención </p>'. '</th>';
+                echo '</tr>';
                 for ($i = 0; $i < sizeof($tmp); $i++) {
-                    echo '<i class="bi bi-check2"></i> ' . $tmp[$i] . '<br>';
+                    echo '<tr>';
+                for ($j = 0; $j < 3; $j++) {
+                    echo  '<td>' . $tmp[$i]. '</td>';
+                }
+                 echo '</tr>';
                 }
                 echo '</p>';
+                echo '</table';
             } else {
                 echo '<h2>Objetivo de ' . $servInfo[0][0] . '</h2>
                       <p>' . $servInfo[0][1] . ' </p>';
             }
             ?>
         </div>
-
     </section>
     <?php
     if ($_GET["idServ"] == 2) {

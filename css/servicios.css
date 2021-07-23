@@ -44,7 +44,7 @@
 }
 
 .servicios .seccion-1 p {
-    font-weight: 300;
+    font-weight: 500;
     margin-bottom: 15px;
     color: #8a8a8a !important;
     animation: cambiar 3s none;
@@ -68,7 +68,7 @@
     }
     .servicios .seccion-1 h2 {
         font-size: 30px;
-        margin-bottom: 20px;
+        margin-bottom: -40px;
         text-align: center;
     }
     .servicios .seccion-1 img {

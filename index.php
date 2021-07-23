@@ -11,18 +11,7 @@ sumarVista();
         <div>
             <div class="content-center topmargin-sm">
                 <div class="contenedor">
-                    <ul>
-                        <li>
-                            <h1>INGENIERÍA EN SISTEMAS COMPUTACIONALES</h1>
-                        </li>
-                        <li>
-                            <h5>INSTITUTO TECNOLÓGICO SUPERIOR DEL OCCIDENTE DEL ESTADO DE HIDALGO</h5>
-                        </li>
-                        <li>
-                            <h6>TECNOLÓGICO NACIONAL DE MÉXICO</h6>
-                        </li>
-
-                    </ul>
+                   
                 </div>
             </div>
         </div>

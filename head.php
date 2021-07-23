@@ -10,7 +10,6 @@ $ultimaExpo = getUltimaExpo();
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
     <head>
         <meta http-equiv="Content-Type" content="text/html" charset="utf-8" />
         <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -60,8 +59,14 @@ $ultimaExpo = getUltimaExpo();
         -->
         <nav id="menu" class="navbar navbar-expand-lg fixed-top ">
             <div class="container">
+                 <a class="navbar-brand" target="_blank" href="https://www.tecnm.mx/">
+                    <img src="img/logos/TEC-blanco.png?1.0.0" alt="logo" class="logo-tec-sup">
+                </a>
                 <a class="navbar-brand" target="_blank" href="http://www.itsoeh.edu.mx/front/">
-                    <img src="img/logos/itsoeh-isic.png?1.0.0" alt="logo" class="logo-itsoeh-sup">
+                    <img src="img/logos/itsoeh-blanco.png?1.0.0" alt="logo" class="logo-itsoeh-sup" >
+                </a>
+                <a class="nav-link" href="index.php?1.0.0">
+                    <img src="img/logos/isic-blanco.png?1.0.0" alt="logo" class="logo-isicc-sup" >
                 </a>
                 <div id="hamburger">
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar" aria-controls="collapsibleNavbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -141,5 +146,6 @@ $ultimaExpo = getUltimaExpo();
                         </li>
                     </ul>
                 </div>
+
             </div>
         </nav>

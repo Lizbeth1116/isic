@@ -22,7 +22,7 @@
                     <!-- Modal Header -->
                     <button type="button" class="close ml-auto p-3" data-dismiss="modal" style="outline:none;">&times;</button>
                     <div class="col-12 user-img">
-                        <img src="img/logos/logo-isic.png" />
+                        <img src="img/logos/logo-isc.png" />
                     </div>
                     <!-- Modal body -->
                     <div class="modal-body">
