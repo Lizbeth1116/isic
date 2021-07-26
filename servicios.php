@@ -1,7 +1,9 @@
 <?php
 include('head.php');
 $servInfo = getServicio($_GET["idServ"]);
+
 ?>
+
 <div class="servicios">
     <section class="seccion-1">
 
@@ -12,30 +14,41 @@ $servInfo = getServicio($_GET["idServ"]);
 
             <?php
             if ($_GET["idServ"] == 4) {
-                echo '<h2>' . $servInfo[0][0] . '</h2>';
+                echo '<h2 class="tituloServicio">' . $servInfo[0][0] . '</h2>';
+
                 $tmp = explode("*", $servInfo[0][1]);
-                 echo '<table>';
+                echo '<div class="table-responsive">';
+                 echo '<table class="table table-hover table-borderless table-sm" >' ; 
                 echo '<p>';
-                echo '<tr>';
+               
+                echo '<tr class="table-active">';
                 echo  '<th>' . '<p> Nombre </p>'. '</th>';
-                echo  '<th>' . '<p> Edificio </p>'. '</th>';
+                echo  '<th>' . '<p> Ubicación </p>'. '</th>';
                 echo  '<th>' . '<p> Extención </p>'. '</th>';
                 echo '</tr>';
-                for ($i = 0; $i < sizeof($tmp); $i++) {
-                    echo '<tr>';
-                for ($j = 0; $j < 3; $j++) {
-                    echo  '<td>' . $tmp[$i]. '</td>';
+                foreach($tmp as $datosDeServicio){
+                    $posicion=strrpos($datosDeServicio,"Ext");
+                    $long=(strrpos($datosDeServicio,"Ext"))-strrpos($datosDeServicio,"Edificio");
+                    if($long!=0){    
+echo '<tr><td>'.substr($datosDeServicio,0,strrpos($datosDeServicio,"Edificio")).'</td>';
+if($posicion==0){echo '<td >'.substr($datosDeServicio,strrpos($datosDeServicio,"Edificio"),50).'</td>';}else{
+echo '<td >'.substr($datosDeServicio,strrpos($datosDeServicio,"Edificio"),$long).'</td>';
+echo '<td >'.substr($datosDeServicio,strrpos($datosDeServicio,"Ext")+3,14).'</td></tr>';}}
+else{
+    echo '<tr><td >'.$datosDeServicio.'</td></tr>';
+}
                 }
-                 echo '</tr>';
-                }
+              
                 echo '</p>';
                 echo '</table';
+                
             } else {
                 echo '<h2>Objetivo de ' . $servInfo[0][0] . '</h2>
                       <p>' . $servInfo[0][1] . ' </p>';
             }
             ?>
         </div>
+       </div>
     </section>
     <?php
     if ($_GET["idServ"] == 2) {
