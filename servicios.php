@@ -1,7 +1,9 @@
 <?php
 include('head.php');
 $servInfo = getServicio($_GET["idServ"]);
+
 ?>
+
 <div class="servicios">
     <section class="seccion-1">
 
@@ -18,16 +20,28 @@ $servInfo = getServicio($_GET["idServ"]);
                 echo '<p>';
                 echo '<tr>';
                 echo  '<th>' . '<p> Nombre </p>'. '</th>';
-                echo  '<th>' . '<p> Edificio </p>'. '</th>';
+                echo  '<th>' . '<p> Ubicación </p>'. '</th>';
                 echo  '<th>' . '<p> Extención </p>'. '</th>';
                 echo '</tr>';
-                for ($i = 0; $i < sizeof($tmp); $i++) {
+                foreach($tmp as $datosDeServicio){
+                    $posicion=strrpos($datosDeServicio,"Ext");
+                    $long=(strrpos($datosDeServicio,"Ext"))-strrpos($datosDeServicio,"Edificio");
+                    if($long!=0){    
+echo '<tr><td>'.substr($datosDeServicio,0,strrpos($datosDeServicio,"Edificio")).'</td>';
+if($posicion==0){echo '<td >'.substr($datosDeServicio,strrpos($datosDeServicio,"Edificio"),50).'</td>';}else{
+echo '<td >'.substr($datosDeServicio,strrpos($datosDeServicio,"Edificio"),$long).'</td>';
+echo '<td >'.substr($datosDeServicio,strrpos($datosDeServicio,"Ext")+3,14).'</td></tr>';}}
+else{
+    echo '<tr><td colspan="3">'.$datosDeServicio.'</td></tr>';
+}
+                }
+               /* for ($i = 0; $i < sizeof($tmp); $i++) {
                     echo '<tr>';
                 for ($j = 0; $j < 3; $j++) {
                     echo  '<td>' . $tmp[$i]. '</td>';
                 }
                  echo '</tr>';
-                }
+                }*/
                 echo '</p>';
                 echo '</table';
             } else {
