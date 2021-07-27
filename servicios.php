@@ -14,32 +14,33 @@ $servInfo = getServicio($_GET["idServ"]);
 
             <?php
             if ($_GET["idServ"] == 4) {
-                echo '<h2 class="tituloServicio">' . $servInfo[0][0] . '</h2>';
+                echo '<h2 class="tituloServicio">' . $servInfo[0][0] . '</h2><br>';
 
                 $tmp = explode("*", $servInfo[0][1]);
-                echo '<div class="table-responsive">';
-                 echo '<table class="table table-hover table-borderless table-sm" >' ; 
-                echo '<p>';
-               
-                echo '<tr class="table-active">';
-                echo  '<th>' . '<p> Nombre </p>'. '</th>';
-                echo  '<th>' . '<p> Ubicación </p>'. '</th>';
-                echo  '<th>' . '<p> Extención </p>'. '</th>';
-                echo '</tr>';
+                echo '<div class="table-responsive">
+                <table class="table table-hover table-borderless table-sm" >
+                <tr class="table-active">
+                <th>Servicio</th>
+                <th> Ubicación </th>
+                <th>Extención </th>
+                </tr>';
                 foreach($tmp as $datosDeServicio){
                     $posicion=strrpos($datosDeServicio,"Ext");
                     $long=(strrpos($datosDeServicio,"Ext"))-strrpos($datosDeServicio,"Edificio");
                     if($long!=0){    
-echo '<tr><td>'.substr($datosDeServicio,0,strrpos($datosDeServicio,"Edificio")).'</td>';
-if($posicion==0){echo '<td >'.substr($datosDeServicio,strrpos($datosDeServicio,"Edificio"),50).'</td>';}else{
-echo '<td >'.substr($datosDeServicio,strrpos($datosDeServicio,"Edificio"),$long).'</td>';
-echo '<td >'.substr($datosDeServicio,strrpos($datosDeServicio,"Ext")+3,14).'</td></tr>';}}
-else{
-    echo '<tr><td >'.$datosDeServicio.'</td></tr>';
-}
-                }
+                        echo '<tr><td >'.substr($datosDeServicio,0,strrpos($datosDeServicio,"Edificio")).'</td>';
+                    if($posicion==0){
+                        echo '<td >'.substr($datosDeServicio,strrpos($datosDeServicio,"Edificio"),50).'</td>';
+                    }else{
+                        echo '<td >'.substr($datosDeServicio,strrpos($datosDeServicio,"Edificio"),$long).'</td>';
+                        echo '<td >'.substr($datosDeServicio,strrpos($datosDeServicio,"Ext")+3,14).'</td></tr>';
+                        }
+                        }
+                    else{
+                        echo '<tr><td  >'.$datosDeServicio.'</td></tr>';
+                    }
+                }       
               
-                echo '</p>';
                 echo '</table';
                 
             } else {

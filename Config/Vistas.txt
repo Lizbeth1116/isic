@@ -1,8 +1,8 @@
-Visitas:485
+Visitas:507
 Explorer:0
 Edge:0
 Opera:0
 Firefox:2
-Chrome:483
+Chrome:505
 Safari:0
 Otros:0
