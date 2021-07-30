@@ -5,12 +5,12 @@ $servInfo = getServicio($_GET["idServ"]);
 ?>
 
 <div class="servicios">
-    <section class="seccion-1">
+    <section class="seccion-1" >
 
         <?php
         echo '<img src="img/servicios/' . $servInfo[0][0] . '.svg?1.0.0">';
         ?>
-        <div class="contenedor-texto">
+        <div class="contenedor-texto" >
 
             <?php
             if ($_GET["idServ"] == 4) {
@@ -44,13 +44,40 @@ $servInfo = getServicio($_GET["idServ"]);
                 echo '</table';
                 
             } else {
-                echo '<h2>Objetivo de ' . $servInfo[0][0] . '</h2>
-                      <p>' . $servInfo[0][1] . ' </p>';
+               echo ' <h2>Objetivo de ' . $servInfo[0][0] . '</h2>
+                      <p >' . $servInfo[0][1] . ' </p>';
             }
             ?>
         </div>
        </div>
     </section>
+<?php
+    if ($_GET["idServ"] == 1) {
+        $Docente = getDocente();
+  echo '<table class="table table-light">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Profesor(a)</th>
+                                                        <th>Correo</th>
+                                                    </tr>
+                                                </thead>
+                                                ';
+                                                for ($i = 0; $i < sizeof($Docente); $i++) {
+                                                    if ($Docente[$i][4] === 2) {
+                                                        echo '
+                                                        <tr>
+                                                            <td>' . $Docente[$i][1] . '</td>
+                                                            <td>' . $Docente[$i][2] . '</td>
+                                                        </tr>';
+                                                    }
+                                                }
+                                            
+                                           echo' </table>';
+    }
+    ?>
+
+
+
     <?php
     if ($_GET["idServ"] == 2) {
         $Asesoria = getAsesorias();
@@ -60,7 +87,7 @@ $servInfo = getServicio($_GET["idServ"]);
         <section class="site-section">
         <div class="container texto">
             <div class="section-heading text-center">
-                <h2><strong>Asesorías</strong></h2>
+                <h2 style="color:#8a8a8a"><strong>Asesorías</strong></h2>
             </div>
             <div class="row topmargin-xs">';
         $asAux = 0;

@@ -111,15 +111,15 @@ a {
 }
 .logo-isicc-sup {
     min-width: 75px;
-    max-width: 90px;
+    max-width: 95px;
 }
 .logo-itsoeh-sup {
     min-width: 60px;
-    max-width: 75px;
+    max-width: 85px;
 }
 .logo-tec-sup {
     min-width: 35px;
-    max-width: 5px;
+    max-width: 60px;
 }
 .navbar-toggler {
     font-size: 40px;
@@ -135,7 +135,7 @@ a {
     min-height: 700px;
     align-items: center;
     /* Chrome 10-25, Safari 5.1-6 */
-    background-image: linear-gradient(to left, rgba(163, 160, 160, 0.123), rgba(204, 199, 199, 0.158)), url(../img/itsoeh-isc.png);
+    background-image: linear-gradient(to left, rgba(163, 160, 160, 0.123), rgba(204, 199, 199, 0.158)), url(../img/itsoeh-isc.jpg);
     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     background-size: cover;
     color: #fff !important;

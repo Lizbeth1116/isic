@@ -16,7 +16,7 @@ include('AdminSidebar.php');
                     <th>Asesor</th>
                     <th>Asignatura</th>
                     <th>Horario</th>
-                    <th><button type="button" class="btn btn-light" data-toggle="modal" data-target="#myModal1AddAs"><i class="bi bi-plus-circle"></i></button></th>
+                    <th><button type="button" class="btn btn-light" data-toggle="modal" data-target="#myModal1AddAs"><i class="bi bi-calendar-plus"></i></button></th>
             <div class="modal topmargin-sm" id="myModal1AddAs">
                 <div class="modal-dialog">
                     <div class="modal-content">
