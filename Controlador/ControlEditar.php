@@ -326,6 +326,26 @@ switch ($opGlobal):
         $stmt->bind_param("iiisiis", $idGen, $AnioGen, $TiempGen, $MatGen, $EspGen, $LabGen, $DTGen);
         $aux = "Generales";
         break;
+
+
+        case 11://Admin Información relevante
+            include("./Controlador.php");
+            $docente=$_POST['DocenteEdit'];
+            $iddocente = $_POST['iddocenteEdit'];
+            $GradoAcademico = $_POST['GradoAcademicoEdit'];
+            $NombreDoc = $_POST['NombreDocEdit'];
+            $APaternoDoc = $_POST['APaternoDocEdit'];
+            $AMaternoDoc= $_POST['AMaternoDocEdit'];
+            $correoDoc = $_POST['correoDocEdit'];
+            $tiempoDoc = $_POST['tiempoDocEdit'];
+            $tutorDoc = $_POST['tutorDocEdit'];
+
+            $stmt = $con->prepare("call isic.sp_editDocente(?,?,?,?,?,?,?,?,?)");
+            $stmt->bind_param("iisssssii", $docente, $iddocente, $GradoAcademico, $NombreDoc, $APaternoDoc, $AMaternoDoc,   $correoDoc, $tiempoDoc,$tutorDoc);
+            $aux = "Docente";
+            break;
+
+
 endswitch;
 $stmt->execute();
 $stmt->close();

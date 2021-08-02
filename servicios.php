@@ -67,7 +67,7 @@ $servInfo = getServicio($_GET["idServ"]);
                                                         echo '
                                                         <tr>
                                                             <td>' . $Docente[$i][1] . '</td>
-                                                            <td>' . $Docente[$i][2] . '</td>
+                                                            <td>' . $Docente[$i][3] . '</td>
                                                         </tr>';
                                                     }
                                                 }
