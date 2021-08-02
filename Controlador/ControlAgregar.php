@@ -244,6 +244,25 @@ switch ($opGlobal):
         $stmt->bind_param("sssisssi", $nomSol, $ApSol, $emailSol, $semSol, $grupSol, $telefSol, $matriSol, $proySol);
         break;
 
+        case 9://Admin Docentes
+            echo "Hola";
+            $idDoc = $_POST['idDocAdd'];
+            $gradoDoc = $_POST['gradosDocAdd'];
+            $nombreDoc = $_POST['nombreDocAdd'];
+            $apPaternoDoc = $_POST['apPaternoDocAdd'];
+            $apMaternoDoc = $_POST['apMaternoDocAdd'];
+            $correoDoc = $_POST['correoDocAdd'];
+            $tiempoDoc = $_POST['tiempoDocAdd'];
+            $tutorDoc = $_POST['tutorDocAdd'];
+            if($tiempoDoc!=2)$tiempoDoc=1;
+            if($tutorDoc!=2)$tutorDoc=1;
+      
+
+            $stmt = $con->prepare("call isic.sp_AddDocente(?,?,?,?,?,?,?,?)");
+            $stmt->bind_param("isssssii", $idDoc, $gradoDoc, $nombreDoc, $apPaternoDoc, $apMaternoDoc,$correoDoc,$tiempoDoc,$tutorDoc);
+            $aux = "Tutorias";
+            break;
+
 endswitch;
 $stmt->execute();
 $stmt->close();

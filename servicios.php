@@ -63,7 +63,7 @@ $servInfo = getServicio($_GET["idServ"]);
                                                 </thead>
                                                 ';
                                                 for ($i = 0; $i < sizeof($Docente); $i++) {
-                                                    if ($Docente[$i][4] === 2) {
+                                                    if ($Docente[$i][5] === 'Tutor') {
                                                         echo '
                                                         <tr>
                                                             <td>' . $Docente[$i][1] . '</td>
