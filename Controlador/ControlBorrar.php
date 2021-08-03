@@ -123,10 +123,10 @@ switch ($datos[0]):
         $stmt = $con->prepare("call isic.DesHabPostFb(?,?,?)");
         $stmt->bind_param("iii", $datos[1], $datos[2], $datos[3]);
         $aux = "Galerias";
-case 14:
+case 16:
     $stmt = $con->prepare("call isic.sp_DeleteDocente(?)");
     $stmt->bind_param("i", $datos[1]);
-    $aux = "Docentes";
+    $aux = "Tutorias";
 
 
 endswitch;

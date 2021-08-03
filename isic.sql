@@ -7,6 +7,7 @@
 -- Versión del servidor: 10.4.6-MariaDB
 -- Versión de PHP: 7.3.8
 
+
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
 START TRANSACTION;
@@ -1624,6 +1625,72 @@ ALTER TABLE `p_egreso_esp`
 ALTER TABLE `solicitud`
   ADD CONSTRAINT `Proyecto` FOREIGN KEY (`Proyecto`) REFERENCES `tema_linea_investigacion` (`idtema_linea_investigacion`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 COMMIT;
+
+-- agregados
+
+ALTER TABLE `isic`.`docente` 
+ADD COLUMN `tutor` INT NULL DEFAULT '1' AFTER `tiempo`;
+
+USE `isic`;
+DROP procedure IF EXISTS `sp_getDocente`;
+
+DELIMITER $$
+USE `isic`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_getDocente`()
+BEGIN
+select iddocente, concat_ws(" ", Nombre, APaterno, AMaterno) as Docente, GradoAcademico,correo,IF(tiempo=1,"No","Tiempo Completo") as tiempo,  IF(tutor=1,"No","Tutor") as tutor
+FROM isic.docente;
+END$$
+
+DELIMITER ;
+
+
+
+USE `isic`;
+DROP procedure IF EXISTS `sp_AddDocente`;
+-- add docentessp_getDocente
+DELIMITER $$
+USE `isic`$$
+CREATE PROCEDURE `sp_AddDocente`(`docente` INT, `grad` VARCHAR(15), `nom` VARCHAR(45),  `app` VARCHAR(45), `apm` VARCHAR(45),`correo` VARCHAR(45),`tiempo` INT,`tutor` INT)
+BEGIN
+INSERT INTO `isic`.`docente` (`iddocente`, `GradoAcademico`, `Nombre`, `APaterno`, `AMaterno`,`correo`, `tiempo`, `tutor`)
+VALUES (docente,grad, nom, app, apm,correo,tiempo,tutor);
+END$$
+
+DELIMITER ;
+
+
+USE `isic`;
+DROP procedure IF EXISTS `sp_DeleteDocente`;
+
+DELIMITER $$
+USE `isic`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_DeleteDocente`(`iddocente` INT)
+BEGIN
+DELETE FROM `isic`.`docente` WHERE (`iddocente` = docente);
+END$$
+
+DELIMITER ;
+
+
+
+
+USE `isic`;
+DROP procedure IF EXISTS `sp_editDocente`;
+
+DELIMITER $$
+USE `isic`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_editDocente`(`docente` INT,`iddocente` INT, `GradoAcademico` VARCHAR(15), `Nombre` VARCHAR(45),  `APaterno` VARCHAR(45),  `AMaterno` VARCHAR(45),`correo` VARCHAR(45),`tiempo` INT,`tutor` INT)
+BEGIN
+UPDATE `isic`.`docente` 
+SET `iddocente` = docente, `GradoAcademico` = GradoAcademico, `Nombre` = ini, `Nombre` = Nombre, 
+ `APaterno` = APaterno, `AMaterno` = AMaterno, `correo` = correo, `tiempo` = tiempo
+ WHERE (`iddocente` = iddocente);
+END$$
+
+DELIMITER ;
+
+
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

@@ -342,7 +342,7 @@ switch ($opGlobal):
 
             $stmt = $con->prepare("call isic.sp_editDocente(?,?,?,?,?,?,?,?,?)");
             $stmt->bind_param("iisssssii", $docente, $iddocente, $GradoAcademico, $NombreDoc, $APaternoDoc, $AMaternoDoc,   $correoDoc, $tiempoDoc,$tutorDoc);
-            $aux = "Docente";
+            $aux = "Tutorias";
             break;
 
 
