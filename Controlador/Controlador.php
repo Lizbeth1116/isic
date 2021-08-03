@@ -259,6 +259,29 @@ function getDocente() {
     return $doce;
 }
 
+
+function getDocenteEdit() {
+    global $con;
+    $stmt = $con->prepare("call isic.sp_getDocenteEdit();");
+    $stmt->execute();
+    $stmt->bind_result($iddocente, $Nombre,$APaterno,$AMaterno,$GradoAcademico, $correo, $tiempo, $tutor);
+    $i = 0;
+    while ($stmt->fetch()) {
+        $docente[$i][0] = $iddocente;
+        $docente[$i][1] = $Nombre;
+        $docente[$i][2] = $APaterno;
+        $docente[$i][3] = $AMaterno;
+        $docente[$i][4] = $GradoAcademico;
+        $docente[$i][5] = $correo;
+        $docente[$i][6] = $tiempo;
+        $docente[$i][7] = $tutor;
+        $i++;
+    }
+    $stmt->close();
+    return $docente;
+}
+
+
 function getEspecialidadAdmin() {
     global $con;
     $stmt = $con->prepare("call isic.sp_getEspecialidadAdmin();");

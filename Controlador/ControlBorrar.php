@@ -126,7 +126,7 @@ switch ($datos[0]):
 case 16:
     $stmt = $con->prepare("call isic.sp_DeleteDocente(?)");
     $stmt->bind_param("i", $datos[1]);
-    $aux = "Tutorias";
+    $aux = "Docentes";
 
 
 endswitch;

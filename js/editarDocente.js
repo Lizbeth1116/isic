@@ -17,8 +17,7 @@
 })();
 
 
-datosModalDoc = function (docente,iddocente, GradoAcademico, NombreDoc, APaternoDoc, AMaternoDoc, correoDoc,tiempoDoc,tutorDoc){
-    $('#docente').val(docente);
+datosModalDoc = function (iddocente, GradoAcademico, NombreDoc,APaternoDoc,AMaternoDoc,correoDoc,tiempoDoc,tutorDoc){
     $('#iddocente').val(iddocente);
     $('#GradoAcademico').val(GradoAcademico);
     $('#NombreDoc').val(NombreDoc);

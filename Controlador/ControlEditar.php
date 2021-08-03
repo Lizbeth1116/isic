@@ -330,19 +330,18 @@ switch ($opGlobal):
 
         case 11://Admin Información relevante
             include("./Controlador.php");
-            $docente=$_POST['DocenteEdit'];
-            $iddocente = $_POST['iddocenteEdit'];
-            $GradoAcademico = $_POST['GradoAcademicoEdit'];
-            $NombreDoc = $_POST['NombreDocEdit'];
-            $APaternoDoc = $_POST['APaternoDocEdit'];
-            $AMaternoDoc= $_POST['AMaternoDocEdit'];
-            $correoDoc = $_POST['correoDocEdit'];
-            $tiempoDoc = $_POST['tiempoDocEdit'];
+            $iddocente = $_POST['iddocente'];
+            $GradoAcademico = $_POST['GradoAcademico'];
+            $NombreDoc = $_POST['NombreDoc'];
+            $APaternoDoc = $_POST['APaternoDoc'];
+            $AMaternoDoc= $_POST['AMaternoDoc'];
+            $correoDoc = $_POST['correoDoc'];
+            $tiempoDoc = $_POST['tiempoDoc'];
             $tutorDoc = $_POST['tutorDocEdit'];
 
-            $stmt = $con->prepare("call isic.sp_editDocente(?,?,?,?,?,?,?,?,?)");
-            $stmt->bind_param("iisssssii", $docente, $iddocente, $GradoAcademico, $NombreDoc, $APaternoDoc, $AMaternoDoc,   $correoDoc, $tiempoDoc,$tutorDoc);
-            $aux = "Tutorias";
+            $stmt = $con->prepare("call isic.sp_editDocente(?,?,?,?,?,?,?,?)");
+            $stmt->bind_param("isssssii", $iddocente, $GradoAcademico, $NombreDoc, $APaternoDoc, $AMaternoDoc,   $correoDoc, $tiempoDoc,$tutorDoc);
+            $aux = "Docentes";
             break;
 
 

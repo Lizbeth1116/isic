@@ -7,7 +7,7 @@
                 <li><a href="AdminMalla.php?1.0.0" class="'.$pagina2.'"><i class="bi bi-receipt-cutoff"></i>Malla Curricular</a></li>
                 <li><a href="AdminInvestigacion.php?1.0.0" class="'.$pagina3.'"><i class="bi bi-people"></i>Investigacion</a></li>
                 <li><a href="AdminGalerias.php?1.0.0" class="'.$pagina4.'"><i class="bi bi-images"></i>Galerías</a></li>
-                <li><a href="AdminTutorias.php?1.0.0" class="'.$pagina11.'"><i class="bi bi-file-earmark-person"></i>Docentes</a></li>
+                <li><a href="AdminDocentes.php?1.0.0" class="'.$pagina11.'"><i class="bi bi-file-earmark-person"></i>Docentes</a></li>
                 <li><a href="AdminAsesorias.php?1.0.0" class="'.$pagina5.'"><i class="bi bi-person-check-fill"></i>Asesorias</a></li>
                 <li><a href="AdminComplementarias.php?1.0.0" class="'.$pagina6.'"><i class="bi bi-puzzle"></i>Complementarias</a></li>
                 <li><a href="AdminHistorialEsp.php?1.0.0" class="'.$pagina7.'"><i class="bi bi-clock-history"></i>Hitorial Especialidad</a></li>

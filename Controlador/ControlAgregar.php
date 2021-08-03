@@ -260,7 +260,7 @@ switch ($opGlobal):
 
             $stmt = $con->prepare("call isic.sp_AddDocente(?,?,?,?,?,?,?,?)");
             $stmt->bind_param("isssssii", $idDoc, $gradoDoc, $nombreDoc, $apPaternoDoc, $apMaternoDoc,$correoDoc,$tiempoDoc,$tutorDoc);
-            $aux = "Tutorias";
+            $aux = "Docentes";
             break;
 
 endswitch;

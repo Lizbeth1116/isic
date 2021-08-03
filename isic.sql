@@ -1665,9 +1665,9 @@ DROP procedure IF EXISTS `sp_DeleteDocente`;
 
 DELIMITER $$
 USE `isic`$$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_DeleteDocente`(`iddocente` INT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_DeleteDocente`(`iddoc` INT)
 BEGIN
-DELETE FROM `isic`.`docente` WHERE (`iddocente` = docente);
+DELETE FROM `isic`.`docente` WHERE (`iddocente` = iddoc);
 END$$
 
 DELIMITER ;
@@ -1680,15 +1680,31 @@ DROP procedure IF EXISTS `sp_editDocente`;
 
 DELIMITER $$
 USE `isic`$$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_editDocente`(`docente` INT,`iddocente` INT, `GradoAcademico` VARCHAR(15), `Nombre` VARCHAR(45),  `APaterno` VARCHAR(45),  `AMaterno` VARCHAR(45),`correo` VARCHAR(45),`tiempo` INT,`tutor` INT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_editDocente`(`iddoc` INT, `GradoAc` VARCHAR(15), `Nom` VARCHAR(45), `APat` VARCHAR(45),  `AMat` VARCHAR(45),`corr` VARCHAR(45),`tiem` INT,`tuto` INT)
 BEGIN
 UPDATE `isic`.`docente` 
-SET `iddocente` = docente, `GradoAcademico` = GradoAcademico, `Nombre` = ini, `Nombre` = Nombre, 
- `APaterno` = APaterno, `AMaterno` = AMaterno, `correo` = correo, `tiempo` = tiempo
- WHERE (`iddocente` = iddocente);
+SET `GradoAcademico` = GradoAc, `Nombre` = Nom,  `APaterno` = APat, `AMaterno` = AMat, `correo` = corr, `tiempo` = tiem, `tutor` = tuto
+ WHERE (`iddocente` = iddoc);
 END$$
 
 DELIMITER ;
+
+
+
+USE `isic`;
+DROP procedure IF EXISTS `sp_getDocenteEdit`;
+
+DELIMITER $$
+USE `isic`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_getDocenteEdit`()
+BEGIN
+select *
+FROM isic.docente;
+END$$
+
+DELIMITER ;
+
+
 
 
 
