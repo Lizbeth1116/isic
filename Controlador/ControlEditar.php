@@ -337,10 +337,10 @@ switch ($opGlobal):
             $AMaternoDoc= $_POST['AMaternoDoc'];
             $correoDoc = $_POST['correoDoc'];
             $tiempoDoc = $_POST['tiempoDoc'];
-            $tutorDoc = $_POST['tutorDocEdit'];
+            $tutorDoc = $_POST['tutorDoc'];
 
             $stmt = $con->prepare("call isic.sp_editDocente(?,?,?,?,?,?,?,?)");
-            $stmt->bind_param("isssssii", $iddocente, $GradoAcademico, $NombreDoc, $APaternoDoc, $AMaternoDoc,   $correoDoc, $tiempoDoc,$tutorDoc);
+            $stmt->bind_param("isssssii", $iddocente, $GradoAcademico, $NombreDoc, $APaternoDoc, $AMaternoDoc, $correoDoc, $tiempoDoc,$tutorDoc);
             $aux = "Docentes";
             break;
 

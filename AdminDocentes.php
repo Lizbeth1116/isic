@@ -118,10 +118,15 @@ include('AdminSidebar.php');
                             <h5 class="modal-title" style="color:darkslategrey;">Editar</h5>
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
                         </div>
-                        <!-- Modal body-->
-                        <div class="modal-body">
-                            <form class="needs-validation" novalidate action="Controlador/ControlEditar.php" method="POST">
-                                
+                        <!-- Modal body -->
+                                                    <div class="modal-body">
+                                                        <form class="needs-validation" novalidate action="Controlador/ControlEditar.php" enctype="multipart/form-data" method="POST">
+                                                            <div class="form-group" style="display:none">
+                                                                <input type="text" class="form-control" id="iddocente" name="iddocente">
+                                                            </div>
+                                                            <div class="form-group" style="display:none">
+                                                                <input type="text" class="form-control" id="opGlobal" name="opGlobal" value="11">
+                                                            </div>
                                 <div class="form-group">
                                     <label for="exampleInputNomDoc">Nombre:</label>
                                     <input type="text" class="form-control" id="NombreDoc" aria-describedby="" name="NombreDoc" required>
@@ -129,15 +134,15 @@ include('AdminSidebar.php');
 
                                 <div class="form-group">
                                         <label for="exampleInputApPaternoDoc">Apellido Paterno:</label>
-                                        <input type="text" class="form-control" id="ApPatD" aria-describedby="" name="apPaternoDocAdd" required>
+                                        <input type="text" class="form-control" id="APaternoDoc" aria-describedby="" name="APaternoDoc" required>
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputApMaternoDoc">Apellido Materno:</label>
-                                        <input type="text" class="form-control" id="ApMatD" aria-describedby="" name="apMaternoDocAdd" >
+                                        <input type="text" class="form-control" id="AMaternoDoc" aria-describedby="" name="AMaternoDoc" >
                                     </div>
 
 
-                                <select class="custom-select mb-2 " name="GradoAcademicoEdit">
+                                <select class="custom-select mb-2 " name="GradoAcademico">
                                     <option selected="">Selecciona Grado Académico</option>
                                     <option value="Ingeniería">Ingeniería</option>
                                     <option value="Ingeniería">Licenciatura</option>
@@ -146,23 +151,17 @@ include('AdminSidebar.php');
                                 </select>
                                 <div class="form-group">
                                     <label for="exampleInputCorreoDoc">Correo Electrónico:</label>
-                                    <input type="email" class="form-control" id="correoDocEdit" aria-describedby="" name="correoDocEdit" required>
+                                    <input type="email" class="form-control" id="correoDoc" aria-describedby="" name="correoDoc" required>
                                 </div>
                                 <div class="custom-control custom-checkbox mb-2">
-                                    <input type="checkbox" class="custom-control-input" value="2" name="tiempoDocEdit" id="customCheck1">
+                                    <input type="checkbox" class="custom-control-input" value="2" name="tiempoDoc" id="customCheck1">
                                     <label class="custom-control-label" for="customCheck1">Tiempo Completo</label>
                                 </div>
                                 <div class="custom-control custom-checkbox mb-2">
-                                    <input type="checkbox" class="custom-control-input" value="2" name="tutorDocEdit" id="customCheck2">
+                                    <input type="checkbox" class="custom-control-input" value="2" name="tutorDoc" id="customCheck2">
                                     <label class="custom-control-label" for="customCheck2">Tutor</label>
                                 </div>
-                                <div class="form-group" style="display:none">
-                                <input type="text" class="form-control" id="iddocenteEdit" name="iddocenteEdit" value="x">
-
-                            </div>
-                                <div class="form-group" style="display:none">
-                                    <input type="text" class="form-control" id="opGlobal" name="opGlobal" value="11">
-                                </div>
+                               
                                 <button type="submit" class="btn btn-primary">Aceptar</button>
                                 <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
                             </form>
@@ -176,19 +175,18 @@ include('AdminSidebar.php');
             }
             ?>
 
-
-            </p>
-
-
+</tbody>
         </table>
 
 
 
     </div>
+</div>  
+ </div>
 </div>
 <?php include('AdminFooter.php') ?>
 <!--JS Local-->
-<script type="text/javascript" src="js/editarAsesorias.js?1.0.0"></script>
+<script type="text/javascript" src="js/editarDocente.js?1.0.0"></script>
 </body>
 
 </html>
