@@ -33,12 +33,12 @@ include('AdminSidebar.php');
                                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                             </div>
 
-                            <!-- Modal body -->
-
-
-                            <div class="modal-body">
-                                <form class="needs-validation" novalidate action="Controlador/ControlAgregar.php" method="POST">
-
+                             <!-- Modal body -->
+                             <div class="modal-body">
+                                        <form class="needs-validation" novalidate action="Controlador/ControlAgregar.php" enctype="multipart/form-data" method="POST">
+                                            <div class="form-group" style="display:none">
+                                                <input type="text" class="form-control" id="opGlobal" name="opGlobal" value="9">
+                                            </div>
                                     <div class="form-group">
                                         <label for="exampleInputIdDoc">Número de control </label>
                                         <input type="number" class="form-control" id="numControl" aria-describedby="" placeholder="123" name="idDocAdd" required>
@@ -67,12 +67,12 @@ include('AdminSidebar.php');
                                         <input type="email" class="form-control" id="CorreoD" aria-describedby="" name="correoDocAdd" required>
                                     </div>
                                     <div class="custom-control custom-checkbox mb-2">
-                                        <input  type="checkbox" class="custom-control-input" value="2" name="tiempoDocAdd" id="Check1" >
-                                        <label class="custom-control-label" for="Check1">Tiempo Completo</label>
+                                        <input  type="checkbox" class="custom-control-input" value="2" name="tiempoDocAdd" id="customCheck1" >
+                                        <label class="custom-control-label" for="customCheck1">Tiempo Completo</label>
                                     </div>
                                     <div class="custom-control custom-checkbox mb-2">
-                                        <input type="checkbox" class="custom-control-input" value="2" name="tutorDocAdd" id="Check2">
-                                        <label class="custom-control-label" for="Check2">Tutor</label>
+                                        <input type="checkbox" class="custom-control-input" value="2" name="tutorDocAdd" id="customCheck2">
+                                        <label class="custom-control-label" for="customCheck2">Tutor</label>
                                     </div>
 
                                     
@@ -142,7 +142,7 @@ include('AdminSidebar.php');
 
                                 <select class="custom-select mb-2 " name="GradoAcademico" id="GradoAcademico" required >
                                     <option value="Ingeniería">Ingeniería</option>
-                                    <option value="Ingeniería">Licenciatura</option>
+                                    <option value="Licenciatura">Licenciatura</option>
                                     <option value="Maestría">Maestría</option>
                                     <option value="Dotorado">Dotorado</option>
                                 </select>
