@@ -1698,11 +1698,12 @@ DELIMITER $$
 USE `isic`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_getDocenteEdit`()
 BEGIN
-select *
+select iddocente,Nombre, APaterno, AMaterno, GradoAcademico,correo,IF(tiempo=1,"No","Tiempo Completo") as tiempo,  IF(tutor=1,"No","Tutor") as tutor
 FROM isic.docente;
 END$$
 
 DELIMITER ;
+
 
 
 

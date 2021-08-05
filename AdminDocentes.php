@@ -151,12 +151,12 @@ include('AdminSidebar.php');
                                     <input type="email" class="form-control" id="correoDoc" aria-describedby="" name="correoDoc" required>
                                 </div>
                                 <div class="custom-control custom-checkbox mb-2">
-                                    <input type="checkbox" class="custom-control-input" value="2" name="tiempoDoc" id="customCheck1">
-                                    <label class="custom-control-label" for="customCheck1">Tiempo Completo</label>
+                                    <input type="checkbox" class="custom-control-input" value="2" name="tiempoDoc" id="Check1" >
+                                    <label class="custom-control-label" for="Check1">Tiempo Completo</label>
                                 </div>
                                 <div class="custom-control custom-checkbox mb-2">
-                                    <input type="checkbox" class="custom-control-input" value="2" name="tutorDoc" id="customCheck2">
-                                    <label class="custom-control-label" for="customCheck2">Tutor</label>
+                                    <input type="checkbox" class="custom-control-input" value="2" name="tutorDoc" id="Check2">
+                                    <label class="custom-control-label" for="Check2">Tutor</label>
                                 </div>
                                
                                 <button type="submit" class="btn btn-primary">Aceptar</button>

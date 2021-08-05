@@ -338,6 +338,8 @@ switch ($opGlobal):
             $correoDoc = $_POST['correoDoc'];
             $tiempoDoc = $_POST['tiempoDoc'];
             $tutorDoc = $_POST['tutorDoc'];
+            if($tiempoDoc!=2)$tiempoDoc=1;
+            if($tutorDoc!=2)$tutorDoc=1;
 
             $stmt = $con->prepare("call isic.sp_editDocente(?,?,?,?,?,?,?,?)");
             $stmt->bind_param("isssssii", $iddocente, $GradoAcademico, $NombreDoc, $APaternoDoc, $AMaternoDoc, $correoDoc, $tiempoDoc,$tutorDoc);
