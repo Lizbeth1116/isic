@@ -54,7 +54,11 @@ $servInfo = getServicio($_GET["idServ"]);
 <?php
     if ($_GET["idServ"] == 1) {
         $Docente = getDocente();
-  echo '<table class="table table-light">
+        
+  echo '<div class="container" >
+            <div class="row justify-content-center" >
+                <div class="col-auto mt-5" >
+                    <table class="table table-light">
                                                 <thead>
                                                     <tr>
                                                         <th>Profesor(a)</th>
@@ -72,7 +76,10 @@ $servInfo = getServicio($_GET["idServ"]);
                                                     }
                                                 }
                                             
-                                           echo' </table>';
+                                           echo' </table>
+                                           </div>
+                                           </div>
+                                           </div>';
     }
     ?>
 
