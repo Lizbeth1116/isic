@@ -54,10 +54,15 @@ $servInfo = getServicio($_GET["idServ"]);
 <?php
     if ($_GET["idServ"] == 1) {
         $Docente = getDocente();
+    
         
+
   echo '<div class="container" >
             <div class="row justify-content-center" >
                 <div class="col-auto mt-5" >
+                <div class="section-heading text-center">
+                <h2 style="color:#8a8a8a"><strong>Tutores</strong></h2>
+            </div>
                     <table class="table table-light">
                                                 <thead>
                                                     <tr>

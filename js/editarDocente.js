@@ -24,6 +24,14 @@ datosModalDoc = function (iddoc, GraAca, NomDoc,APate,AMate,corDoc,tiemDoc,tutDo
     $('#APaternoDoc').val(APate);
     $('#AMaternoDoc').val(AMate);
     $('#correoDoc').val(corDoc);
-    $('#tiempoDoc').val(tiemDoc);
-    $('#tutorDoc').val(tutDoc);
+//    console.log(document.getElementById('Check1'));
+    if(tiemDoc!='No')
+    document.getElementById('Check1').checked=true;
+    else 
+    document.getElementById("Check1").checked=false;
+    if(tutDoc!='No')
+    document.getElementById('Check2').checked=true;
+    else 
+    document.getElementById("Check2").checked=false;
+    
 };

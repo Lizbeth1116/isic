@@ -23,9 +23,13 @@ include('AdminSidebar.php');
                 <th>Correo</th>
                 <th>¿Tiempo Completo?</th>
                 <th>¿Tutor?</th>
-                <th><button type="button" class="btn btn-light" data-toggle="modal" data-target="#myModal1AddAs"><i class="bi bi-calendar-plus"></i></button></th>
-                <div class="modal topmargin-sm" id="myModal1AddAs">
-                    <div class="modal-dialog">
+              
+                <th><button type="button" class="btn btn-light" data-toggle="modal" data-target="#myModal1AddAs"><i class="bi bi-person-plus-fill"></i></button></th>
+               
+               <div class="modal fade" id="myModal1AddAs" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+ 
+                   <div class="modal-dialog ">
+               
                         <div class="modal-content">
                             <!-- Modal Header-->
                             <div class="modal-header">
@@ -108,7 +112,9 @@ include('AdminSidebar.php');
                         echo '<a class="dropdown-item" href="Controlador/ControlBorrar.php?id=16*' . $doce[$j][0] . '*0*2"><i class="bi bi-trash-fill"></i>Eliminar</a>
                     </div>
                     </div>
-                    <div class="modal topmargin-sm" id="myModalDoc">
+
+
+                   <div class="modal fade" id="myModalDoc" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                     <div class="modal-content">
                         <!-- Modal Header-->
@@ -144,7 +150,7 @@ include('AdminSidebar.php');
                                     <option value="Ingeniería">Ingeniería</option>
                                     <option value="Licenciatura">Licenciatura</option>
                                     <option value="Maestría">Maestría</option>
-                                    <option value="Dotorado">Dotorado</option>
+                                    <option value="Doctorado">Doctorado</option>
                                 </select>
                                 <div class="form-group">
                                     <label for="exampleInputCorreoDoc">Correo Electrónico:</label>
@@ -152,7 +158,7 @@ include('AdminSidebar.php');
                                 </div>
                                 <div class="custom-control custom-checkbox mb-2">
                                     <input type="checkbox" class="custom-control-input" value="2" name="tiempoDoc" id="Check1" >
-                                    <label class="custom-control-label" for="Check1">Tiempo Completo</label>
+                                    <label class="custom-control-label" for="Check1">Tiempo Completo </label>
                                 </div>
                                 <div class="custom-control custom-checkbox mb-2">
                                     <input type="checkbox" class="custom-control-input" value="2" name="tutorDoc" id="Check2">
