@@ -845,21 +845,21 @@ CREATE TABLE `docente` (
 
 INSERT INTO `docente` (`iddocente`, `GradoAcademico`, `Nombre`, `APaterno`, `AMaterno`, `correo`, `tiempo`) VALUES
 (1, 'Ingeniería', 'Javier', 'Pérez', 'Escamilla', 'javierperez@itsoeh.edu.mx', 2),
-(2, 'Maestria', 'Lorena', 'Mendoza', 'Gúzman', 'lmendozag@itsoeh.edu.mx', 2),
-(3, 'Maestria', 'Dulce Jazmín', 'Navarrete', 'Arias', 'dnavarrete@itsoeh.edu.mx', 1),
-(5, 'Maestria', 'Mario', 'Pérez', 'Bautista', 'mperez@itsoeh.edu.mx', 2),
-(6, 'Maestria', 'Cristy Elizabeth', 'Aguilar', 'Ojeda', 'caguilar@itsoeh.edu.mx', 2),
-(7, 'Maestria', 'Héctor Daniel', 'Hernández', 'García', 'hhernandez@itsoeh.edu.mx', 2),
-(8, 'Maestria', 'Eliud', 'Paredes', 'Reyes', 'eparedes@itsoeh.edu.mx', 2),
+(2, 'Maestría', 'Lorena', 'Mendoza', 'Gúzman', 'lmendozag@itsoeh.edu.mx', 2),
+(3, 'Maestría', 'Dulce Jazmín', 'Navarrete', 'Arias', 'dnavarrete@itsoeh.edu.mx', 1),
+(5, 'Maestría', 'Mario', 'Pérez', 'Bautista', 'mperez@itsoeh.edu.mx', 2),
+(6, 'Maestría', 'Cristy Elizabeth', 'Aguilar', 'Ojeda', 'caguilar@itsoeh.edu.mx', 2),
+(7, 'Maestría', 'Héctor Daniel', 'Hernández', 'García', 'hhernandez@itsoeh.edu.mx', 2),
+(8, 'Maestría', 'Eliud', 'Paredes', 'Reyes', 'eparedes@itsoeh.edu.mx', 2),
 (9, 'Doctorado', 'Elizabeth', 'García', 'Ríos', 'egarciar@itsoeh.edu.mx', 2),
-(10, 'Maestria', 'Guadalupe', 'Calvo', 'Torres', 'gcalvo@itsoeh.edu.mx', 1),
-(11, 'Maestria', 'Aline', 'Pérez', 'Martínez', 'aperez@itsoeh.edu.mx', 1),
-(12, 'Maestria', 'Juan Carlos', 'Céron', 'Almaraz', 'jcerona@itsoeh.edu.mx', 1),
-(13, 'Maestria', 'Sergio', 'Cruz', 'Pérez', 'scruzp@itsoeh.edu.mx', 1),
-(14, 'Maestria', 'Guillermo', 'Castañeda', 'Ortíz', 'gcastaneda@itsoeh.edu.mx', 1),
+(10, 'Maestría', 'Guadalupe', 'Calvo', 'Torres', 'gcalvo@itsoeh.edu.mx', 1),
+(11, 'Maestría', 'Aline', 'Pérez', 'Martínez', 'aperez@itsoeh.edu.mx', 1),
+(12, 'Maestría', 'Juan Carlos', 'Céron', 'Almaraz', 'jcerona@itsoeh.edu.mx', 1),
+(13, 'Maestría', 'Sergio', 'Cruz', 'Pérez', 'scruzp@itsoeh.edu.mx', 1),
+(14, 'Maestría', 'Guillermo', 'Castañeda', 'Ortíz', 'gcastaneda@itsoeh.edu.mx', 1),
 (15, 'Ingeniería', 'Jorge Armando', 'Garcia', 'Bautista', 'jgarciab@itsoeh.edu.mx', 1),
-(16, 'Maestria', 'Juan Lucino', 'Lugo', 'López', 'llugol@itsoeh.edu.mx', 1),
-(17, 'Maestria', 'Juan Adolfo', 'Alvarez', 'Martínez', 'jaalvarez@itsoeh.edu.mx', 1),
+(16, 'Maestría', 'Juan Lucino', 'Lugo', 'López', 'llugol@itsoeh.edu.mx', 1),
+(17, 'Maestría', 'Juan Adolfo', 'Alvarez', 'Martínez', 'jaalvarez@itsoeh.edu.mx', 1),
 (18, 'Licenciatura', 'German', 'Rebolledo', 'Avalos', 'grebolledo@itsoeh.edu.mx', 1);
 
 -- --------------------------------------------------------
@@ -1698,7 +1698,7 @@ DELIMITER $$
 USE `isic`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_getDocenteEdit`()
 BEGIN
-select iddocente,Nombre, APaterno, AMaterno, GradoAcademico,correo,IF(tiempo=1,"No","Tiempo Completo") as tiempo,  IF(tutor=1,"No","Tutor") as tutor
+SELECT iddocente,GradoAcademico,Nombre,APaterno,AMaterno,correo,IF(tiempo=1,"No","Tiempo Completo") as tiempo,IF(tutor=1,"No","Tutor") as tutor
 FROM isic.docente;
 END$$
 
