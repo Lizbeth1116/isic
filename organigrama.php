@@ -45,11 +45,11 @@ $Docente = getDocente();
                                                 </thead>
                                                 <?php
                                                 for ($i = 0; $i < sizeof($Docente); $i++) {
-                                                    if ($Docente[$i][3] === 2) {
+                                                    if ($Docente[$i][4] === "Tiempo Completo") {
                                                         echo '
                                                         <tr>
                                                             <td>' . $Docente[$i][1] . '</td>
-                                                            <td>' . $Docente[$i][2] . '</td>
+                                                            <td>' . $Docente[$i][3] . '</td>
                                                         </tr>';
                                                     }
                                                 }
@@ -82,14 +82,15 @@ $Docente = getDocente();
                                                 </thead>
                                                 <?php
                                                 for ($i = 0; $i < sizeof($Docente); $i++) {
-                                                    if ($Docente[$i][3] === 1) {
+                                                    if ($Docente[$i][4] === "No") {
                                                         echo '
                                                         <tr>
                                                             <td>' . $Docente[$i][1] . '</td>
-                                                            <td>' . $Docente[$i][2] . '</td>
+                                                            <td>' . $Docente[$i][3] . '</td>
                                                         </tr>';
                                                     }
                                                 }
+                                               
                                                 ?>
                                             </table>
                                         </div>
