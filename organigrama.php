@@ -45,7 +45,7 @@ $Docente = getDocente();
                                                 </thead>
                                                 <?php
                                                 for ($i = 0; $i < sizeof($Docente); $i++) {
-                                                    if ($Docente[$i][3] === 2) {
+                                                    if ($Docente[$i][4] === 2) {
                                                         echo '
                                                         <tr>
                                                             <td>' . $Docente[$i][1] . '</td>
@@ -82,7 +82,7 @@ $Docente = getDocente();
                                                 </thead>
                                                 <?php
                                                 for ($i = 0; $i < sizeof($Docente); $i++) {
-                                                    if ($Docente[$i][3] === 1) {
+                                                    if ($Docente[$i][4] === 1) {
                                                         echo '
                                                         <tr>
                                                             <td>' . $Docente[$i][1] . '</td>

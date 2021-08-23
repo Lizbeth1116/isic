@@ -423,7 +423,8 @@ $postfb = getPostfb();
                     echo '<h6><b style="padding-right: 10px;">Agosto - Diciembre ' . $peri[$i][2] . '</b>';
                 }
                 echo '<div class="btn-group-sm">
-                    <a type="button" class="btn btn-light" data-toggle="modal" data-target="#myModalAddImg" onclick="datosModalExp2(\'' . $peri[$i][0] . '\', \'' . $peri[$i][4] . '\');"><i class="bi bi-card-image"></i></a>
+                <a type="button" class="btn btn-light" data-toggle="modal" data-target="#ventaAgregarPostFacebook" onclick="datosModalExp2(\'' . $peri[$i][0] . '\', \'' . $peri[$i][4] . '\');"><i class="bi bi-facebook"></i></a>    
+                <a type="button" class="btn btn-light" data-toggle="modal" data-target="#myModalAddImg" onclick="datosModalExp2(\'' . $peri[$i][0] . '\', \'' . $peri[$i][4] . '\');"><i class="bi bi-card-image"></i></a>
                     <a type="button" class="btn btn-light" data-toggle="modal" data-target="#myModalEdExp" onclick="datosModalExp(\'' . $peri[$i][0] . '\', \'' . $peri[$i][1] . '\', \'' . $peri[$i][2] . '\');"><i class="bi bi-pencil-square"></i></a>
                         <div class="modal topmargin-sm" id="myModalEdExp">
                             <div class="modal-dialog">
@@ -517,7 +518,51 @@ $postfb = getPostfb();
                                     </div>
                                 </div>
                             </div>
-                        </div>';
+                        </div>
+                        
+                        <div class="modal topmargin-sm" id="ventaAgregarPostFacebook">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <!-- Modal Header-->
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" style="color:darkslategrey;">Agregar nuevo post</h5>
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    </div>
+
+                                    <!-- Modal body -->
+                                    <div class="modal-body">
+                                        <form class="needs-validation" novalidate action="Controlador/ControlAgregar.php" method="POST" enctype="multipart/form-data">
+                                            <div class="form-group" style="display:none">
+                                                <input type="text" class="form-control" id="addIdPeriImag" name="addIdPeriImag" value="1">
+                                            </div>
+                                            <div class="form-group" style="display:none">
+                                                <input type="text" class="form-control" id="addCarpetaImag" name="addCarpetaImag">
+                                            </div>
+                                            <div class="form-group" style="display:none">
+                                                <input type="text" class="form-control" id="opExp" name="opExp" value="1">
+                                            </div>
+                                            <div class="form-group" style="display:none">
+                                                <input type="text" class="form-control" id="opGlobal" name="opGlobal" value="4">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="desc" style="color:black;">Subtitulo:</label>
+                                                <input type="text" class="form-control" id="addDescripcionExp" placeholder="Ingresa una descripcion a la imagen" name="addDescripcionExp" required>
+                                                <div class="valid-feedback">Valido.</div>
+                                                <div class="invalid-feedback">Por favor verifique los campos.</div>
+                                            </div>
+                                            <div class="form-group">
+                                            <label for="desc" style="color:black;">Descripcion:</label>
+                                            <input type="textarea" class="form-control" id="descripcionExp" placeholder="Ingresa URL de post " name="descripcionExp" required>
+                                            <div class="valid-feedback">Valido.</div>
+                                            <div class="invalid-feedback">Por favor verifique los campos.</div>
+                                        </div>
+                                            <button type="submit" class="btn btn-primary">Aceptar</button>
+                                            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>'                        ;
                 if ($peri[$i][3] === 1) {
                     echo '<a type="button" class="btn btn-light mr-2" href="Controlador/ControlBorrar.php?id=7*' . $peri[$i][0] . '*2*1"><i class = "bi bi-eye"></i></a>';
                 } else {
