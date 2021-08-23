@@ -64,7 +64,7 @@ include('AdminSidebar.php');
                                         <option value="Ingeniería">Ingeniería</option>
                                         <option value="Licenciatura">Licenciatura</option>
                                         <option value="Maestría">Maestría</option>
-                                        <option value="Dotorado">Dotorado</option>
+                                        <option value="Doctorado">Doctorado</option>
                                     </select>
                                     <div class="form-group">
                                         <label for="exampleInputCorreoDoc">Correo Electrónico:</label>
