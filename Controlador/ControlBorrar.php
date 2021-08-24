@@ -132,8 +132,7 @@ case 16:
         $stmt = $con->prepare("call isic.sp_DeletePostFbisic(?)");
         $stmt->bind_param("i", $datos[1]);
         $aux = "Galerias";
-
-
+    break;
 endswitch;
 $stmt->execute();
 $stmt->close();

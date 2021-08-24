@@ -620,7 +620,7 @@ $postDeFacebook = getPostFbisic();
                 </thead>';
 
 
-               
+               if($postDeFacebook!=null)
                 foreach ($postDeFacebook as $post) {
                     echo "<tr><td>$post[0]  $post[3]</td>";
                     echo "<td>$post[1]<\td>";
@@ -631,7 +631,7 @@ $postDeFacebook = getPostFbisic();
                      <div class="dropdown-menu dropdown-menu-right">
                         <a class="dropdown-item" data-toggle="modal" data-target="#ventanaEditarPostFacebook"  onclick="datosModalEditPost('.$post[0].",'".$post[3]."','".$post[1]."'".')"><i class="bi bi-pencil-square"></i> Editar</a>';
                     echo '<a class="dropdown-item" href="Controlador/ControlBorrar.php?"><i class = "bi bi-eye-slash"></i>Ocultar</a>';
-                    echo '<a class="dropdown-item" href="Controlador/ControlBorrar.php?id=16*'.$post[0].'"><i class = "bi bi-trash-fill"></i> Eliminar</a>
+                    echo '<a class="dropdown-item" href="Controlador/ControlBorrar.php?id=17*'.$post[0].'"><i class = "bi bi-trash-fill"></i> Eliminar</a>
                     </div>
                     </div>
                     </div>
