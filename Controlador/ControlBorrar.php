@@ -127,7 +127,7 @@ case 16:
     $stmt = $con->prepare("call isic.sp_DeleteDocente(?)");
     $stmt->bind_param("i", $datos[1]);
     $aux = "Docentes";
-
+    break;
     case 17:
         $stmt = $con->prepare("call isic.sp_DeletePostFbisic(?)");
         $stmt->bind_param("i", $datos[1]);

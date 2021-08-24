@@ -45,11 +45,7 @@ $Docente = getDocente();
                                                 </thead>
                                                 <?php
                                                 for ($i = 0; $i < sizeof($Docente); $i++) {
-<<<<<<< HEAD
-                                                    if ($Docente[$i][4] === 2) {
-=======
                                                     if ($Docente[$i][4] === "Tiempo Completo") {
->>>>>>> 76e3dbd4e2c5ba929b106bf067b59060fffe9b0e
                                                         echo '
                                                         <tr>
                                                             <td>' . $Docente[$i][1] . '</td>
@@ -86,11 +82,7 @@ $Docente = getDocente();
                                                 </thead>
                                                 <?php
                                                 for ($i = 0; $i < sizeof($Docente); $i++) {
-<<<<<<< HEAD
-                                                    if ($Docente[$i][4] === 1) {
-=======
                                                     if ($Docente[$i][4] === "No") {
->>>>>>> 76e3dbd4e2c5ba929b106bf067b59060fffe9b0e
                                                         echo '
                                                         <tr>
                                                             <td>' . $Docente[$i][1] . '</td>
