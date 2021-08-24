@@ -55,3 +55,9 @@ datosModalPost = function (id, subt) {
     $('#idPost').val(id);
     $('#subPost').val(subt);
 };
+
+datosModalEditPost=function(id,titulo,post){
+$("#postId").val(id)
+$("#editartituloPost").val(titulo);
+$("#editPostUrl").val(post);
+}

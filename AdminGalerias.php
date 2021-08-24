@@ -1,10 +1,12 @@
 <?php
+
 include('./headAdmin.php');
 $pagina4 = 'active';
 include('AdminSidebar.php');
 $peri = getPeriodo();
 $CarruselExpo = getCarruselExpo();
 $postfb = getPostfb();
+$postDeFacebook = getPostFbisic();
 ?>
 <!DOCTYPE HTML>
 <div class="admon">
@@ -531,28 +533,20 @@ $postfb = getPostfb();
 
                                     <!-- Modal body -->
                                     <div class="modal-body">
-                                        <form class="needs-validation" novalidate action="Controlador/ControlAgregar.php" method="POST" enctype="multipart/form-data">
+                                        <form class="needs-validation" novalidate action="Controlador/ControlAgregar.php" method="POST">
+                                           
                                             <div class="form-group" style="display:none">
-                                                <input type="text" class="form-control" id="addIdPeriImag" name="addIdPeriImag" value="1">
-                                            </div>
-                                            <div class="form-group" style="display:none">
-                                                <input type="text" class="form-control" id="addCarpetaImag" name="addCarpetaImag">
-                                            </div>
-                                            <div class="form-group" style="display:none">
-                                                <input type="text" class="form-control" id="opExp" name="opExp" value="1">
-                                            </div>
-                                            <div class="form-group" style="display:none">
-                                                <input type="text" class="form-control" id="opGlobal" name="opGlobal" value="4">
+                                                <input type="text" class="form-control" id="opGlobal" name="opGlobal" value="10">
                                             </div>
                                             <div class="form-group">
                                                 <label for="desc" style="color:black;">Subtitulo:</label>
-                                                <input type="text" class="form-control" id="addDescripcionExp" placeholder="Ingresa una descripcion a la imagen" name="addDescripcionExp" required>
+                                                <input type="text" class="form-control" id="addDescripcionExp" placeholder="Ingresa una descripcion a la imagen" name="subPostAdd" required>
                                                 <div class="valid-feedback">Valido.</div>
                                                 <div class="invalid-feedback">Por favor verifique los campos.</div>
                                             </div>
                                             <div class="form-group">
                                             <label for="desc" style="color:black;">Descripcion:</label>
-                                            <input type="textarea" class="form-control" id="descripcionExp" placeholder="Ingresa URL de post " name="descripcionExp" required>
+                                            <input type="textarea" class="form-control" id="descripcionExp" placeholder="Ingresa URL de post " name="postLinkAdd" required>
                                             <div class="valid-feedback">Valido.</div>
                                             <div class="invalid-feedback">Por favor verifique los campos.</div>
                                         </div>
@@ -562,7 +556,52 @@ $postfb = getPostfb();
                                     </div>
                                 </div>
                             </div>
-                        </div>'                        ;
+                        </div>
+                        
+                        
+
+
+                        <div class="modal topmargin-sm" id="ventanaEditarPostFacebook">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <!-- Modal Header-->
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" style="color:darkslategrey;">Editar nuevo post</h5>
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    </div>
+
+                                    <!-- Modal body -->
+                                    <div class="modal-body">
+                                        <form class="needs-validation" novalidate action="Controlador/ControlEditar.php" method="POST">
+                                            <input type="hidden" class="form-control" id="postId" name="postId">
+                                           
+                                            <div class="form-group" style="display:none">
+                                                <input type="text" class="form-control" id="opGlobal" name="opGlobal" value="12">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="desc" style="color:black;">Subtitulo:</label>
+                                                <input type="text" class="form-control" id="editartituloPost" placeholder="Ingresa una titulo de post" name="subPostAdd" required>
+                                                <div class="valid-feedback">Valido.</div>
+                                                <div class="invalid-feedback">Por favor verifique los campos.</div>
+                                            </div>
+                                            <div class="form-group">
+                                            <label for="desc" style="color:black;">Descripcion:</label>
+                                            <input type="textarea" class="form-control" id="editPostUrl" placeholder="Ingresa URL de post " name="postLinkAdd" required>
+                                            <div class="valid-feedback">Valido.</div>
+                                            <div class="invalid-feedback">Por favor verifique los campos.</div>
+                                        </div>
+                                            <button type="submit" class="btn btn-primary">Aceptar</button>
+                                            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        
+                        
+                        ';
                 if ($peri[$i][3] === 1) {
                     echo '<a type="button" class="btn btn-light mr-2" href="Controlador/ControlBorrar.php?id=7*' . $peri[$i][0] . '*2*1"><i class = "bi bi-eye"></i></a>';
                 } else {
@@ -572,13 +611,42 @@ $postfb = getPostfb();
                             </div></h6>
                     </div>
                     <table class="table table-light table-hover">
+
                     <thead>
-                        <tr>
-                            <th>Imagen</th>
-                            <th>Descripcion</th>
-                        </tr>
-                    </thead>
-                    <tbody>';
+                    <tr>
+                        <th>Titulo</th>
+                        <th>Post</th>
+                    </tr>
+                </thead>';
+
+
+               
+                foreach ($postDeFacebook as $post) {
+                    echo "<tr><td>$post[0]  $post[3]</td>";
+                    echo "<td>$post[1]<\td>";
+                    echo '<td> <div class="btn-group">
+                    <button class="btn btn-light btn-sm" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="bi bi-three-dots-vertical"></i>
+                    </button>
+                     <div class="dropdown-menu dropdown-menu-right">
+                        <a class="dropdown-item" data-toggle="modal" data-target="#ventanaEditarPostFacebook"  onclick="datosModalEditPost('.$post[0].",'".$post[3]."','".$post[1]."'".')"><i class="bi bi-pencil-square"></i> Editar</a>';
+                    echo '<a class="dropdown-item" href="Controlador/ControlBorrar.php?"><i class = "bi bi-eye-slash"></i>Ocultar</a>';
+                    echo '<a class="dropdown-item" href="Controlador/ControlBorrar.php?id=16*'.$post[0].'"><i class = "bi bi-trash-fill"></i> Eliminar</a>
+                    </div>
+                    </div>
+                    </div>
+                    </td>
+                    </tr>';
+                }
+
+                echo '<thead>
+                <tr>
+                    <th>Imagen</th>
+                    <th>Descripcion</th>
+                </tr>
+            </thead>
+            <tbody>';
+
                 $imgExpo = getImagenesExpo($peri[$i][0]);
                 for ($j = 0; $j < sizeof($imgExpo); $j++) {
                     echo '<tr> <td><img src="img/expoISC/' . $peri[$i][4] . '/' . $imgExpo[$j][3] . '" width=120px></img></td>';
@@ -655,7 +723,7 @@ $postfb = getPostfb();
         <script type="text/javascript" src="js/tabs.js"></script>
     </div>
 </div>
-<?php include('AdminFooter.php')?>
+<?php include('AdminFooter.php') ?>
 <!--JS Local-->
 <script type="text/javascript" src="js/editarExpo.js"></script>
 <script type="text/javascript" src="js/editarGalerias.js?1.0.0"></script>

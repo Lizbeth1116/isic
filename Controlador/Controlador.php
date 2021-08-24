@@ -409,6 +409,27 @@ function getImagenesExpo($per) {
     return $imgExpo;
 }
 
+function getPostFbisic(){
+    global $con;
+    $stmt = $con->prepare("call isic.sp_getPostfbisic()");
+    $stmt->execute();
+    $i = 0;
+    $stmt->bind_result($idpostfb, $post, $Estado, $subtitulo);
+   
+    while ($stmt->fetch()) {
+        $postFb[$i][0] = $idpostfb;
+        $postFb[$i][1] = $post;
+        $postFb[$i][2] = $Estado;
+        $postFb[$i][3] = $subtitulo;
+        $i++;
+    }
+    $stmt->close();
+    return $postFb;
+
+
+}
+
+
 function getListaPE() {
     global $con;
     $stmt = $con->prepare("call isic.sp_getListaPE();");

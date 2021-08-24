@@ -346,10 +346,20 @@ switch ($opGlobal):
             $aux = "Docentes";
             break;
 
+        case 12:
+            include("./Controlador.php");
+            $idpostisic=$_POST['postId'];
+            $subPost = $_POST['subPostAdd'];
+            $postLink = $_POST['postLinkAdd'];
+            
+            $stmt = $con->prepare("call isic.sp_editPostFbisic(?,?,?)");
+            $stmt->bind_param("iss",$idpostisic, $subPost, $postLink);
+            $aux = "Galerias";
+
+            break;
+
 
 endswitch;
 $stmt->execute();
 $stmt->close();
 header("Location: ../Admin" . $aux . ".php");
-?>
-

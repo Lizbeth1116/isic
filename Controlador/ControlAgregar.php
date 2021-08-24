@@ -6,7 +6,7 @@ $opGlobal = $_POST['opGlobal'];
 
 switch ($opGlobal):
 
-    case 1://Admin Especialidad
+    case 1: //Admin Especialidad
         $opEsp = $_POST['opEsp'];
         switch ($opEsp):
             case 1:
@@ -45,9 +45,9 @@ switch ($opGlobal):
         $aux = "Especialidad";
         break;
 
-    case 2://Admin Investigacion
+    case 2: //Admin Investigacion
         $opInv = $_POST['opInv'];
-        switch ($opInv) :
+        switch ($opInv):
             case 1:
                 $temaInvInv = $_POST['temaInvInvAdd'];
                 $stmt = $con->prepare("call isic.sp_AddTemaLineaInvest(?)");
@@ -66,7 +66,7 @@ switch ($opGlobal):
         $aux = "Investigacion";
         break;
 
-    case 3://Admin Malla
+    case 3: //Admin Malla
         $claveMC = $_POST['claveMCAdd'];
         $horasMC = $_POST['horasMCAdd'];
         $semestreMC = $_POST['semestreMCAdd'];
@@ -89,7 +89,7 @@ switch ($opGlobal):
         $aux = "Malla";
         break;
 
-    case 4://Admin Galerias
+    case 4: //Admin Galerias
         $opExp = $_POST['opExp'];
         switch ($opExp):
             case 0:
@@ -153,7 +153,7 @@ switch ($opGlobal):
                 break;
             case 4:
                 $subPost = $_POST['subPostAdd'];
-                $postLink= $_POST['postLinkAdd'];
+                $postLink = $_POST['postLinkAdd'];
                 $stmt = $con->prepare("call isic.sp_AddPostFb(?,?)");
                 $stmt->bind_param("ss", $postLink, $subPost);
                 break;
@@ -161,7 +161,7 @@ switch ($opGlobal):
         $aux = "Galerias";
         break;
 
-    case 5://Admin Asesorias
+    case 5: //Admin Asesorias
         $docenteAs = $_POST['docenteAsAdd'];
         $asignaturaAs = $_POST['asignaturaAsAdd'];
         $diaAs = $_POST['diaAsAdd'];
@@ -172,7 +172,7 @@ switch ($opGlobal):
         $stmt->bind_param("isiii", $docenteAs, $asignaturaAs, $horaIniAs, $horaFinAs, $diaAs);
         $aux = "Asesorias";
         break;
-    case 6://Admin Complementarias
+    case 6: //Admin Complementarias
         $nombreComplement = $_POST['nombreComplementAdd'];
         $descComplement = $_POST['descComplementAdd'];
 
@@ -202,7 +202,7 @@ switch ($opGlobal):
         $aux = "Complementarias";
         break;
 
-    case 7://Admin Historial Especialidad
+    case 7: //Admin Historial Especialidad
         $opHist = $_POST['opHist'];
         switch ($opHist):
             case 1:
@@ -231,7 +231,7 @@ switch ($opGlobal):
         $aux = "HistorialEsp";
         break;
 
-    case 8://Solicitud
+    case 8: //Solicitud
         $nomSol = $_POST['nombrSol'];
         $ApSol = $_POST['ApSol'];
         $emailSol = $_POST['emailSol'];
@@ -244,32 +244,41 @@ switch ($opGlobal):
         $stmt->bind_param("sssisssi", $nomSol, $ApSol, $emailSol, $semSol, $grupSol, $telefSol, $matriSol, $proySol);
         break;
 
-        case 9://Admin Docentes
-            echo "Hola";
-            $idDoc = $_POST['idDocAdd'];
-            $gradoDoc = $_POST['gradosDocAdd'];
-            $nombreDoc = $_POST['nombreDocAdd'];
-            $apPaternoDoc = $_POST['apPaternoDocAdd'];
-            $apMaternoDoc = $_POST['apMaternoDocAdd'];
-            $correoDoc = $_POST['correoDocAdd'];
-            $tiempoDoc = $_POST['tiempoDocAdd'];
-            $tutorDoc = $_POST['tutorDocAdd'];
-            if($tiempoDoc!=2)$tiempoDoc=1;
-            if($tutorDoc!=2)$tutorDoc=1;
-      
+    case 9: //Admin Docentes
 
-            $stmt = $con->prepare("call isic.sp_AddDocente(?,?,?,?,?,?,?,?)");
-            $stmt->bind_param("isssssii", $idDoc, $gradoDoc, $nombreDoc, $apPaternoDoc, $apMaternoDoc,$correoDoc,$tiempoDoc,$tutorDoc);
-            $aux = "Docentes";
-            break;
+        $idDoc = $_POST['idDocAdd'];
+        $gradoDoc = $_POST['gradosDocAdd'];
+        $nombreDoc = $_POST['nombreDocAdd'];
+        $apPaternoDoc = $_POST['apPaternoDocAdd'];
+        $apMaternoDoc = $_POST['apMaternoDocAdd'];
+        $correoDoc = $_POST['correoDocAdd'];
+        $tiempoDoc = $_POST['tiempoDocAdd'];
+        $tutorDoc = $_POST['tutorDocAdd'];
+        if ($tiempoDoc != 2) $tiempoDoc = 1;
+        if ($tutorDoc != 2) $tutorDoc = 1;
 
+
+        $stmt = $con->prepare("call isic.sp_AddDocente(?,?,?,?,?,?,?,?)");
+        $stmt->bind_param("isssssii", $idDoc, $gradoDoc, $nombreDoc, $apPaternoDoc, $apMaternoDoc, $correoDoc, $tiempoDoc, $tutorDoc);
+        $aux = "Docentes";
+        break;
+
+    case 10:
+        $subPost = $_POST['subPostAdd'];
+        $postLink = $_POST['postLinkAdd'];
+        $stmt = $con->prepare("call isic.sp_AddPostFbisic(?,?)");
+        $stmt->bind_param("ss", $postLink, $subPost);
+        $aux = "Galerias";
+       
+        break;
 endswitch;
-$stmt->execute();
-$stmt->close();
+
+if ($stmt != null) {
+    $stmt->execute();
+    $stmt->close();
+}
 if ($opGlobal != 8) {
     header("Location: ../Admin" . $aux . ".php");
 } else {
     header("Location: ../index.php");
 }
-?>
-

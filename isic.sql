@@ -22,6 +22,7 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `isic`
 --
+drop database if exists `isic`;
 create database isic;
 use isic;
 DELIMITER $$
@@ -395,6 +396,12 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_editPostFb` (`id` INT, `subtitul
 UPDATE `isic`.`postfb` SET `subtitulo` = subtitulo WHERE (`idpostfb` = id);
 END$$
 
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_editPostFbisic` (`id` INT, `subtitulo` VARCHAR(80), `post` VARCHAR(800))  BEGIN
+UPDATE `isic`.`postfbisic` SET `subtitulo` = subtitulo, `post`= post WHERE (`idpostfbisic` = id);
+END$$
+
+
+
 CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_editTemaIvs` (`idTema` INT, `tema` VARCHAR(100))  BEGIN
 UPDATE `isic`.`tema_linea_investigacion` SET `Nombre` = tema 
 WHERE (`idtema_linea_investigacion` = idTema);
@@ -542,6 +549,10 @@ END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_getPostfb` ()  BEGIN
 SELECT * FROM isic.postfb;
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_getPostfbisic` ()  BEGIN
+SELECT * FROM isic.postfbisic;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_getServicio` (`idServ` INT)  BEGIN
@@ -1184,6 +1195,13 @@ CREATE TABLE `postfb` (
   `subtitulo` varchar(80) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+CREATE TABLE `postfbisic` (
+  `idpostfbisic` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `post` varchar(800) DEFAULT NULL,
+  `Estado` int(11) DEFAULT 1,
+  `subtitulo` varchar(80) DEFAULT NULL
+)ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
 --
 -- Volcado de datos para la tabla `postfb`
 --
@@ -1673,6 +1691,18 @@ END$$
 DELIMITER ;
 
 
+DROP procedure IF EXISTS `sp_DeletePostFbisic`;
+
+DELIMITER $$
+USE `isic`$$
+CREATE DEFINER=`root`@`%` PROCEDURE `sp_DeletePostFbisic`(`idpostfbisic` INT)
+BEGIN
+DELETE FROM `isic`.`postfbisic` WHERE (`idpostfbisic` = idpostfbisic);
+END$$
+
+DELIMITER ;
+
+
 
 
 USE `isic`;
@@ -1704,7 +1734,14 @@ END$$
 
 DELIMITER ;
 
-
+DELIMITER $$
+USE `isic`$$
+CREATE DEFINER=`root`@`%` PROCEDURE `sp_AddPostFbisic`(`post` VARCHAR(800), `subtitulo` VARCHAR(80))
+BEGIN
+INSERT INTO `isic`.`postfbisic` (`post`, `subtitulo`) 
+VALUES (post, subtitulo);
+END$$
+DELIMITER ;
 
 
 
