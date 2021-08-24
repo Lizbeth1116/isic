@@ -622,14 +622,14 @@ $postDeFacebook = getPostFbisic();
 
                if($postDeFacebook!=null)
                 foreach ($postDeFacebook as $post) {
-                    echo "<tr><td>$post[0]  $post[3]</td>";
-                    echo "<td>$post[1]<\td>";
+                    echo "<tr><td> $post[3]</td>";
+                    echo "<td>$post[1]</td>";
                     echo '<td> <div class="btn-group">
                     <button class="btn btn-light btn-sm" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i class="bi bi-three-dots-vertical"></i>
                     </button>
                      <div class="dropdown-menu dropdown-menu-right">
-                        <a class="dropdown-item" data-toggle="modal" data-target="#ventanaEditarPostFacebook"  onclick="datosModalEditPost('.$post[0].",'".$post[3]."','".$post[1]."'".')"><i class="bi bi-pencil-square"></i> Editar</a>';
+                        <a id="post'.$post[0].'" data-post-url=\''.$post[1].'\' class="dropdown-item" data-toggle="modal" data-target="#ventanaEditarPostFacebook"  onclick=\'datosModalEditPost("'.$post[0].'","'.$post[3].'");\'><i class="bi bi-pencil-square"></i> Editar</a>';
                     echo '<a class="dropdown-item" href="Controlador/ControlBorrar.php?"><i class = "bi bi-eye-slash"></i>Ocultar</a>';
                     echo '<a class="dropdown-item" href="Controlador/ControlBorrar.php?id=17*'.$post[0].'"><i class = "bi bi-trash-fill"></i> Eliminar</a>
                     </div>
