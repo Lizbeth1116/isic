@@ -22,9 +22,9 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `isic`
 --
-drop database if exists `isic`;
-create database isic;
-use isic;
+-- drop database if exists `isic`;
+-- create database isic;
+-- use isic;
 DELIMITER $$
 --
 -- Procedimientos

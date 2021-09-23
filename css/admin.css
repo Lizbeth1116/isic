@@ -69,7 +69,7 @@ i {
 }
 
 .dark {
-  background: #ffffff;
+  background: #082c54  !important;
   color: #696969;
 }
 
@@ -314,17 +314,17 @@ a[data-toggle="collapse"] {
 /*Inicio Footer*/
 
 section.bg-dark {
-  background-color: #ffffff !important;
+  background-color: #082c54  !important;
 }
 
 #footer {
   padding: 80px 0;
   text-align: center;
-  color: #696969;
+  color: #cfc5c5;
 }
 
 #footer a {
-  color: #696969;
+  color: #cfc5c5;
   text-decoration: none;
 }
 

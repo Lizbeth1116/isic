@@ -15,7 +15,7 @@
 }
 
 .asociaciones .site-section {
-    padding-bottom: 5em;
+    padding-bottom: 2em;
 }
 
 .asociaciones .section-heading {
@@ -54,7 +54,7 @@
 }
 
 .asociaciones .icono {
-    height: 230px;
+    height: 195px;
     padding-bottom: 20px;
     animation: cambiar 2s none;
 }
@@ -87,7 +87,7 @@
 
 .asociaciones .texto .resume-item h3 {
     color: #f1f1f1;
-    font-size: 20px;
+    font-size: 18px;
     animation: cambiar 2s none;
 }
 
@@ -96,7 +96,7 @@
 }
 
 .asociaciones .logo-w {
-    height: 40px;
+    height: 50px;
     padding-bottom: 10px;
     animation: cambiar 2s none;
 }
@@ -116,6 +116,9 @@
 
 .asociaciones .oracle {
     background-color: #c92f2f;
+}
+.asociaciones .redhat {
+    background-color:  #e61212d0;
 }
 
 @media screen and (min-width: 360px) {}

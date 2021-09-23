@@ -6,16 +6,16 @@
                 <h2><strong>ASOCIACIONES ESTRATEGICAS</strong></h2>
             </div>
             <div class="row">
-                <div class="col-md-4">
-                    <div class="resume-item mb-4 cisco">
+                <div class="col-md-3">
+                    <div class="resume-item mb-3 cisco">
                         <img src="img/asociaciones/cisco-w.png" class="logo-w">
                         <img src="img/asociaciones/01_cisco.svg" class="icono">
                         <h3><strong>Networking Academy</strong></h3>
                         <button type="button" class="btn btn-outline"><a href="https://www.netacad.com/es" target="_blank">Ver detalles</a></button>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="resume-item mb-4 nokia">
+                <div class="col-md-3">
+                    <div class="resume-item mb-3 nokia">
                         <img src="img/asociaciones/here-w.png" class="logo-w">
                         <img src="img/asociaciones/02_nokia.svg" class="icono">
                         <h3><strong>Nokia Here</strong></h3>
@@ -23,14 +23,24 @@
                     </div>
                 </div>
 
-                <div class="col-md-4">
-                    <div class="resume-item mb-4 oracle">
+                <div class="col-md-3">
+                    <div class="resume-item mb-3 oracle">
                         <img src="img/asociaciones/oracle-w.png" class="logo-w">
                         <img src="img/asociaciones/03_oracle.svg" class="icono">
                         <h3><strong>Oracle Academy</strong></h3>
                         <button type="button" class="btn btn-outline"><a href="https://academy.oracle.com/en/oa-web-overview.html" target="_blank">Ver detalles</a></button>
                     </div>
                 </div>
+
+                  <div class="col-md-3">
+                    <div class="resume-item mb-3 redhat">
+                        <img src="img/asociaciones/redhat-w.png" class="logo-w">
+                        <img src="img/asociaciones/04_redhat.svg" class="icono">
+                        <h3><strong>Red Hat Academy</strong></h3>
+                        <button type="button" class="btn btn-outline"><a href="https://www.redhat.com/es/services/training/red-hat-academy" target="_blank">Ver detalles</a></button>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>

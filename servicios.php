@@ -22,7 +22,7 @@ $servInfo = getServicio($_GET["idServ"]);
                 <tr class="table-active">
                 <th>Servicio</th>
                 <th> Ubicación </th>
-                <th>Extención </th>
+                <th> 7387354000(ext) </th>
                 </tr>';
                 foreach($tmp as $datosDeServicio){
                     $posicion=strrpos($datosDeServicio,"Ext");

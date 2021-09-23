@@ -2,7 +2,7 @@
 <!--inicia footer-->
 <section id="footer" class="bg-dark">
     <div class="container">
-        <img src="img/logos/itsoeh-isic.png?1.0.0" alt="logo" class="itsoeh-logo-white">
+        <img src="img/logos/isic-itsoeh-logo-blanco.png" alt="logo" class="itsoeh-logo-white">
 
         <ul class="list-inline">
             <li class="list-inline-item footer-menu"><i class="bi bi-envelope"></i><span> rporras@itsoeh.edu.mx</span></li>
