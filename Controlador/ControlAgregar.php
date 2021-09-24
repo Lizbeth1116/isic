@@ -99,8 +99,8 @@ switch ($opGlobal):
                 if (!file_exists('../img/expoISC/' . $nomCarpeta)) {
                     mkdir(('../img/expoISC/' . $nomCarpeta), 0755, TRUE);
                 }
-                $stmt = $con->prepare("call isic.sp_AddPeroExpo(?,?,?,?)");
-                $stmt->bind_param("iisi", $addperiodoExpo, $addAnioExp, $nomCarpeta);
+                $stmt = $con->prepare("call isic.sp_AddPeroExpo(?,?,?)");
+                $stmt->bind_param("iis", $addperiodoExpo, $addAnioExp, $nomCarpeta);
                 break;
             case 1:
                 $addCarpetaImag = $_POST['addCarpetaImag'];
@@ -266,8 +266,9 @@ switch ($opGlobal):
     case 10:
         $subPost = $_POST['subPostAdd'];
         $postLink = $_POST['postLinkAdd'];
-        $stmt = $con->prepare("call isic.sp_AddPostFbisic(?,?)");
-        $stmt->bind_param("ss", $postLink, $subPost);
+        $idPeriodo = $_POST['idPeriodo'];
+        $stmt = $con->prepare("call isic.sp_AddPostFbisic(?,?,?)");
+        $stmt->bind_param("ssi", $postLink, $subPost,$idPeriodo);
         $aux = "Galerias";
        
         break;

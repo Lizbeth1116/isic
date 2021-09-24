@@ -6,8 +6,9 @@
 -- Tiempo de generación: 14-06-2021 a las 05:43:24
 -- Versión del servidor: 10.4.6-MariaDB
 -- Versión de PHP: 7.3.8
-
-
+DROP DATABASE IF EXISTS `isic`;
+CREATE DATABASE `isic`;
+USE `isic`;
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
 START TRANSACTION;
@@ -551,8 +552,8 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_getPostfb` ()  BEGIN
 SELECT * FROM isic.postfb;
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_getPostfbisic` ()  BEGIN
-SELECT * FROM isic.postfbisic;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_getPostfbisic` (`id` INT)  BEGIN
+SELECT * FROM isic.postfbisic WHERE idPeriodo=id;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_getServicio` (`idServ` INT)  BEGIN
@@ -1199,7 +1200,8 @@ CREATE TABLE `postfbisic` (
   `idpostfbisic` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `post` varchar(800) DEFAULT NULL,
   `Estado` int(11) DEFAULT 1,
-  `subtitulo` varchar(80) DEFAULT NULL
+  `subtitulo` varchar(80) DEFAULT NULL,
+  `idPeriodo` int(11) NOT NULL
 )ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -1214,6 +1216,23 @@ INSERT INTO `postfb` (`idpostfb`, `post`, `Estado`, `subtitulo`) VALUES
 (5, '<iframe src=\"https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2F916964301664810%2Fphotos%2Fa.943603462334227%2F1725766717451227%2F%3Ftype%3D3&show_text=true&width=500\" width=\"500\" height=\"543\" style=\"border:none;overflow:hidden\" scrolling=\"no\" frameborder=\"0\" allowfullscreen=\"true\" allow=\"autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share\"></iframe>', 1, 'Segunda ronda de la competencia internacional NetRiders');
 
 -- --------------------------------------------------------
+
+--
+-- Volcado de datos para la tabla `postfb`
+--
+
+INSERT INTO `postfbisic` (`idpostfbisic`, `post`, `Estado`, `subtitulo`,`idPeriodo`) VALUES
+(1, '<iframe src=\"https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fpermalink.php%3Fstory_fbid%3D2117953188347195%26id%3D142983839177483&show_text=true&width=500\" width=\"100%\" height=\"454\" style=\"border:none;overflow:hidden\" scrolling=\"no\" frameborder=\"0\" allowfullscreen=\"true\" allow=\"autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share\"></iframe>', 1, 'Mejores Promedios',1),
+(2, '<iframe src=\"https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fpermalink.php%3Fstory_fbid%3D1877206242307273%26id%3D916964301664810&show_text=true&width=500\" width=\"100%\" height=\"740\" style=\"border:none;overflow:hidden;\" scrolling=\"no\" frameborder=\"0\" allowfullscreen=\"true\" allow=\"autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share\"></iframe>', 1, '4ta edición de la Expo Sistemas',6),
+(3, '<iframe src=\"https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fpermalink.php%3Fstory_fbid%3D1653763444651555%26id%3D916964301664810&show_text=true&width=500\" width=\"100%\" height=\"778\" style=\"border:none;overflow:hidden;\" scrolling=\"no\" frameborder=\"0\" allowfullscreen=\"true\" allow=\"autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share\"></iframe>', 1, 'Entrega de reconocimientos a mejores promedios',6),
+(4, '<iframe src=\"https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fpermalink.php%3Fstory_fbid%3D2055901021219079%26id%3D142983839177483&show_text=true&width=500\" width=\"100%\" height=\"559\" style=\"border:none;overflow:hidden;\" scrolling=\"no\" frameborder=\"0\" allowfullscreen=\"true\" allow=\"autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share\"></iframe>', 1, 'Reconocimiento a Mtra. Cristy Elizabeth Aguilar Ojeda',1),
+(5, '<iframe src=\"https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2F916964301664810%2Fphotos%2Fa.943603462334227%2F1725766717451227%2F%3Ftype%3D3&show_text=true&width=500\" width=\"500\" height=\"543\" style=\"border:none;overflow:hidden\" scrolling=\"no\" frameborder=\"0\" allowfullscreen=\"true\" allow=\"autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share\"></iframe>', 1, 'Segunda ronda de la competencia internacional NetRiders',9);
+
+-- --------------------------------------------------------
+
+
+
+
 
 --
 -- Estructura de tabla para la tabla `p_egreso_esp`
@@ -1613,6 +1632,13 @@ ALTER TABLE `imagenexpo`
   ADD CONSTRAINT `idPeriodo` FOREIGN KEY (`idPeriodo`) REFERENCES `periodoexpo` (`idperiodoExpo`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
+-- Filtros para la tabla `imagenexpo`
+--
+ALTER TABLE `postfbisic`
+  ADD CONSTRAINT `idPeriodoEx` FOREIGN KEY (`idPeriodo`) REFERENCES `periodoexpo` (`idperiodoExpo`);
+
+
+--
 -- Filtros para la tabla `linea_investigacion`
 --
 ALTER TABLE `linea_investigacion`
@@ -1736,10 +1762,10 @@ DELIMITER ;
 
 DELIMITER $$
 USE `isic`$$
-CREATE DEFINER=`root`@`%` PROCEDURE `sp_AddPostFbisic`(`post` VARCHAR(800), `subtitulo` VARCHAR(80))
+CREATE DEFINER=`root`@`%` PROCEDURE `sp_AddPostFbisic`(`post` VARCHAR(800), `subtitulo` VARCHAR(80), `idPeriodo` INT)
 BEGIN
-INSERT INTO `isic`.`postfbisic` (`post`, `subtitulo`) 
-VALUES (post, subtitulo);
+INSERT INTO `isic`.`postfbisic` (`post`, `subtitulo`,`idPeriodo`) 
+VALUES (post, subtitulo,idPeriodo);
 END$$
 DELIMITER ;
 

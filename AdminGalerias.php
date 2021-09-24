@@ -6,7 +6,7 @@ include('AdminSidebar.php');
 $peri = getPeriodo();
 $CarruselExpo = getCarruselExpo();
 $postfb = getPostfb();
-$postDeFacebook = getPostFbisic();
+
 ?>
 <!DOCTYPE HTML>
 <div class="admon">
@@ -418,6 +418,7 @@ $postDeFacebook = getPostFbisic();
             </div>
             <?php
             for ($i = 0; $i < sizeof($peri); $i++) {
+                $postDeFacebook = getPostFbisic($peri[$i][0]);
                 echo '<div id="titulo">';
                 if ($peri[$i][1] === 1) {
                     echo '<h6><b style="padding-right: 10px;">Enero - Mayo ' . $peri[$i][2] . '</b>';
@@ -425,7 +426,7 @@ $postDeFacebook = getPostFbisic();
                     echo '<h6><b style="padding-right: 10px;">Agosto - Diciembre ' . $peri[$i][2] . '</b>';
                 }
                 echo '<div class="btn-group-sm">
-                <a type="button" class="btn btn-light" data-toggle="modal" data-target="#ventaAgregarPostFacebook" onclick="datosModalExp2(\'' . $peri[$i][0] . '\', \'' . $peri[$i][4] . '\');"><i class="bi bi-facebook"></i></a>    
+                <a type="button" class="btn btn-light" data-toggle="modal" data-target="#ventaAgregarPostFacebook'. $peri[$i][0].'" onclick="datosModalExp2(\'' . $peri[$i][0] . '\', \'' . $peri[$i][4] . '\');"><i class="bi bi-facebook"></i></a>    
                 <a type="button" class="btn btn-light" data-toggle="modal" data-target="#myModalAddImg" onclick="datosModalExp2(\'' . $peri[$i][0] . '\', \'' . $peri[$i][4] . '\');"><i class="bi bi-card-image"></i></a>
                     <a type="button" class="btn btn-light" data-toggle="modal" data-target="#myModalEdExp" onclick="datosModalExp(\'' . $peri[$i][0] . '\', \'' . $peri[$i][1] . '\', \'' . $peri[$i][2] . '\');"><i class="bi bi-pencil-square"></i></a>
                         <div class="modal topmargin-sm" id="myModalEdExp">
@@ -522,7 +523,7 @@ $postDeFacebook = getPostFbisic();
                             </div>
                         </div>
                         
-                        <div class="modal topmargin-sm" id="ventaAgregarPostFacebook">
+                        <div class="modal topmargin-sm" id="ventaAgregarPostFacebook'. $peri[$i][0].'">
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <!-- Modal Header-->
@@ -537,6 +538,7 @@ $postDeFacebook = getPostFbisic();
                                            
                                             <div class="form-group" style="display:none">
                                                 <input type="text" class="form-control" id="opGlobal" name="opGlobal" value="10">
+                                                <input type="hidden" value='. $peri[$i][0].' name="idPeriodo">
                                             </div>
                                             <div class="form-group">
                                                 <label for="desc" style="color:black;">Subtitulo:</label>

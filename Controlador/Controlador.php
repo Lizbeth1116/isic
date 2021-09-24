@@ -409,22 +409,26 @@ function getImagenesExpo($per) {
     return $imgExpo;
 }
 
-function getPostFbisic(){
+function getPostFbisic($id){
     global $con;
-    $stmt = $con->prepare("call isic.sp_getPostfbisic()");
+    $stmt = $con->prepare("call isic.sp_getPostfbisic(?)");
+    $stmt->bind_param("i",$id);
     $stmt->execute();
     $i = 0;
-    $stmt->bind_result($idpostfb, $post, $Estado, $subtitulo);
+    $stmt->bind_result($idpostfb, $post, $Estado, $subtitulo,$idPeriodo);
    
     while ($stmt->fetch()) {
         $postFb[$i][0] = $idpostfb;
         $postFb[$i][1] = $post;
         $postFb[$i][2] = $Estado;
         $postFb[$i][3] = $subtitulo;
+        $postFb[$i][4]=$idPeriodo;
         $i++;
     }
     $stmt->close();
+    if(isset($postFb))
     return $postFb;
+    else return null;
 
 
 }

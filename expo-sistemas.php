@@ -4,6 +4,7 @@ $per = $_GET["per"];
 $perio = explode('_', $per);
 $ImagenesExpo = getImagenesExpo($perio[0]);
 $CarruselExpo = getCarruselExpo();
+$postDeFacebook = getPostFbisic($peri[0]);
 ?>
 <link rel="stylesheet" href="css/fluid-gallery.css?1.0.0">
 <div class="content-carousel">
@@ -60,8 +61,22 @@ $CarruselExpo = getCarruselExpo();
     </div>
 
     <div class="tz-gallery topmargin-xs">
+
         <div class="row">
             <?php
+            if ($postDeFacebook != null)
+                foreach ($postDeFacebook as $post) {
+            ?>
+                <div class="col-4"><?php echo $post[1] ?></div>
+
+            <?php
+                }
+            ?>
+
+        </div>
+        <div class="row">
+            <?php
+
             for ($i = 0; $i < sizeof($ImagenesExpo); $i++) {
                 echo '
                     <div class="col-md-3">
@@ -88,7 +103,7 @@ $CarruselExpo = getCarruselExpo();
     baguetteBox.run('.tz-gallery');
 </script>
 <script>
-    $(document).ready(function () {
+    $(document).ready(function() {
         $('#demo').carousel({
             interval: 2000
         });
