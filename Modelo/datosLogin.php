@@ -3,7 +3,7 @@
 $admin = $_POST['admin'];
 $pass = $_POST['pass'];
 
-if ($admin === 'isic' && $pass === 'itsoeh.isic2021'):
+if ($admin === '*****' && $pass === 'itsoeh***'):
     header("Location: ../Administrador.php");
 else:
     header("Location: ../index.php");
